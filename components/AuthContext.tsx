@@ -32,7 +32,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [token, setToken] = useSecureStore("access_token");
+  const [token, setToken] = useSecureStore("access_token", { sync: true });
   const { mutate: postLogin, isPending } = usePostLogin({
     onSuccess: ({ data }) => {
       setToken(data.access_token);
