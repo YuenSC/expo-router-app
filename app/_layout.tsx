@@ -1,3 +1,4 @@
+import "@/src/api/axios";
 import {
   DarkTheme,
   DefaultTheme,
@@ -8,12 +9,11 @@ import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
-import "@/src/api/axios";
 
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider, useAuth } from "@/components/AuthContext";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
@@ -25,13 +25,12 @@ const StackLayout = () => {
   const segments = useSegments();
   const router = useRouter();
 
-  console.log("authState.token", authState.token);
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
     if (authState.token === null && inAuthGroup) {
       router.push("/");
     } else if (authState.token !== null) {
-      router.replace("/(protected)");
+      router.replace("/onboarding");
     }
   }, [authState.token]);
 

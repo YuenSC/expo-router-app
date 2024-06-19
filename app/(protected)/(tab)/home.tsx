@@ -5,9 +5,13 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useAuth } from "@/components/AuthContext";
+import { useGlobalSearchParams, useLocalSearchParams } from "expo-router";
 
 export default function HomeScreen() {
   const { onLogout } = useAuth();
+  const glob = useGlobalSearchParams();
+  const local = useLocalSearchParams();
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
