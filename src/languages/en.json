@@ -1,0 +1,190 @@
+{
+  "BillCalculatorBottomSheet": {
+    "done": "Done",
+    "enter-something": "Enter something~"
+  },
+  "BillCategoryEnum": {
+    "Accommodation": "Living",
+    "Entertainment": "Entertainment",
+    "FoodAndDining": "Food & Dining",
+    "Insurance": "Insurance",
+    "Miscellaneous": "Miscellaneous",
+    "Shopping": "Shopping",
+    "SightseeingAndActivities": "Sightseeing",
+    "Transportation": "Transport"
+  },
+  "BillForm": {
+    "amount-is-required": "Amount is required",
+    "amount-label": "Bill Amount",
+    "amount-placeholder": "$XXX",
+    "category": "Category",
+    "comment-is-required": "Comment is required",
+    "comment-label": "Comment",
+    "comment-placeholder": "Describe this expense",
+    "date": "Date",
+    "date-placeholder": "When do you do it?"
+  },
+  "BottomTabNavigator": {
+    "home": "Home",
+    "options": "Options",
+    "payment": "Payment",
+    "stats": "Stats"
+  },
+  "CFBundleDisplayName": "Group Expense",
+  "Common": {
+    "NA": "N/A",
+    "back": "Back",
+    "coming-soon": "Coming Soon",
+    "create": "Create",
+    "delete": "Delete",
+    "done": "Done",
+    "groupLabel": "(Group)",
+    "next": "Next",
+    "profileUserLabel": "(You)",
+    "save": "Save"
+  },
+  "CurrencyCodeSelectScreen": {
+    "all": "All",
+    "currency": "Currency"
+  },
+  "DrawerContent": {
+    "add-group": "Add Group",
+    "groups": "Groups",
+    "version": "Version {{version}}"
+  },
+  "GroupCreateSuccessBottomSheet": {
+    "congrat-message": "Let's create your first payment record with your friends!",
+    "congratulations": "Congratulations!"
+  },
+  "GroupDeleteBottomSheet": {
+    "are-you-sure-to-delete-this-group": "<Text>Are you sure to delete <Highlight>{{groupName}}</Highlight>?</Text>",
+    "warning": "Please note that this action is irreversible. All the data will be lost."
+  },
+  "GroupDeletePaymentRecordBottomSheet": {
+    "are-you-sure-to-delete-this-record": "Are you sure to delete this record?"
+  },
+  "GroupDetailScreen": {
+    "add-group": "Add Group",
+    "and": "and",
+    "and-more": "and more ...",
+    "current-username": "Current: {{name}}",
+    "expense-reminder": "Your unresolved expenses are as below",
+    "expense-reminder-empty": "You have no unresolved expenses. Well Done!",
+    "member": "Member",
+    "no-group-warning": "You haven't created any group yet. Please create a group to get started",
+    "not-in-group": "Not In Group",
+    "payment": "Payment",
+    "payment-count": "You have {{count}} record in this group",
+    "payment-count_plural": "You have {{count}} records in this group",
+    "summary": "Summary"
+  },
+  "GroupDetailSummaryCarousel": {
+    "all-your-expenses-are-balanced": "All your expenses are balanced.",
+    "no-payment-records-found": "No payment records found"
+  },
+  "GroupDetailSummaryItem": {
+    "individual": "Individual",
+    "simplified": "Simplified"
+  },
+  "GroupExistingUserSelectBottomSheet": {
+    "existing-users": "Existing Users",
+    "no-existing-user-found": "No existing user found"
+  },
+  "GroupForm": {
+    "create-group": "Create Group",
+    "group-name": "Group Name",
+    "group-name-is-required": "Group Name is required",
+    "your-first-group-expense": "Your first group expense"
+  },
+  "GroupSummaryScreen": {
+    "debt-settlement": "Debt settlement 💰",
+    "summary": "Summary"
+  },
+  "LanguageScreen": {
+    "language": "Language",
+    "warning": "Machine translation is employed to translate languages other than English."
+  },
+  "OptionsScreen": {
+    "Upgrade": "Upgrade to Pro",
+    "all-members": "All Members",
+    "app-related": "App Related",
+    "category": "Category Configuration",
+    "contact-us": "Contact Us",
+    "delete-group": "Delete Group",
+    "greeting": "Hi, {{name}}! Hope you are having a great day!",
+    "group-detail": "Group Detail",
+    "group-members": "Group Members",
+    "group-related": "\"{{name}}\" Related",
+    "language": "Language",
+    "online-mode": "Online Mode",
+    "options": "Options",
+    "personal": "Personal",
+    "profile": "User Profile",
+    "unknown-user": "User"
+  },
+  "PayerPayeeSelectForm": {
+    "auto-tag": "(Auto)",
+    "paid-for": "Paid For?",
+    "who-paid": "Who Paid?"
+  },
+  "PaymentFormCurrencySelectBottomSheet": {
+    "all-currency": "All Currency",
+    "search-currency-code-or-name": "Search currency code or name",
+    "selected-currency": "Selected: {{currencyCode}}",
+    "suggested-currency": "Suggested Currency"
+  },
+  "PaymentFormScreen": {
+    "bill": "Bill",
+    "paid-for": "Paid For?",
+    "who-paid": "Who Paid?"
+  },
+  "PaymentRecordListScreen": {
+    "no-payment-records-found": "No payment records found",
+    "no-payment-records-found-for-currency": "No payment records found for {{currency}}",
+    "payments": "Payments"
+  },
+  "StackNavigator": {
+    "group-summary": "Group Summary",
+    "loading-interstitial-ad": "Ad Loading",
+    "users": "Users"
+  },
+  "StatisticScreen": {
+    "add-payment-record": "Add payment record",
+    "emptyRecordWarning": "You have no payment records yet. Start by creating a new payment record!",
+    "statistics": "Statistics",
+    "subtitle": "<Text>{{name}} have spent <Highlight>{{amount}}</Highlight> in total. Here is the distribution of your expenses</Text>",
+    "you": "You"
+  },
+  "UserDeleteBottomSheet": {
+    "please-note-that-this-action-is-irreversible": "Please note that this action is irreversible",
+    "related-payment": "You will have to remove {{count}} related payment before deleting this user.",
+    "related-payment_plural": "You will have to remove {{count}} related payments before deleting this user.",
+    "title": "<Text>Are you sure to delete <Highlight>{{username}}</Highlight> from <Highlight>{{groupname}}</Highlight>?</Text>"
+  },
+  "UserForm": {
+    "create-profile": "Create Profile",
+    "edit-member": "Edit Member",
+    "hi-user": "Hi {{name}}",
+    "name": "Name",
+    "related-groups": "Related Groups",
+    "who-are-you": "Who are you?",
+    "your-avatar-color": "Your avatar color",
+    "your-name-is-required": "Your name is required"
+  },
+  "UserListForm": {
+    "add-participant": "Add participant",
+    "all-members": "All Members",
+    "members": "Members",
+    "select-existing-user": "Select Existing User",
+    "type-participant-name": "Type participant name"
+  },
+  "WelcomeScreen": {
+    "subtitle": "Start summarizing your group expenses with your friends",
+    "title": "Welcome to Group Expense"
+  },
+  "common": {
+    "get-started": "Get Started",
+    "login": "Login",
+    "sign-up": "Create New Account"
+  }
+}

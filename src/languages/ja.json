@@ -1,0 +1,190 @@
+{
+  "BillCalculatorBottomSheet": {
+    "done": "終わり",
+    "enter-something": "何か入力してください~"
+  },
+  "BillCategoryEnum": {
+    "Accommodation": "宿泊施設",
+    "Entertainment": "エンターテインメント",
+    "FoodAndDining": "食べ物",
+    "Insurance": "保険",
+    "Miscellaneous": "その他",
+    "Shopping": "買い物",
+    "SightseeingAndActivities": "観光",
+    "Transportation": "交通機関"
+  },
+  "BillForm": {
+    "amount-is-required": "金額は必須です",
+    "amount-label": "請求金額",
+    "amount-placeholder": "$XXX",
+    "category": "カテゴリー",
+    "comment-is-required": "コメントは必須です",
+    "comment-label": "コメント",
+    "comment-placeholder": "この費用について説明してください",
+    "date": "日付",
+    "date-placeholder": "いつやりますか?"
+  },
+  "BottomTabNavigator": {
+    "home": "家",
+    "options": "オプション",
+    "payment": "支払い",
+    "stats": "統計"
+  },
+  "CFBundleDisplayName": "グループ経費",
+  "Common": {
+    "NA": "該当なし",
+    "back": "戻る",
+    "coming-soon": "近日公開",
+    "create": "作成する",
+    "delete": "消去",
+    "done": "終わり",
+    "groupLabel": "（グループ）",
+    "next": "次",
+    "profileUserLabel": "（あなた）",
+    "save": "保存"
+  },
+  "CurrencyCodeSelectScreen": {
+    "all": "全て",
+    "currency": "通貨"
+  },
+  "DrawerContent": {
+    "add-group": "グループの追加",
+    "groups": "グループ",
+    "version": "バージョン {{version}}"
+  },
+  "GroupCreateSuccessBottomSheet": {
+    "congrat-message": "友達と一緒に最初の支払い記録を作成しましょう!",
+    "congratulations": "おめでとう！"
+  },
+  "GroupDeleteBottomSheet": {
+    "are-you-sure-to-delete-this-group": "<Text><Highlight>{{groupName}}</Highlight> を削除してもよろしいですか?</Text>",
+    "warning": "この操作は元に戻せないことに注意してください。\nすべてのデータが失われます。"
+  },
+  "GroupDeletePaymentRecordBottomSheet": {
+    "are-you-sure-to-delete-this-record": "このレコードを削除してもよろしいですか?"
+  },
+  "GroupDetailScreen": {
+    "add-group": "グループの追加",
+    "and": "そして",
+    "and-more": "もっと ...",
+    "current-username": "現在: {{name}}",
+    "expense-reminder": "未解決の出費は以下の通りです",
+    "expense-reminder-empty": "未解決の出費はありません。\nよくやった！",
+    "member": "メンバー",
+    "no-group-warning": "まだグループを作成していません。\n始めるにはグループを作成してください",
+    "not-in-group": "グループに属していません",
+    "payment": "支払い",
+    "payment-count": "このグループには {{count}} 件のレコードがあります",
+    "payment-count_plural": "このグループには {{count}} 件のレコードがあります",
+    "summary": "まとめ"
+  },
+  "GroupDetailSummaryCarousel": {
+    "all-your-expenses-are-balanced": "すべての出費のバランスが取れています。",
+    "no-payment-records-found": "支払い記録が見つかりません"
+  },
+  "GroupDetailSummaryItem": {
+    "individual": "個人",
+    "simplified": "簡略化"
+  },
+  "GroupExistingUserSelectBottomSheet": {
+    "existing-users": "既存ユーザー",
+    "no-existing-user-found": "既存のユーザーが見つかりません"
+  },
+  "GroupForm": {
+    "create-group": "グループを作る",
+    "group-name": "グループ名",
+    "group-name-is-required": "グループ名は必​​須です",
+    "your-first-group-expense": "初めてのグループ費用"
+  },
+  "GroupSummaryScreen": {
+    "debt-settlement": "債務整理💰",
+    "summary": "まとめ"
+  },
+  "LanguageScreen": {
+    "language": "言語",
+    "warning": "英語以外の言語の翻訳には機械翻訳が使用されます。"
+  },
+  "OptionsScreen": {
+    "Upgrade": "プロ仕様にアップグレードする",
+    "all-members": "全員",
+    "app-related": "アプリ関連",
+    "category": "カテゴリ構成",
+    "contact-us": "お問い合わせ",
+    "delete-group": "グループの削除",
+    "greeting": "こんにちは、{{name}}!\n素晴らしい一日をお過ごしください。",
+    "group-detail": "グループ詳細",
+    "group-members": "グループの人（仲間）たち",
+    "group-related": "「{{name}}」関連",
+    "language": "言語",
+    "online-mode": "オンラインモード",
+    "options": "オプション",
+    "personal": "個人的",
+    "profile": "ユーザープロフィール",
+    "unknown-user": "ユーザー"
+  },
+  "PayerPayeeSelectForm": {
+    "auto-tag": "(自動)",
+    "paid-for": "のために支払われた？",
+    "who-paid": "誰が払ったの？"
+  },
+  "PaymentFormCurrencySelectBottomSheet": {
+    "all-currency": "すべての通貨",
+    "search-currency-code-or-name": "通貨コードまたは通貨名を検索する",
+    "selected-currency": "選択済み: {{通貨コード}}",
+    "suggested-currency": "推奨通貨"
+  },
+  "PaymentFormScreen": {
+    "bill": "請求書",
+    "paid-for": "誰のために支払われたのか？",
+    "who-paid": "誰が払ったの？"
+  },
+  "PaymentRecordListScreen": {
+    "no-payment-records-found": "支払い記録が見つかりません",
+    "no-payment-records-found-for-currency": "{{currency}} の支払い記録が見つかりませんでした",
+    "payments": "支払い"
+  },
+  "StackNavigator": {
+    "group-summary": "グループ概要",
+    "loading-interstitial-ad": "広告の読み込み",
+    "users": "ユーザー"
+  },
+  "StatisticScreen": {
+    "add-payment-record": "支払い記録を追加する",
+    "emptyRecordWarning": "まだ支払い記録がありません。\nまずは新しい支払い記録を作成してください。",
+    "statistics": "統計",
+    "subtitle": "<Text>{{name}} は合計 <Highlight>{{amount}}</Highlight> を使いました。\n経費の配分は次のとおりです</Text>",
+    "you": "あなた"
+  },
+  "UserDeleteBottomSheet": {
+    "please-note-that-this-action-is-irreversible": "この操作は元に戻せないことに注意してください",
+    "related-payment": "このユーザーを削除する前に、{{count}} 件の関連支払いを削除する必要があります。",
+    "related-payment_plural": "このユーザーを削除する前に、{{count}} 件の関連支払いを削除する必要があります。",
+    "title": "<Text><Highlight>{{username}}</Highlight> を <Highlight>{{groupname}}</Highlight> から削除してもよろしいですか?</Text>"
+  },
+  "UserForm": {
+    "create-profile": "プロフィール作成",
+    "edit-member": "メンバーの編集",
+    "hi-user": "こんにちは、{{name}}",
+    "name": "名前",
+    "related-groups": "関連グループ",
+    "who-are-you": "あなたは誰ですか？",
+    "your-avatar-color": "あなたのアバターの色",
+    "your-name-is-required": "お名前は必須です"
+  },
+  "UserListForm": {
+    "add-participant": "参加者を追加",
+    "all-members": "全員",
+    "members": "メンバー",
+    "select-existing-user": "既存のユーザーを選択",
+    "type-participant-name": "参加者名を入力してください"
+  },
+  "WelcomeScreen": {
+    "subtitle": "友達とグループでの出費のまとめを始めましょう",
+    "title": "グループ経費へようこそ"
+  },
+  "common": {
+    "get-started": "始めましょう",
+    "login": "ログイン",
+    "sign-up": "新しいアカウントを作成する"
+  }
+}

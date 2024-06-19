@@ -1,52 +1,80 @@
-import { Input } from "@rneui/themed";
+import { Button, Dialog, makeStyles, Text } from "@rneui/themed";
+import LottieView from "lottie-react-native";
 import { useState } from "react";
-import { ActivityIndicator, Button, StyleSheet } from "react-native";
+import { useTranslation } from "react-i18next";
+import { SafeAreaView, TouchableWithoutFeedback } from "react-native";
 
-import { useAuth } from "@/src/components/AuthContext";
-import { HStack, VStack } from "@/src/components/Stack";
+import Config from "@/src/Config";
+import { VStack } from "@/src/components/Stack";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("calvin_yuen_1@gmail.com");
-  const [password, setPassword] = useState("Example@001");
-  const { onLogin, authState } = useAuth();
+  const styles = useStyles();
+  const { t } = useTranslation();
+  const [isDebugMode, setIsDebugMode] = useState(false);
 
   return (
-    <VStack style={styles.container} justifyContent="center" gap={8}>
-      <Input
-        placeholder="xxx@gmail.com"
-        label="Email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <Input
-        placeholder="XXXXXX"
-        label="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <HStack style={{ minHeight: 40 }} justifyContent="center">
-        {authState.isPending ? (
-          <ActivityIndicator size="small" color="#0000ff" />
-        ) : (
-          <Button title="Login" onPress={() => onLogin({ email, password })} />
-        )}
-      </HStack>
-      <Button
-        title="Login as Admin"
-        onPress={() =>
-          onLogin({ email: "calvin_yuen_1_admin@gmail.com", password })
-        }
-      />
-    </VStack>
+    <SafeAreaView style={styles.container}>
+      <TouchableWithoutFeedback
+        onLongPress={() => setIsDebugMode(!isDebugMode)}
+      >
+        <LottieView
+          autoPlay
+          style={styles.lottieAnimation}
+          source={require("@/src/assets/lottie/welcome.json")}
+        />
+      </TouchableWithoutFeedback>
+
+      <Text style={styles.titleText}>{t("WelcomeScreen:title")}</Text>
+      <Text style={styles.subtitleText}>{t("WelcomeScreen:subtitle")}</Text>
+
+      <VStack gap={8} style={styles.buttonGroup}>
+        <Button
+          title={t("common:login")}
+          containerStyle={styles.buttonContainer}
+        />
+        <Button
+          type="clear"
+          title={t("common:sign-up")}
+          containerStyle={styles.buttonContainer}
+        />
+      </VStack>
+
+      <Dialog
+        isVisible={isDebugMode}
+        onBackdropPress={() => setIsDebugMode(false)}
+      >
+        <Text>{JSON.stringify(Config, null, 2)}</Text>
+      </Dialog>
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
   container: {
     flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+  lottieAnimation: {
+    width: "100%",
+    aspectRatio: 1,
+  },
+  titleText: {
+    textAlign: "center",
+    fontSize: 24,
+    marginVertical: 16,
+  },
+  subtitleText: {
+    textAlign: "center",
+    fontSize: 16,
+    color: theme.colors.grey1,
+  },
+  buttonGroup: {
+    marginTop: "auto",
+    marginBottom: 16,
+  },
+  buttonContainer: {
     marginHorizontal: 16,
   },
-});
+}));
 
 export default LoginPage;

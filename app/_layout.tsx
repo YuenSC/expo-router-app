@@ -1,10 +1,6 @@
 import "@/src/api/axios";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { ThemeProvider } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
@@ -14,6 +10,8 @@ import "react-native-reanimated";
 
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
 import { useColorScheme } from "@/src/hooks/useColorScheme";
+import "@/src/i18n";
+import theme from "@/src/styles/rneui";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +34,7 @@ const StackLayout = () => {
   }, [authState.token]);
 
   return (
-    <Stack>
+    <Stack initialRouteName="welcome">
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="(protected)" options={{ headerShown: false }} />
       <Stack.Screen name="+not-found" />
@@ -65,9 +63,7 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-        >
+        <ThemeProvider theme={theme}>
           <StackLayout />
         </ThemeProvider>
       </AuthProvider>

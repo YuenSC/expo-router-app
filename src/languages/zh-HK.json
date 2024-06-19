@@ -1,0 +1,190 @@
+{
+  "BillCalculatorBottomSheet": {
+    "done": "完畢",
+    "enter-something": "輸入一些東西~"
+  },
+  "BillCategoryEnum": {
+    "Accommodation": "住宿",
+    "Entertainment": "娛樂",
+    "FoodAndDining": "食物",
+    "Insurance": "保險",
+    "Miscellaneous": "各種各樣的",
+    "Shopping": "購物",
+    "SightseeingAndActivities": "觀光",
+    "Transportation": "運輸"
+  },
+  "BillForm": {
+    "amount-is-required": "金額為必填項",
+    "amount-label": "帳單金額",
+    "amount-placeholder": "$XXX",
+    "category": "類別",
+    "comment-is-required": "需要評論",
+    "comment-label": "評論",
+    "comment-placeholder": "描述一下這筆費用",
+    "date": "日期",
+    "date-placeholder": "你什麼時候做？"
+  },
+  "BottomTabNavigator": {
+    "home": "家",
+    "options": "選項",
+    "payment": "支付",
+    "stats": "統計數據"
+  },
+  "CFBundleDisplayName": "團體費用",
+  "Common": {
+    "NA": "不適用",
+    "back": "後退",
+    "coming-soon": "即將推出",
+    "create": "創造",
+    "delete": "刪除",
+    "done": "完畢",
+    "groupLabel": "（團體）",
+    "next": "下一個",
+    "profileUserLabel": "（你）",
+    "save": "保存"
+  },
+  "CurrencyCodeSelectScreen": {
+    "all": "全部",
+    "currency": "貨幣"
+  },
+  "DrawerContent": {
+    "add-group": "新增群組",
+    "groups": "團體",
+    "version": "版本 {{version}}"
+  },
+  "GroupCreateSuccessBottomSheet": {
+    "congrat-message": "和你的朋友一起創造你的第一筆付款記錄吧！",
+    "congratulations": "恭喜！"
+  },
+  "GroupDeleteBottomSheet": {
+    "are-you-sure-to-delete-this-group": "<Text>您確定刪除<Highlight>{{groupName}}</Highlight>嗎？",
+    "warning": "請注意，此操作是不可逆轉的。\n所有資料都將遺失。"
+  },
+  "GroupDeletePaymentRecordBottomSheet": {
+    "are-you-sure-to-delete-this-record": "您確定要刪除此記錄嗎？"
+  },
+  "GroupDetailScreen": {
+    "add-group": "新增群組",
+    "and": "和",
+    "and-more": "和更多 ...",
+    "current-username": "目前：{{name}}",
+    "expense-reminder": "您的未解決費用如​​下",
+    "expense-reminder-empty": "您沒有未解決的費用。\n做得好！",
+    "member": "成員",
+    "no-group-warning": "您還沒有建立任何群組。\n請建立一個群組以開始使用",
+    "not-in-group": "不在組內",
+    "payment": "支付",
+    "payment-count": "您在此群組中有 {{count}} 筆記錄",
+    "payment-count_plural": "該群組中有 {{count}} 筆記錄",
+    "summary": "概括"
+  },
+  "GroupDetailSummaryCarousel": {
+    "all-your-expenses-are-balanced": "你所有的開支都是平衡的。",
+    "no-payment-records-found": "沒有找到付款記錄"
+  },
+  "GroupDetailSummaryItem": {
+    "individual": "個人",
+    "simplified": "簡化版"
+  },
+  "GroupExistingUserSelectBottomSheet": {
+    "existing-users": "現有用戶",
+    "no-existing-user-found": "未找到現有用戶"
+  },
+  "GroupForm": {
+    "create-group": "建立群組",
+    "group-name": "團隊名字",
+    "group-name-is-required": "群組名稱為必填項",
+    "your-first-group-expense": "您的第一筆團體費用"
+  },
+  "GroupSummaryScreen": {
+    "debt-settlement": "債務清償💰",
+    "summary": "概括"
+  },
+  "LanguageScreen": {
+    "language": "語言",
+    "warning": "機器翻譯用於翻譯英語以外的語言。"
+  },
+  "OptionsScreen": {
+    "Upgrade": "升級到專業版",
+    "all-members": "所有會員",
+    "app-related": "應用程式相關",
+    "category": "類別配置",
+    "contact-us": "聯絡我們",
+    "delete-group": "刪除群組",
+    "greeting": "嗨，{{name}}！\n希望您度過愉快的一天！",
+    "group-detail": "團體詳情",
+    "group-members": "小組成員",
+    "group-related": "“{{name}}”相關",
+    "language": "語言",
+    "online-mode": "線上模式",
+    "options": "選項",
+    "personal": "個人的",
+    "profile": "使用者資料",
+    "unknown-user": "使用者"
+  },
+  "PayerPayeeSelectForm": {
+    "auto-tag": "（汽車）",
+    "paid-for": "付費了嗎？",
+    "who-paid": "誰付錢？"
+  },
+  "PaymentFormCurrencySelectBottomSheet": {
+    "all-currency": "所有貨幣",
+    "search-currency-code-or-name": "搜尋貨幣代碼或名稱",
+    "selected-currency": "已選擇：{{currencyCode}}",
+    "suggested-currency": "建議貨幣"
+  },
+  "PaymentFormScreen": {
+    "bill": "帳單",
+    "paid-for": "為誰付費？",
+    "who-paid": "誰付錢？"
+  },
+  "PaymentRecordListScreen": {
+    "no-payment-records-found": "沒有找到付款記錄",
+    "no-payment-records-found-for-currency": "未找到 {{currency}} 的付款記錄",
+    "payments": "付款方式"
+  },
+  "StackNavigator": {
+    "group-summary": "小組總結",
+    "loading-interstitial-ad": "廣告載入",
+    "users": "使用者"
+  },
+  "StatisticScreen": {
+    "add-payment-record": "新增付款記錄",
+    "emptyRecordWarning": "您還沒有付款記錄。\n從建立新的付款記錄開始！",
+    "statistics": "統計數據",
+    "subtitle": "<Text>{{name}} 總共花了 <Highlight>{{amount}}</Highlight>。\n這是你的費用分佈</Text>",
+    "you": "你"
+  },
+  "UserDeleteBottomSheet": {
+    "please-note-that-this-action-is-irreversible": "請注意，此操作不可逆轉",
+    "related-payment": "在刪除該使用者之前，您必須先刪除 {{count}} 項相關付款。",
+    "related-payment_plural": "在刪除該使用者之前，您必須先刪除 {{count}} 項相關付款。",
+    "title": "<Text>您確定從<Highlight>{{groupname}}</Highlight>中刪除<Highlight>{{username}}</Highlight>嗎？"
+  },
+  "UserForm": {
+    "create-profile": "建立個人資料",
+    "edit-member": "編輯會員",
+    "hi-user": "嗨{{name}}",
+    "name": "姓名",
+    "related-groups": "相關團體",
+    "who-are-you": "你是誰？",
+    "your-avatar-color": "你的頭像顏色",
+    "your-name-is-required": "您的姓名為必填項"
+  },
+  "UserListForm": {
+    "add-participant": "新增參與者",
+    "all-members": "所有會員",
+    "members": "會員",
+    "select-existing-user": "選擇現有用戶",
+    "type-participant-name": "輸入參與者姓名"
+  },
+  "WelcomeScreen": {
+    "subtitle": "開始和朋友一起總結團體開支",
+    "title": "歡迎來到團體消費"
+  },
+  "common": {
+    "get-started": "開始使用",
+    "login": "登入",
+    "sign-up": "建立新帳戶"
+  }
+}

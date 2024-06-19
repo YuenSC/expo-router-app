@@ -1,0 +1,190 @@
+{
+  "BillCalculatorBottomSheet": {
+    "done": "Hecho",
+    "enter-something": "Introduce algo ~"
+  },
+  "BillCategoryEnum": {
+    "Accommodation": "Viviendo",
+    "Entertainment": "Entretenimiento",
+    "FoodAndDining": "Alimento",
+    "Insurance": "Seguro",
+    "Miscellaneous": "Misceláneas",
+    "Shopping": "Compras",
+    "SightseeingAndActivities": "Pasear",
+    "Transportation": "Transporte"
+  },
+  "BillForm": {
+    "amount-is-required": "Se requiere cantidad",
+    "amount-label": "Total de la factura",
+    "amount-placeholder": "$ XXX",
+    "category": "Categoría",
+    "comment-is-required": "Se requiere comentario",
+    "comment-label": "Comentario",
+    "comment-placeholder": "Describe este gasto",
+    "date": "Fecha",
+    "date-placeholder": "Cuando lo haces?"
+  },
+  "BottomTabNavigator": {
+    "home": "Hogar",
+    "options": "Opciones",
+    "payment": "Pago",
+    "stats": "Estadísticas"
+  },
+  "CFBundleDisplayName": "Gastos de grupo",
+  "Common": {
+    "NA": "N / A",
+    "back": "Atrás",
+    "coming-soon": "Muy pronto",
+    "create": "Crear",
+    "delete": "Borrar",
+    "done": "Hecho",
+    "groupLabel": "(Grupo)",
+    "next": "Próximo",
+    "profileUserLabel": "(Tú)",
+    "save": "Ahorrar"
+  },
+  "CurrencyCodeSelectScreen": {
+    "all": "Todo",
+    "currency": "Divisa"
+  },
+  "DrawerContent": {
+    "add-group": "Añadir grupo",
+    "groups": "Grupos",
+    "version": "Versión {{versión}}"
+  },
+  "GroupCreateSuccessBottomSheet": {
+    "congrat-message": "¡Creemos tu primer registro de pago con tus amigos!",
+    "congratulations": "¡Felicidades!"
+  },
+  "GroupDeleteBottomSheet": {
+    "are-you-sure-to-delete-this-group": "<Text>¿Estás seguro de eliminar <Highlight>{{groupName}}</Highlight>?</Text>",
+    "warning": "Tenga en cuenta que esta acción es irreversible. \nTodos los datos se perderán."
+  },
+  "GroupDeletePaymentRecordBottomSheet": {
+    "are-you-sure-to-delete-this-record": "¿Está seguro de eliminar este registro?"
+  },
+  "GroupDetailScreen": {
+    "add-group": "Añadir grupo",
+    "and": "y",
+    "and-more": "y más ...",
+    "current-username": "Nombre {{name}}",
+    "expense-reminder": "Sus gastos no resueltos son los siguientes",
+    "expense-reminder-empty": "No tienes gastos pendientes de resolver. \n¡Bien hecho!",
+    "member": "Miembro",
+    "no-group-warning": "Aún no has creado ningún grupo. \nPor favor crea un grupo para comenzar",
+    "not-in-group": "No en grupo",
+    "payment": "Pago",
+    "payment-count": "Tienes {{count}} registro en este grupo",
+    "payment-count_plural": "Tienes {{count}} registros en este grupo",
+    "summary": "Resumen"
+  },
+  "GroupDetailSummaryCarousel": {
+    "all-your-expenses-are-balanced": "Todos tus gastos están equilibrados.",
+    "no-payment-records-found": "No se encontraron registros de pago"
+  },
+  "GroupDetailSummaryItem": {
+    "individual": "Individual",
+    "simplified": "Simplificado"
+  },
+  "GroupExistingUserSelectBottomSheet": {
+    "existing-users": "Usuarios existentes",
+    "no-existing-user-found": "No se encontró ningún usuario existente"
+  },
+  "GroupForm": {
+    "create-group": "Crea un grupo",
+    "group-name": "Nombre del grupo",
+    "group-name-is-required": "El nombre del grupo es obligatorio",
+    "your-first-group-expense": "Tu primer gasto grupal"
+  },
+  "GroupSummaryScreen": {
+    "debt-settlement": "Liquidación de deudas 💰",
+    "summary": "Resumen"
+  },
+  "LanguageScreen": {
+    "language": "Idioma",
+    "warning": "La traducción automática se emplea para traducir idiomas distintos del inglés."
+  },
+  "OptionsScreen": {
+    "Upgrade": "Actualízate a Pro",
+    "all-members": "Todos los miembros",
+    "app-related": "Relacionado con la aplicación",
+    "category": "Configuración de categoría",
+    "contact-us": "Contáctenos",
+    "delete-group": "Eliminar grupo",
+    "greeting": "{{name}} Hola! \n¡Espero que estés teniendo un buen dia!",
+    "group-detail": "Detalle del grupo",
+    "group-members": "Miembros del grupo",
+    "group-related": "\"{{name}}\" Relacionado",
+    "language": "Idioma",
+    "online-mode": "Modo en línea",
+    "options": "Opciones",
+    "personal": "Personal",
+    "profile": "Perfil del usuario",
+    "unknown-user": "Usuario"
+  },
+  "PayerPayeeSelectForm": {
+    "auto-tag": "(Auto)",
+    "paid-for": "¿Pagado?",
+    "who-paid": "¿Quién pagó?"
+  },
+  "PaymentFormCurrencySelectBottomSheet": {
+    "all-currency": "Toda la moneda",
+    "search-currency-code-or-name": "Buscar código o nombre de moneda",
+    "selected-currency": "Seleccionado: {{currencyCode}}",
+    "suggested-currency": "Moneda sugerida"
+  },
+  "PaymentFormScreen": {
+    "bill": "Factura",
+    "paid-for": "¿Pagado?",
+    "who-paid": "¿Quién pagó?"
+  },
+  "PaymentRecordListScreen": {
+    "no-payment-records-found": "No se encontraron registros de pago",
+    "no-payment-records-found-for-currency": "No se encontraron registros de pago para {{currency}}",
+    "payments": "Pagos"
+  },
+  "StackNavigator": {
+    "group-summary": "Resumen del grupo",
+    "loading-interstitial-ad": "Cargando anuncios",
+    "users": "Usuarios"
+  },
+  "StatisticScreen": {
+    "add-payment-record": "Agregar registro de pago",
+    "emptyRecordWarning": "Aún no tienes registros de pago. \n¡Empiece por crear un nuevo registro de pago!",
+    "statistics": "Estadísticas",
+    "subtitle": "<Text>{{name}} ha gastado <Highlight>{{amount}}</Highlight> en total. \nAquí está la distribución de tus gastos</Text>",
+    "you": "Tú"
+  },
+  "UserDeleteBottomSheet": {
+    "please-note-that-this-action-is-irreversible": "Tenga en cuenta que esta acción es irreversible.",
+    "related-payment": "Tendrás que eliminar {{count}} pago relacionado antes de eliminar a este usuario.",
+    "related-payment_plural": "Tendrás que eliminar {{count}} pagos relacionados antes de eliminar a este usuario.",
+    "title": "<Text>¿Estás seguro de eliminar <Highlight>{{username}}</Highlight> de <Highlight>{{groupname}}</Highlight>?</Text>"
+  },
+  "UserForm": {
+    "create-profile": "Crear perfil",
+    "edit-member": "Editar miembro",
+    "hi-user": "{{name}} Hola",
+    "name": "Nombre",
+    "related-groups": "Grupos relacionados",
+    "who-are-you": "¿Quién eres?",
+    "your-avatar-color": "color de tu avatar",
+    "your-name-is-required": "Tu nombre es requerido"
+  },
+  "UserListForm": {
+    "add-participant": "Añada participante",
+    "all-members": "Todos los miembros",
+    "members": "Miembros",
+    "select-existing-user": "Seleccionar usuario existente",
+    "type-participant-name": "Escriba el nombre del participante"
+  },
+  "WelcomeScreen": {
+    "subtitle": "Empieza a resumir los gastos de tu grupo con tus amigos",
+    "title": "Bienvenido a Gastos de grupo"
+  },
+  "common": {
+    "get-started": "Empezar",
+    "login": "Acceso",
+    "sign-up": "Crear una nueva cuenta"
+  }
+}
