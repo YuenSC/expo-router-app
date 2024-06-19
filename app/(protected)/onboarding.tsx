@@ -1,7 +1,5 @@
-import { ThemedText } from "@/src/components/ThemedText";
 import { Link } from "expo-router";
-import { forwardRef } from "react";
-import { Button, ButtonProps, Pressable } from "react-native";
+import { Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {

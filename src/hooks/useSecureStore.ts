@@ -1,17 +1,17 @@
 // useSecureStore.ts
-import { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
+import { useState, useEffect } from "react";
 
 type UseSecureStoreReturn = [
   string | null, // The stored value or null if not found
-  (value: string | null) => Promise<void> // Function to save or delete a value
+  (value: string | null) => Promise<void>, // Function to save or delete a value
 ];
 
 const useSecureStore = (
   key: string,
   options?: {
     sync?: boolean; // Option to use synchronous storage retrieval if needed
-  }
+  },
 ): UseSecureStoreReturn => {
   const [storedValue, setStoredValue] = useState<string | null>(null);
 
@@ -46,6 +46,7 @@ const useSecureStore = (
   // Load the stored value when the hook is first used
   useEffect(() => {
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]); // Re-run effect if key changes
 
   return [storedValue, saveOrDelete];

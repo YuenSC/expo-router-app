@@ -1,16 +1,12 @@
-import { Image, StyleSheet, Platform, Button } from "react-native";
+import { Text } from "@rneui/themed";
+import { Button, Image, StyleSheet, View } from "react-native";
 
+import { useAuth } from "@/src/components/AuthContext";
 import { HelloWave } from "@/src/components/HelloWave";
 import ParallaxScrollView from "@/src/components/ParallaxScrollView";
-import { ThemedText } from "@/src/components/ThemedText";
-import { ThemedView } from "@/src/components/ThemedView";
-import { useAuth } from "@/src/components/AuthContext";
-import { useGlobalSearchParams, useLocalSearchParams } from "expo-router";
 
 export default function HomeScreen() {
   const { onLogout } = useAuth();
-  const glob = useGlobalSearchParams();
-  const local = useLocalSearchParams();
 
   return (
     <ParallaxScrollView
@@ -22,10 +18,10 @@ export default function HomeScreen() {
         />
       }
     >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+      <View style={styles.titleContainer}>
+        <Text>Welcome!</Text>
         <HelloWave />
-      </ThemedView>
+      </View>
       <Button title="Logout" onPress={onLogout} />
     </ParallaxScrollView>
   );

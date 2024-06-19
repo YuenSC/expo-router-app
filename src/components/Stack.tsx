@@ -47,7 +47,7 @@ const HStack = memo<IStackProps>(
         {children}
       </View>
     );
-  }
+  },
 );
 HStack.displayName = "HStack";
 
@@ -73,7 +73,7 @@ const VStack = memo<IStackProps>(
         {children}
       </View>
     );
-  }
+  },
 );
 VStack.displayName = "VStack";
 

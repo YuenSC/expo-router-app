@@ -1,9 +1,11 @@
 import "@/src/api/axios";
+import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -12,8 +14,6 @@ import "react-native-reanimated";
 
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
 import { useColorScheme } from "@/src/hooks/useColorScheme";
-import { useReactQueryDevTools } from "@dev-plugins/react-query";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +32,7 @@ const StackLayout = () => {
     } else if (authState.token !== null) {
       router.replace("/onboarding");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.token]);
 
   return (

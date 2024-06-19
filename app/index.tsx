@@ -1,8 +1,9 @@
+import { Input } from "@rneui/themed";
+import { useState } from "react";
+import { ActivityIndicator, Button, StyleSheet } from "react-native";
+
 import { useAuth } from "@/src/components/AuthContext";
 import { HStack, VStack } from "@/src/components/Stack";
-import { ThemedTextInput } from "@/src/components/ThemedTextInput";
-import { useState } from "react";
-import { ActivityIndicator, Button, StyleSheet, View } from "react-native";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("calvin_yuen_1@gmail.com");
@@ -11,13 +12,13 @@ const LoginPage = () => {
 
   return (
     <VStack style={styles.container} justifyContent="center" gap={8}>
-      <ThemedTextInput
+      <Input
         placeholder="xxx@gmail.com"
         label="Email"
         value={email}
         onChangeText={setEmail}
       />
-      <ThemedTextInput
+      <Input
         placeholder="XXXXXX"
         label="Password"
         value={password}
