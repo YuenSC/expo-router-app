@@ -1,5 +1,7 @@
+import { ThemedText } from "@/src/components/ThemedText";
 import { Link } from "expo-router";
-import { Button } from "react-native";
+import { forwardRef } from "react";
+import { Button, ButtonProps, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
@@ -14,7 +16,8 @@ export default function Page() {
           },
         }}
       >
-        <Button title="Go To Home" />
+        {/* TODO: The Button trigger Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?  */}
+        <Button title="Go to Home" />
       </Link>
     </SafeAreaView>
   );
