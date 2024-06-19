@@ -28,7 +28,7 @@ const StackLayout = () => {
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
     if (authState.token === null && inAuthGroup) {
-      router.push("/");
+      router.replace("/");
     } else if (authState.token !== null) {
       router.replace("/onboarding");
     }
