@@ -1,4 +1,4 @@
-import { Button, CheckBox, Input, makeStyles, Text } from "@rneui/themed";
+import { Button, CheckBox, Input, makeStyles } from "@rneui/themed";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
@@ -78,10 +78,6 @@ const Page = () => {
             />
           )}
         />
-
-        {authState.error && (
-          <Text style={styles.errorText}>{authState.error}</Text>
-        )}
 
         <Button
           title={t("common:login")}

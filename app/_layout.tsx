@@ -1,19 +1,39 @@
 import "@/src/api/axios";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { ThemeProvider, useTheme } from "@rneui/themed";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  MutationCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "react-native-reanimated";
+import { FullWindowOverlay } from "react-native-screens";
+import Toast from "react-native-toast-message";
 
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
 import "@/src/i18n";
 import theme from "@/src/styles/rneui";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  mutationCache: new MutationCache({
+    onError: (error) => {
+      Toast.show({
+        type: "error",
+        text1: "Api Error",
+        text2: error.message,
+        topOffset: 64,
+        text1Style: { fontSize: 16 },
+        text2Style: { fontSize: 14 },
+        autoHide: false,
+      });
+    },
+  }),
+});
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -95,6 +115,9 @@ export default function RootLayout() {
       <AuthProvider>
         <ThemeProvider theme={theme}>
           <StackLayout />
+          <FullWindowOverlay>
+            <Toast />
+          </FullWindowOverlay>
         </ThemeProvider>
       </AuthProvider>
     </QueryClientProvider>
