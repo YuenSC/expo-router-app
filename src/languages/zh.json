@@ -151,6 +151,7 @@
     "password-label": "密码",
     "password-placeholder": "******",
     "passwordsMustMatch": "重新输入的密码与密码不匹配",
+    "remember-me": "记住账号",
     "retypedPassword-is-required": "需要重新输入密码",
     "retypedPassword-label": "重新输入密码"
   },

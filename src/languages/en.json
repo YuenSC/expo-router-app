@@ -104,6 +104,15 @@
     "language": "Language",
     "warning": "Machine translation is employed to translate languages other than English."
   },
+  "Login": {
+    "email-is-required": "Email is requierd",
+    "email-label": "Email",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "Password is required",
+    "password-label": "Password",
+    "password-placeholder": "********",
+    "remember-me": "Remember Me"
+  },
   "OptionsScreen": {
     "Upgrade": "Upgrade to Pro",
     "all-members": "All Members",
@@ -151,6 +160,7 @@
     "password-label": "Password",
     "password-placeholder": "********",
     "passwordsMustMatch": "Retyped passwords does not match with password",
+    "remember-me": "Remember Me",
     "retypedPassword-is-required": "Retyped Password is required",
     "retypedPassword-label": "Retyped Password"
   },

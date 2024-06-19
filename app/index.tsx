@@ -29,10 +29,12 @@ const LoginPage = () => {
       <Text style={styles.subtitleText}>{t("WelcomeScreen:subtitle")}</Text>
 
       <VStack gap={8} style={styles.buttonGroup}>
-        <Button
-          title={t("common:login")}
-          containerStyle={styles.buttonContainer}
-        />
+        <Link href="/login" asChild>
+          <Button
+            title={t("common:login")}
+            containerStyle={styles.buttonContainer}
+          />
+        </Link>
         <Link href="/sign-up" asChild>
           <Button
             type="clear"

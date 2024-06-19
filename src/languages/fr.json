@@ -151,6 +151,7 @@
     "password-label": "Mot de passe",
     "password-placeholder": "********",
     "passwordsMustMatch": "Les mots de passe retapés ne correspondent pas au mot de passe",
+    "remember-me": "Souviens-toi de moi",
     "retypedPassword-is-required": "Le mot de passe retapé est requis",
     "retypedPassword-label": "Mot de passe retapé"
   },

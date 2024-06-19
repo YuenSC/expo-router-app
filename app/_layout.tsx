@@ -30,6 +30,7 @@ const StackLayout = () => {
     if (authState.token === null && inAuthGroup) {
       router.replace("/");
     } else if (authState.token !== null) {
+      router.dismissAll();
       router.replace("/onboarding");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,6 +51,14 @@ const StackLayout = () => {
       }}
     >
       <Stack.Screen name="index" options={{}} />
+      <Stack.Screen
+        name="login"
+        options={{
+          headerShown: true,
+          title: t("common:login"),
+          presentation: "modal",
+        }}
+      />
       <Stack.Screen
         name="sign-up"
         options={{

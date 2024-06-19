@@ -151,6 +151,7 @@
     "password-label": "पासवर्ड",
     "password-placeholder": "********",
     "passwordsMustMatch": "दोबारा टाइप किया गया पासवर्ड पासवर्ड से मेल नहीं खाता",
+    "remember-me": "मुझे याद करो",
     "retypedPassword-is-required": "पुनः टाइप किया गया पासवर्ड आवश्यक है",
     "retypedPassword-label": "पासवर्ड दोबारा टाइप किया गया"
   },

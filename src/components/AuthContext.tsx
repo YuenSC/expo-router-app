@@ -1,7 +1,5 @@
-import { createContext, useContext } from "react";
-import { Alert } from "react-native";
+import { createContext, useContext, useState } from "react";
 
-import Config from "@/src/Config";
 import { PostLoginPayload } from "@/src/api/types/Login";
 import { usePostLogin } from "@/src/api/usePostLogin";
 import useSecureStore from "@/src/hooks/useSecureStore";
@@ -12,6 +10,11 @@ interface AuthProps {
   authState: {
     token: string | null;
     isPending: boolean;
+    error?: string;
+  };
+  localCredential: {
+    email: string | null;
+    password: string | null;
   };
 }
 
@@ -21,6 +24,10 @@ const authContext = createContext<AuthProps>({
   authState: {
     token: null,
     isPending: false,
+  },
+  localCredential: {
+    email: "",
+    password: "",
   },
 });
 
@@ -34,17 +41,30 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useSecureStore("access_token", { sync: true });
+  const [localPassword, setLocalPassword] = useSecureStore("password", {
+    sync: true,
+  });
+  const [localEmail, setLocalEmail] = useSecureStore("email", { sync: true });
+  const [error, setError] = useState("");
+
   const { mutate: postLogin, isPending } = usePostLogin({
     onSuccess: ({ data }) => {
       setToken(data.access_token);
     },
     onError: (error) => {
-      Alert.alert("Login failed", error.message + Config.apiUrl);
+      setError(error.message);
     },
   });
 
-  const onLogin = (payload: PostLoginPayload) => {
+  const onLogin = ({ rememberMe, ...payload }: PostLoginPayload) => {
     postLogin(payload);
+    if (rememberMe) {
+      setLocalEmail(payload.email);
+      setLocalPassword(payload.password);
+    } else {
+      setLocalEmail(null);
+      setLocalPassword(null);
+    }
   };
 
   const onLogout = () => {
@@ -53,7 +73,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <authContext.Provider
-      value={{ onLogin, onLogout, authState: { token, isPending } }}
+      value={{
+        onLogin,
+        onLogout,
+        authState: { token, isPending, error },
+        localCredential: { email: localEmail, password: localPassword },
+      }}
     >
       {children}
     </authContext.Provider>

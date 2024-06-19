@@ -4,6 +4,7 @@ import { User } from "./User";
 export interface PostLoginPayload {
   email: string;
   password: string;
+  rememberMe?: boolean;
 }
 
 export type PostLoginResponse = ApiResponse<{

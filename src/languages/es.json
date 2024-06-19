@@ -151,6 +151,7 @@
     "password-label": "Contraseña",
     "password-placeholder": "********",
     "passwordsMustMatch": "Las contraseñas reescritas no coinciden con la contraseña",
+    "remember-me": "Acuérdate de mí",
     "retypedPassword-is-required": "Se requiere volver a escribir la contraseña",
     "retypedPassword-label": "Contraseña reescrita"
   },

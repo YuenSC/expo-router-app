@@ -151,6 +151,7 @@
     "password-label": "Senha",
     "password-placeholder": "********",
     "passwordsMustMatch": "As senhas digitadas novamente não correspondem à senha",
+    "remember-me": "Lembre de mim",
     "retypedPassword-is-required": "A senha digitada novamente é obrigatória",
     "retypedPassword-label": "Senha redigitada"
   },

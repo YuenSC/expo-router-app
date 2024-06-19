@@ -143,6 +143,9 @@
     "no-payment-records-found-for-currency": "{{currency}} の支払い記録が見つかりませんでした",
     "payments": "支払い"
   },
+  "SignUp": {
+    "remember-me": "私を覚えてますか"
+  },
   "StackNavigator": {
     "group-summary": "グループ概要",
     "loading-interstitial-ad": "広告の読み込み",

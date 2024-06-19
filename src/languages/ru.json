@@ -151,6 +151,7 @@
     "password-label": "Пароль",
     "password-placeholder": "********",
     "passwordsMustMatch": "Повторно введенный пароль не совпадает с паролем",
+    "remember-me": "Запомнить меня",
     "retypedPassword-is-required": "Требуется повторный ввод пароля",
     "retypedPassword-label": "Повторный ввод пароля"
   },
