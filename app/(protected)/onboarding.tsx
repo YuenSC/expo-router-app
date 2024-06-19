@@ -1,10 +1,8 @@
-import { useAuth } from "@/src/components/AuthContext";
-import { ThemedText } from "@/src/components/ThemedText";
 import { Link } from "expo-router";
+import { Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
-  const { onLogout } = useAuth();
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 16 }}>
       <Link
@@ -16,7 +14,7 @@ export default function Page() {
           },
         }}
       >
-        <ThemedText>Go to Home</ThemedText>
+        <Button title="Go To Home" />
       </Link>
     </SafeAreaView>
   );
