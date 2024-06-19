@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
-import { useColorScheme } from "@/src/hooks/useColorScheme";
 import "@/src/i18n";
 import theme from "@/src/styles/rneui";
 
@@ -45,7 +44,6 @@ const StackLayout = () => {
 export default function RootLayout() {
   useReactQueryDevTools(queryClient);
 
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../src/assets/fonts/SpaceMono-Regular.ttf"),
   });
