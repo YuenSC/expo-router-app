@@ -1,11 +1,12 @@
 import "@/src/api/axios";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
-import { ThemeProvider } from "@rneui/themed";
+import { ThemeProvider, useTheme } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "react-native-reanimated";
 
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
@@ -21,6 +22,8 @@ const StackLayout = () => {
   const { authState } = useAuth();
   const segments = useSegments();
   const router = useRouter();
+  const { theme } = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
@@ -33,9 +36,29 @@ const StackLayout = () => {
   }, [authState.token]);
 
   return (
-    <Stack initialRouteName="welcome">
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(protected)" options={{ headerShown: false }} />
+    <Stack
+      initialRouteName="welcome"
+      screenOptions={{
+        headerShown: false,
+        headerBackTitle: "Back",
+        headerStyle: {
+          backgroundColor: theme.colors.background,
+        },
+        headerTitleStyle: {
+          color: theme.colors.black,
+        },
+      }}
+    >
+      <Stack.Screen name="index" options={{}} />
+      <Stack.Screen
+        name="sign-up"
+        options={{
+          headerShown: true,
+          title: t("common:sign-up"),
+          presentation: "modal",
+        }}
+      />
+      <Stack.Screen name="(protected)" />
       <Stack.Screen name="+not-found" />
     </Stack>
   );

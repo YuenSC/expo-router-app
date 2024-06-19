@@ -143,6 +143,17 @@
     "no-payment-records-found-for-currency": "Платежные записи для {{currency}} не найдены.",
     "payments": "Платежи"
   },
+  "SignUp": {
+    "email-is-required": "Требуется электронная почта",
+    "email-label": "Электронная почта",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "Необходим пароль",
+    "password-label": "Пароль",
+    "password-placeholder": "********",
+    "passwordsMustMatch": "Повторно введенный пароль не совпадает с паролем",
+    "retypedPassword-is-required": "Требуется повторный ввод пароля",
+    "retypedPassword-label": "Повторный ввод пароля"
+  },
   "StackNavigator": {
     "group-summary": "Сводка группы",
     "loading-interstitial-ad": "Загрузка рекламы",

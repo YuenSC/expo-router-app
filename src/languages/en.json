@@ -143,6 +143,17 @@
     "no-payment-records-found-for-currency": "No payment records found for {{currency}}",
     "payments": "Payments"
   },
+  "SignUp": {
+    "email-is-required": "Email is required",
+    "email-label": "Email",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "Password is required",
+    "password-label": "Password",
+    "password-placeholder": "********",
+    "passwordsMustMatch": "Retyped passwords does not match with password",
+    "retypedPassword-is-required": "Retyped Password is required",
+    "retypedPassword-label": "Retyped Password"
+  },
   "StackNavigator": {
     "group-summary": "Group Summary",
     "loading-interstitial-ad": "Ad Loading",

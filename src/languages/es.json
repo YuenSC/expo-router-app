@@ -143,6 +143,17 @@
     "no-payment-records-found-for-currency": "No se encontraron registros de pago para {{currency}}",
     "payments": "Pagos"
   },
+  "SignUp": {
+    "email-is-required": "correo electronico es requerido",
+    "email-label": "Correo electrónico",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "se requiere contraseña",
+    "password-label": "Contraseña",
+    "password-placeholder": "********",
+    "passwordsMustMatch": "Las contraseñas reescritas no coinciden con la contraseña",
+    "retypedPassword-is-required": "Se requiere volver a escribir la contraseña",
+    "retypedPassword-label": "Contraseña reescrita"
+  },
   "StackNavigator": {
     "group-summary": "Resumen del grupo",
     "loading-interstitial-ad": "Cargando anuncios",

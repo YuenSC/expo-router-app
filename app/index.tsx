@@ -1,4 +1,5 @@
 import { Button, Dialog, makeStyles, Text } from "@rneui/themed";
+import { Link } from "expo-router";
 import LottieView from "lottie-react-native";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -32,11 +33,13 @@ const LoginPage = () => {
           title={t("common:login")}
           containerStyle={styles.buttonContainer}
         />
-        <Button
-          type="clear"
-          title={t("common:sign-up")}
-          containerStyle={styles.buttonContainer}
-        />
+        <Link href="/sign-up" asChild>
+          <Button
+            type="clear"
+            title={t("common:sign-up")}
+            containerStyle={styles.buttonContainer}
+          />
+        </Link>
       </VStack>
 
       <Dialog

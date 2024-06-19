@@ -143,6 +143,17 @@
     "no-payment-records-found-for-currency": "Aucun enregistrement de paiement trouvé pour {{currency}}",
     "payments": "Paiements"
   },
+  "SignUp": {
+    "email-is-required": "L'e-mail est requis",
+    "email-label": "E-mail",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "Mot de passe requis",
+    "password-label": "Mot de passe",
+    "password-placeholder": "********",
+    "passwordsMustMatch": "Les mots de passe retapés ne correspondent pas au mot de passe",
+    "retypedPassword-is-required": "Le mot de passe retapé est requis",
+    "retypedPassword-label": "Mot de passe retapé"
+  },
   "StackNavigator": {
     "group-summary": "Résumé du groupe",
     "loading-interstitial-ad": "Chargement de l'annonce",

@@ -143,6 +143,17 @@
     "no-payment-records-found-for-currency": "未找到 {{currency}} 的付款记录",
     "payments": "付款方式"
   },
+  "SignUp": {
+    "email-is-required": "电子邮件为必填项",
+    "email-label": "电子邮件",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "密码是必需的",
+    "password-label": "密码",
+    "password-placeholder": "******",
+    "passwordsMustMatch": "重新输入的密码与密码不匹配",
+    "retypedPassword-is-required": "需要重新输入密码",
+    "retypedPassword-label": "重新输入密码"
+  },
   "StackNavigator": {
     "group-summary": "小组总结",
     "loading-interstitial-ad": "广告加载",

@@ -143,6 +143,17 @@
     "no-payment-records-found-for-currency": "{{currency}} के लिए कोई भुगतान रिकॉर्ड नहीं मिला",
     "payments": "भुगतान"
   },
+  "SignUp": {
+    "email-is-required": "ईमेल की जरूरत है",
+    "email-label": "ईमेल",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "पासवर्ड की आवश्यकता है",
+    "password-label": "पासवर्ड",
+    "password-placeholder": "********",
+    "passwordsMustMatch": "दोबारा टाइप किया गया पासवर्ड पासवर्ड से मेल नहीं खाता",
+    "retypedPassword-is-required": "पुनः टाइप किया गया पासवर्ड आवश्यक है",
+    "retypedPassword-label": "पासवर्ड दोबारा टाइप किया गया"
+  },
   "StackNavigator": {
     "group-summary": "समूह सारांश",
     "loading-interstitial-ad": "विज्ञापन लोड हो रहा है",
