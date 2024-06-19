@@ -10,8 +10,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { AuthProvider, useAuth } from "@/components/AuthContext";
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { AuthProvider, useAuth } from "@/src/components/AuthContext";
+import { useColorScheme } from "@/src/hooks/useColorScheme";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -48,7 +48,7 @@ export default function RootLayout() {
 
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    SpaceMono: require("../src/assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   useEffect(() => {

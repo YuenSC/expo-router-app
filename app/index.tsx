@@ -1,6 +1,6 @@
-import { useAuth } from "@/components/AuthContext";
-import { HStack, VStack } from "@/components/Stack";
-import { ThemedTextInput } from "@/components/ThemedTextInput";
+import { useAuth } from "@/src/components/AuthContext";
+import { HStack, VStack } from "@/src/components/Stack";
+import { ThemedTextInput } from "@/src/components/ThemedTextInput";
 import { useState } from "react";
 import { ActivityIndicator, Button, StyleSheet, View } from "react-native";
 

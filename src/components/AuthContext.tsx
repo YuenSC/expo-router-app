@@ -1,4 +1,4 @@
-import useSecureStore from "@/hooks/useSecureStore";
+import useSecureStore from "@/src/hooks/useSecureStore";
 import { PostLoginPayload } from "@/src/api/types/Login";
 import { usePostLogin } from "@/src/api/usePostLogin";
 import Config from "@/src/Config";

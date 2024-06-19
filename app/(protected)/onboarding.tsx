@@ -1,6 +1,6 @@
-import { useAuth } from "@/components/AuthContext";
+import { useAuth } from "@/src/components/AuthContext";
+import { ThemedText } from "@/src/components/ThemedText";
 import { Link } from "expo-router";
-import { Button, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
@@ -16,13 +16,8 @@ export default function Page() {
           },
         }}
       >
-        <Button mode="contained">
-          <Text style={{ color: "black" }}>Go To Tabs</Text>
-        </Button>
+        <ThemedText>Go to Home</ThemedText>
       </Link>
-      <Button onPress={onLogout}>
-        <Text>Logout</Text>
-      </Button>
     </SafeAreaView>
   );
 }
