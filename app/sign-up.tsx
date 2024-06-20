@@ -7,6 +7,7 @@ import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 import Config from "@/src/Config";
 import { PostSignUpPayload } from "@/src/api/types/SignUp";
 import { useAuth } from "@/src/components/AuthContext";
+import PasswordRules from "@/src/components/PasswordRules";
 
 const Page = () => {
   const insets = useSafeAreaInsets();
@@ -18,8 +19,8 @@ const Page = () => {
       Config.env === "local"
         ? {
             email: "c@c.com",
-            password: "123456",
-            retypedPassword: "123456",
+            password: "Pw@123456",
+            retypedPassword: "Pw@123456",
           }
         : {
             email: "",
@@ -31,6 +32,34 @@ const Page = () => {
   const onSubmit: SubmitHandler<PostSignUpPayload> = (values) => {
     onSignUp(values);
   };
+
+  const rules = [
+    {
+      id: "length",
+      test: (pw: string) => pw.length >= 8,
+      message: t("SignUp:password-length"),
+    },
+    {
+      id: "uppercase",
+      test: (pw: string) => /[A-Z]/.test(pw),
+      message: t("SignUp:password-uppercase"),
+    },
+    {
+      id: "lowercase",
+      test: (pw: string) => /[a-z]/.test(pw),
+      message: t("SignUp:password-lowercase"),
+    },
+    {
+      id: "number",
+      test: (pw: string) => /[0-9]/.test(pw),
+      message: t("SignUp:password-number"),
+    },
+    {
+      id: "special",
+      test: (pw: string) => /[^A-Za-z0-9]/.test(pw),
+      message: t("SignUp:password-special"),
+    },
+  ];
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -60,17 +89,24 @@ const Page = () => {
           name="password"
           rules={{ required: t("SignUp:password-is-required") }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <Input
-              errorMessage={error?.message}
-              label={t("SignUp:password-label")}
-              onChangeText={onChange}
-              placeholder={t("SignUp:password-placeholder")}
-              secureTextEntry
-              value={value}
-              textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
-            />
+            <View style={{ marginBottom: 8 }}>
+              <Input
+                renderErrorMessage={false}
+                containerStyle={{ marginBottom: 8 }}
+                label={t("SignUp:password-label")}
+                onChangeText={onChange}
+                placeholder={t("SignUp:password-placeholder")}
+                secureTextEntry
+                value={value}
+                textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
+              />
+              <View style={{ marginLeft: 8 }}>
+                <PasswordRules password={value} rules={rules} />
+              </View>
+            </View>
           )}
         />
+
         <Controller
           control={control}
           name="retypedPassword"
@@ -80,15 +116,17 @@ const Page = () => {
               value === getValues("password") || t("SignUp:passwordsMustMatch"),
           }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <Input
-              errorMessage={error?.message}
-              label={t("SignUp:retypedPassword-label")}
-              onChangeText={onChange}
-              placeholder={t("SignUp:password-placeholder")}
-              secureTextEntry
-              value={value}
-              textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
-            />
+            <>
+              <Input
+                errorMessage={error?.message}
+                label={t("SignUp:retypedPassword-label")}
+                onChangeText={onChange}
+                placeholder={t("SignUp:password-placeholder")}
+                secureTextEntry
+                value={value}
+                textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
+              />
+            </>
           )}
         />
 
