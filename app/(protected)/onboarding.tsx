@@ -1,6 +1,7 @@
 import { Link } from "expo-router";
-import { Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import ButtonWithRef from "@/src/components/ButtonWithRef";
 
 export default function Page() {
   return (
@@ -15,7 +16,7 @@ export default function Page() {
         }}
       >
         {/* TODO: The Button trigger Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?  */}
-        <Button title="Go to Home" />
+        <ButtonWithRef title="Go to Home" />
       </Link>
     </SafeAreaView>
   );

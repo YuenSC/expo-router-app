@@ -6,6 +6,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import axios from "axios";
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -18,17 +19,20 @@ import Toast from "react-native-toast-message";
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
 import "@/src/i18n";
 import theme from "@/src/styles/rneui";
+import { toastConfig } from "@/src/styles/toastConfig";
 
 const queryClient = new QueryClient({
   mutationCache: new MutationCache({
     onError: (error) => {
+      const message = axios.isAxiosError(error)
+        ? error.response?.data.message
+        : error.message;
+
       Toast.show({
         type: "error",
         text1: "Api Error",
-        text2: error.message,
+        text2: message,
         topOffset: 64,
-        text1Style: { fontSize: 16 },
-        text2Style: { fontSize: 14 },
         autoHide: false,
       });
     },
@@ -116,7 +120,7 @@ export default function RootLayout() {
         <ThemeProvider theme={theme}>
           <StackLayout />
           <FullWindowOverlay>
-            <Toast />
+            <Toast config={toastConfig} />
           </FullWindowOverlay>
         </ThemeProvider>
       </AuthProvider>

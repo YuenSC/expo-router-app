@@ -1,4 +1,4 @@
-import { Button, Dialog, makeStyles, Text } from "@rneui/themed";
+import { Dialog, makeStyles, Text } from "@rneui/themed";
 import { Link } from "expo-router";
 import LottieView from "lottie-react-native";
 import { useState } from "react";
@@ -6,9 +6,10 @@ import { useTranslation } from "react-i18next";
 import { SafeAreaView, TouchableWithoutFeedback } from "react-native";
 
 import Config from "@/src/Config";
+import ButtonWithRef from "@/src/components/ButtonWithRef";
 import { VStack } from "@/src/components/Stack";
 
-const LoginPage = () => {
+const WelcomePage = () => {
   const styles = useStyles();
   const { t } = useTranslation();
   const [isDebugMode, setIsDebugMode] = useState(false);
@@ -30,13 +31,13 @@ const LoginPage = () => {
 
       <VStack gap={8} style={styles.buttonGroup}>
         <Link href="/login" asChild>
-          <Button
+          <ButtonWithRef
             title={t("common:login")}
             containerStyle={styles.buttonContainer}
           />
         </Link>
         <Link href="/sign-up" asChild>
-          <Button
+          <ButtonWithRef
             type="clear"
             title={t("common:sign-up")}
             containerStyle={styles.buttonContainer}
@@ -82,4 +83,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default LoginPage;
+export default WelcomePage;

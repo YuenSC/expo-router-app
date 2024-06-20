@@ -4,22 +4,32 @@ import { useTranslation } from "react-i18next";
 import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
+import Config from "@/src/Config";
 import { PostSignUpPayload } from "@/src/api/types/SignUp";
+import { useAuth } from "@/src/components/AuthContext";
 
 const Page = () => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
   const { t } = useTranslation();
+  const { onSignUp } = useAuth();
   const { handleSubmit, control, getValues } = useForm<PostSignUpPayload>({
-    defaultValues: {
-      email: "",
-      password: "",
-      retypedPassword: "",
-    },
+    defaultValues:
+      Config.env === "local"
+        ? {
+            email: "c@c.com",
+            password: "123456",
+            retypedPassword: "123456",
+          }
+        : {
+            email: "",
+            password: "",
+            retypedPassword: "",
+          },
   });
 
   const onSubmit: SubmitHandler<PostSignUpPayload> = (values) => {
-    console.log("values", values);
+    onSignUp(values);
   };
 
   return (
@@ -101,7 +111,6 @@ const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
     gap: 8,
   },
   buttonContainer: {
-    marginTop: "auto",
     paddingBottom: insets.bottom + 16,
   },
 }));

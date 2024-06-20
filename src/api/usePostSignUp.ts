@@ -1,6 +1,6 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { postLogin } from "./auth";
+import { postSignUp } from "./auth";
 import { PostSignUpPayload, PostSignUpResponse } from "./types/SignUp";
 
 export const usePostSignUp = (
@@ -10,7 +10,7 @@ export const usePostSignUp = (
   >,
 ) => {
   const mutation = useMutation({
-    mutationFn: postLogin,
+    mutationFn: postSignUp,
     ...options,
   });
 
