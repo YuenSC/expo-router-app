@@ -194,6 +194,7 @@
     "edit-member": "Edit Member",
     "hi-user": "Hi {{name}}",
     "name": "Name",
+    "name-is-required": "Username is required",
     "profile-image": "Profile Image",
     "related-groups": "Related Groups",
     "take-photo": "Take Photo",

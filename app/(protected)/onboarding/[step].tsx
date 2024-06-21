@@ -1,5 +1,6 @@
 import { makeStyles } from "@rneui/themed";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams, useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
@@ -17,9 +18,25 @@ const OnboardingPage = () => {
   }>();
   const step = parseInt(stepAsString, 10);
   const { t } = useTranslation();
-  const { data: user } = useGetMe();
+  const {
+    data: user,
+    query: { refetch: refetchMe },
+  } = useGetMe();
 
-  const { mutateAsync: patchUserUpdate } = usePatchUserUpdate({});
+  const navigation = useNavigation();
+
+  const { mutateAsync: patchUserUpdate } = usePatchUserUpdate({
+    onSuccess: () => {
+      refetchMe();
+    },
+  });
+  useEffect(() => {
+    navigation.setOptions({
+      headerShown: step !== 0,
+      headerTitle: "",
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
 
   return (
     <View style={styles.container}>
@@ -27,10 +44,12 @@ const OnboardingPage = () => {
         <UserForm
           style={styles.contentContainer}
           submitButtonText={t("Common:next")}
-          isEdit={false}
           user={user}
           onSubmit={async (values) => {
-            if (user?.id) await patchUserUpdate({ ...values, id: user.id });
+            if (!user?.id) return;
+            await patchUserUpdate({ ...values, id: user.id }).then(() => {
+              router.push("/onboarding/1");
+            });
           }}
         />
       )}

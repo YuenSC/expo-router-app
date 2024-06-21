@@ -180,6 +180,7 @@
     "edit-member": "Editar membro",
     "hi-user": "Olá {{name}}",
     "name": "Nome",
+    "name-is-required": "Nome de usuário é requerido",
     "profile-image": "Imagem de perfil",
     "related-groups": "Grupos Relacionados",
     "take-photo": "Tirar fotos",

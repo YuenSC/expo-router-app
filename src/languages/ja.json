@@ -171,6 +171,7 @@
     "edit-member": "メンバーの編集",
     "hi-user": "こんにちは、{{name}}",
     "name": "名前",
+    "name-is-required": "ユーザー名は必須です",
     "profile-image": "プロフィール画像",
     "related-groups": "関連グループ",
     "take-photo": "写真を撮る",

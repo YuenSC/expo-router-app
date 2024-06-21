@@ -46,6 +46,9 @@ const Button: (
       fontSize: 16,
       color,
     },
+    loadingProps: {
+      color,
+    },
   };
 };
 

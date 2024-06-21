@@ -19,6 +19,7 @@ const StyledBottomSheet = forwardRef<
       ref={ref}
       containerStyle={[props.containerStyle]}
       backgroundStyle={[styles.background, props.backgroundStyle]}
+      index={-1}
       handleIndicatorStyle={[
         styles.handleIndicator,
         props.handleIndicatorStyle,

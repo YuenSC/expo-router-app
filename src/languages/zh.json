@@ -180,6 +180,7 @@
     "edit-member": "编辑会员",
     "hi-user": "嗨{{name}}",
     "name": "姓名",
+    "name-is-required": "用户名是必需的",
     "profile-image": "个人资料图片",
     "related-groups": "相关团体",
     "take-photo": "拍照",
