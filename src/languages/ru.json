@@ -174,13 +174,18 @@
     "title": "<Text>Вы уверены удалить <Highlight>{{username}}</Highlight> из <Highlight>{{groupname}}</Highlight>?</Text>"
   },
   "UserForm": {
+    "camera-permission-required": "Требуется разрешение камеры",
+    "choose-photo-from-library": "Выбрать фотографию из библиотеки",
     "create-profile": "Создать профиль",
     "edit-member": "Редактировать участника",
     "hi-user": "Привет, {{name}}",
     "name": "Имя",
+    "profile-image": "Изображение профиля",
     "related-groups": "Связанные группы",
+    "take-photo": "Сделать фотографию",
     "username": "Имя пользователя",
     "who-are-you": "Кто ты?",
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "Чтобы использовать эту функцию, вам необходимо включить разрешения камеры.",
     "your-avatar-color": "Цвет твоего аватара",
     "your-name-is-required": "Требуется ваше имя"
   },

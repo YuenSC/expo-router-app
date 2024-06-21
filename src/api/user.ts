@@ -1,5 +1,6 @@
-import axios, { toFormData } from "axios";
+import axios from "axios";
 
+import toFormData from "./helper/toFormData";
 import {
   GetUserPayload,
   GetUserResponse,

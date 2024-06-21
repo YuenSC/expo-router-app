@@ -1,9 +1,20 @@
-import { Button, Input, Text, makeStyles } from "@rneui/themed";
-import { memo } from "react";
-import { Controller, useForm } from "react-hook-form";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { Button, Image, Input, Text, makeStyles } from "@rneui/themed";
+import * as ImagePicker from "expo-image-picker";
+import { memo, useRef } from "react";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { View } from "react-native";
+import {
+  ActivityIndicator,
+  StyleProp,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
+import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
+import UserFormBottomSheet from "./UserFormBottomSheet";
 import { VStack } from "../Stack";
 
 import Config from "@/src/Config";
@@ -15,33 +26,81 @@ type IUserFormProps = {
   onDelete?: () => void;
   user?: User;
   submitButtonText: string;
+  style?: StyleProp<ViewStyle>;
 };
 
 const UserForm = memo<IUserFormProps>(
-  ({ onSubmit, isEdit, user, onDelete, submitButtonText }) => {
-    const styles = useStyles();
+  ({ onSubmit, isEdit, user, onDelete, submitButtonText, style }) => {
+    const insets = useSafeAreaInsets();
+    const styles = useStyles(insets);
     const { t } = useTranslation();
+    const bottomSheetRef = useRef<BottomSheet>(null);
 
     const {
       control,
       handleSubmit,
       formState: { isSubmitting },
+      setValue,
     } = useForm<PatchUserUpdatePayload>({
       shouldUnregister: false,
-      defaultValues: Config.env === "local" ? { username: "test-user" } : {},
+      defaultValues: Config.env === "local" ? { name: "test-user" } : {},
     });
+    const profileImageWatch = useWatch({ control, name: "profileImage" });
+    const imageUrl = profileImageWatch?.uri || user?.imageUrl;
+
+    const handleImageAsset = async (result: ImagePicker.ImagePickerResult) => {
+      if (result.canceled || !result?.assets?.[0]) {
+        return;
+      }
+      const { uri, fileName, mimeType } = result.assets[0];
+      setValue("profileImage", {
+        uri,
+        type: mimeType,
+        name: fileName || "profile-image",
+      });
+    };
+
+    const takePhoto = async () => {
+      const res = await ImagePicker.requestCameraPermissionsAsync();
+      if (res.granted === false) {
+        Toast.show({
+          type: "error",
+          text1: t("UserForm.camera-permission-required"),
+          text2: t(
+            "UserForm.you-need-to-enable-camera-permissions-to-use-this-feature",
+          ),
+        });
+        return;
+      }
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        cameraType: ImagePicker.CameraType.front,
+        allowsEditing: true,
+      });
+      await handleImageAsset(result);
+      bottomSheetRef.current?.close();
+    };
+
+    const pickImage = async () => {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+      });
+      await handleImageAsset(result);
+      bottomSheetRef.current?.close();
+    };
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         {isEdit ? (
           <Text h1 style={styles.title}>
             {t("UserForm:edit-member")}
           </Text>
         ) : (
           <Text h1 style={styles.title}>
-            {user?.username
+            {user?.name
               ? t("UserForm:hi-user", {
-                  name: user.username,
+                  name: user.name,
                 })
               : t("UserForm:create-profile")}
           </Text>
@@ -49,7 +108,7 @@ const UserForm = memo<IUserFormProps>(
 
         <Controller
           control={control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <Input
               {...field}
@@ -60,6 +119,23 @@ const UserForm = memo<IUserFormProps>(
         />
 
         {/* Profile Image  */}
+        <VStack gap={12}>
+          <Text style={styles.label}>{t("UserForm:profile-image")}</Text>
+          <TouchableOpacity
+            onPress={() => bottomSheetRef.current?.expand()}
+            style={[styles.profileImageContainer, { marginLeft: 8 }]}
+          >
+            {imageUrl ? (
+              <Image
+                source={{ uri: imageUrl }}
+                PlaceholderContent={<ActivityIndicator />}
+                containerStyle={styles.profileImageContainer}
+              />
+            ) : (
+              <Text>Upload</Text>
+            )}
+          </TouchableOpacity>
+        </VStack>
 
         <VStack alignItems="stretch" gap={4}>
           <Button
@@ -77,21 +153,28 @@ const UserForm = memo<IUserFormProps>(
             />
           )}
         </VStack>
+
+        <UserFormBottomSheet
+          takePhoto={takePhoto}
+          pickImage={pickImage}
+          ref={bottomSheetRef}
+        />
       </View>
     );
   },
 );
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
   container: {
-    paddingHorizontal: 16,
+    paddingHorizontal: theme.spacing.lg,
+    flex: 1,
   },
   title: {
     fontWeight: "bold",
-    marginBottom: 24,
+    marginBottom: theme.spacing.xl,
   },
   button: {
-    marginTop: 16,
+    marginTop: theme.spacing.xl,
   },
   label: {
     color: theme.colors.grey3,
@@ -99,14 +182,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     marginLeft: 10,
   },
-  relatedGroup: {
-    marginLeft: 10,
-    marginTop: 4,
-    marginBottom: 16,
-  },
-  groupName: {
-    fontSize: 16,
-    fontWeight: "bold",
+  profileImageContainer: {
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 

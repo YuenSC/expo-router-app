@@ -8,6 +8,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "react-native-reanimated";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { FullWindowOverlay } from "react-native-screens";
 import Toast from "react-native-toast-message";
 
@@ -28,12 +29,6 @@ const queryClient = new QueryClient({
       },
     },
     mutations: {
-      retry: (failureCount, error) => {
-        if (axios.isAxiosError(error)) {
-          return error.response?.status !== 401;
-        }
-        return false;
-      },
       onError: (error) => {
         const message = axios.isAxiosError(error)
           ? error.response?.data.message
@@ -133,7 +128,9 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ThemeProvider theme={theme}>
-          <StackLayout />
+          <GestureHandlerRootView>
+            <StackLayout />
+          </GestureHandlerRootView>
           <FullWindowOverlay>
             <Toast config={toastConfig} />
           </FullWindowOverlay>

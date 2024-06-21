@@ -174,13 +174,18 @@
     "title": "<Text>क्या आप निश्चित रूप से <Highlight>{{username}}</Highlight> को <Highlight>{{groupname}}</Highlight> से हटाना चाहते हैं?</Text>"
   },
   "UserForm": {
+    "camera-permission-required": "कैमरे की अनुमति आवश्यक है",
+    "choose-photo-from-library": "लाइब्रेरी से फ़ोटो चुनें",
     "create-profile": "प्रोफ़ाइल बनाने",
     "edit-member": "सदस्य संपादित करें",
     "hi-user": "नमस्ते {{name}}",
     "name": "नाम",
+    "profile-image": "प्रोफ़ाइल छवि",
     "related-groups": "संबंधित समूह",
+    "take-photo": "फोटो लो",
     "username": "उपयोगकर्ता नाम",
     "who-are-you": "आप कौन हैं?",
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "इस सुविधा का उपयोग करने के लिए आपको कैमरा अनुमतियाँ सक्षम करनी होंगी.",
     "your-avatar-color": "आपके अवतार का रंग",
     "your-name-is-required": "आपका नाम आवश्यक है"
   },

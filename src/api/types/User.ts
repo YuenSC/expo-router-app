@@ -2,16 +2,21 @@ import { ApiResponse } from "./ApiResponse";
 import { BaseObject } from "./BaseObject";
 
 export interface User extends BaseObject {
-  username: string;
+  name: string;
   email: string;
   role: "user" | "admin";
   isOnboardingCompleted: boolean;
   lastLoginAt: string;
+  imageUrl?: string;
 }
 
 export interface PatchUserUpdatePayload extends Partial<User> {
   id: string;
-  profileImage: File;
+  profileImage: {
+    uri: string;
+    type?: string;
+    name?: string;
+  };
 }
 export type PatchUserUpdateResponse = ApiResponse<User>;
 

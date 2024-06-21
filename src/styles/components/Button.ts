@@ -39,6 +39,7 @@ const Button: (
       paddingHorizontal,
       borderRadius: 8,
       borderColor: color,
+      minHeight: 50,
     },
     titleStyle: {
       fontWeight: "bold",

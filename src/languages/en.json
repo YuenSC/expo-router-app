@@ -188,13 +188,18 @@
     "title": "<Text>Are you sure to delete <Highlight>{{username}}</Highlight> from <Highlight>{{groupname}}</Highlight>?</Text>"
   },
   "UserForm": {
+    "camera-permission-required": "Camera Permission Required",
+    "choose-photo-from-library": "Choose photo from Library",
     "create-profile": "Create Profile",
     "edit-member": "Edit Member",
     "hi-user": "Hi {{name}}",
     "name": "Name",
+    "profile-image": "Profile Image",
     "related-groups": "Related Groups",
+    "take-photo": "Take Photo",
     "username": "Username",
     "who-are-you": "Who are you?",
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "You need to enable camera permissions to use this feature.",
     "your-avatar-color": "Your avatar color",
     "your-name-is-required": "Your name is required"
   },

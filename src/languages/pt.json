@@ -174,13 +174,18 @@
     "title": "<Text>Tem certeza de que deseja excluir <Highlight>{{username}}</Highlight> de <Highlight>{{groupname}}</Highlight>?</Text>"
   },
   "UserForm": {
+    "camera-permission-required": "Permissão de câmera necessária",
+    "choose-photo-from-library": "Escolha uma foto da Biblioteca",
     "create-profile": "Criar perfil",
     "edit-member": "Editar membro",
     "hi-user": "Olá {{name}}",
     "name": "Nome",
+    "profile-image": "Imagem de perfil",
     "related-groups": "Grupos Relacionados",
+    "take-photo": "Tirar fotos",
     "username": "Nome de usuário",
     "who-are-you": "Quem é você?",
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "Você precisa habilitar as permissões da câmera para usar este recurso.",
     "your-avatar-color": "Cor do seu avatar",
     "your-name-is-required": "Seu nome é obrigatório"
   },

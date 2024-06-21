@@ -174,13 +174,18 @@
     "title": "<Text>您确定从<Highlight>{{groupname}}</Highlight>中删除<Highlight>{{username}}</Highlight>吗？</Text>"
   },
   "UserForm": {
+    "camera-permission-required": "需要相机许可",
+    "choose-photo-from-library": "从图库中选择照片",
     "create-profile": "创建个人资料",
     "edit-member": "编辑会员",
     "hi-user": "嗨{{name}}",
     "name": "姓名",
+    "profile-image": "个人资料图片",
     "related-groups": "相关团体",
+    "take-photo": "拍照",
     "username": "用户名",
     "who-are-you": "你是谁？",
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "您需要启用相机权限才能使用此功能。",
     "your-avatar-color": "你的头像颜色",
     "your-name-is-required": "您的姓名为必填项"
   },
