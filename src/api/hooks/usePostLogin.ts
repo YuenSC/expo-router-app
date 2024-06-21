@@ -1,7 +1,7 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { postLogin } from "./auth";
-import { PostLoginPayload, PostLoginResponse } from "./types/Login";
+import { postLogin } from "../auth";
+import { PostLoginPayload, PostLoginResponse } from "../types/Login";
 
 export const usePostLogin = (
   options: Omit<

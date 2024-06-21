@@ -193,6 +193,7 @@
     "hi-user": "Hi {{name}}",
     "name": "Name",
     "related-groups": "Related Groups",
+    "username": "Username",
     "who-are-you": "Who are you?",
     "your-avatar-color": "Your avatar color",
     "your-name-is-required": "Your name is required"

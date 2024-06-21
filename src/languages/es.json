@@ -179,6 +179,7 @@
     "hi-user": "{{name}} Hola",
     "name": "Nombre",
     "related-groups": "Grupos relacionados",
+    "username": "Nombre de usuario",
     "who-are-you": "¿Quién eres?",
     "your-avatar-color": "color de tu avatar",
     "your-name-is-required": "Tu nombre es requerido"

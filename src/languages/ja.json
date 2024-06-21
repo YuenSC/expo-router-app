@@ -170,6 +170,7 @@
     "hi-user": "こんにちは、{{name}}",
     "name": "名前",
     "related-groups": "関連グループ",
+    "username": "ユーザー名",
     "who-are-you": "あなたは誰ですか？",
     "your-avatar-color": "あなたのアバターの色",
     "your-name-is-required": "お名前は必須です"

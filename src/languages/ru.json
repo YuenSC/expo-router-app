@@ -179,6 +179,7 @@
     "hi-user": "Привет, {{name}}",
     "name": "Имя",
     "related-groups": "Связанные группы",
+    "username": "Имя пользователя",
     "who-are-you": "Кто ты?",
     "your-avatar-color": "Цвет твоего аватара",
     "your-name-is-required": "Требуется ваше имя"

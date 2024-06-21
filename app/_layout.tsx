@@ -54,8 +54,10 @@ const StackLayout = () => {
     if (authState.token === null && inAuthGroup) {
       router.replace("/");
     } else if (authState.token !== null) {
-      router.dismissAll();
-      router.replace("/onboarding");
+      if (router.canDismiss()) router.dismissAll();
+      router.replace(
+        authState?.user?.isOnboardingCompleted ? "/home" : "/onboarding/0",
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.token]);
