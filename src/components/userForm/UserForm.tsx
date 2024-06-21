@@ -1,5 +1,13 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Button, Image, Input, Text, makeStyles } from "@rneui/themed";
+import {
+  Button,
+  Image,
+  Input,
+  Text,
+  makeStyles,
+  useTheme,
+} from "@rneui/themed";
 import * as ImagePicker from "expo-image-picker";
 import { memo, useRef } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
@@ -35,6 +43,7 @@ const UserForm = memo<IUserFormProps>(
     const styles = useStyles(insets);
     const { t } = useTranslation();
     const bottomSheetRef = useRef<BottomSheet>(null);
+    const { theme } = useTheme();
 
     const {
       control,
@@ -132,7 +141,11 @@ const UserForm = memo<IUserFormProps>(
                 containerStyle={styles.profileImageContainer}
               />
             ) : (
-              <Text>Upload</Text>
+              <MaterialIcons
+                name="file-upload"
+                size={30}
+                color={theme.colors.black}
+              />
             )}
           </TouchableOpacity>
         </VStack>
