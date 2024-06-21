@@ -7,34 +7,28 @@ import { View } from "react-native";
 import { VStack } from "../Stack";
 
 import Config from "@/src/Config";
-import { useGetUser } from "@/src/api/hooks/useGetUser";
-import { PatchUserUpdatePayload } from "@/src/api/types/User";
+import { PatchUserUpdatePayload, User } from "@/src/api/types/User";
 
 type IUserFormProps = {
   isEdit?: boolean;
   onSubmit: (values: PatchUserUpdatePayload) => Promise<void>;
   onDelete?: () => void;
-  userId?: string;
+  user?: User;
   submitButtonText: string;
 };
 
 const UserForm = memo<IUserFormProps>(
-  ({ onSubmit, isEdit, userId, onDelete, submitButtonText }) => {
+  ({ onSubmit, isEdit, user, onDelete, submitButtonText }) => {
     const styles = useStyles();
     const { t } = useTranslation();
-    const { data: user } = useGetUser({ id: userId || "" });
 
     const {
       control,
       handleSubmit,
       formState: { isSubmitting },
     } = useForm<PatchUserUpdatePayload>({
-      defaultValues:
-        Config.env === "local"
-          ? {
-              username: "test-user",
-            }
-          : {},
+      shouldUnregister: false,
+      defaultValues: Config.env === "local" ? { username: "test-user" } : {},
     });
 
     return (

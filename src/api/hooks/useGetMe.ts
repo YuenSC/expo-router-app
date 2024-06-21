@@ -1,16 +1,14 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 
-import { GetUserPayload, GetUserResponse } from "../types/User";
-import { getUser } from "../user";
+import { getMe } from "../auth";
+import { GetUserResponse } from "../types/User";
 
-export const useGetUser = (
-  payload: GetUserPayload,
+export const useGetMe = (
   options?: Omit<UseQueryOptions<GetUserResponse>, "queryKey" | "queryFn">,
 ) => {
   const query = useQuery({
-    queryKey: ["user", payload.id],
-    queryFn: () => getUser(payload),
-    enabled: !!payload.id,
+    queryKey: ["me"],
+    queryFn: () => getMe(),
     ...options,
   });
 

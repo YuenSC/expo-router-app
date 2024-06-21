@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import { useAuth } from "@/src/components/AuthContext";
 import UserForm from "@/src/components/userForm/UserForm";
@@ -17,10 +18,8 @@ const OnboardingPage = () => {
   }>();
   const step = parseInt(stepAsString, 10);
   const { t } = useTranslation();
-  const {
-    // authState: { user },
-    onLogout,
-  } = useAuth();
+  const { onLogout } = useAuth();
+  const { data: user } = useGetMe();
 
   const { mutateAsync: patchUserUpdate } = usePatchUserUpdate({});
 
@@ -30,11 +29,9 @@ const OnboardingPage = () => {
         <UserForm
           submitButtonText={t("Common:next")}
           isEdit={false}
-          userId={undefined}
+          user={user}
           onSubmit={async (values) => {
-            await patchUserUpdate(values);
-            console.log("values", values);
-            // router.setParams({ step: `2` });
+            if (user?.id) await patchUserUpdate({ ...values, id: user.id });
           }}
         />
       )}

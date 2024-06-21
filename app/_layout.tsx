@@ -1,11 +1,6 @@
-import "@/src/api/axios";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { ThemeProvider, useTheme } from "@rneui/themed";
-import {
-  MutationCache,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
@@ -16,27 +11,44 @@ import "react-native-reanimated";
 import { FullWindowOverlay } from "react-native-screens";
 import Toast from "react-native-toast-message";
 
+import { setAxiosToken } from "@/src/api/axios";
 import { AuthProvider, useAuth } from "@/src/components/AuthContext";
 import "@/src/i18n";
 import theme from "@/src/styles/rneui";
 import { toastConfig } from "@/src/styles/toastConfig";
 
 const queryClient = new QueryClient({
-  mutationCache: new MutationCache({
-    onError: (error) => {
-      const message = axios.isAxiosError(error)
-        ? error.response?.data.message
-        : error.message;
-
-      Toast.show({
-        type: "error",
-        text1: "Api Error",
-        text2: message,
-        topOffset: 64,
-        autoHide: false,
-      });
+  defaultOptions: {
+    queries: {
+      retry: (failureCount, error) => {
+        if (axios.isAxiosError(error)) {
+          return error.response?.status !== 401;
+        }
+        return false;
+      },
     },
-  }),
+    mutations: {
+      retry: (failureCount, error) => {
+        if (axios.isAxiosError(error)) {
+          return error.response?.status !== 401;
+        }
+        return false;
+      },
+      onError: (error) => {
+        const message = axios.isAxiosError(error)
+          ? error.response?.data.message
+          : error.message;
+
+        Toast.show({
+          type: "error",
+          text1: "Api Error",
+          text2: message,
+          topOffset: 64,
+          autoHide: false,
+        });
+      },
+    },
+  },
 });
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -54,6 +66,7 @@ const StackLayout = () => {
     if (authState.token === null && inAuthGroup) {
       router.replace("/");
     } else if (authState.token !== null) {
+      setAxiosToken(authState.token);
       if (router.canDismiss()) router.dismissAll();
       router.replace(
         authState?.user?.isOnboardingCompleted ? "/home" : "/onboarding/0",

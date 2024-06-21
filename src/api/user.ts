@@ -11,7 +11,7 @@ export const patchUserUpdate = async ({
   id,
   ...payload
 }: PatchUserUpdatePayload): Promise<PatchUserUpdateResponse> => {
-  return (await axios.patch(`/api/user/${id}`, toFormData(payload))).data;
+  return (await axios.patch(`/api/users/${id}`, toFormData(payload))).data;
 };
 
 export const getUser = async ({

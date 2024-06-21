@@ -1,10 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
-import { useGetUser } from "../api/hooks/useGetUser";
 import { usePostSignUp } from "../api/hooks/usePostSignUp";
 import { PostSignUpPayload } from "../api/types/SignUp";
 import { User } from "../api/types/User";
-import { usePersistedState } from "../hooks/usePersistedState";
 
 import { usePostLogin } from "@/src/api/hooks/usePostLogin";
 import { PostLoginPayload } from "@/src/api/types/Login";
@@ -59,15 +57,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [error, setError] = useState("");
 
   // User Related
-  const [userId, setUserId] = usePersistedState<string | null>("userId", null);
-  const { data: user } = useGetUser({ id: userId || "" });
-
-  console.log("user", user);
-  console.log("userId", userId);
+  const [user, setUser] = useState<User | null>(null);
 
   const { mutate: postLogin, isPending: isPendingLogin } = usePostLogin({
     onSuccess: ({ data }) => {
-      setUserId(data.user.id);
+      setUser(data.user);
       setToken(data.access_token);
     },
     onError: (error) => {
@@ -77,7 +71,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const { mutate: postSignUp, isPending: isPendingSignUp } = usePostSignUp({
     onSuccess: ({ data }) => {
-      setUserId(data.user.id);
+      setUser(data.user);
       setToken(data.access_token);
     },
     onError: (error) => {
@@ -102,7 +96,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const onLogout = () => {
     setToken(null);
-    setUserId(null);
+    setUser(null);
   };
 
   return (
