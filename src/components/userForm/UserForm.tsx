@@ -14,6 +14,7 @@ import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
+  Keyboard,
   StyleProp,
   TouchableOpacity,
   View,
@@ -118,7 +119,7 @@ const UserForm = memo<IUserFormProps>(
         <Controller
           control={control}
           name="name"
-          rules={{ required: t("UserForm:name-is-required") }}
+          rules={{ required: t("UserForm:name-s") }}
           render={({ field, fieldState: { error } }) => (
             <Input
               autoFocus
@@ -135,7 +136,10 @@ const UserForm = memo<IUserFormProps>(
         <VStack gap={12}>
           <Text style={styles.label}>{t("UserForm:profile-image")}</Text>
           <TouchableOpacity
-            onPress={() => bottomSheetRef.current?.expand()}
+            onPress={() => {
+              bottomSheetRef.current?.expand();
+              Keyboard.dismiss();
+            }}
             style={[styles.profileImageContainer, { marginLeft: 8 }]}
           >
             {imageUrl ? (

@@ -2,7 +2,7 @@ import { makeStyles } from "@rneui/themed";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
@@ -39,7 +39,11 @@ const OnboardingPage = () => {
   }, [step]);
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      keyboardDismissMode="on-drag"
+      contentContainerStyle={{ flex: 1 }}
+    >
       {step === 0 && (
         <UserForm
           style={styles.contentContainer}
@@ -68,7 +72,7 @@ const OnboardingPage = () => {
           }}
         />
       )} */}
-    </View>
+    </ScrollView>
   );
 };
 
