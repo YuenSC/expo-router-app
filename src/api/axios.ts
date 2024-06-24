@@ -1,6 +1,7 @@
 import axios from "axios";
 import { router } from "expo-router";
 import * as SecureStore from "expo-secure-store";
+import Toast from "react-native-toast-message";
 
 import Config from "../Config";
 
@@ -32,6 +33,14 @@ axios.interceptors.response.use(
       if (Config.env === "local")
         console.log("Error request", error.response?.data);
       if (error.response?.status === 401) {
+        Toast.show({
+          type: "error",
+          text1: "Unauthorized",
+          text2: "You need to login again to access this page",
+          topOffset: 64,
+          autoHide: false,
+        });
+
         await SecureStore.deleteItemAsync("access_token");
         router.navigate("/");
       }

@@ -92,6 +92,9 @@
   },
   "GroupForm": {
     "create-group": "Создать группу",
+    "group-description": "Описание группы",
+    "group-description-is-required": "Требуется описание группы",
+    "group-description-placeholder": "Описание группы",
     "group-name": "Имя группы",
     "group-name-is-required": "Укажите название группы.",
     "your-first-group-expense": "Ваш первый групповой расход"

@@ -92,6 +92,9 @@
   },
   "GroupForm": {
     "create-group": "建立群組",
+    "group-description": "團體簡介",
+    "group-description-is-required": "團體描述為必填項",
+    "group-description-placeholder": "團體簡介",
     "group-name": "團隊名字",
     "group-name-is-required": "群組名稱為必填項",
     "your-first-group-expense": "您的第一筆團體費用"

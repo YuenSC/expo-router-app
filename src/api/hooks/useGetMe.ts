@@ -8,7 +8,7 @@ export const useGetMe = (
 ) => {
   const query = useQuery({
     queryKey: ["me"],
-    queryFn: () => getMe(),
+    queryFn: getMe,
     ...options,
   });
 

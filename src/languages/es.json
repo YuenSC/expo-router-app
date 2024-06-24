@@ -92,6 +92,9 @@
   },
   "GroupForm": {
     "create-group": "Crea un grupo",
+    "group-description": "Descripción del Grupo",
+    "group-description-is-required": "Se requiere descripción del grupo",
+    "group-description-placeholder": "Descripción del Grupo",
     "group-name": "Nombre del grupo",
     "group-name-is-required": "El nombre del grupo es obligatorio",
     "your-first-group-expense": "Tu primer gasto grupal"

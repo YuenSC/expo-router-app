@@ -92,6 +92,9 @@
   },
   "GroupForm": {
     "create-group": "创建组",
+    "group-description": "团体简介",
+    "group-description-is-required": "团体描述为必填项",
+    "group-description-placeholder": "团体简介",
     "group-name": "团队名字",
     "group-name-is-required": "群组名称为必填项",
     "your-first-group-expense": "您的第一笔团体费用"

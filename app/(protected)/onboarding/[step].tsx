@@ -7,6 +7,8 @@ import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
+import { usePostGroupCreate } from "@/src/api/hooks/usePostGroupCreate";
+import GroupForm from "@/src/components/GroupForm";
 import UserForm from "@/src/components/userForm/UserForm";
 
 const OnboardingPage = () => {
@@ -26,10 +28,10 @@ const OnboardingPage = () => {
   const navigation = useNavigation();
 
   const { mutateAsync: patchUserUpdate } = usePatchUserUpdate({
-    onSuccess: () => {
-      refetchMe();
-    },
+    onSuccess: () => refetchMe(),
   });
+  const { mutateAsync: postGroupCreate } = usePostGroupCreate({});
+
   useEffect(() => {
     navigation.setOptions({
       headerShown: step !== 0,
@@ -57,15 +59,18 @@ const OnboardingPage = () => {
           }}
         />
       )}
-      {/* {step === 1 && (
+
+      {step === 1 && (
         <GroupForm
           groupId={undefined}
           onSubmit={(values) => {
-            // TODO: Use Create Group Api
+            postGroupCreate(values).then(() => {
+              router.push("/onboarding/2");
+            });
           }}
         />
       )}
-      {step === 2 && (
+      {/* {step === 2 && (
         <UserListForm
           onSubmit={(users) => {
             // TODO Use Add Users to Group Api

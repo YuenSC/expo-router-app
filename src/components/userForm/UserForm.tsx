@@ -100,6 +100,8 @@ const UserForm = memo<IUserFormProps>(
       bottomSheetRef.current?.close();
     };
 
+    console.log("imageUrl", imageUrl);
+
     return (
       <View style={[styles.container, style]}>
         {isEdit ? (

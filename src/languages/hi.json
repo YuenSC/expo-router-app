@@ -92,6 +92,9 @@
   },
   "GroupForm": {
     "create-group": "समूह बनाना",
+    "group-description": "समूह विवरण",
+    "group-description-is-required": "समूह विवरण आवश्यक है",
+    "group-description-placeholder": "समूह विवरण",
     "group-name": "समूह नाम",
     "group-name-is-required": "समूह का नाम आवश्यक है",
     "your-first-group-expense": "आपका पहला समूह व्यय"

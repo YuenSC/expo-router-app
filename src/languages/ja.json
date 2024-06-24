@@ -92,6 +92,9 @@
   },
   "GroupForm": {
     "create-group": "グループを作る",
+    "group-description": "グループの説明",
+    "group-description-is-required": "グループの説明は必須です",
+    "group-description-placeholder": "グループの説明",
     "group-name": "グループ名",
     "group-name-is-required": "グループ名は必​​須です",
     "your-first-group-expense": "初めてのグループ費用"
