@@ -1,29 +1,14 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
-import {
-  Button,
-  Image,
-  Input,
-  Text,
-  makeStyles,
-  useTheme,
-} from "@rneui/themed";
+import { Button, Input, Text, makeStyles } from "@rneui/themed";
 import * as ImagePicker from "expo-image-picker";
 import { memo, useRef } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import {
-  ActivityIndicator,
-  Keyboard,
-  StyleProp,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Keyboard, StyleProp, View, ViewStyle } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
-import Toast from "react-native-toast-message";
 
-import UserFormBottomSheet from "./UserFormBottomSheet";
+import ImagePickerBottomSheet from "../ImagePickerBottomSheet";
+import ProfileImageUpload from "../ProfileImageUpload";
 import { VStack } from "../Stack";
 
 import Config from "@/src/Config";
@@ -44,7 +29,6 @@ const UserForm = memo<IUserFormProps>(
     const styles = useStyles(insets);
     const { t } = useTranslation();
     const bottomSheetRef = useRef<BottomSheet>(null);
-    const { theme } = useTheme();
 
     const {
       control,
@@ -69,38 +53,6 @@ const UserForm = memo<IUserFormProps>(
         name: fileName || "profile-image",
       });
     };
-
-    const takePhoto = async () => {
-      const res = await ImagePicker.requestCameraPermissionsAsync();
-      if (res.granted === false) {
-        Toast.show({
-          type: "error",
-          text1: t("UserForm.camera-permission-required"),
-          text2: t(
-            "UserForm.you-need-to-enable-camera-permissions-to-use-this-feature",
-          ),
-        });
-        return;
-      }
-      const result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        cameraType: ImagePicker.CameraType.front,
-        allowsEditing: true,
-      });
-      await handleImageAsset(result);
-      bottomSheetRef.current?.close();
-    };
-
-    const pickImage = async () => {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-      });
-      await handleImageAsset(result);
-      bottomSheetRef.current?.close();
-    };
-
-    console.log("imageUrl", imageUrl);
 
     return (
       <View style={[styles.container, style]}>
@@ -137,27 +89,13 @@ const UserForm = memo<IUserFormProps>(
         {/* Profile Image  */}
         <VStack gap={12}>
           <Text style={styles.label}>{t("UserForm:profile-image")}</Text>
-          <TouchableOpacity
+          <ProfileImageUpload
+            imageUrl={imageUrl}
             onPress={() => {
               bottomSheetRef.current?.expand();
               Keyboard.dismiss();
             }}
-            style={[styles.profileImageContainer, { marginLeft: 8 }]}
-          >
-            {imageUrl ? (
-              <Image
-                source={{ uri: imageUrl }}
-                PlaceholderContent={<ActivityIndicator />}
-                containerStyle={styles.profileImageContainer}
-              />
-            ) : (
-              <MaterialIcons
-                name="file-upload"
-                size={30}
-                color={theme.colors.black}
-              />
-            )}
-          </TouchableOpacity>
+          />
         </VStack>
 
         <VStack alignItems="stretch" gap={4}>
@@ -177,9 +115,8 @@ const UserForm = memo<IUserFormProps>(
           )}
         </VStack>
 
-        <UserFormBottomSheet
-          takePhoto={takePhoto}
-          pickImage={pickImage}
+        <ImagePickerBottomSheet
+          handleImageAsset={handleImageAsset}
           ref={bottomSheetRef}
         />
       </View>

@@ -5,32 +5,47 @@ import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { useGetGroup } from "@/src/api/hooks/useGetGroup";
+import { useGetGroupList } from "@/src/api/hooks/useGetGroupList";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
+import { usePatchGroupUpdate } from "@/src/api/hooks/usePatchGroupUpdate";
 import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import { usePostGroupCreate } from "@/src/api/hooks/usePostGroupCreate";
 import GroupForm from "@/src/components/GroupForm";
+import UserListForm from "@/src/components/UserListForm";
 import UserForm from "@/src/components/userForm/UserForm";
 
+//TODO: Use only one post api to create user, group, and add users to group
+//to prevent creating duplicate stuff if user stop the onboarding process
 const OnboardingPage = () => {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
   const styles = useStyles(insets);
-  const { step: stepAsString = "0" } = useLocalSearchParams<{
+  const { step: stepAsString = "0", groupId } = useLocalSearchParams<{
     step: string;
     groupId?: string;
   }>();
   const step = parseInt(stepAsString, 10);
-  const { t } = useTranslation();
+
+  // Fetch Data
   const {
     data: user,
     query: { refetch: refetchMe },
   } = useGetMe();
+  const { data: groups } = useGetGroupList({ page: 1, pageSize: 10 });
+  const firstGroupCreatedByUser = groups[0];
+  const { data: group } = useGetGroup(
+    { id: groupId || "" },
+    { enabled: !!groupId },
+  );
 
-  const navigation = useNavigation();
-
+  // Mutations
   const { mutateAsync: patchUserUpdate } = usePatchUserUpdate({
     onSuccess: () => refetchMe(),
   });
   const { mutateAsync: postGroupCreate } = usePostGroupCreate({});
+  const { mutateAsync: patchGroupUpdate } = usePatchGroupUpdate({});
 
   useEffect(() => {
     navigation.setOptions({
@@ -62,21 +77,32 @@ const OnboardingPage = () => {
 
       {step === 1 && (
         <GroupForm
-          groupId={undefined}
+          groupId={groups[0]?.id}
           onSubmit={(values) => {
-            postGroupCreate(values).then(() => {
-              router.push("/onboarding/2");
-            });
+            if (!firstGroupCreatedByUser)
+              postGroupCreate(values).then(({ data: group }) => {
+                router.push(`/onboarding/2?groupId=${group.id}`);
+              });
+            else {
+              patchGroupUpdate({
+                ...values,
+                id: firstGroupCreatedByUser.id,
+              }).then(() => {
+                router.push(
+                  `/onboarding/2?groupId=${firstGroupCreatedByUser.id}`,
+                );
+              });
+            }
           }}
         />
       )}
-      {/* {step === 2 && (
+      {step === 2 && (
         <UserListForm
-          onSubmit={(users) => {
-            // TODO Use Add Users to Group Api
-          }}
+          group={group}
+          buttonText={t("Common:done")}
+          onSubmit={(users) => {}}
         />
-      )} */}
+      )}
     </ScrollView>
   );
 };

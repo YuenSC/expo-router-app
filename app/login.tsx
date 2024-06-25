@@ -6,6 +6,7 @@ import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { PostLoginPayload } from "@/src/api/types/Login";
 import { useAuth } from "@/src/components/AuthContext";
+import PasswordInput from "@/src/components/PasswordInput";
 
 const Page = () => {
   const insets = useSafeAreaInsets();
@@ -53,12 +54,11 @@ const Page = () => {
           name="password"
           rules={{ required: t("SignUp:password-is-required") }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <Input
+            <PasswordInput
               errorMessage={error?.message}
               label={t("SignUp:password-label")}
               onChangeText={onChange}
               placeholder={t("SignUp:password-placeholder")}
-              secureTextEntry
               value={value}
               textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
               style={styles.input}

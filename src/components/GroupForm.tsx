@@ -64,7 +64,7 @@ const GroupForm = memo<IGroupFormProps>(({ groupId, onSubmit }) => {
         )}
       />
       <Button
-        title={isEdit ? t("Common:done") : t("Common:create")}
+        title={isEdit ? t("Common:edit") : t("Common:create")}
         containerStyle={styles.button}
         onPress={handleSubmit(onSubmit)}
       />

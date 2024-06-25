@@ -29,6 +29,7 @@ axios.interceptors.response.use(
     return response;
   },
   async function (error) {
+    console.log("error", error);
     if (axios.isAxiosError(error)) {
       if (Config.env === "local")
         console.log("Error request", error.response?.data);
