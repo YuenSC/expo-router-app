@@ -190,7 +190,9 @@
     "all-members": "全員",
     "members": "メンバー",
     "select-existing-user": "既存のユーザーを選択",
-    "type-participant-name": "参加者名を入力してください"
+    "type-participant-name": "参加者名を入力してください",
+    "verified-users": "認証済みユーザー",
+    "virtual-users": "仮想ユーザー"
   },
   "WelcomeScreen": {
     "subtitle": "友達とグループでの出費のまとめを始めましょう",

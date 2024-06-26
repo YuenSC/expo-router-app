@@ -1,4 +1,5 @@
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
@@ -128,8 +129,10 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ThemeProvider theme={theme}>
-          <GestureHandlerRootView>
-            <StackLayout />
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <BottomSheetModalProvider>
+              <StackLayout />
+            </BottomSheetModalProvider>
           </GestureHandlerRootView>
           <FullWindowOverlay>
             <Toast config={toastConfig} />

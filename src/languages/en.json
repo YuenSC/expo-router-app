@@ -213,7 +213,9 @@
     "all-members": "All Members",
     "members": "Members",
     "select-existing-user": "Select Existing User",
-    "type-participant-name": "Type participant name"
+    "type-participant-name": "Type participant name",
+    "verified-users": "Verified Users",
+    "virtual-users": "Virtual Users"
   },
   "WelcomeScreen": {
     "subtitle": "Start summarizing your group expenses with your friends",

@@ -199,7 +199,9 @@
     "all-members": "所有会员",
     "members": "会员",
     "select-existing-user": "选择现有用户",
-    "type-participant-name": "输入参与者姓名"
+    "type-participant-name": "输入参与者姓名",
+    "verified-users": "已验证用户",
+    "virtual-users": "虚拟用户"
   },
   "WelcomeScreen": {
     "subtitle": "开始和朋友一起总结团体开支",

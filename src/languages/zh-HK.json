@@ -199,7 +199,9 @@
     "all-members": "所有會員",
     "members": "會員",
     "select-existing-user": "選擇現有用戶",
-    "type-participant-name": "輸入參與者姓名"
+    "type-participant-name": "輸入參與者姓名",
+    "verified-users": "已驗證用戶",
+    "virtual-users": "虛擬用戶"
   },
   "WelcomeScreen": {
     "subtitle": "開始和朋友一起總結團體開支",

@@ -199,7 +199,9 @@
     "all-members": "Все участники",
     "members": "Члены",
     "select-existing-user": "Выберите существующего пользователя",
-    "type-participant-name": "Введите имя участника"
+    "type-participant-name": "Введите имя участника",
+    "verified-users": "Проверенные пользователи",
+    "virtual-users": "Виртуальные пользователи"
   },
   "WelcomeScreen": {
     "subtitle": "Начните подводить итоги групповых расходов с друзьями",

@@ -199,7 +199,9 @@
     "all-members": "Tous les membres",
     "members": "Membres",
     "select-existing-user": "Sélectionnez un utilisateur existant",
-    "type-participant-name": "Saisissez le nom du participant"
+    "type-participant-name": "Saisissez le nom du participant",
+    "verified-users": "Utilisateurs vérifiés",
+    "virtual-users": "Utilisateurs virtuels"
   },
   "WelcomeScreen": {
     "subtitle": "Commencez à résumer vos dépenses de groupe avec vos amis",

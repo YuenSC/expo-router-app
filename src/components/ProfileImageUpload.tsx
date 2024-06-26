@@ -8,15 +8,17 @@ import ProfileImageDisplay from "./ProfileImageDisplay";
 type IProfileImageUploadProps = {
   onPress: () => void;
   imageUrl?: string;
+  disabled?: boolean;
 };
 
 const ProfileImageUpload = memo<IProfileImageUploadProps>(
-  ({ onPress, imageUrl }) => {
+  ({ onPress, imageUrl, disabled }) => {
     const styles = useStyles();
     const { theme } = useTheme();
 
     return (
       <TouchableOpacity
+        disabled={disabled}
         onPress={onPress}
         style={[styles.profileImageContainer, { marginLeft: 8 }]}
       >

@@ -1,4 +1,4 @@
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { Text, makeStyles, useTheme } from "@rneui/themed";
 import * as ImagePicker from "expo-image-picker";
 import { forwardRef, useImperativeHandle, useRef } from "react";
@@ -7,21 +7,30 @@ import { TouchableHighlight } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 
-import StyledBottomSheet from "./common/StyledBottomSheet";
+import StyledBottomSheetModal from "./common/StyledBottomSheetModal";
+import { ImagePayload } from "../api/types/ImagePayload";
 
 type IUserFormBottomSheetProps = {
-  handleImageAsset: (result: ImagePicker.ImagePickerResult) => Promise<void>;
+  onImageUpload: (image: ImagePayload) => void;
 };
 
-const ImagePickerBottomSheet = forwardRef<
-  BottomSheet,
+const ImagePickerBottomSheetModal = forwardRef<
+  BottomSheetModal,
   IUserFormBottomSheetProps
->(({ handleImageAsset }, ref) => {
+>(({ onImageUpload }, ref) => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
+
+  const handleImageAsset = async (result: ImagePicker.ImagePickerResult) => {
+    if (result.canceled || !result?.assets?.[0]) {
+      return;
+    }
+    const { uri, fileName, mimeType } = result.assets[0];
+    onImageUpload({ uri, type: mimeType, name: fileName || "" });
+  };
 
   const takePhoto = async () => {
     const res = await ImagePicker.requestCameraPermissionsAsync();
@@ -60,12 +69,17 @@ const ImagePickerBottomSheet = forwardRef<
     collapse: () => {
       bottomSheetRef.current?.collapse();
     },
+    dismiss: () => {
+      bottomSheetRef.current?.dismiss();
+    },
     expand: () => {
-      console.log("expand");
       bottomSheetRef.current?.expand();
     },
     forceClose: () => {
       bottomSheetRef.current?.forceClose();
+    },
+    present: () => {
+      bottomSheetRef.current?.present();
     },
     snapToIndex: (index: number) => {
       bottomSheetRef.current?.snapToIndex(index);
@@ -76,7 +90,7 @@ const ImagePickerBottomSheet = forwardRef<
   }));
 
   return (
-    <StyledBottomSheet
+    <StyledBottomSheetModal
       ref={bottomSheetRef}
       enablePanDownToClose
       enableDynamicSizing
@@ -103,7 +117,7 @@ const ImagePickerBottomSheet = forwardRef<
           </Text>
         </TouchableHighlight>
       </BottomSheetView>
-    </StyledBottomSheet>
+    </StyledBottomSheetModal>
   );
 });
 
@@ -123,6 +137,6 @@ const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
   },
 }));
 
-ImagePickerBottomSheet.displayName = "UserFormBottomSheet";
+ImagePickerBottomSheetModal.displayName = "UserFormBottomSheet";
 
-export default ImagePickerBottomSheet;
+export default ImagePickerBottomSheetModal;

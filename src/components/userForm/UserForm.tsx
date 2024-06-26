@@ -1,13 +1,12 @@
-import BottomSheet from "@gorhom/bottom-sheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { Button, Input, Text, makeStyles } from "@rneui/themed";
-import * as ImagePicker from "expo-image-picker";
 import { memo, useRef } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Keyboard, StyleProp, View, ViewStyle } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
-import ImagePickerBottomSheet from "../ImagePickerBottomSheet";
+import ImagePickerBottomSheetModal from "../ImagePickerBottomSheetModal";
 import ProfileImageUpload from "../ProfileImageUpload";
 import { VStack } from "../Stack";
 
@@ -28,7 +27,7 @@ const UserForm = memo<IUserFormProps>(
     const insets = useSafeAreaInsets();
     const styles = useStyles(insets);
     const { t } = useTranslation();
-    const bottomSheetRef = useRef<BottomSheet>(null);
+    const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
     const {
       control,
@@ -41,18 +40,6 @@ const UserForm = memo<IUserFormProps>(
     });
     const profileImageWatch = useWatch({ control, name: "profileImage" });
     const imageUrl = profileImageWatch?.uri || user?.imageUrl;
-
-    const handleImageAsset = async (result: ImagePicker.ImagePickerResult) => {
-      if (result.canceled || !result?.assets?.[0]) {
-        return;
-      }
-      const { uri, fileName, mimeType } = result.assets[0];
-      setValue("profileImage", {
-        uri,
-        type: mimeType,
-        name: fileName || "profile-image",
-      });
-    };
 
     return (
       <View style={[styles.container, style]}>
@@ -92,7 +79,7 @@ const UserForm = memo<IUserFormProps>(
           <ProfileImageUpload
             imageUrl={imageUrl}
             onPress={() => {
-              bottomSheetRef.current?.expand();
+              bottomSheetModalRef.current?.present();
               Keyboard.dismiss();
             }}
           />
@@ -115,9 +102,9 @@ const UserForm = memo<IUserFormProps>(
           )}
         </VStack>
 
-        <ImagePickerBottomSheet
-          handleImageAsset={handleImageAsset}
-          ref={bottomSheetRef}
+        <ImagePickerBottomSheetModal
+          onImageUpload={(image) => setValue("profileImage", image)}
+          ref={bottomSheetModalRef}
         />
       </View>
     );

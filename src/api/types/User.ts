@@ -1,5 +1,6 @@
 import { ApiResponse } from "./ApiResponse";
 import { BaseObject } from "./BaseObject";
+import { ImagePayload } from "./ImagePayload";
 
 export enum UserRole {
   User = "user",
@@ -17,11 +18,7 @@ export interface User extends BaseObject {
 
 export interface PatchUserUpdatePayload extends Partial<User> {
   id: string;
-  profileImage: {
-    uri: string;
-    type?: string;
-    name?: string;
-  };
+  profileImage: ImagePayload;
 }
 export type PatchUserUpdateResponse = ApiResponse<User>;
 

@@ -1,25 +1,24 @@
-import GorhomBottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
+import { BottomSheetBackdrop, BottomSheetModal } from "@gorhom/bottom-sheet";
 import { makeStyles } from "@rneui/themed";
 import { ComponentProps, forwardRef } from "react";
 import { StyleSheet } from "react-native";
 
-type IStyledBottomSheetProps = ComponentProps<typeof GorhomBottomSheet> & {
+type IStyledBottomSheetProps = ComponentProps<typeof BottomSheetModal> & {
   backdropProps?: Partial<ComponentProps<typeof BottomSheetBackdrop>>;
 };
 
-const StyledBottomSheet = forwardRef<
-  GorhomBottomSheet,
+const StyledBottomSheetModal = forwardRef<
+  BottomSheetModal,
   IStyledBottomSheetProps
 >(({ children, backdropProps, ...props }, ref) => {
   const styles = useStyles();
 
   return (
-    <GorhomBottomSheet
+    <BottomSheetModal
       {...props}
       ref={ref}
       containerStyle={[props.containerStyle]}
       backgroundStyle={[styles.background, props.backgroundStyle]}
-      index={-1}
       handleIndicatorStyle={[
         styles.handleIndicator,
         props.handleIndicatorStyle,
@@ -37,7 +36,7 @@ const StyledBottomSheet = forwardRef<
       )}
     >
       {children}
-    </GorhomBottomSheet>
+    </BottomSheetModal>
   );
 });
 
@@ -53,6 +52,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-StyledBottomSheet.displayName = "BottomSheet";
+StyledBottomSheetModal.displayName = "BottomSheet";
 
-export default StyledBottomSheet;
+export default StyledBottomSheetModal;

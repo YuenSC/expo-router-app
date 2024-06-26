@@ -199,7 +199,9 @@
     "all-members": "सभी सदस्य",
     "members": "सदस्यों",
     "select-existing-user": "मौजूदा उपयोगकर्ता का चयन करें",
-    "type-participant-name": "प्रतिभागी का नाम टाइप करें"
+    "type-participant-name": "प्रतिभागी का नाम टाइप करें",
+    "verified-users": "सत्यापित उपयोगकर्ता",
+    "virtual-users": "आभासी उपयोगकर्ता"
   },
   "WelcomeScreen": {
     "subtitle": "अपने दोस्तों के साथ अपने समूह के खर्चों का सारांश बनाना शुरू करें",
