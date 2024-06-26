@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "Dépense de groupe",
   "Common": {
     "NA": "N / A",
+    "adminLabel": "Administrateur",
     "back": "Dos",
     "coming-soon": "À venir",
     "create": "Créer",

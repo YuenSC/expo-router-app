@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "समूह व्यय",
   "Common": {
     "NA": "एन/ए",
+    "adminLabel": "प्रशासक",
     "back": "पीछे",
     "coming-soon": "जल्द आ रहा है",
     "create": "बनाएं",

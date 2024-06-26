@@ -1,7 +1,6 @@
-import { AntDesign, Feather } from "@expo/vector-icons";
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { Text, makeStyles, useTheme } from "@rneui/themed";
-import { memo, useRef } from "react";
+import { Text, makeStyles } from "@rneui/themed";
+import { useQueryClient } from "@tanstack/react-query";
+import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { SectionList, TouchableOpacity, View } from "react-native";
 
@@ -13,6 +12,9 @@ import ImagePickerBottomSheetModal from "../ImagePickerBottomSheetModal";
 import ProfileImageUpload from "../ProfileImageUpload";
 import { HStack } from "../Stack";
 
+import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
+import { useBottomSheetModal } from "@/src/hooks/useBottomSheetModal";
+
 type IUserListFormProps = {
   groupId?: string;
   onSubmit: () => void;
@@ -23,43 +25,59 @@ type IUserListFormProps = {
 const UserListForm = memo<IUserListFormProps>(
   ({ groupId, onSubmit, buttonText, selectableUsers = [] }) => {
     const styles = useStyles();
-    const { theme } = useTheme();
     const { t } = useTranslation();
     const { data: profile } = useGetMe();
-    const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+    const {
+      open,
+      ref: bottomSheetModalRef,
+      value: targetUserId,
+    } = useBottomSheetModal("");
+    const queryClient = useQueryClient();
 
-    const { data: group } = useGetGroup(
-      { id: groupId || "" },
-      { enabled: !!groupId },
-    );
+    const { data: group } = useGetGroup({ id: groupId || "" });
 
-    const { realUsers, virtualUsers } = (group?.users ?? []).reduce(
-      (acc, user) => {
-        if (user.email) {
-          acc.realUsers.push(user);
-        } else {
-          acc.virtualUsers.push(user);
-        }
-        return acc;
+    const { mutate: patchUserUpdate } = usePatchUserUpdate({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
+          queryKey: ["group", groupId],
+        });
       },
-      { realUsers: [] as User[], virtualUsers: [] as User[] },
-    );
+    });
+
+    const sections = useMemo(() => {
+      const { realUsers, virtualUsers } = (group?.users ?? []).reduce(
+        (acc, curr) => {
+          if (curr.user.email) {
+            acc.realUsers.push(curr);
+          } else {
+            acc.virtualUsers.push(curr);
+          }
+          return acc;
+        },
+        {
+          realUsers: [] as { user: User; isAdmin: boolean }[],
+          virtualUsers: [] as { user: User; isAdmin: boolean }[],
+        },
+      );
+
+      return [
+        { title: t("UserListForm:verified-users"), data: realUsers },
+        { title: t("UserListForm:virtual-users"), data: virtualUsers },
+      ];
+    }, [group?.users, t]);
 
     return (
       <View style={styles.container}>
         <SectionList
-          sections={[
-            { title: t("UserListForm:verified-users"), data: realUsers },
-            { title: t("UserListForm:virtual-users"), data: virtualUsers },
-          ]}
+          sections={sections}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.sectionHeader}>{title}</Text>
           )}
-          renderSectionFooter={() => <View style={{ marginVertical: 8 }} />}
+          renderSectionFooter={() => <View style={styles.sectionFooter} />}
           ItemSeparatorComponent={() => <View style={styles.divider} />}
           ListHeaderComponent={
-            <View style={styles.titleContainer}>
-              <Text h1 style={styles.title}>
+            <View style={styles.headerContainer}>
+              <Text h1 style={styles.headerTitle}>
                 {group
                   ? t("UserListForm:members")
                   : t("UserListForm:all-members")}
@@ -74,52 +92,53 @@ const UserListForm = memo<IUserListFormProps>(
               buttonText={buttonText}
             />
           }
-          renderItem={({ item }) => {
-            const isProfileUser = item.id === profile?.id;
+          renderItem={({ item: { isAdmin, user } }) => {
+            const isProfileUser = user.id === profile?.id;
+            const isOtherVerifiedUser = Boolean(user.email) && !isProfileUser;
 
             return (
-              <View style={styles.memberContainer}>
-                <HStack gap={16}>
-                  <ProfileImageUpload
-                    onPress={() => {
-                      bottomSheetModalRef.current?.present();
-                    }}
-                    imageUrl={item.imageUrl}
-                  />
+              <TouchableOpacity
+                disabled={isOtherVerifiedUser}
+                onPress={() => {}}
+              >
+                <HStack alignItems="center" style={styles.memberContainer}>
+                  <HStack gap={16}>
+                    <ProfileImageUpload
+                      icon="person-outline"
+                      disabled={isOtherVerifiedUser}
+                      onPress={() => open(user.id)}
+                      imageUrl={user.imageUrl}
+                    />
 
-                  <HStack gap={2} alignItems="center">
-                    <Text style={styles.memberName}>{item.name}</Text>
-                    {isProfileUser && (
-                      <Text style={styles.memberNameOwner}>
-                        {t("Common:profileUserLabel")}
-                      </Text>
-                    )}
+                    <HStack gap={2} alignItems="center">
+                      <Text style={styles.memberName}>{user.name}</Text>
+
+                      {isProfileUser && (
+                        <Text style={styles.profileLabel}>
+                          {t("Common:profileUserLabel")}
+                        </Text>
+                      )}
+                    </HStack>
                   </HStack>
-                </HStack>
 
-                <HStack gap={8}>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Feather
-                      name="edit"
-                      size={24}
-                      color={theme.colors.primary}
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => {}}>
-                    <AntDesign
-                      name="delete"
-                      size={24}
-                      color={theme.colors.error}
-                    />
-                  </TouchableOpacity>
+                  {isAdmin && (
+                    <View style={styles.adminLabelContainer}>
+                      <Text style={styles.adminLabel}>
+                        {t("Common:adminLabel")}
+                      </Text>
+                    </View>
+                  )}
                 </HStack>
-              </View>
+              </TouchableOpacity>
             );
           }}
         />
 
         <ImagePickerBottomSheetModal
-          onImageUpload={(image) => console.log("image", image)}
+          onImageUpload={(image) => {
+            if (!targetUserId) return;
+            patchUserUpdate({ id: targetUserId, profileImage: image });
+          }}
           ref={bottomSheetModalRef}
         />
       </View>
@@ -132,26 +151,34 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     padding: 16,
   },
-  title: {
+  headerTitle: {
     fontWeight: "bold",
   },
-  titleContainer: {
+  headerContainer: {
     marginBottom: 24,
   },
   memberContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingRight: 8,
   },
   divider: {
     height: 1,
-    backgroundColor: theme.colors.divider,
+    backgroundColor: "#D6D6D6",
     marginVertical: 8,
   },
   memberName: {
     fontSize: 18,
   },
-  memberNameOwner: {
+  profileLabel: {
+    fontStyle: "italic",
+    color: theme.colors.primary,
+  },
+  adminLabelContainer: {
+    marginLeft: "auto",
+  },
+  adminLabel: {
     fontStyle: "italic",
     color: theme.colors.primary,
   },
@@ -159,6 +186,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: 18,
     marginBottom: 8,
+  },
+  sectionFooter: {
+    marginVertical: 8,
   },
 }));
 

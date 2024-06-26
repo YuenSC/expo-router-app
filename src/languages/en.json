@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "Group Expense",
   "Common": {
     "NA": "N/A",
+    "adminLabel": "Administrator",
     "back": "Back",
     "coming-soon": "Coming Soon",
     "create": "Create",

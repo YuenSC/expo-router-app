@@ -29,7 +29,7 @@ const ImagePickerBottomSheetModal = forwardRef<
       return;
     }
     const { uri, fileName, mimeType } = result.assets[0];
-    onImageUpload({ uri, type: mimeType, name: fileName || "" });
+    onImageUpload({ uri, type: mimeType, name: fileName || "unknown_image" });
   };
 
   const takePhoto = async () => {

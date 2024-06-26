@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "團體費用",
   "Common": {
     "NA": "不適用",
+    "adminLabel": "管理員",
     "back": "後退",
     "coming-soon": "即將推出",
     "create": "創造",

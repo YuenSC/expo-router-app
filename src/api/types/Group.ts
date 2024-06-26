@@ -6,7 +6,7 @@ export interface Group extends BaseObject {
   name: string;
   description: string;
   createdBy: string;
-  users?: User[];
+  users?: { user: User; isAdmin: boolean }[];
 }
 
 export type PostGroupCreatePayload = {

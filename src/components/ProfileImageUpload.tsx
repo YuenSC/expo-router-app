@@ -1,7 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { makeStyles, useTheme } from "@rneui/themed";
 import { memo } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 
 import ProfileImageDisplay from "./ProfileImageDisplay";
 
@@ -9,10 +9,11 @@ type IProfileImageUploadProps = {
   onPress: () => void;
   imageUrl?: string;
   disabled?: boolean;
+  icon?: "file-upload" | "person-outline";
 };
 
 const ProfileImageUpload = memo<IProfileImageUploadProps>(
-  ({ onPress, imageUrl, disabled }) => {
+  ({ onPress, imageUrl, disabled, icon = "file-upload" }) => {
     const styles = useStyles();
     const { theme } = useTheme();
 
@@ -25,11 +26,12 @@ const ProfileImageUpload = memo<IProfileImageUploadProps>(
         {imageUrl ? (
           <ProfileImageDisplay imageUrl={imageUrl} />
         ) : (
-          <MaterialIcons
-            name="file-upload"
-            size={30}
-            color={theme.colors.black}
-          />
+          <MaterialIcons name={icon} size={30} color={theme.colors.black} />
+        )}
+        {!disabled && (
+          <View style={styles.editIcon}>
+            <MaterialIcons name="edit" size={15} color={theme.colors.primary} />
+          </View>
         )}
       </TouchableOpacity>
     );
@@ -42,9 +44,20 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: "white",
+    borderColor: theme.colors.divider,
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
+  },
+  editIcon: {
+    position: "absolute",
+    bottom: -2,
+    right: -2,
+    backgroundColor: theme.colors.background,
+    borderWidth: 1,
+    borderColor: theme.colors.divider,
+    borderRadius: 99,
+    padding: 4,
   },
 }));
 

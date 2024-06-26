@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "Групповые расходы",
   "Common": {
     "NA": "Н/Д",
+    "adminLabel": "Администратор",
     "back": "Назад",
     "coming-soon": "Вскоре",
     "create": "Создавать",

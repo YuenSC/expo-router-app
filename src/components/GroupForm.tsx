@@ -18,10 +18,7 @@ const GroupForm = memo<IGroupFormProps>(({ groupId, onSubmit }) => {
   const isEdit = groupId;
   const { t } = useTranslation();
 
-  const { data: group } = useGetGroup(
-    { id: groupId || "" },
-    { enabled: !!groupId },
-  );
+  const { data: group } = useGetGroup({ id: groupId || "" });
   const { control, handleSubmit } = useForm<PostGroupCreatePayload>({
     defaultValues: {
       name: group?.name || "Calvin Group", // TODO: remove default value after testing,

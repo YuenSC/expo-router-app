@@ -14,7 +14,7 @@ const theme = createTheme({
     background: "#050624",
     modal: "#10113d",
     primary: "#f6d146",
-    divider: "#DDD",
+    divider: "#D6D6D6",
     error: "#f75959",
     success: "#82ff05",
   },

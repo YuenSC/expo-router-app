@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "グループ経費",
   "Common": {
     "NA": "該当なし",
+    "adminLabel": "管理者",
     "back": "戻る",
     "coming-soon": "近日公開",
     "create": "作成する",

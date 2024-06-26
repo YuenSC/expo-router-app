@@ -33,6 +33,7 @@
   "CFBundleDisplayName": "Despesas de grupo",
   "Common": {
     "NA": "N / D",
+    "adminLabel": "Administrador",
     "back": "Voltar",
     "coming-soon": "Em breve",
     "create": "Criar",
