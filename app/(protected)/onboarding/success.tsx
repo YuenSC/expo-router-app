@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { useGetMe } from "@/src/api/hooks/useGetMe";
+import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import StyledBottomSheet from "@/src/components/common/StyledBottomSheet";
 
 const OnboardingSuccessPage = () => {
@@ -17,8 +19,13 @@ const OnboardingSuccessPage = () => {
   const { t } = useTranslation();
   const ref = useRef<BottomSheet>(null);
 
+  const { data } = useGetMe({});
+  const { mutate: patchUserUpdate } = usePatchUserUpdate({});
+  const userId = data?.id;
+
   const onClose = () => {
     ref.current?.close();
+    if (userId) patchUserUpdate({ id: userId, isOnboardingCompleted: true });
     router.dismissAll();
     router.replace("/home");
   };

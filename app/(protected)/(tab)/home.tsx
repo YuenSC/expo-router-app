@@ -1,12 +1,17 @@
 import { Text } from "@rneui/themed";
 import { Button, Image, StyleSheet, View } from "react-native";
 
+import { useGetMe } from "@/src/api/hooks/useGetMe";
+import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import { useAuth } from "@/src/components/AuthContext";
 import { HelloWave } from "@/src/components/HelloWave";
 import ParallaxScrollView from "@/src/components/ParallaxScrollView";
 
 export default function HomeScreen() {
   const { onLogout } = useAuth();
+  const { data } = useGetMe();
+  const userId = data?.id || "";
+  const { mutate } = usePatchUserUpdate({});
 
   return (
     <ParallaxScrollView
@@ -23,6 +28,10 @@ export default function HomeScreen() {
         <HelloWave />
       </View>
       <Button title="Logout" onPress={onLogout} />
+      <Button
+        title="Reset Onboarding"
+        onPress={() => mutate({ id: userId, isOnboardingCompleted: false })}
+      />
     </ParallaxScrollView>
   );
 }

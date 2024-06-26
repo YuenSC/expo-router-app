@@ -18,7 +18,7 @@ export interface User extends BaseObject {
 
 export interface PatchUserUpdatePayload extends Partial<User> {
   id: string;
-  profileImage: ImagePayload;
+  profileImage?: ImagePayload;
 }
 export type PatchUserUpdateResponse = ApiResponse<User>;
 
