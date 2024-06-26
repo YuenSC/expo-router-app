@@ -76,13 +76,16 @@ const UserListForm = memo<IUserListFormProps>(
           renderSectionFooter={() => <View style={styles.sectionFooter} />}
           ItemSeparatorComponent={() => <View style={styles.divider} />}
           ListHeaderComponent={
-            <View style={styles.headerContainer}>
+            <HStack style={styles.headerContainer} alignItems="flex-end">
               <Text h1 style={styles.headerTitle}>
                 {group
                   ? t("UserListForm:members")
                   : t("UserListForm:all-members")}
               </Text>
-            </View>
+              <Text h4 style={styles.userCount}>
+                {group?.users?.length ?? 0} / 5
+              </Text>
+            </HStack>
           }
           ListFooterComponent={
             <UserListFormFooter
@@ -90,6 +93,7 @@ const UserListForm = memo<IUserListFormProps>(
               onSubmit={onSubmit}
               selectableUsers={selectableUsers}
               buttonText={buttonText}
+              disabledAddUser={group?.users?.length === 5}
             />
           }
           renderItem={({ item: { isAdmin, user } }) => {
@@ -156,6 +160,12 @@ const useStyles = makeStyles((theme) => ({
   },
   headerContainer: {
     marginBottom: 24,
+  },
+  userCount: {
+    color: theme.colors.primary,
+    fontWeight: "bold",
+    marginBottom: 4,
+    marginLeft: 8,
   },
   memberContainer: {
     flexDirection: "row",

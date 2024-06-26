@@ -15,6 +15,7 @@ type IUserListFormFooterProps = {
   selectableUsers: User[];
   buttonText?: string;
   onSubmit: () => void;
+  disabledAddUser?: boolean;
 };
 
 const UserListFormFooter = ({
@@ -22,6 +23,7 @@ const UserListFormFooter = ({
   selectableUsers,
   buttonText,
   onSubmit,
+  disabledAddUser,
 }: IUserListFormFooterProps) => {
   const styles = useStyles();
   const { t } = useTranslation();
@@ -40,42 +42,44 @@ const UserListFormFooter = ({
 
   return (
     <View>
-      <View>
-        {isFocused ? (
-          <Animated.View
-            entering={FadeIn.duration(300)}
-            exiting={FadeOut.duration(300)}
-          >
-            <Input
-              autoFocus
-              onChangeText={setName}
-              value={name}
-              placeholder={t("UserListForm:type-participant-name")}
-              renderErrorMessage={false}
-              containerStyle={styles.inputContainer}
-              inputContainerStyle={{
-                borderBottomWidth: 0,
-                paddingHorizontal: 0,
-              }}
-              onBlur={() => setIsFocused(false)}
-              onSubmitEditing={() => {
-                if (!groupId || !name) return;
-                postCreateUserInGroup({ name, groupId });
-              }}
-            />
-          </Animated.View>
-        ) : (
-          <TouchableOpacity
-            onPress={() => setIsFocused(true)}
-            style={[styles.input]}
-          >
-            <Entypo name="plus" size={24} color={theme.colors.primary} />
-            <Text style={styles.memberName}>
-              {t("UserListForm:add-participant")}
-            </Text>
-          </TouchableOpacity>
-        )}
-      </View>
+      {!disabledAddUser && (
+        <View>
+          {isFocused ? (
+            <Animated.View
+              entering={FadeIn.duration(300)}
+              exiting={FadeOut.duration(300)}
+            >
+              <Input
+                autoFocus
+                onChangeText={setName}
+                value={name}
+                placeholder={t("UserListForm:type-participant-name")}
+                renderErrorMessage={false}
+                containerStyle={styles.inputContainer}
+                inputContainerStyle={{
+                  borderBottomWidth: 0,
+                  paddingHorizontal: 0,
+                }}
+                onBlur={() => setIsFocused(false)}
+                onSubmitEditing={() => {
+                  if (!groupId || !name) return;
+                  postCreateUserInGroup({ name, groupId });
+                }}
+              />
+            </Animated.View>
+          ) : (
+            <TouchableOpacity
+              onPress={() => setIsFocused(true)}
+              style={[styles.input]}
+            >
+              <Entypo name="plus" size={24} color={theme.colors.primary} />
+              <Text style={styles.memberName}>
+                {t("UserListForm:add-participant")}
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
       <VStack alignItems="stretch" gap={8} style={styles.buttonContainer}>
         {selectableUsers?.length > 0 && (
           <Button
