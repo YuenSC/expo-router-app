@@ -17,6 +17,10 @@ export default function RootLayout() {
         },
       }}
     >
+      <Stack.Screen
+        name="onboarding/success"
+        options={{ headerShown: false, presentation: "transparentModal" }}
+      />
       <Stack.Screen name="onboarding/[step]" options={{ headerShown: false }} />
       <Stack.Screen name="(tab)" options={{ headerShown: false }} />
     </Stack>

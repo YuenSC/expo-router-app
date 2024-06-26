@@ -109,7 +109,9 @@ const OnboardingPage = () => {
         <UserListForm
           groupId={groupId}
           buttonText={t("Common:done")}
-          onSubmit={() => {}}
+          onSubmit={() => {
+            router.push("/onboarding/success");
+          }}
         />
       )}
     </KeyboardAvoidingView>

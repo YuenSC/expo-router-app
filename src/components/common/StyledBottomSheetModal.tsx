@@ -52,6 +52,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-StyledBottomSheetModal.displayName = "BottomSheet";
+StyledBottomSheetModal.displayName = "StyledBottomSheetModal";
 
 export default StyledBottomSheetModal;
