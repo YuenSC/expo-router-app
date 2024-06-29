@@ -1,7 +1,13 @@
 import { BottomSheetBackdrop, BottomSheetModal } from "@gorhom/bottom-sheet";
 import { makeStyles } from "@rneui/themed";
-import { ComponentProps, forwardRef } from "react";
+import {
+  ComponentProps,
+  forwardRef,
+  PropsWithChildren,
+  useCallback,
+} from "react";
 import { StyleSheet } from "react-native";
+import { FullWindowOverlay } from "react-native-screens";
 
 type IStyledBottomSheetProps = ComponentProps<typeof BottomSheetModal> & {
   backdropProps?: Partial<ComponentProps<typeof BottomSheetBackdrop>>;
@@ -13,10 +19,18 @@ const StyledBottomSheetModal = forwardRef<
 >(({ children, backdropProps, ...props }, ref) => {
   const styles = useStyles();
 
+  const renderContainerComponent = useCallback(
+    ({ children }: PropsWithChildren) => (
+      <FullWindowOverlay>{children}</FullWindowOverlay>
+    ),
+    [],
+  );
+
   return (
     <BottomSheetModal
       {...props}
       ref={ref}
+      containerComponent={renderContainerComponent}
       containerStyle={[props.containerStyle]}
       backgroundStyle={[styles.background, props.backgroundStyle]}
       handleIndicatorStyle={[

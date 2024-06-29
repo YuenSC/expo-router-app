@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
-import { usePostCreateUserInGroup } from "../../api/hooks/usePostCreateUserInGroup";
-import { User } from "../../api/types/User";
-import { VStack } from "../Stack";
+import { usePostCreateUserInGroup } from "../../../api/hooks/usePostCreateUserInGroup";
+import { User } from "../../../api/types/User";
+import { VStack } from "../../Stack";
 
 type IUserListFormFooterProps = {
   groupId?: string;

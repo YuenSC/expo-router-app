@@ -1,16 +1,17 @@
 import { Text, makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
+import { Link } from "expo-router";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { SectionList, TouchableOpacity, View } from "react-native";
 
+import UserDisplay from "./UserDisplay";
 import UserListFormFooter from "./UserListFormFooter";
-import { useGetGroup } from "../../api/hooks/useGetGroup";
-import { useGetMe } from "../../api/hooks/useGetMe";
-import { User } from "../../api/types/User";
-import ImagePickerBottomSheetModal from "../ImagePickerBottomSheetModal";
-import ProfileImageUpload from "../ProfileImageUpload";
-import { HStack } from "../Stack";
+import { useGetGroup } from "../../../api/hooks/useGetGroup";
+import { useGetMe } from "../../../api/hooks/useGetMe";
+import { User } from "../../../api/types/User";
+import ImagePickerBottomSheetModal from "../../ImagePickerBottomSheetModal";
+import { HStack } from "../../Stack";
 
 import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import { useBottomSheetModal } from "@/src/hooks/useBottomSheetModal";
@@ -101,39 +102,17 @@ const UserListForm = memo<IUserListFormProps>(
             const isOtherVerifiedUser = Boolean(user.email) && !isProfileUser;
 
             return (
-              <TouchableOpacity
-                disabled={isOtherVerifiedUser}
-                onPress={() => {}}
-              >
-                <HStack alignItems="center" style={styles.memberContainer}>
-                  <HStack gap={16}>
-                    <ProfileImageUpload
-                      icon="person-outline"
-                      disabled={isOtherVerifiedUser}
-                      onPress={() => open(user.id)}
-                      imageUrl={user.imageUrl}
-                    />
-
-                    <HStack gap={2} alignItems="center">
-                      <Text style={styles.memberName}>{user.name}</Text>
-
-                      {isProfileUser && (
-                        <Text style={styles.profileLabel}>
-                          {t("Common:profileUserLabel")}
-                        </Text>
-                      )}
-                    </HStack>
-                  </HStack>
-
-                  {isAdmin && (
-                    <View style={styles.adminLabelContainer}>
-                      <Text style={styles.adminLabel}>
-                        {t("Common:adminLabel")}
-                      </Text>
-                    </View>
-                  )}
-                </HStack>
-              </TouchableOpacity>
+              <Link href={`user/${user.id}`} asChild>
+                <TouchableOpacity disabled={isOtherVerifiedUser}>
+                  <UserDisplay
+                    isAdmin={isAdmin}
+                    userId={user.id}
+                    onPressProfileImage={() => open(user.id)}
+                    isProfileImageDisabled={isOtherVerifiedUser}
+                    isProfileUser={isProfileUser}
+                  />
+                </TouchableOpacity>
+              </Link>
             );
           }}
         />
@@ -167,30 +146,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 4,
     marginLeft: 8,
   },
-  memberContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingRight: 8,
-  },
   divider: {
     height: 1,
     backgroundColor: "#D6D6D6",
     marginVertical: 8,
-  },
-  memberName: {
-    fontSize: 18,
-  },
-  profileLabel: {
-    fontStyle: "italic",
-    color: theme.colors.primary,
-  },
-  adminLabelContainer: {
-    marginLeft: "auto",
-  },
-  adminLabel: {
-    fontStyle: "italic",
-    color: theme.colors.primary,
   },
   sectionHeader: {
     fontWeight: "bold",

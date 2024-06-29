@@ -1,66 +1,84 @@
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { Button, Input, Text, makeStyles } from "@rneui/themed";
-import { memo, useRef } from "react";
+import { memo, useEffect, useMemo, useRef } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Keyboard, StyleProp, View, ViewStyle } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
-import ImagePickerBottomSheetModal from "../ImagePickerBottomSheetModal";
-import ProfileImageUpload from "../ProfileImageUpload";
-import { VStack } from "../Stack";
+import ImagePickerBottomSheetModal from "../../ImagePickerBottomSheetModal";
+import ProfileImageUpload from "../../ProfileImageUpload";
+import { VStack } from "../../Stack";
 
 import Config from "@/src/Config";
 import { PatchUserUpdatePayload, User } from "@/src/api/types/User";
 
 type IUserFormProps = {
   isEdit?: boolean;
-  onSubmit: (values: PatchUserUpdatePayload) => Promise<void>;
+  onSubmit: (values: PatchUserUpdatePayload) => void;
   onDelete?: () => void;
   user?: User;
   submitButtonText: string;
   style?: StyleProp<ViewStyle>;
+  isHideTitle?: boolean;
+  isSubmitting?: boolean;
 };
 
 const UserForm = memo<IUserFormProps>(
-  ({ onSubmit, isEdit, user, onDelete, submitButtonText, style }) => {
+  ({
+    onSubmit,
+    isEdit,
+    user,
+    onDelete,
+    submitButtonText,
+    style,
+    isHideTitle,
+    isSubmitting,
+  }) => {
     const insets = useSafeAreaInsets();
     const styles = useStyles(insets);
     const { t } = useTranslation();
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-    const {
-      control,
-      handleSubmit,
-      formState: { isSubmitting },
-      setValue,
-    } = useForm<PatchUserUpdatePayload>({
-      shouldUnregister: false,
-      defaultValues: Config.env === "local" ? { name: "test-user" } : {},
-    });
+    const { control, handleSubmit, setValue } = useForm<PatchUserUpdatePayload>(
+      {
+        shouldUnregister: false,
+        defaultValues: Config.env === "local" ? { name: "test-user" } : {},
+      },
+    );
     const profileImageWatch = useWatch({ control, name: "profileImage" });
     const imageUrl = profileImageWatch?.uri || user?.imageUrl;
 
+    const title = useMemo(() => {
+      if (isEdit) {
+        return t("UserForm:edit-member");
+      }
+
+      return user?.name
+        ? t("UserForm:hi-user", {
+            name: user.name,
+          })
+        : t("UserForm:create-profile");
+    }, [isEdit, t, user?.name]);
+
+    useEffect(() => {
+      if (user) {
+        setValue("name", user.name);
+      }
+    }, [setValue, user]);
+
     return (
       <View style={[styles.container, style]}>
-        {isEdit ? (
+        {!isHideTitle && (
           <Text h1 style={styles.title}>
-            {t("UserForm:edit-member")}
-          </Text>
-        ) : (
-          <Text h1 style={styles.title}>
-            {user?.name
-              ? t("UserForm:hi-user", {
-                  name: user.name,
-                })
-              : t("UserForm:create-profile")}
+            {title}
           </Text>
         )}
 
         <Controller
           control={control}
           name="name"
-          rules={{ required: t("UserForm:name-s") }}
+          rules={{ required: t("UserForm.name-is-required") }}
           render={({ field, fieldState: { error } }) => (
             <Input
               autoFocus
@@ -85,7 +103,7 @@ const UserForm = memo<IUserFormProps>(
           />
         </VStack>
 
-        <VStack alignItems="stretch" gap={4}>
+        <VStack alignItems="stretch" gap={12}>
           <Button
             title={submitButtonText}
             containerStyle={styles.button}

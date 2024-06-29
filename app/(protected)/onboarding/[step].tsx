@@ -2,7 +2,11 @@ import { makeStyles } from "@rneui/themed";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { KeyboardAvoidingView, ScrollView } from "react-native";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  ScrollViewProps,
+} from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useGetGroupList } from "@/src/api/hooks/useGetGroupList";
@@ -11,11 +15,15 @@ import { usePatchGroupUpdate } from "@/src/api/hooks/usePatchGroupUpdate";
 import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import { usePostGroupCreate } from "@/src/api/hooks/usePostGroupCreate";
 import GroupForm from "@/src/components/GroupForm";
-import UserForm from "@/src/components/UserForm/UserForm";
-import UserListForm from "@/src/components/UserList/UserListForm";
+import UserForm from "@/src/components/User/UserForm/UserForm";
+import UserListForm from "@/src/components/User/UserList/UserListForm";
 
-//TODO: Use only one post api to create user, group, and add users to group
-//to prevent creating duplicate stuff if user stop the onboarding process
+const scrollViewProps = {
+  keyboardDismissMode: "on-drag",
+  keyboardShouldPersistTaps: "always",
+  contentContainerStyle: { flex: 1 },
+} satisfies ScrollViewProps;
+
 const OnboardingPage = () => {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
@@ -36,11 +44,25 @@ const OnboardingPage = () => {
   const firstGroupCreatedByUser = groups[0];
 
   // Mutations
-  const { mutateAsync: patchUserUpdate } = usePatchUserUpdate({
-    onSuccess: () => refetchMe(),
-  });
-  const { mutateAsync: postGroupCreate } = usePostGroupCreate({});
-  const { mutateAsync: patchGroupUpdate } = usePatchGroupUpdate({});
+  const { mutate: patchUserUpdate, isPending: isPendingPatchUserUpdate } =
+    usePatchUserUpdate({
+      onSuccess: () => {
+        refetchMe();
+        router.push("/onboarding/1");
+      },
+    });
+  const { mutate: postGroupCreate, isPending: isPendingPostGroupCreate } =
+    usePostGroupCreate({
+      onSuccess: ({ data: { id } }) => {
+        router.push(`/onboarding/2?groupId=${id}`);
+      },
+    });
+  const { mutate: patchGroupUpdate, isPending: isPendingPatchGroupUpdate } =
+    usePatchGroupUpdate({
+      onSuccess: ({ data: { id } }) => {
+        router.push(`/onboarding/2?groupId=${id}`);
+      },
+    });
 
   useEffect(() => {
     navigation.setOptions({
@@ -58,46 +80,31 @@ const OnboardingPage = () => {
       keyboardVerticalOffset={100}
     >
       {step === 0 && (
-        <ScrollView
-          style={styles.container}
-          keyboardDismissMode="on-drag"
-          contentContainerStyle={{ flex: 1 }}
-        >
+        <ScrollView style={styles.container} {...scrollViewProps}>
           <UserForm
             style={styles.contentContainer}
             submitButtonText={t("Common:next")}
             user={user}
-            onSubmit={async (values) => {
-              if (!user?.id) return;
-              await patchUserUpdate({ ...values, id: user.id }).then(() => {
-                router.push("/onboarding/1");
-              });
-            }}
+            isSubmitting={isPendingPatchUserUpdate}
+            onSubmit={(values) =>
+              patchUserUpdate({ ...values, id: user?.id || "" })
+            }
           />
         </ScrollView>
       )}
 
       {step === 1 && (
-        <ScrollView
-          style={styles.container}
-          keyboardDismissMode="on-drag"
-          contentContainerStyle={{ flex: 1 }}
-        >
+        <ScrollView style={styles.container} {...scrollViewProps}>
           <GroupForm
             groupId={groups[0]?.id}
+            isSubmitting={isPendingPostGroupCreate || isPendingPatchGroupUpdate}
             onSubmit={(values) => {
-              if (!firstGroupCreatedByUser)
-                postGroupCreate(values).then(({ data: group }) => {
-                  router.push(`/onboarding/2?groupId=${group.id}`);
-                });
-              else {
+              if (!firstGroupCreatedByUser) {
+                postGroupCreate(values);
+              } else {
                 patchGroupUpdate({
                   ...values,
                   id: firstGroupCreatedByUser.id,
-                }).then(() => {
-                  router.push(
-                    `/onboarding/2?groupId=${firstGroupCreatedByUser.id}`,
-                  );
                 });
               }
             }}
@@ -109,9 +116,7 @@ const OnboardingPage = () => {
         <UserListForm
           groupId={groupId}
           buttonText={t("Common:done")}
-          onSubmit={() => {
-            router.push("/onboarding/success");
-          }}
+          onSubmit={() => router.push("/onboarding/success")}
         />
       )}
     </KeyboardAvoidingView>

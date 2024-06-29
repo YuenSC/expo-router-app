@@ -1,8 +1,10 @@
 import { useTheme } from "@rneui/themed";
 import { Stack } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 export default function RootLayout() {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Stack
@@ -17,12 +19,24 @@ export default function RootLayout() {
         },
       }}
     >
+      <Stack.Screen name="(tab)" />
+
+      {/* Onboarding */}
       <Stack.Screen
         name="onboarding/success"
-        options={{ headerShown: false, presentation: "transparentModal" }}
+        options={{ presentation: "transparentModal" }}
       />
-      <Stack.Screen name="onboarding/[step]" options={{ headerShown: false }} />
-      <Stack.Screen name="(tab)" options={{ headerShown: false }} />
+      <Stack.Screen name="onboarding/[step]" />
+
+      {/* User */}
+      <Stack.Screen
+        name="user/[id]"
+        options={{
+          headerShown: true,
+          headerTitle: t("UserForm:edit-member"),
+          presentation: "modal",
+        }}
+      />
     </Stack>
   );
 }

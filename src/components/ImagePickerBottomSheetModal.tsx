@@ -26,6 +26,7 @@ const ImagePickerBottomSheetModal = forwardRef<
 
   const handleImageAsset = async (result: ImagePicker.ImagePickerResult) => {
     if (result.canceled || !result?.assets?.[0]) {
+      bottomSheetRef.current?.present();
       return;
     }
     const { uri, fileName, mimeType } = result.assets[0];
@@ -33,8 +34,10 @@ const ImagePickerBottomSheetModal = forwardRef<
   };
 
   const takePhoto = async () => {
+    bottomSheetRef.current?.close();
     const res = await ImagePicker.requestCameraPermissionsAsync();
     if (res.granted === false) {
+      bottomSheetRef.current?.present();
       Toast.show({
         type: "error",
         text1: t("UserForm.camera-permission-required"),
@@ -50,16 +53,15 @@ const ImagePickerBottomSheetModal = forwardRef<
       allowsEditing: true,
     });
     await handleImageAsset(result);
-    bottomSheetRef.current?.close();
   };
 
   const pickImage = async () => {
+    bottomSheetRef.current?.close();
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
     });
     await handleImageAsset(result);
-    bottomSheetRef.current?.close();
   };
 
   useImperativeHandle(ref, () => ({

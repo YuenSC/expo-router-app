@@ -4,7 +4,13 @@ import { ThemeProvider, useTheme } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 import { useFonts } from "expo-font";
-import { Stack, useRouter, useSegments } from "expo-router";
+import {
+  Stack,
+  useGlobalSearchParams,
+  usePathname,
+  useRouter,
+  useSegments,
+} from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -22,6 +28,7 @@ import { toastConfig } from "@/src/styles/toastConfig";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      staleTime: 10000,
       retry: (failureCount, error) => {
         if (axios.isAxiosError(error)) {
           return error.response?.status !== 401;
@@ -109,11 +116,18 @@ const StackLayout = () => {
 };
 
 export default function RootLayout() {
+  const pathname = usePathname();
+  const params = useGlobalSearchParams();
   useReactQueryDevTools(queryClient);
 
   const [loaded] = useFonts({
     SpaceMono: require("../src/assets/fonts/SpaceMono-Regular.ttf"),
   });
+
+  // Track the location in your analytics provider here.
+  useEffect(() => {
+    console.log("Location changed", pathname, params);
+  }, [pathname, params]);
 
   useEffect(() => {
     if (loaded) {

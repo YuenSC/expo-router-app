@@ -9,65 +9,69 @@ import { PostGroupCreatePayload } from "../api/types/Group";
 
 type IGroupFormProps = {
   groupId?: string;
+  isSubmitting?: boolean;
   onSubmit: (values: PostGroupCreatePayload) => void;
   isProfileUserIncluded?: boolean;
 };
 
-const GroupForm = memo<IGroupFormProps>(({ groupId, onSubmit }) => {
-  const styles = useStyles();
-  const isEdit = groupId;
-  const { t } = useTranslation();
+const GroupForm = memo<IGroupFormProps>(
+  ({ groupId, onSubmit, isSubmitting }) => {
+    const styles = useStyles();
+    const isEdit = groupId;
+    const { t } = useTranslation();
 
-  const { data: group } = useGetGroup({ id: groupId || "" });
-  const { control, handleSubmit } = useForm<PostGroupCreatePayload>({
-    defaultValues: {
-      name: group?.name || "Calvin Group", // TODO: remove default value after testing,
-      description: group?.description || "Calvin Group Description", // TODO: remove default value after testing,
-    },
-  });
+    const { data: group } = useGetGroup({ id: groupId || "" });
+    const { control, handleSubmit } = useForm<PostGroupCreatePayload>({
+      defaultValues: {
+        name: group?.name || "Calvin Group", // TODO: remove default value after testing,
+        description: group?.description || "Calvin Group Description", // TODO: remove default value after testing,
+      },
+    });
 
-  return (
-    <View style={styles.container}>
-      <Text h1 style={styles.title}>
-        {group?.name || t("GroupForm:create-group")}
-      </Text>
+    return (
+      <View style={styles.container}>
+        <Text h1 style={styles.title}>
+          {group?.name || t("GroupForm:create-group")}
+        </Text>
 
-      <Controller
-        control={control}
-        name="name"
-        rules={{ required: t("GroupForm:group-name-is-required") }}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Input
-            onChangeText={onChange}
-            value={value}
-            placeholder={t("GroupForm:your-first-group-expense")}
-            label={t("GroupForm:group-name")}
-            errorMessage={error?.message}
-          />
-        )}
-      />
-      <Controller
-        control={control}
-        name="description"
-        rules={{ required: t("GroupForm:group-description-is-required") }}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Input
-            onChangeText={onChange}
-            value={value}
-            placeholder={t("GroupForm:group-description-placeholder")}
-            label={t("GroupForm:group-description")}
-            errorMessage={error?.message}
-          />
-        )}
-      />
-      <Button
-        title={isEdit ? t("Common:edit") : t("Common:create")}
-        containerStyle={styles.button}
-        onPress={handleSubmit(onSubmit)}
-      />
-    </View>
-  );
-});
+        <Controller
+          control={control}
+          name="name"
+          rules={{ required: t("GroupForm:group-name-is-required") }}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <Input
+              onChangeText={onChange}
+              value={value}
+              placeholder={t("GroupForm:your-first-group-expense")}
+              label={t("GroupForm:group-name")}
+              errorMessage={error?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="description"
+          rules={{ required: t("GroupForm:group-description-is-required") }}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <Input
+              onChangeText={onChange}
+              value={value}
+              placeholder={t("GroupForm:group-description-placeholder")}
+              label={t("GroupForm:group-description")}
+              errorMessage={error?.message}
+            />
+          )}
+        />
+        <Button
+          title={isEdit ? t("Common:edit") : t("Common:create")}
+          containerStyle={styles.button}
+          loading={isSubmitting}
+          onPress={handleSubmit(onSubmit)}
+        />
+      </View>
+    );
+  },
+);
 
 const useStyles = makeStyles((theme) => ({
   container: {

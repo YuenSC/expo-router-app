@@ -1,4 +1,3 @@
-import { BottomSheetView } from "@gorhom/bottom-sheet";
 import BottomSheet from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet";
 import { Button, makeStyles, Text } from "@rneui/themed";
 import { useRouter } from "expo-router";
@@ -11,6 +10,7 @@ import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
 import StyledBottomSheet from "@/src/components/common/StyledBottomSheet";
+import StyledBottomSheetView from "@/src/components/common/StyledBottomSheetView";
 
 const OnboardingSuccessPage = () => {
   const insets = useSafeAreaInsets();
@@ -37,7 +37,7 @@ const OnboardingSuccessPage = () => {
       enablePanDownToClose
       onClose={onClose}
     >
-      <BottomSheetView style={styles.contentContainer}>
+      <StyledBottomSheetView style={styles.contentContainer}>
         <LottieView
           autoPlay
           loop={false}
@@ -57,15 +57,13 @@ const OnboardingSuccessPage = () => {
             onPress={onClose}
           />
         </View>
-      </BottomSheetView>
+      </StyledBottomSheetView>
     </StyledBottomSheet>
   );
 };
 
 const useStyles = makeStyles((theme, inset: EdgeInsets) => ({
   contentContainer: {
-    flex: 0,
-    minHeight: 100,
     paddingHorizontal: 24,
     paddingBottom: Math.max(inset.bottom + 16, 16),
   },
