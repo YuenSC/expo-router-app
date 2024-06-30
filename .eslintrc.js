@@ -8,12 +8,17 @@ module.exports = {
         paths: [
           {
             name: "react-native",
-            importNames: ["Text"],
+            importNames: ["Text", "Image"],
             message: "Please use Text from rneui instead.",
           },
           {
             name: "@rneui/base",
             message: "Please use @rneui/theme instead.",
+          },
+          {
+            name: "@rneui/themed",
+            importNames: ["Image"],
+            message: "Please use StyledImage instead.",
           },
         ],
       },

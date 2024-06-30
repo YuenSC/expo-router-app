@@ -1,6 +1,7 @@
-import { Image, makeStyles } from "@rneui/themed";
+import { makeStyles } from "@rneui/themed";
 import { memo } from "react";
-import { ActivityIndicator } from "react-native";
+
+import StyledImage from "./common/StyledImage";
 
 type IProfileImageDisplayProps = {
   imageUrl: string;
@@ -9,17 +10,11 @@ type IProfileImageDisplayProps = {
 const ProfileImageDisplay = memo<IProfileImageDisplayProps>(({ imageUrl }) => {
   const styles = useStyles();
 
-  return (
-    <Image
-      source={{ uri: imageUrl }}
-      PlaceholderContent={<ActivityIndicator />}
-      containerStyle={styles.profileImageContainer}
-    />
-  );
+  return <StyledImage source={{ uri: imageUrl }} style={styles.image} />;
 });
 
 const useStyles = makeStyles((theme) => ({
-  profileImageContainer: {
+  image: {
     height: 60,
     width: 60,
     borderRadius: 30,

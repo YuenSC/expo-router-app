@@ -38,9 +38,9 @@ const UserListForm = memo<IUserListFormProps>(
     const { data: group } = useGetGroup({ id: groupId || "" });
 
     const { mutate: patchUserUpdate } = usePatchUserUpdate({
-      onSuccess: async () => {
+      onSuccess: async ({ data: { id } }) => {
         await queryClient.invalidateQueries({
-          queryKey: ["group", groupId],
+          queryKey: ["user", id],
         });
       },
     });

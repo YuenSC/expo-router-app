@@ -1,11 +1,12 @@
 import { Text } from "@rneui/themed";
-import { Button, Image, StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import { useAuth } from "@/src/components/AuthContext";
 import { HelloWave } from "@/src/components/HelloWave";
 import ParallaxScrollView from "@/src/components/ParallaxScrollView";
+import StyledImage from "@/src/components/common/StyledImage";
 
 export default function HomeScreen() {
   const { onLogout } = useAuth();
@@ -17,7 +18,7 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
       headerImage={
-        <Image
+        <StyledImage
           source={require("@/src/assets/images/partial-react-logo.png")}
           style={styles.reactLogo}
         />
