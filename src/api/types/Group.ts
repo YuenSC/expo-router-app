@@ -26,6 +26,12 @@ export interface PostCreateUserInGroupPayload {
 }
 export type PostCreateUserInGroupResponse = ApiResponse<User>;
 
+export interface DeleteUserInGroupPayload {
+  groupId: string;
+  userId: string;
+}
+export type DeleteUserInGroupResponse = ApiResponse<unknown>;
+
 export interface PatchGroupUpdatePayload {
   id: string;
   name?: string;

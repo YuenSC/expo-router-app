@@ -7,13 +7,13 @@ import { SectionList, TouchableOpacity, View } from "react-native";
 
 import UserDisplay from "./UserDisplay";
 import UserListFormFooter from "./UserListFormFooter";
-import { useGetGroup } from "../../../api/hooks/useGetGroup";
+import { useGetGroup } from "../../../api/hooks/group/useGetGroup";
 import { useGetMe } from "../../../api/hooks/useGetMe";
 import { User } from "../../../api/types/User";
 import ImagePickerBottomSheetModal from "../../ImagePickerBottomSheetModal";
 import { HStack } from "../../Stack";
 
-import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
+import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import { useBottomSheetModal } from "@/src/hooks/useBottomSheetModal";
 
 type IUserListFormProps = {
@@ -102,7 +102,7 @@ const UserListForm = memo<IUserListFormProps>(
             const isOtherVerifiedUser = Boolean(user.email) && !isProfileUser;
 
             return (
-              <Link href={`user/${user.id}`} asChild>
+              <Link href={`user/${user.id}?groupId=${groupId}`} asChild>
                 <TouchableOpacity disabled={isOtherVerifiedUser}>
                   <UserDisplay
                     isAdmin={isAdmin}

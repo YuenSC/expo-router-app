@@ -4,7 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 
-import { useGetGroup } from "../api/hooks/useGetGroup";
+import { useGetGroup } from "../api/hooks/group/useGetGroup";
 import { PostGroupCreatePayload } from "../api/types/Group";
 
 type IGroupFormProps = {

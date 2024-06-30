@@ -8,6 +8,8 @@ import {
   GetUserResponse,
   PatchUserUpdatePayload,
   PatchUserUpdateResponse,
+  DeleteUserPayload,
+  DeleteUserResponse,
 } from "./types/User";
 
 export const getUser = async ({
@@ -27,4 +29,10 @@ export const postUserCreate = async (
   payload: PostUserCreatePayload,
 ): Promise<PostUserCreateResponse> => {
   return (await axios.post("/api/users", toFormData(payload))).data;
+};
+
+export const deleteUser = async ({
+  id,
+}: DeleteUserPayload): Promise<DeleteUserResponse> => {
+  return (await axios.delete(`/api/users/${id}`)).data;
 };

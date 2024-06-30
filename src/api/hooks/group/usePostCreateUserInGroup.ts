@@ -1,10 +1,10 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { postCreateUserInGroup } from "../group";
+import { postCreateUserInGroup } from "../../group";
 import {
   PostCreateUserInGroupPayload,
   PostCreateUserInGroupResponse,
-} from "../types/Group";
+} from "../../types/Group";
 
 export const usePostCreateUserInGroup = (
   options: Omit<

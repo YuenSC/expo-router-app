@@ -1,7 +1,7 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 
-import { getGroup } from "../group";
-import { GetGroupPayload, GetGroupResponse } from "../types/Group";
+import { getGroup } from "../../group";
+import { GetGroupPayload, GetGroupResponse } from "../../types/Group";
 
 export const useGetGroup = (
   payload: GetGroupPayload,

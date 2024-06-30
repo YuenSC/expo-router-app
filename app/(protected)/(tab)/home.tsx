@@ -2,7 +2,7 @@ import { Text } from "@rneui/themed";
 import { Button, Image, StyleSheet, View } from "react-native";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
-import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
+import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import { useAuth } from "@/src/components/AuthContext";
 import { HelloWave } from "@/src/components/HelloWave";
 import ParallaxScrollView from "@/src/components/ParallaxScrollView";

@@ -6,7 +6,7 @@ import { View } from "react-native";
 import ProfileImageUpload from "../../ProfileImageUpload";
 import { HStack } from "../../Stack";
 
-import { useGetUser } from "@/src/api/hooks/useGetUser";
+import { useGetUser } from "@/src/api/hooks/user/useGetUser";
 
 type IUserDisplayProps = {
   userId: string;

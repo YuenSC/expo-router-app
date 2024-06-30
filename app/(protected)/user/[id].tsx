@@ -4,8 +4,9 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 
-import { useGetUser } from "@/src/api/hooks/useGetUser";
-import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
+import { useDeleteUserInGroup } from "@/src/api/hooks/group/useDeleteUserInGroup";
+import { useGetUser } from "@/src/api/hooks/user/useGetUser";
+import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import UserForm from "@/src/components/User/UserForm/UserForm";
 
 const UserUpdateBottomSheet = () => {
@@ -13,7 +14,10 @@ const UserUpdateBottomSheet = () => {
   const styles = useStyles();
   const { t } = useTranslation();
   const queryClient = useQueryClient();
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, groupId } = useLocalSearchParams<{
+    id: string;
+    groupId: string;
+  }>();
 
   const { data: user } = useGetUser({ id: id || "" });
 
@@ -22,6 +26,14 @@ const UserUpdateBottomSheet = () => {
       router.back();
       queryClient.invalidateQueries({
         queryKey: ["user", user?.id],
+      });
+    },
+  });
+  const { mutate: deleteUserInGroup } = useDeleteUserInGroup({
+    onSuccess: () => {
+      router.back();
+      queryClient.invalidateQueries({
+        queryKey: ["group", groupId],
       });
     },
   });
@@ -37,7 +49,11 @@ const UserUpdateBottomSheet = () => {
           onSubmit={(values) =>
             patchUserUpdate({ ...values, id: user?.id || "" })
           }
-          onDelete={() => {}}
+          onDelete={
+            groupId && id
+              ? () => deleteUserInGroup({ userId: id || "", groupId })
+              : undefined
+          }
           isHideTitle
         />
       </View>

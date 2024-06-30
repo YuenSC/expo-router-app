@@ -81,7 +81,6 @@ const UserForm = memo<IUserFormProps>(
           rules={{ required: t("UserForm.name-is-required") }}
           render={({ field, fieldState: { error } }) => (
             <Input
-              autoFocus
               placeholder={t("UserForm:username")}
               label={t("UserForm:who-are-you")}
               value={field.value}

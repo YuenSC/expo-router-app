@@ -1,24 +1,24 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { postGroupCreate } from "../group";
 import {
-  PostGroupCreatePayload,
-  PostGroupCreateResponse,
-} from "../types/Group";
+  PatchUserUpdatePayload,
+  PatchUserUpdateResponse,
+} from "../../types/User";
+import { patchUserUpdate } from "../../user";
 
-export const usePostGroupCreate = (
+export const usePatchUserUpdate = (
   options: Omit<
     UseMutationOptions<
-      PostGroupCreateResponse,
+      PatchUserUpdateResponse,
       Error,
-      PostGroupCreatePayload,
+      PatchUserUpdatePayload,
       unknown
     >,
     "mutationFn"
   >,
 ) => {
   const mutation = useMutation({
-    mutationFn: postGroupCreate,
+    mutationFn: patchUserUpdate,
     ...options,
   });
 

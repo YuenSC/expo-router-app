@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { useGetGroupList } from "@/src/api/hooks/useGetGroupList";
+import { useGetGroupList } from "@/src/api/hooks/group/useGetGroupList";
+import { usePatchGroupUpdate } from "@/src/api/hooks/group/usePatchGroupUpdate";
+import { usePostGroupCreate } from "@/src/api/hooks/group/usePostGroupCreate";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
-import { usePatchGroupUpdate } from "@/src/api/hooks/usePatchGroupUpdate";
-import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
-import { usePostGroupCreate } from "@/src/api/hooks/usePostGroupCreate";
+import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import GroupForm from "@/src/components/GroupForm";
 import UserForm from "@/src/components/User/UserForm/UserForm";
 import UserListForm from "@/src/components/User/UserList/UserListForm";

@@ -37,3 +37,8 @@ export interface PostUserCreatePayload {
   };
 }
 export type PostUserCreateResponse = ApiResponse<User>;
+
+export interface DeleteUserPayload {
+  id: string;
+}
+export type DeleteUserResponse = ApiResponse<User>;

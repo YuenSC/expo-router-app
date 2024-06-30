@@ -2,6 +2,8 @@ import axios from "axios";
 import queryString from "query-string";
 
 import {
+  DeleteUserInGroupPayload,
+  DeleteUserInGroupResponse,
   GetGroupPayload,
   GetGroupResponse,
   Group,
@@ -26,13 +28,6 @@ export const getGroup = async ({
   return (await axios.get(`/api/groups/${id}`)).data;
 };
 
-export const postCreateUserInGroup = async ({
-  groupId,
-  ...payload
-}: PostCreateUserInGroupPayload): Promise<PostCreateUserInGroupResponse> => {
-  return await axios.post(`/api/groups/${groupId}/users/create-user`, payload);
-};
-
 export const getGroupList = async (
   payload: ApiPaginatedPayload,
 ): Promise<ApiPaginatedResponse<Group>> => {
@@ -45,4 +40,19 @@ export const patchGroupUpdate = async ({
   ...payload
 }: PatchGroupUpdatePayload): Promise<PatchGroupUpdateResponse> => {
   return (await axios.patch(`/api/groups/${id}`, payload)).data;
+};
+
+export const postCreateUserInGroup = async ({
+  groupId,
+  ...payload
+}: PostCreateUserInGroupPayload): Promise<PostCreateUserInGroupResponse> => {
+  return (await axios.post(`/api/groups/${groupId}/users/create-user`, payload))
+    .data;
+};
+
+export const deleteUserInGroup = async ({
+  groupId,
+  userId,
+}: DeleteUserInGroupPayload): Promise<DeleteUserInGroupResponse> => {
+  return (await axios.delete(`/api/groups/${groupId}/users/${userId}`)).data;
 };

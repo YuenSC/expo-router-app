@@ -8,7 +8,7 @@ import { View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
-import { usePatchUserUpdate } from "@/src/api/hooks/usePatchUserUpdate";
+import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import StyledBottomSheet from "@/src/components/common/StyledBottomSheet";
 import StyledBottomSheetView from "@/src/components/common/StyledBottomSheetView";
 
