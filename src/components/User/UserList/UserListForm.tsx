@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { SectionList, TouchableOpacity, View } from "react-native";
+import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import UserDisplay from "./UserDisplay";
 import UserListFormFooter from "./UserListFormFooter";
@@ -25,7 +26,8 @@ type IUserListFormProps = {
 
 const UserListForm = memo<IUserListFormProps>(
   ({ groupId, onSubmit, buttonText, selectableUsers = [] }) => {
-    const styles = useStyles();
+    const insets = useSafeAreaInsets();
+    const styles = useStyles(insets);
     const { t } = useTranslation();
     const { data: profile } = useGetMe();
     const {
@@ -71,6 +73,7 @@ const UserListForm = memo<IUserListFormProps>(
       <View style={styles.container}>
         <SectionList
           sections={sections}
+          contentContainerStyle={styles.contentContainer}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.sectionHeader}>{title}</Text>
           )}
@@ -129,10 +132,14 @@ const UserListForm = memo<IUserListFormProps>(
   },
 );
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, inset: EdgeInsets) => ({
   container: {
     flex: 1,
-    padding: 16,
+  },
+  contentContainer: {
+    paddingTop: 16,
+    paddingHorizontal: 16,
+    paddingBottom: Math.max(inset.bottom, 16),
   },
   headerTitle: {
     fontWeight: "bold",
@@ -148,13 +155,14 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     height: 1,
-    backgroundColor: "#D6D6D6",
+    backgroundColor: theme.colors.divider,
     marginVertical: 8,
   },
   sectionHeader: {
     fontWeight: "bold",
     fontSize: 18,
-    marginBottom: 8,
+    marginBottom: 12,
+    backgroundColor: theme.colors.background,
   },
   sectionFooter: {
     marginVertical: 8,
