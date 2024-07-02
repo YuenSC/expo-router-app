@@ -6,8 +6,8 @@ import { useTranslation } from "react-i18next";
 import { SafeAreaView, TouchableWithoutFeedback } from "react-native";
 
 import Config from "@/src/Config";
-import ButtonWithRef from "@/src/components/ButtonWithRef";
-import { VStack } from "@/src/components/Stack";
+import ButtonWithRef from "@/src/components/common/ButtonWithRef";
+import { VStack } from "@/src/components/common/Stack";
 
 const WelcomePage = () => {
   const styles = useStyles();

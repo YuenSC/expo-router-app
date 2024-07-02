@@ -14,9 +14,9 @@ import { usePatchGroupUpdate } from "@/src/api/hooks/group/usePatchGroupUpdate";
 import { usePostGroupCreate } from "@/src/api/hooks/group/usePostGroupCreate";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
-import GroupForm from "@/src/components/GroupForm";
 import UserForm from "@/src/components/User/UserForm/UserForm";
 import UserListForm from "@/src/components/User/UserList/UserListForm";
+import GroupForm from "@/src/components/group/GroupForm";
 
 const scrollViewProps = {
   keyboardDismissMode: "on-drag",
