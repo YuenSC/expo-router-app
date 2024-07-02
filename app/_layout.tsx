@@ -71,7 +71,7 @@ const StackLayout = () => {
 
     // 1. if in protected page, check if token exists, if no, redirect to login
     if (inAuthGroup) {
-      authState.token === null && router.replace("/");
+      if (authState.token === null) router.replace("/");
       return;
     }
 
