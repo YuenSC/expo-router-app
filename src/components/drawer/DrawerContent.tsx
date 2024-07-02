@@ -1,6 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import { DrawerContentComponentProps } from "@react-navigation/drawer";
-import { Button, Text, makeStyles, useTheme } from "@rneui/themed";
+import { Text, makeStyles, useTheme } from "@rneui/themed";
 import { Link } from "expo-router";
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -8,13 +8,15 @@ import { TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import ButtonWithRef from "../ButtonWithRef";
+
 import Config from "@/src/Config";
 import { useGetGroupList } from "@/src/api/hooks/group/useGetGroupList";
 
 type IDrawerContentProps = DrawerContentComponentProps;
 
 const DrawerContent = forwardRef<View, IDrawerContentProps>(
-  ({ state }, ref) => {
+  ({ state, navigation }, ref) => {
     const styles = useStyles();
     const { theme } = useTheme();
     const { t } = useTranslation();
@@ -34,7 +36,6 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
             return (
               <Text h2 style={{ marginBottom: 16 }}>
                 {t("DrawerContent:groups")}
-                12343546845321
               </Text>
             );
           }}
@@ -42,14 +43,14 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
             // TODO: Add a page to create a new group
             return (
               <Link asChild href="/home">
-                <Button type="clear" size="sm">
+                <ButtonWithRef type="clear" size="sm">
                   <AntDesign
                     name="addusergroup"
                     size={24}
                     color={theme.colors.primary}
                   />
                   {t("DrawerContent:add-group")}
-                </Button>
+                </ButtonWithRef>
               </Link>
             );
           }}
