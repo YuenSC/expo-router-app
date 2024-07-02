@@ -20,7 +20,8 @@ import { FullWindowOverlay } from "react-native-screens";
 import Toast from "react-native-toast-message";
 
 import { setAxiosToken } from "@/src/api/axios";
-import { AuthProvider, useAuth } from "@/src/components/AuthContext";
+import { useGetMe } from "@/src/api/hooks/useGetMe";
+import { AuthProvider, useAuth } from "@/src/context/AuthContext";
 import "@/src/i18n";
 import theme from "@/src/styles/rneui";
 import { toastConfig } from "@/src/styles/toastConfig";
@@ -63,20 +64,26 @@ const StackLayout = () => {
   const router = useRouter();
   const { theme } = useTheme();
   const { t } = useTranslation();
+  const { data: user } = useGetMe();
 
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
-    if (authState.token === null && inAuthGroup) {
-      router.replace("/");
-    } else if (authState.token !== null && authState.user !== null) {
+
+    // 1. if in protected page, check if token exists, if no, redirect to login
+    if (inAuthGroup) {
+      authState.token === null && router.replace("/");
+      return;
+    }
+
+    // 2. if in public page, check if token exists, if yes, redirect to home
+    // 2.1. After login or sign up, me api will be refetch, trigger user object update and then redirect to home
+    if (authState.token !== null && !!user) {
       setAxiosToken(authState.token);
       if (router.canDismiss()) router.dismissAll();
-      router.replace(
-        authState?.user?.isOnboardingCompleted ? "/home" : "/onboarding/0",
-      );
+      router.replace(user?.isOnboardingCompleted ? "/home" : "/onboarding/0");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authState.token, authState.user]);
+  }, [authState.token, user]);
 
   return (
     <Stack

@@ -19,7 +19,7 @@ export default function RootLayout() {
         },
       }}
     >
-      <Stack.Screen name="(tab)" />
+      <Stack.Screen name="(drawer)" />
 
       {/* Onboarding */}
       <Stack.Screen

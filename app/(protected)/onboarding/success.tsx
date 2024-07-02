@@ -1,5 +1,6 @@
 import BottomSheet from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet";
 import { Button, makeStyles, Text } from "@rneui/themed";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import LottieView from "lottie-react-native";
 import { useRef } from "react";
@@ -17,10 +18,15 @@ const OnboardingSuccessPage = () => {
   const styles = useStyles(insets);
   const router = useRouter();
   const { t } = useTranslation();
+  const queryClient = useQueryClient();
   const ref = useRef<BottomSheet>(null);
 
   const { data } = useGetMe({});
-  const { mutate: patchUserUpdate } = usePatchUserUpdate({});
+  const { mutate: patchUserUpdate } = usePatchUserUpdate({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["me"] });
+    },
+  });
   const userId = data?.id;
 
   const onClose = () => {

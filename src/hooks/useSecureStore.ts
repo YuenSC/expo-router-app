@@ -11,6 +11,7 @@ const useSecureStore = (
   key: string,
   options?: {
     sync?: boolean; // Option to use synchronous storage retrieval if needed
+    onSuccess?: (value: string | null) => void;
   },
 ): UseSecureStoreReturn => {
   const [storedValue, setStoredValue] = useState<string | null>(null);
@@ -36,6 +37,7 @@ const useSecureStore = (
       const value = options?.sync
         ? SecureStore.getItem(key)
         : await SecureStore.getItemAsync(key);
+      options?.onSuccess?.(value);
       setStoredValue(value);
     } catch (error) {
       console.error("Failed to load data from secure storage:", error);

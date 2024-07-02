@@ -54,6 +54,10 @@ export const setAxiosToken = (token: string) => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
+export const removeAxiosToken = () => {
+  delete axios.defaults.headers.common["Authorization"];
+};
+
 export const getToken = () => {
   return axios.defaults.headers.common["Authorization"];
 };
