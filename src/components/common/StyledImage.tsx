@@ -9,10 +9,10 @@ const blurhash =
 const StyledImage = memo<IStyledImageProps>((props) => {
   return (
     <Image
-      {...props}
       placeholder={{ blurhash }}
       contentFit="cover"
       transition={1000}
+      {...props}
     />
   );
 });

@@ -68,7 +68,7 @@ const StackLayout = () => {
     const inAuthGroup = segments[0] === "(protected)";
     if (authState.token === null && inAuthGroup) {
       router.replace("/");
-    } else if (authState.token !== null) {
+    } else if (authState.token !== null && authState.user !== null) {
       setAxiosToken(authState.token);
       if (router.canDismiss()) router.dismissAll();
       router.replace(
@@ -76,7 +76,7 @@ const StackLayout = () => {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authState.token]);
+  }, [authState.token, authState.user]);
 
   return (
     <Stack
