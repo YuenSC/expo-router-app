@@ -3,8 +3,8 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 
-import ProfileImageUpload from "../../ProfileImageUpload";
-import { HStack } from "../../Stack";
+import { HStack } from "../../common/Stack";
+import ProfileImageUpload from "../ProfileImageUpload";
 
 import { useGetUser } from "@/src/api/hooks/user/useGetUser";
 

@@ -8,7 +8,7 @@ import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 import { usePostCreateUserInGroup } from "../../../api/hooks/group/usePostCreateUserInGroup";
 import { User } from "../../../api/types/User";
-import { VStack } from "../../Stack";
+import { VStack } from "../../common/Stack";
 
 type IUserListFormFooterProps = {
   groupId?: string;

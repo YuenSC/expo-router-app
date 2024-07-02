@@ -5,7 +5,7 @@ import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { PostLoginPayload } from "@/src/api/types/Login";
-import PasswordInput from "@/src/components/PasswordInput";
+import PasswordInput from "@/src/components/common/PasswordInput";
 import { useAuth } from "@/src/context/AuthContext";
 
 const Page = () => {

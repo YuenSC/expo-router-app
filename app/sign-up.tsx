@@ -6,7 +6,7 @@ import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import Config from "@/src/Config";
 import { PostSignUpPayload } from "@/src/api/types/SignUp";
-import PasswordRules from "@/src/components/PasswordRules";
+import PasswordRules from "@/src/components/common/PasswordRules";
 import { useAuth } from "@/src/context/AuthContext";
 
 const Page = () => {

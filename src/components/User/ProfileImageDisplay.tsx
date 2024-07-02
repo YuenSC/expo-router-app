@@ -1,7 +1,7 @@
 import { makeStyles } from "@rneui/themed";
 import { memo } from "react";
 
-import StyledImage from "./common/StyledImage";
+import StyledImage from "../common/StyledImage";
 
 type IProfileImageDisplayProps = {
   imageUrl: string;

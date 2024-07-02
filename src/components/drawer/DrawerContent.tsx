@@ -8,7 +8,7 @@ import { TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import ButtonWithRef from "../ButtonWithRef";
+import ButtonWithRef from "../common/ButtonWithRef";
 
 import Config from "@/src/Config";
 import { useGetGroupList } from "@/src/api/hooks/group/useGetGroupList";

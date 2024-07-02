@@ -4,9 +4,9 @@ import { Button, StyleSheet, View } from "react-native";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
-import { HelloWave } from "@/src/components/HelloWave";
-import ParallaxScrollView from "@/src/components/ParallaxScrollView";
 import StyledImage from "@/src/components/common/StyledImage";
+import { HelloWave } from "@/src/components/legacy/HelloWave";
+import ParallaxScrollView from "@/src/components/legacy/ParallaxScrollView";
 import { useAuth } from "@/src/context/AuthContext";
 
 export default function HomeScreen() {

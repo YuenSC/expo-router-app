@@ -12,7 +12,7 @@ import { useGetGroup } from "../../../api/hooks/group/useGetGroup";
 import { useGetMe } from "../../../api/hooks/useGetMe";
 import { User } from "../../../api/types/User";
 import ImagePickerBottomSheetModal from "../../ImagePickerBottomSheetModal";
-import { HStack } from "../../Stack";
+import { HStack } from "../../common/Stack";
 
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import { useBottomSheetModal } from "@/src/hooks/useBottomSheetModal";

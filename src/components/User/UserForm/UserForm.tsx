@@ -7,8 +7,8 @@ import { Keyboard, StyleProp, View, ViewStyle } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import ImagePickerBottomSheetModal from "../../ImagePickerBottomSheetModal";
-import ProfileImageUpload from "../../ProfileImageUpload";
-import { VStack } from "../../Stack";
+import { VStack } from "../../common/Stack";
+import ProfileImageUpload from "../ProfileImageUpload";
 
 import Config from "@/src/Config";
 import { PatchUserUpdatePayload, User } from "@/src/api/types/User";
