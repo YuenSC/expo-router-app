@@ -25,7 +25,7 @@
     "date-placeholder": "When do you do it?"
   },
   "BottomTabNavigator": {
-    "home": "Home",
+    "home": "Home Page",
     "options": "Options",
     "payment": "Payment",
     "stats": "Stats"
@@ -51,6 +51,7 @@
   },
   "DrawerContent": {
     "add-group": "Add Group",
+    "group-not-found": "Your original selected group cannot be found.",
     "groups": "Groups",
     "version": "Version {{version}}"
   },
@@ -223,6 +224,7 @@
     "title": "Welcome to Group Expense"
   },
   "common": {
+    "error": "Error",
     "get-started": "Get Started",
     "login": "Login",
     "sign-up": "Create New Account"

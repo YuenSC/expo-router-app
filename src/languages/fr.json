@@ -25,7 +25,7 @@
     "date-placeholder": "Quand est-ce que tu le fais?"
   },
   "BottomTabNavigator": {
-    "home": "Maison",
+    "home": "Page d'accueil",
     "options": "Possibilités",
     "payment": "Paiement",
     "stats": "Statistiques"

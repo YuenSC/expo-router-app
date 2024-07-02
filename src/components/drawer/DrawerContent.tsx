@@ -2,16 +2,19 @@ import { AntDesign } from "@expo/vector-icons";
 import { DrawerContentComponentProps } from "@react-navigation/drawer";
 import { Text, makeStyles, useTheme } from "@rneui/themed";
 import { Link } from "expo-router";
-import { forwardRef } from "react";
+import { forwardRef, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 import ButtonWithRef from "../common/ButtonWithRef";
+import EmptyComponent from "../common/EmptyComponent";
 
 import Config from "@/src/Config";
 import { useGetGroupList } from "@/src/api/hooks/group/useGetGroupList";
+import { useAppContext } from "@/src/context/AppContext";
 
 type IDrawerContentProps = DrawerContentComponentProps;
 
@@ -21,17 +24,59 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
     const { theme } = useTheme();
     const { t } = useTranslation();
 
-    const { data: groups } = useGetGroupList({
+    const { currentGroupId, setCurrentGroupId } = useAppContext();
+
+    const {
+      data: groups,
+      query: { isError },
+    } = useGetGroupList({
       page: 1,
       pageSize: 1000,
     });
+
+    const handleGroupNotFound = useCallback(() => {
+      setCurrentGroupId(null);
+      Toast.show({
+        type: "error",
+        text1: t("common:error"),
+        text2: t("DrawerContent:group-not-found"),
+      });
+    }, [setCurrentGroupId, t]); // `t` is a dependency of useCallback
+
+    useEffect(() => {
+      if (currentGroupId && isError) {
+        handleGroupNotFound();
+      }
+    }, [isError, handleGroupNotFound, t, currentGroupId]);
+
+    useEffect(() => {
+      if (!currentGroupId || isError) return;
+
+      if (!currentGroupId && groups.length > 0) {
+        setCurrentGroupId(groups[0].id);
+        return;
+      }
+
+      if (groups.find((group) => group.id === currentGroupId) === undefined) {
+        handleGroupNotFound();
+      }
+    }, [
+      currentGroupId,
+      groups,
+      setCurrentGroupId,
+      handleGroupNotFound,
+      t,
+      isError,
+    ]);
 
     return (
       <SafeAreaView ref={ref} style={styles.container}>
         <FlatList
           data={groups}
-          bounces={false}
           contentContainerStyle={styles.contentContainer}
+          ListEmptyComponent={() => (
+            <EmptyComponent emptyText="No Group Found" />
+          )}
           ListHeaderComponent={() => {
             return (
               <Text h2 style={{ marginBottom: 16 }}>
@@ -55,14 +100,14 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
             );
           }}
           renderItem={({ item }) => {
-            //TODO: Add a context to remember what is the current selected group
-            const isCurrentGroupSelected = false;
+            const isCurrentGroupSelected = item.id === currentGroupId;
             return (
               <TouchableOpacity
                 style={[
                   styles.group,
                   isCurrentGroupSelected && styles.groupSelected,
                 ]}
+                onPress={() => setCurrentGroupId(item.id)}
               >
                 <Text
                   style={[isCurrentGroupSelected && styles.groupNameSelected]}

@@ -25,7 +25,7 @@
     "date-placeholder": "你什麼時候做？"
   },
   "BottomTabNavigator": {
-    "home": "家",
+    "home": "首頁",
     "options": "選項",
     "payment": "支付",
     "stats": "統計數據"

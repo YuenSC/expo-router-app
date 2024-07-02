@@ -1,5 +1,5 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export const usePersistedState = <T>(key: string, defaultValue: T) => {
   const [value, setValue] = useState<T | null>(null);
@@ -15,7 +15,7 @@ export const usePersistedState = <T>(key: string, defaultValue: T) => {
     setValue(newValue);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     readItemFromStorage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

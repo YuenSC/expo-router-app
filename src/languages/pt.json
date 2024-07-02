@@ -25,7 +25,7 @@
     "date-placeholder": "Quando você faz isso?"
   },
   "BottomTabNavigator": {
-    "home": "Lar",
+    "home": "Pagina inicial",
     "options": "Opções",
     "payment": "Pagamento",
     "stats": "Estatísticas"

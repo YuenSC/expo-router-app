@@ -21,7 +21,8 @@ import Toast from "react-native-toast-message";
 
 import { setAxiosToken } from "@/src/api/axios";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
-import { AuthProvider, useAuth } from "@/src/context/AuthContext";
+import { useAuth } from "@/src/context/AuthContext";
+import ContextProvider from "@/src/context/ContextProvider";
 import "@/src/i18n";
 import theme from "@/src/styles/rneui";
 import { toastConfig } from "@/src/styles/toastConfig";
@@ -148,7 +149,7 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
+      <ContextProvider>
         <ThemeProvider theme={theme}>
           <GestureHandlerRootView style={{ flex: 1 }}>
             <BottomSheetModalProvider>
@@ -159,7 +160,7 @@ export default function RootLayout() {
             <Toast config={toastConfig} />
           </FullWindowOverlay>
         </ThemeProvider>
-      </AuthProvider>
+      </ContextProvider>
     </QueryClientProvider>
   );
 }

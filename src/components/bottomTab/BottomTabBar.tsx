@@ -5,73 +5,74 @@ import { Fragment, memo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { EdgeInsets } from "react-native-safe-area-context";
 
-const BottomTabBar = memo<
-  BottomTabBarProps & {
-    groupId?: string;
-  }
->(({ state, descriptors, insets, navigation, groupId }) => {
-  const styles = useStyles(insets);
-  const { theme } = useTheme();
+import { useAppContext } from "@/src/context/AppContext";
 
-  return (
-    <View style={styles.container}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const isFocused = state.index === index;
+const BottomTabBar = memo<BottomTabBarProps>(
+  ({ state, descriptors, insets, navigation }) => {
+    const styles = useStyles(insets);
+    const { theme } = useTheme();
 
-        const onPress = () => {
-          const event = navigation.emit({
-            type: "tabPress",
-            target: route.key,
-            canPreventDefault: true,
-          });
+    const { currentGroupId } = useAppContext();
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
+    return (
+      <View style={styles.container}>
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const isFocused = state.index === index;
 
-        const color = isFocused ? theme.colors.primary : theme.colors.grey2;
+          const onPress = () => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
 
-        return (
-          <Fragment key={route.key}>
-            {index === 2 && (
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name, route.params);
+            }
+          };
+
+          const color = isFocused ? theme.colors.primary : theme.colors.grey2;
+
+          return (
+            <Fragment key={route.key}>
+              {index === 2 && (
+                <TouchableOpacity
+                  disabled={!currentGroupId}
+                  style={[
+                    styles.addPaymentButton,
+                    !currentGroupId && { backgroundColor: theme.colors.grey3 },
+                  ]}
+                >
+                  <Entypo name="plus" size={40} color={theme.colors.white} />
+                </TouchableOpacity>
+              )}
               <TouchableOpacity
-                disabled={!groupId}
-                style={[
-                  styles.addPaymentButton,
-                  !groupId && { backgroundColor: theme.colors.grey3 },
-                ]}
-                onPress={() => navigation.navigate("AddPayment", { groupId })}
+                accessibilityRole="button"
+                accessibilityState={isFocused ? { selected: true } : {}}
+                accessibilityLabel={options.tabBarAccessibilityLabel}
+                testID={options.tabBarTestID}
+                onPress={onPress}
+                style={styles.tabItem}
               >
-                <Entypo name="plus" size={40} color={theme.colors.white} />
+                <View style={styles.iconContainer}>
+                  {options?.tabBarIcon?.({
+                    color,
+                    focused: isFocused,
+                    size: 24,
+                  })}
+                </View>
+                <Text style={{ color }}>
+                  {(options?.tabBarLabel as string) || ""}
+                </Text>
               </TouchableOpacity>
-            )}
-            <TouchableOpacity
-              accessibilityRole="button"
-              accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              style={styles.tabItem}
-            >
-              <View style={styles.iconContainer}>
-                {options?.tabBarIcon?.({
-                  color,
-                  focused: isFocused,
-                  size: 24,
-                })}
-              </View>
-              <Text style={{ color }}>
-                {(options?.tabBarLabel as string) || ""}
-              </Text>
-            </TouchableOpacity>
-          </Fragment>
-        );
-      })}
-    </View>
-  );
-});
+            </Fragment>
+          );
+        })}
+      </View>
+    );
+  },
+);
 
 const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
   container: {

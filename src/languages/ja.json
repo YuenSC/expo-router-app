@@ -25,7 +25,7 @@
     "date-placeholder": "いつやりますか?"
   },
   "BottomTabNavigator": {
-    "home": "家",
+    "home": "ホームページ",
     "options": "オプション",
     "payment": "支払い",
     "stats": "統計"

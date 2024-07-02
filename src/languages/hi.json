@@ -25,7 +25,7 @@
     "date-placeholder": "आप यह कब करेंगे?"
   },
   "BottomTabNavigator": {
-    "home": "घर",
+    "home": "होम पेज",
     "options": "विकल्प",
     "payment": "भुगतान",
     "stats": "आँकड़े"

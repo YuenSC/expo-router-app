@@ -25,7 +25,7 @@
     "date-placeholder": "Когда вы делаете это?"
   },
   "BottomTabNavigator": {
-    "home": "Дом",
+    "home": "Домашняя страница",
     "options": "Параметры",
     "payment": "Оплата",
     "stats": "Статистика"

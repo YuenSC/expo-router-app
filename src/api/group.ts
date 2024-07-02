@@ -31,7 +31,7 @@ export const getGroup = async ({
 export const getGroupList = async (
   payload: ApiPaginatedPayload,
 ): Promise<ApiPaginatedResponse<Group>> => {
-  return (await axios.get(`/api/groups?${queryString.stringify(payload)}`))
+  return (await axios.get(`/123/api/groups?${queryString.stringify(payload)}`))
     .data;
 };
 

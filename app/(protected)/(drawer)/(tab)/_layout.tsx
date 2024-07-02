@@ -29,7 +29,7 @@ export default function TabLayout() {
           </TouchableOpacity>
         ),
       })}
-      tabBar={(props) => <BottomTabBar groupId={undefined} {...props} />}
+      tabBar={(props) => <BottomTabBar {...props} />}
     >
       <Tabs.Screen
         name="home"
