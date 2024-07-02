@@ -4,7 +4,12 @@ import DrawerContent from "@/src/components/drawer/DrawerContent";
 
 const DrawerLayout = () => {
   return (
-    <Drawer drawerContent={(props) => <DrawerContent {...props} />}>
+    <Drawer
+      drawerContent={(props) => <DrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Drawer.Screen name="(tab)" />
     </Drawer>
   );
