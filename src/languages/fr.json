@@ -52,6 +52,7 @@
   "DrawerContent": {
     "add-group": "Ajouter un groupe",
     "groups": "Groupes",
+    "no-group-found": "Aucun groupe trouvé",
     "version": "Version {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {

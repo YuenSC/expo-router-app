@@ -52,6 +52,7 @@
   "DrawerContent": {
     "add-group": "समूह जोड़ें",
     "groups": "समूह",
+    "no-group-found": "कोई समूह नहीं मिला",
     "version": "संस्करण {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {

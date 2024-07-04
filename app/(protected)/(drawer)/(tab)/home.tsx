@@ -1,63 +1,168 @@
-import { Text } from "@rneui/themed";
-import { useQueryClient } from "@tanstack/react-query";
-import { Button, StyleSheet, View } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { Text, makeStyles, useTheme } from "@rneui/themed";
+import { useTranslation } from "react-i18next";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 
-import { useGetMe } from "@/src/api/hooks/useGetMe";
-import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
-import StyledImage from "@/src/components/common/StyledImage";
-import { HelloWave } from "@/src/components/legacy/HelloWave";
-import ParallaxScrollView from "@/src/components/legacy/ParallaxScrollView";
-import { useAuth } from "@/src/context/AuthContext";
+import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
+import { HStack } from "@/src/components/common/Stack";
+import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
+import { useAppContext } from "@/src/context/AppContext";
 
-export default function HomeScreen() {
-  const queryClient = useQueryClient();
-  const { onLogout } = useAuth();
-  const { data } = useGetMe();
-  const userId = data?.id || "";
-  const { mutate } = usePatchUserUpdate({
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["me"] });
-    },
-  });
+const GroupDetailScreen = () => {
+  const { t } = useTranslation();
+  const styles = useStyles();
+  const { theme } = useTheme();
+  const { currentGroupId } = useAppContext();
+  const { data: currentGroup } = useGetGroup({ id: currentGroupId || "" });
+
+  if (!currentGroup) {
+    return <GroupDetailEmpty />;
+  }
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <StyledImage
-          source={require("@/src/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <View style={styles.titleContainer}>
-        <Text>Welcome!</Text>
-        <HelloWave />
-      </View>
-      <Button title="Logout" onPress={onLogout} />
-      <Button
-        title="Reset Onboarding"
-        onPress={() => mutate({ id: userId, isOnboardingCompleted: false })}
-      />
-    </ParallaxScrollView>
-  );
-}
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.sectionPadding}>
+          <Text h1>{currentGroup.name}</Text>
+          {/* <HStack gap={6} justifyContent="flex-start" flexWrap="wrap">
+            {Object.entries(totalNetAmountByCurrency).map(
+              ([currencyCode, totalNetAmount]) => {
+                if (totalNetAmount === 0) return null;
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
+                const amount = formatAmount(
+                  totalNetAmount,
+                  currencyCode as CurrencyCode,
+                  { currencySymbol: "code" },
+                );
+                const sign = Math.sign(totalNetAmount);
+
+                return (
+                  <TouchableOpacity
+                    key={currencyCode}
+                    style={styles.amountButton}
+                    onPress={() =>
+                      navigation.navigate("GroupSummary", {
+                        groupId: currentGroup.id,
+                      })
+                    }
+                  >
+                    <HStack gap={4}>
+                      <Text
+                        key={currencyCode}
+                        style={[
+                          styles.amountText,
+                          sign > 0 && { color: theme.colors.success },
+                          sign < 0 && { color: theme.colors.error },
+                        ]}
+                      >
+                        {amount}
+                      </Text>
+                    </HStack>
+                  </TouchableOpacity>
+                );
+              },
+            )}
+          </HStack> */}
+        </View>
+        <View>
+          <HStack style={[styles.sectionPadding, { marginBottom: 2 }]}>
+            <Text style={styles.label}>{t("GroupDetailScreen:summary")}</Text>
+            <TouchableOpacity>
+              <AntDesign
+                name="arrowright"
+                size={24}
+                color={theme.colors.primary}
+              />
+            </TouchableOpacity>
+          </HStack>
+          {/* <GroupDetailSummaryCarousel group={currentGroup} /> */}
+        </View>
+
+        <View style={styles.sectionPadding}>
+          <Text style={styles.label}>{t("GroupDetailScreen:member")}</Text>
+          <TouchableOpacity style={styles.members}>
+            {/* <HStack gap={8}>
+              <Text>
+                {t("GroupDetailScreen:current-username", {
+                  name:
+                    groupUsers.find((i) => i.id === profile.userId)?.name ??
+                    t("GroupDetailScreen:not-in-group"),
+                })}
+              </Text>
+              <Text style={{ flex: 1, textAlign: "right" }} numberOfLines={1}>
+                {memberListText}
+              </Text>
+            </HStack> */}
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.sectionPadding}>
+          <Text style={styles.label}>{t("GroupDetailScreen:payment")}</Text>
+          <HStack>
+            <Text>
+              {t("GroupDetailScreen:payment-count", {
+                count: 0,
+              })}
+            </Text>
+
+            <TouchableOpacity>
+              <AntDesign
+                name="arrowright"
+                size={24}
+                color={theme.colors.primary}
+              />
+            </TouchableOpacity>
+          </HStack>
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  contentContainer: {
+    gap: 16,
+    paddingBottom: 32,
+    paddingTop: 16,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
+  sectionPadding: {
+    paddingHorizontal: 16,
   },
-});
+
+  subtitle: {
+    fontSize: 14,
+    fontWeight: "bold",
+    marginBottom: 4,
+  },
+  amountButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: theme.colors.divider,
+    width: "auto",
+    flexGrow: 0,
+  },
+  amountText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+
+  label: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 4,
+  },
+  members: {
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: theme.colors.divider,
+  },
+}));
+
+export default GroupDetailScreen;

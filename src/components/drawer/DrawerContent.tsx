@@ -75,7 +75,7 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
           data={groups}
           contentContainerStyle={styles.contentContainer}
           ListEmptyComponent={() => (
-            <EmptyComponent emptyText="No Group Found" />
+            <EmptyComponent emptyText={t("DrawerContent:no-group-found")} />
           )}
           ListHeaderComponent={() => {
             return (
@@ -87,7 +87,7 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
           ListFooterComponent={() => {
             // TODO: Add a page to create a new group
             return (
-              <Link asChild href="/home">
+              <Link asChild href="/group/create">
                 <ButtonWithRef type="clear" size="sm">
                   <AntDesign
                     name="addusergroup"

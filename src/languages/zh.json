@@ -52,6 +52,7 @@
   "DrawerContent": {
     "add-group": "添加组",
     "groups": "团体",
+    "no-group-found": "未找到组",
     "version": "版本 {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {
