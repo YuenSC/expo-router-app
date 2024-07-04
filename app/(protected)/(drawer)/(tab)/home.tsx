@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
+import FullScreenLoading from "@/src/components/common/FullScreenLoading";
 import { HStack } from "@/src/components/common/Stack";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
 import { useAppContext } from "@/src/context/AppContext";
@@ -13,7 +14,14 @@ const GroupDetailScreen = () => {
   const styles = useStyles();
   const { theme } = useTheme();
   const { currentGroupId } = useAppContext();
-  const { data: currentGroup } = useGetGroup({ id: currentGroupId || "" });
+  const {
+    data: currentGroup,
+    query: { isLoading },
+  } = useGetGroup({ id: currentGroupId || "" });
+
+  if (isLoading) {
+    return <FullScreenLoading />;
+  }
 
   if (!currentGroup) {
     return <GroupDetailEmpty />;

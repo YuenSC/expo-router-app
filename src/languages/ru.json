@@ -51,6 +51,7 @@
   },
   "DrawerContent": {
     "add-group": "Добавить группу",
+    "group-not-found-reset": "Исходно выбранную группу невозможно найти. \nПовторно выбрал первую группу",
     "groups": "Группы",
     "no-group-found": "Группа не найдена",
     "version": "Версия {{version}}"

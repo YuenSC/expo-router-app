@@ -51,6 +51,7 @@
   },
   "DrawerContent": {
     "add-group": "Añadir grupo",
+    "group-not-found-reset": "No se puede encontrar el grupo seleccionado original. \nReseleccionado el primer grupo.",
     "groups": "Grupos",
     "no-group-found": "No se encontró ningún grupo",
     "version": "Versión {{versión}}"
