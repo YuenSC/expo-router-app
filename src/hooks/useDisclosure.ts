@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export const useDisclosure = (defaultIsVisible?: boolean) => {
   const [isVisible, setIsVisible] = useState(defaultIsVisible || false);
@@ -7,9 +7,9 @@ export const useDisclosure = (defaultIsVisible?: boolean) => {
     setIsVisible(true);
   };
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
     setIsVisible(false);
-  };
+  }, []);
 
   const onToggle = () => {
     setIsVisible((prev) => !prev);

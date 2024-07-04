@@ -29,6 +29,7 @@ export default function RootLayout() {
       <Stack.Screen name="onboarding/[step]" />
 
       {/* User */}
+      <Stack.Screen name="user/list" options={{ headerShown: true }} />
       <Stack.Screen
         name="user/[id]"
         options={{

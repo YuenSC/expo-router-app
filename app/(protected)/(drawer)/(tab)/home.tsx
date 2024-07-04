@@ -1,5 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import { Text, makeStyles, useTheme } from "@rneui/themed";
+import { Link } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 
@@ -88,8 +89,9 @@ const GroupDetailScreen = () => {
 
         <View style={styles.sectionPadding}>
           <Text style={styles.label}>{t("GroupDetailScreen:member")}</Text>
-          <TouchableOpacity style={styles.members}>
-            {/* <HStack gap={8}>
+          <Link asChild href="/user/list">
+            <TouchableOpacity style={styles.members}>
+              {/* <HStack gap={8}>
               <Text>
                 {t("GroupDetailScreen:current-username", {
                   name:
@@ -101,7 +103,8 @@ const GroupDetailScreen = () => {
                 {memberListText}
               </Text>
             </HStack> */}
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </Link>
         </View>
 
         <View style={styles.sectionPadding}>

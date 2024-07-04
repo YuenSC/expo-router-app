@@ -32,7 +32,7 @@ axios.interceptors.response.use(
     console.log("error", error);
     if (axios.isAxiosError(error)) {
       if (Config.env === "local")
-        console.log("Error request", error.response?.data);
+        console.log("Error response", error.response?.data);
       if (error.response?.status === 401) {
         Toast.show({
           type: "error",
@@ -46,7 +46,7 @@ axios.interceptors.response.use(
         router.navigate("/");
       }
     }
-    return Promise.reject(error);
+    return Promise.reject(new Error(error));
   },
 );
 

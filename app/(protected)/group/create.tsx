@@ -1,17 +1,28 @@
 import { makeStyles } from "@rneui/themed";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "expo-router";
 import { View } from "react-native";
 
 import { usePostGroupCreate } from "@/src/api/hooks/group/usePostGroupCreate";
+import GroupCreatedDialog from "@/src/components/group/GroupCreatedDialog";
 import GroupForm from "@/src/components/group/GroupForm";
+import { useAppContext } from "@/src/context/AppContext";
 import { useDisclosure } from "@/src/hooks/useDisclosure";
 
 const Page = () => {
   const styles = useStyles();
-  const { onOpen } = useDisclosure(true);
+  const router = useRouter();
+  const queryClient = useQueryClient();
+  const { isVisible, onClose, onOpen } = useDisclosure(false);
+  const { setCurrentGroupId } = useAppContext();
 
   const { mutate: postGroupCreate, isPending: isPendingPostGroupCreate } =
     usePostGroupCreate({
-      onSuccess: ({ data: { id } }) => onOpen(),
+      onSuccess: async ({ data: { id } }) => {
+        await queryClient.invalidateQueries({ queryKey: ["useGetGroupList"] });
+        setCurrentGroupId(id);
+        onOpen();
+      },
     });
 
   return (
@@ -19,6 +30,20 @@ const Page = () => {
       <GroupForm
         onSubmit={postGroupCreate}
         isSubmitting={isPendingPostGroupCreate}
+      />
+
+      <GroupCreatedDialog
+        isVisible={isVisible}
+        onClose={() => {
+          onClose();
+          router.back();
+        }}
+        onSubmit={() => {
+          onClose();
+          setTimeout(() => {
+            router.replace("/user/list");
+          }, 0);
+        }}
       />
     </View>
   );
@@ -32,13 +57,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 36,
     fontWeight: "bold",
-  },
-  dialogTitle: {
-    color: theme.colors.primary,
-    fontWeight: "bold",
-  },
-  overlay: {
-    backgroundColor: theme.colors.modal,
   },
 }));
 

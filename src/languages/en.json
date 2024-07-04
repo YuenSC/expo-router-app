@@ -61,6 +61,11 @@
     "congrat-message": "Let's create your first payment record with your friends!",
     "congratulations": "Congratulations!"
   },
+  "GroupCreatedDialog": {
+    "create-user": "Create User",
+    "group-created": "Group Created",
+    "group-created-description": "Congratulations on creating your group! Let's get started by creating your first user."
+  },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>Are you sure to delete <Highlight>{{groupName}}</Highlight>?</Text>",
     "warning": "Please note that this action is irreversible. All the data will be lost."
