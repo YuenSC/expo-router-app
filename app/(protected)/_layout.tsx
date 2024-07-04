@@ -43,7 +43,7 @@ export default function RootLayout() {
         name="group/create"
         options={{
           headerShown: true,
-          headerTitle: t("GroupForm:create-group"),
+          headerTitle: "",
         }}
       />
     </Stack>
