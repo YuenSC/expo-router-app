@@ -1,22 +1,19 @@
-import { AntDesign } from "@expo/vector-icons";
-import { Text, makeStyles, useTheme } from "@rneui/themed";
-import { Link } from "expo-router";
-import { useTranslation } from "react-i18next";
-import { ScrollView, TouchableOpacity, View } from "react-native";
+import { Text, makeStyles } from "@rneui/themed";
+import { ScrollView, View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import FullScreenLoading from "@/src/components/common/FullScreenLoading";
-import { HStack } from "@/src/components/common/Stack";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
+import GroupDetailMemberSection from "@/src/components/group/GroupDetailMemberSection";
+import GroupDetailPaymentSection from "@/src/components/group/GroupDetailPaymentSection";
+import GroupDetailSummarySection from "@/src/components/group/GroupDetailSummarySection";
 import { useAppContext } from "@/src/context/AppContext";
 
 const GroupDetailScreen = () => {
-  const { t } = useTranslation();
   const styles = useStyles();
-  const { theme } = useTheme();
   const { currentGroupId } = useAppContext();
   const {
-    data: currentGroup,
+    data: group,
     query: { isLoading },
   } = useGetGroup({ id: currentGroupId || "" });
 
@@ -24,7 +21,7 @@ const GroupDetailScreen = () => {
     return <FullScreenLoading />;
   }
 
-  if (!currentGroup) {
+  if (!group) {
     return <GroupDetailEmpty />;
   }
 
@@ -32,7 +29,8 @@ const GroupDetailScreen = () => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.sectionPadding}>
-          <Text h1>{currentGroup.name}</Text>
+          <Text h1>{group.name}</Text>
+          {group.description && <Text>{group.description}</Text>}
           {/* <HStack gap={6} justifyContent="flex-start" flexWrap="wrap">
             {Object.entries(totalNetAmountByCurrency).map(
               ([currencyCode, totalNetAmount]) => {
@@ -73,58 +71,11 @@ const GroupDetailScreen = () => {
             )}
           </HStack> */}
         </View>
-        <View>
-          <HStack style={[styles.sectionPadding, { marginBottom: 2 }]}>
-            <Text style={styles.label}>{t("GroupDetailScreen:summary")}</Text>
-            <TouchableOpacity>
-              <AntDesign
-                name="arrowright"
-                size={24}
-                color={theme.colors.primary}
-              />
-            </TouchableOpacity>
-          </HStack>
-          {/* <GroupDetailSummaryCarousel group={currentGroup} /> */}
-        </View>
 
-        <View style={styles.sectionPadding}>
-          <Text style={styles.label}>{t("GroupDetailScreen:member")}</Text>
-          <Link asChild href={`/group/${currentGroupId}/user-list`}>
-            <TouchableOpacity style={styles.members}>
-              {/* <HStack gap={8}>
-              <Text>
-                {t("GroupDetailScreen:current-username", {
-                  name:
-                    groupUsers.find((i) => i.id === profile.userId)?.name ??
-                    t("GroupDetailScreen:not-in-group"),
-                })}
-              </Text>
-              <Text style={{ flex: 1, textAlign: "right" }} numberOfLines={1}>
-                {memberListText}
-              </Text>
-            </HStack> */}
-            </TouchableOpacity>
-          </Link>
-        </View>
-
-        <View style={styles.sectionPadding}>
-          <Text style={styles.label}>{t("GroupDetailScreen:payment")}</Text>
-          <HStack>
-            <Text>
-              {t("GroupDetailScreen:payment-count", {
-                count: 0,
-              })}
-            </Text>
-
-            <TouchableOpacity>
-              <AntDesign
-                name="arrowright"
-                size={24}
-                color={theme.colors.primary}
-              />
-            </TouchableOpacity>
-          </HStack>
-        </View>
+        <GroupDetailSummarySection />
+        {/* <GroupDetailSummaryCarousel group={currentGroup} /> */}
+        <GroupDetailMemberSection group={group} />
+        <GroupDetailPaymentSection />
       </ScrollView>
     </View>
   );
@@ -143,7 +94,6 @@ const useStyles = makeStyles((theme) => ({
   sectionPadding: {
     paddingHorizontal: 16,
   },
-
   subtitle: {
     fontSize: 14,
     fontWeight: "bold",
@@ -161,18 +111,6 @@ const useStyles = makeStyles((theme) => ({
   amountText: {
     fontSize: 16,
     fontWeight: "bold",
-  },
-
-  label: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  members: {
-    padding: 16,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: theme.colors.divider,
   },
 }));
 
