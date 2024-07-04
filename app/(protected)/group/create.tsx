@@ -14,7 +14,7 @@ const Page = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const { isVisible, onClose, onOpen } = useDisclosure(false);
-  const { setCurrentGroupId } = useAppContext();
+  const { currentGroupId, setCurrentGroupId } = useAppContext();
 
   const { mutate: postGroupCreate, isPending: isPendingPostGroupCreate } =
     usePostGroupCreate({
@@ -41,7 +41,7 @@ const Page = () => {
         onSubmit={() => {
           onClose();
           setTimeout(() => {
-            router.replace("/user/list");
+            router.replace(`/group/${currentGroupId}/user-list`);
           }, 0);
         }}
       />

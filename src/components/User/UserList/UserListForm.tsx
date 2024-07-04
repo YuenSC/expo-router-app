@@ -19,7 +19,7 @@ import { useBottomSheetModal } from "@/src/hooks/useBottomSheetModal";
 
 type IUserListFormProps = {
   groupId?: string;
-  onSubmit: () => void;
+  onSubmit?: () => void;
   buttonText?: string;
   selectableUsers?: User[];
 };

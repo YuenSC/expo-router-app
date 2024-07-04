@@ -14,7 +14,7 @@ type IUserListFormFooterProps = {
   groupId?: string;
   selectableUsers: User[];
   buttonText?: string;
-  onSubmit: () => void;
+  onSubmit?: () => void;
   disabledAddUser?: boolean;
 };
 
@@ -88,7 +88,9 @@ const UserListFormFooter = ({
             onPress={() => {}}
           />
         )}
-        <Button title={buttonText ?? t("Common:next")} onPress={onSubmit} />
+        {onSubmit && (
+          <Button title={buttonText ?? t("Common:next")} onPress={onSubmit} />
+        )}
       </VStack>
     </View>
   );

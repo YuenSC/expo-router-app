@@ -89,7 +89,7 @@ const GroupDetailScreen = () => {
 
         <View style={styles.sectionPadding}>
           <Text style={styles.label}>{t("GroupDetailScreen:member")}</Text>
-          <Link asChild href="/user/list">
+          <Link asChild href={`/group/${currentGroupId}/user-list`}>
             <TouchableOpacity style={styles.members}>
               {/* <HStack gap={8}>
               <Text>
