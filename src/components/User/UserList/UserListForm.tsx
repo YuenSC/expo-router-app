@@ -1,4 +1,5 @@
-import { Text, makeStyles } from "@rneui/themed";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Text, makeStyles, useTheme } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { memo, useMemo } from "react";
@@ -13,6 +14,7 @@ import { useGetMe } from "../../../api/hooks/useGetMe";
 import { User } from "../../../api/types/User";
 import ImagePickerBottomSheetModal from "../../ImagePickerBottomSheetModal";
 import { HStack } from "../../common/Stack";
+import UncontrolledTooltip from "../../common/UncontrolledTooltip";
 
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import { useBottomSheetModal } from "@/src/hooks/useBottomSheetModal";
@@ -27,18 +29,18 @@ type IUserListFormProps = {
 const UserListForm = memo<IUserListFormProps>(
   ({ groupId, onSubmit, buttonText, selectableUsers = [] }) => {
     const insets = useSafeAreaInsets();
+    const { theme } = useTheme();
     const styles = useStyles(insets);
+    const queryClient = useQueryClient();
     const { t } = useTranslation();
-    const { data: profile } = useGetMe();
     const {
       open,
       ref: bottomSheetModalRef,
       value: targetUserId,
     } = useBottomSheetModal("");
-    const queryClient = useQueryClient();
 
+    const { data: profile } = useGetMe();
     const { data: group } = useGetGroup({ id: groupId || "" });
-
     const { mutate: patchUserUpdate } = usePatchUserUpdate({
       onSuccess: async ({ data: { id } }) => {
         await queryClient.invalidateQueries({
@@ -65,7 +67,12 @@ const UserListForm = memo<IUserListFormProps>(
 
       return [
         { title: t("UserListForm:verified-users"), data: realUsers },
-        { title: t("UserListForm:virtual-users"), data: virtualUsers },
+        {
+          title: t("UserListForm:virtual-users"),
+          data: virtualUsers,
+          infoText:
+            "Admin User can freely edit virtual users, but not verified users.",
+        },
       ];
     }, [group?.users, t]);
 
@@ -74,13 +81,37 @@ const UserListForm = memo<IUserListFormProps>(
         <SectionList
           sections={sections}
           contentContainerStyle={styles.contentContainer}
-          renderSectionHeader={({ section: { title } }) => (
-            <Text style={styles.sectionHeader}>{title}</Text>
+          renderSectionHeader={({ section: { title, infoText } }) => (
+            <HStack
+              gap={4}
+              style={styles.sectionHeader}
+              justifyContent="flex-start"
+            >
+              <Text style={styles.sectionHeaderTitle}>{title}</Text>
+              {infoText && (
+                <UncontrolledTooltip
+                  withOverlay={false}
+                  popover={<Text style={{ color: "#fff" }}>{infoText}</Text>}
+                  height={60}
+                  width={260}
+                >
+                  <MaterialIcons
+                    name="info-outline"
+                    size={24}
+                    color={theme.colors.primary}
+                  />
+                </UncontrolledTooltip>
+              )}
+            </HStack>
           )}
           renderSectionFooter={() => <View style={styles.sectionFooter} />}
           ItemSeparatorComponent={() => <View style={styles.divider} />}
           ListHeaderComponent={
-            <HStack style={styles.headerContainer} alignItems="flex-end">
+            <HStack
+              style={styles.headerContainer}
+              alignItems="flex-end"
+              justifyContent="flex-start"
+            >
               <Text h1 style={styles.headerTitle}>
                 {group
                   ? t("UserListForm:members")
@@ -159,10 +190,12 @@ const useStyles = makeStyles((theme, inset: EdgeInsets) => ({
     marginVertical: 8,
   },
   sectionHeader: {
-    fontWeight: "bold",
-    fontSize: 18,
     marginBottom: 12,
     backgroundColor: theme.colors.background,
+  },
+  sectionHeaderTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
   },
   sectionFooter: {
     marginVertical: 8,

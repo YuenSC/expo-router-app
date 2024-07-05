@@ -59,12 +59,15 @@ const queryClient = new QueryClient({
 SplashScreen.preventAutoHideAsync();
 
 const StackLayout = () => {
-  const { authState } = useAuth();
+  const { authState, onLogout } = useAuth();
   const segments = useSegments();
   const router = useRouter();
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const { data: user } = useGetMe();
+  const {
+    data: user,
+    query: { refetch },
+  } = useGetMe();
 
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
@@ -79,8 +82,16 @@ const StackLayout = () => {
     // 2.1. After login or sign up, me api will be refetch, trigger user object update and then redirect to home
     if (authState.token !== null && !!user) {
       setAxiosToken(authState.token);
-      if (router.canDismiss()) router.dismissAll();
-      router.replace(user?.isOnboardingCompleted ? "/home" : "/onboarding/0");
+      refetch()
+        .then(() => {
+          if (router.canDismiss()) router.dismissAll();
+          router.replace(
+            user?.isOnboardingCompleted ? "/home" : "/onboarding/0",
+          );
+        })
+        .catch(() => {
+          onLogout();
+        });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.token, user]);

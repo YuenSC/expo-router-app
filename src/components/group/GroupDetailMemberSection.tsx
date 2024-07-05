@@ -1,4 +1,5 @@
 import { Text, makeStyles } from "@rneui/themed";
+import { Link } from "expo-router";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { TouchableOpacity } from "react-native";
@@ -35,20 +36,22 @@ const GroupDetailMemberSection = memo<IGroupDetailMemberSectionProps>(
         style={styles.container}
         title={t("GroupDetailScreen:member")}
       >
-        <TouchableOpacity style={styles.members}>
-          <HStack gap={8}>
-            <Text>
-              {t("GroupDetailScreen:current-username", {
-                name:
-                  group?.users?.find(({ user }) => user.id === profile?.id)
-                    ?.user.name ?? t("GroupDetailScreen:not-in-group"),
-              })}
-            </Text>
-            <Text style={{ flex: 1, textAlign: "right" }} numberOfLines={1}>
-              {memberListText}
-            </Text>
-          </HStack>
-        </TouchableOpacity>
+        <Link asChild href={`/group/${group.id}/user-list`}>
+          <TouchableOpacity style={styles.members}>
+            <HStack gap={8}>
+              <Text>
+                {t("GroupDetailScreen:current-username", {
+                  name:
+                    group?.users?.find(({ user }) => user.id === profile?.id)
+                      ?.user.name ?? t("GroupDetailScreen:not-in-group"),
+                })}
+              </Text>
+              <Text style={{ flex: 1, textAlign: "right" }} numberOfLines={1}>
+                {memberListText}
+              </Text>
+            </HStack>
+          </TouchableOpacity>
+        </Link>
       </GroupDetailSection>
     );
   },

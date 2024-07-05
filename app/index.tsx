@@ -29,7 +29,7 @@ const WelcomePage = () => {
       <Text style={styles.titleText}>{t("WelcomeScreen:title")}</Text>
       <Text style={styles.subtitleText}>{t("WelcomeScreen:subtitle")}</Text>
 
-      <VStack gap={8} style={styles.buttonGroup}>
+      <VStack gap={8} style={styles.buttonGroup} alignItems="stretch">
         <Link href="/login" asChild>
           <ButtonWithRef
             title={t("common:login")}

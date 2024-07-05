@@ -46,7 +46,7 @@ const UserUpdateBottomSheet = () => {
           user={user}
           submitButtonText={t("Common:edit")}
           isSubmitting={isPending}
-          onSubmit={(values) =>
+          onEdit={(values) =>
             patchUserUpdate({ ...values, id: user?.id || "" })
           }
           onDelete={

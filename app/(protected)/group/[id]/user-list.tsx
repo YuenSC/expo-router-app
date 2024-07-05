@@ -1,17 +1,17 @@
 import { makeStyles } from "@rneui/themed";
 import { useLocalSearchParams } from "expo-router";
-import { View } from "react-native";
 
 import UserListForm from "@/src/components/User/UserList/UserListForm";
+import StyledKeyboardAvoidingView from "@/src/components/common/StyledKeyboardAvoidingView";
 
 const Page = () => {
   const styles = useStyles();
   const { id: groupId } = useLocalSearchParams<{ id: string }>();
 
   return (
-    <View style={styles.container}>
+    <StyledKeyboardAvoidingView style={styles.container}>
       <UserListForm groupId={groupId} />
-    </View>
+    </StyledKeyboardAvoidingView>
   );
 };
 
