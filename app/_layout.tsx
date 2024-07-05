@@ -15,6 +15,7 @@ import Toast from "react-native-toast-message";
 
 import { getMe } from "@/src/api/auth";
 import { setAxiosToken } from "@/src/api/axios";
+import BackButton from "@/src/components/common/BackButton";
 import { useAuth } from "@/src/context/AuthContext";
 import ContextProvider from "@/src/context/ContextProvider";
 import "@/src/i18n";
@@ -96,9 +97,7 @@ const StackLayout = () => {
         headerStyle: {
           backgroundColor: theme.colors.background,
         },
-        headerTitleStyle: {
-          color: theme.colors.black,
-        },
+        headerLeft: () => <BackButton />,
       }}
     >
       <Stack.Screen name="index" options={{}} />

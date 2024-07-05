@@ -2,6 +2,8 @@ import { useTheme } from "@rneui/themed";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 
+import BackButton from "@/src/components/common/BackButton";
+
 export default function RootLayout() {
   const { theme } = useTheme();
   const { t } = useTranslation();
@@ -14,9 +16,8 @@ export default function RootLayout() {
         headerStyle: {
           backgroundColor: theme.colors.background,
         },
-        headerTitleStyle: {
-          color: theme.colors.black,
-        },
+        headerShadowVisible: false,
+        headerLeft: () => <BackButton />,
       }}
     >
       <Stack.Screen name="(drawer)" />

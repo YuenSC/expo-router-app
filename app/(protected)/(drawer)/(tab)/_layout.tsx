@@ -32,6 +32,7 @@ export default function TabLayout() {
         headerStyle: {
           backgroundColor: theme.colors.background,
         },
+        headerShadowVisible: false,
         headerTintColor: theme.colors.black,
         headerLeft: () => (
           <TouchableOpacity
