@@ -21,6 +21,31 @@ const theme = createTheme({
   mode: "dark",
   components: {
     Button,
+    Dialog: ({ overlayStyle }, theme) => ({
+      overlayStyle: [
+        {
+          backgroundColor: theme.colors.modal,
+        },
+        overlayStyle,
+      ],
+    }),
+    DialogTitle: ({ titleStyle }, theme) => ({
+      titleStyle: [
+        {
+          color: theme.colors.primary,
+          fontWeight: "bold",
+        },
+        titleStyle,
+      ],
+    }),
+    DialogButton: ({ style }) => ({
+      style: [
+        {
+          minHeight: 40,
+        },
+        style,
+      ],
+    }),
     Input: () => ({
       keyboardAppearance: "dark",
     }),

@@ -126,6 +126,10 @@
     "password-placeholder": "********",
     "remember-me": "Remember Me"
   },
+  "NetworkDialog": {
+    "network-connection-down": "Network Connection Down",
+    "please-check-your-network-connection-and-try-again": "Please check your network connection and try again."
+  },
   "OptionsScreen": {
     "Upgrade": "Upgrade to Pro",
     "all-members": "All Members",
