@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Text, makeStyles, useTheme } from "@rneui/themed";
+import { Button, Text, makeStyles, useTheme } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { memo, useMemo } from "react";
@@ -90,8 +90,7 @@ const UserListForm = memo<IUserListFormProps>(
               <Text style={styles.sectionHeaderTitle}>{title}</Text>
               {infoText && (
                 <UncontrolledTooltip
-                  withOverlay={false}
-                  popover={<Text style={{ color: "#fff" }}>{infoText}</Text>}
+                  popover={<Text>{infoText}</Text>}
                   height={60}
                   width={260}
                 >
@@ -107,19 +106,44 @@ const UserListForm = memo<IUserListFormProps>(
           renderSectionFooter={() => <View style={styles.sectionFooter} />}
           ItemSeparatorComponent={() => <View style={styles.divider} />}
           ListHeaderComponent={
-            <HStack
-              style={styles.headerContainer}
-              alignItems="flex-end"
-              justifyContent="flex-start"
-            >
-              <Text h1 style={styles.headerTitle}>
-                {group
-                  ? t("UserListForm:members")
-                  : t("UserListForm:all-members")}
-              </Text>
-              <Text h4 style={styles.userCount}>
-                {group?.users?.length ?? 0} / 5
-              </Text>
+            <HStack style={styles.headerContainer}>
+              <HStack alignItems="flex-end">
+                <Text h1 style={styles.headerTitle}>
+                  {group
+                    ? t("UserListForm:members")
+                    : t("UserListForm:all-members")}
+                </Text>
+                <Text h4 style={styles.userCount}>
+                  {group?.users?.length ?? 0} / 5
+                </Text>
+              </HStack>
+
+              <UncontrolledTooltip
+                popover={
+                  <Text>
+                    Admin control will be released in the future for multi-user
+                    control
+                  </Text>
+                }
+                height={80}
+                width={175}
+              >
+                <Button
+                  style={{ padding: 0 }}
+                  containerStyle={{ padding: 0 }}
+                  type="outline"
+                  disabled
+                  icon={
+                    <MaterialIcons
+                      name="admin-panel-settings"
+                      size={24}
+                      color={theme.colors.grey1}
+                    />
+                  }
+                >
+                  Admin
+                </Button>
+              </UncontrolledTooltip>
             </HStack>
           }
           ListFooterComponent={
