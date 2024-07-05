@@ -29,7 +29,6 @@ axios.interceptors.response.use(
     return response;
   },
   async function (error) {
-    console.log("error", error);
     if (axios.isAxiosError(error)) {
       if (Config.env === "local")
         console.log("Error response", error.response?.data);
@@ -46,7 +45,7 @@ axios.interceptors.response.use(
         router.navigate("/");
       }
     }
-    return Promise.reject(new Error(error));
+    return Promise.reject(error);
   },
 );
 
