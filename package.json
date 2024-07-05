@@ -6,7 +6,10 @@
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
-    "ios": "expo start --ios",
+    "ios-dev-simulator:build": "eas build --profile development-simulator --platform ios",
+    "ios-dev:build": "eas build --profile development --platform ios",
+    "ios-prod:build": "eas build --profile production --platform ios",
+    "ios-preview:build": "eas build --profile preview --platform ios",
     "web": "expo start --web",
     "test": "jest --passWithNoTests",
     "lint": "eslint . --ext .ts,.tsx --fix --max-warnings=0",
@@ -53,7 +56,8 @@
     "react-native-screens": "3.31.1",
     "react-native-toast-message": "^2.2.0",
     "react-native-web": "~0.19.10",
-    "expo-network": "~6.0.1"
+    "expo-network": "~6.0.1",
+    "expo-dev-client": "~4.0.19"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
