@@ -51,7 +51,9 @@
   },
   "DrawerContent": {
     "add-group": "新增群組",
+    "group-not-found-reset": "找不到您原來選擇的組。\n重新選擇第一組",
     "groups": "團體",
+    "no-group-found": "未找到組",
     "version": "版本 {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {

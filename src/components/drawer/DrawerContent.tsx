@@ -34,14 +34,19 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
       pageSize: 1000,
     });
 
-    const handleGroupNotFound = useCallback(() => {
-      setCurrentGroupId(null);
-      Toast.show({
-        type: "error",
-        text1: t("common:error"),
-        text2: t("DrawerContent:group-not-found"),
-      });
-    }, [setCurrentGroupId, t]); // `t` is a dependency of useCallback
+    const handleGroupNotFound = useCallback(
+      (hasResetTheFirstGroup?: boolean) => {
+        setCurrentGroupId(null);
+        Toast.show({
+          type: "error",
+          text1: t("common:error"),
+          text2: hasResetTheFirstGroup
+            ? t("DrawerContent:group-not-found-reset")
+            : t("DrawerContent:group-not-found"),
+        });
+      },
+      [setCurrentGroupId, t],
+    );
 
     useEffect(() => {
       if (currentGroupId && isError) {
@@ -50,15 +55,16 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
     }, [isError, handleGroupNotFound, t, currentGroupId]);
 
     useEffect(() => {
-      if (!currentGroupId || isError) return;
+      if (isError || groups.length === 0) return;
 
-      if (!currentGroupId && groups.length > 0) {
+      if (!currentGroupId) {
         setCurrentGroupId(groups[0].id);
         return;
       }
 
       if (groups.find((group) => group.id === currentGroupId) === undefined) {
-        handleGroupNotFound();
+        handleGroupNotFound(true);
+        setCurrentGroupId(groups[0].id);
       }
     }, [
       currentGroupId,
@@ -75,7 +81,7 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
           data={groups}
           contentContainerStyle={styles.contentContainer}
           ListEmptyComponent={() => (
-            <EmptyComponent emptyText="No Group Found" />
+            <EmptyComponent emptyText={t("DrawerContent:no-group-found")} />
           )}
           ListHeaderComponent={() => {
             return (
@@ -87,7 +93,7 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
           ListFooterComponent={() => {
             // TODO: Add a page to create a new group
             return (
-              <Link asChild href="/home">
+              <Link asChild href="/group/create">
                 <ButtonWithRef type="clear" size="sm">
                   <AntDesign
                     name="addusergroup"

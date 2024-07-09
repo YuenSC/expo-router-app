@@ -11,7 +11,6 @@ type IGroupFormProps = {
   groupId?: string;
   isSubmitting?: boolean;
   onSubmit: (values: PostGroupCreatePayload) => void;
-  isProfileUserIncluded?: boolean;
 };
 
 const GroupForm = memo<IGroupFormProps>(

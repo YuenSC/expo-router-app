@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 import { removeAxiosToken, setAxiosToken } from "../api/axios";
 import { usePostSignUp } from "../api/hooks/usePostSignUp";
@@ -16,7 +16,6 @@ interface AuthProps {
   authState: {
     token: string | null;
     isPending: boolean;
-    error?: string;
   };
   localCredential: {
     email: string | null;
@@ -53,16 +52,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useSecureStore("access_token", {
     sync: true,
     onSuccess: (token) => {
-      console.log("Reset Token in useSecureStore");
       if (token) setAxiosToken(token);
     },
   });
-  console.log("token", token);
   const [localPassword, setLocalPassword] = useSecureStore("password", {
     sync: true,
   });
   const [localEmail, setLocalEmail] = useSecureStore("email", { sync: true });
-  const [error, setError] = useState("");
 
   const { mutate: postLogin, isPending: isPendingLogin } = usePostLogin({
     onSuccess: ({ data }) => {
@@ -70,9 +66,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         queryKey: ["me"],
       });
       setToken(data.access_token);
-    },
-    onError: (error) => {
-      setError(error.message);
     },
   });
 
@@ -82,9 +75,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         queryKey: ["me"],
       });
       setToken(data.access_token);
-    },
-    onError: (error) => {
-      setError(error.message);
     },
   });
 
@@ -117,7 +107,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         authState: {
           token,
           isPending: isPendingLogin || isPendingSignUp,
-          error,
         },
         localCredential: { email: localEmail, password: localPassword },
       }}

@@ -2,11 +2,7 @@ import { makeStyles } from "@rneui/themed";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  ScrollViewProps,
-} from "react-native";
+import { ScrollView, ScrollViewProps } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useGetGroupList } from "@/src/api/hooks/group/useGetGroupList";
@@ -16,6 +12,7 @@ import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import UserForm from "@/src/components/User/UserForm/UserForm";
 import UserListForm from "@/src/components/User/UserList/UserListForm";
+import StyledKeyboardAvoidingView from "@/src/components/common/StyledKeyboardAvoidingView";
 import GroupForm from "@/src/components/group/GroupForm";
 
 const scrollViewProps = {
@@ -73,12 +70,7 @@ const OnboardingPage = () => {
   }, [step]);
 
   return (
-    <KeyboardAvoidingView
-      style={styles.keyboardAvoidingView}
-      behavior="padding"
-      enabled
-      keyboardVerticalOffset={100}
-    >
+    <StyledKeyboardAvoidingView style={styles.keyboardAvoidingView}>
       {step === 0 && (
         <ScrollView style={styles.container} {...scrollViewProps}>
           <UserForm
@@ -86,7 +78,7 @@ const OnboardingPage = () => {
             submitButtonText={t("Common:next")}
             user={user}
             isSubmitting={isPendingPatchUserUpdate}
-            onSubmit={(values) =>
+            onEdit={(values) =>
               patchUserUpdate({ ...values, id: user?.id || "" })
             }
           />
@@ -119,7 +111,7 @@ const OnboardingPage = () => {
           onSubmit={() => router.push("/onboarding/success")}
         />
       )}
-    </KeyboardAvoidingView>
+    </StyledKeyboardAvoidingView>
   );
 };
 

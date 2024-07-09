@@ -1,4 +1,5 @@
-import { Text, makeStyles } from "@rneui/themed";
+import { Entypo } from "@expo/vector-icons";
+import { Text, makeStyles, useTheme } from "@rneui/themed";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
@@ -25,6 +26,7 @@ const UserDisplay = memo<IUserDisplayProps>(
     isProfileImageDisabled,
   }) => {
     const styles = useStyles();
+    const { theme } = useTheme();
     const { t } = useTranslation();
     const { data: user } = useGetUser({ id: userId });
 
@@ -51,10 +53,17 @@ const UserDisplay = memo<IUserDisplayProps>(
           </HStack>
         </HStack>
 
-        {isAdmin && (
+        {isAdmin ? (
           <View style={styles.adminLabelContainer}>
             <Text style={styles.adminLabel}>{t("Common:adminLabel")}</Text>
           </View>
+        ) : (
+          // arrow icon
+          <Entypo
+            name="chevron-small-right"
+            size={24}
+            color={theme.colors.primary}
+          />
         )}
       </HStack>
     );

@@ -52,12 +52,19 @@
   "DrawerContent": {
     "add-group": "Add Group",
     "group-not-found": "Your original selected group cannot be found.",
+    "group-not-found-reset": "Your original selected group cannot be found. Reselected the first group",
     "groups": "Groups",
+    "no-group-found": "No Group Found",
     "version": "Version {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Let's create your first payment record with your friends!",
     "congratulations": "Congratulations!"
+  },
+  "GroupCreatedDialog": {
+    "create-user": "Create User",
+    "group-created": "Group Created",
+    "group-created-description": "Congratulations on creating your group! Let's get started by creating your first user."
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>Are you sure to delete <Highlight>{{groupName}}</Highlight>?</Text>",
@@ -118,6 +125,10 @@
     "password-label": "Password",
     "password-placeholder": "********",
     "remember-me": "Remember Me"
+  },
+  "NetworkDialog": {
+    "network-connection-down": "Network Connection Down",
+    "please-check-your-network-connection-and-try-again": "Please check your network connection and try again."
   },
   "OptionsScreen": {
     "Upgrade": "Upgrade to Pro",

@@ -15,25 +15,25 @@ import { PatchUserUpdatePayload, User } from "@/src/api/types/User";
 
 type IUserFormProps = {
   isEdit?: boolean;
-  onSubmit: (values: PatchUserUpdatePayload) => void;
-  onDelete?: () => void;
-  user?: User;
-  submitButtonText: string;
-  style?: StyleProp<ViewStyle>;
   isHideTitle?: boolean;
   isSubmitting?: boolean;
+  onDelete?: () => void;
+  onEdit: (values: PatchUserUpdatePayload) => void;
+  style?: StyleProp<ViewStyle>;
+  submitButtonText: string;
+  user?: User;
 };
 
 const UserForm = memo<IUserFormProps>(
   ({
-    onSubmit,
     isEdit,
-    user,
-    onDelete,
-    submitButtonText,
-    style,
     isHideTitle,
     isSubmitting,
+    onDelete,
+    onEdit,
+    style,
+    submitButtonText,
+    user,
   }) => {
     const insets = useSafeAreaInsets();
     const styles = useStyles(insets);
@@ -91,7 +91,7 @@ const UserForm = memo<IUserFormProps>(
         />
 
         {/* Profile Image  */}
-        <VStack gap={12}>
+        <VStack gap={12} alignItems="flex-start">
           <Text style={styles.label}>{t("UserForm:profile-image")}</Text>
           <ProfileImageUpload
             imageUrl={imageUrl}
@@ -106,7 +106,7 @@ const UserForm = memo<IUserFormProps>(
           <Button
             title={submitButtonText}
             containerStyle={styles.button}
-            onPress={handleSubmit(onSubmit)}
+            onPress={handleSubmit(onEdit)}
             loading={isSubmitting}
           />
           {onDelete && (

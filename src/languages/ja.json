@@ -51,7 +51,9 @@
   },
   "DrawerContent": {
     "add-group": "グループの追加",
+    "group-not-found-reset": "元に選択したグループが見つかりません。\n最初のグループを再選択しました",
     "groups": "グループ",
+    "no-group-found": "グループが見つかりませんでした",
     "version": "バージョン {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {

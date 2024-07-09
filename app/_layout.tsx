@@ -4,13 +4,7 @@ import { ThemeProvider, useTheme } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 import { useFonts } from "expo-font";
-import {
-  Stack,
-  useGlobalSearchParams,
-  usePathname,
-  useRouter,
-  useSegments,
-} from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -19,11 +13,12 @@ import "react-native-reanimated";
 import { FullWindowOverlay } from "react-native-screens";
 import Toast from "react-native-toast-message";
 
+import { getMe } from "@/src/api/auth";
 import { setAxiosToken } from "@/src/api/axios";
-import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { useAuth } from "@/src/context/AuthContext";
 import ContextProvider from "@/src/context/ContextProvider";
 import "@/src/i18n";
+import { getDefaultStackOptions } from "@/src/styles/getDefaultStackOptions";
 import theme from "@/src/styles/rneui";
 import { toastConfig } from "@/src/styles/toastConfig";
 
@@ -40,6 +35,7 @@ const queryClient = new QueryClient({
     },
     mutations: {
       onError: (error) => {
+        // console.log("onError", JSON.stringify(error, null, 2));
         const message = axios.isAxiosError(error)
           ? error.response?.data.message
           : error.message;
@@ -49,7 +45,6 @@ const queryClient = new QueryClient({
           text1: "Api Error",
           text2: message,
           topOffset: 64,
-          autoHide: false,
         });
       },
     },
@@ -60,12 +55,11 @@ const queryClient = new QueryClient({
 SplashScreen.preventAutoHideAsync();
 
 const StackLayout = () => {
-  const { authState } = useAuth();
+  const { authState, onLogout } = useAuth();
   const segments = useSegments();
   const router = useRouter();
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const { data: user } = useGetMe();
 
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
@@ -78,27 +72,26 @@ const StackLayout = () => {
 
     // 2. if in public page, check if token exists, if yes, redirect to home
     // 2.1. After login or sign up, me api will be refetch, trigger user object update and then redirect to home
-    if (authState.token !== null && !!user) {
+    if (authState.token !== null) {
       setAxiosToken(authState.token);
-      if (router.canDismiss()) router.dismissAll();
-      router.replace(user?.isOnboardingCompleted ? "/home" : "/onboarding/0");
+      getMe()
+        .then(({ data: user }) => {
+          if (router.canDismiss()) router.dismissAll();
+          router.replace(
+            user?.isOnboardingCompleted ? "/home" : "/onboarding/0",
+          );
+        })
+        .catch(() => {
+          onLogout();
+        });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authState.token, user]);
+  }, [authState.token]);
 
   return (
     <Stack
       initialRouteName="welcome"
-      screenOptions={{
-        headerShown: false,
-        headerBackTitle: "Back",
-        headerStyle: {
-          backgroundColor: theme.colors.background,
-        },
-        headerTitleStyle: {
-          color: theme.colors.black,
-        },
-      }}
+      screenOptions={getDefaultStackOptions(theme)}
     >
       <Stack.Screen name="index" options={{}} />
       <Stack.Screen
@@ -124,18 +117,11 @@ const StackLayout = () => {
 };
 
 export default function RootLayout() {
-  const pathname = usePathname();
-  const params = useGlobalSearchParams();
   useReactQueryDevTools(queryClient);
 
   const [loaded] = useFonts({
     SpaceMono: require("../src/assets/fonts/SpaceMono-Regular.ttf"),
   });
-
-  // Track the location in your analytics provider here.
-  useEffect(() => {
-    console.log("Location changed", pathname, params);
-  }, [pathname, params]);
 
   useEffect(() => {
     if (loaded) {

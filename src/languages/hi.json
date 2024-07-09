@@ -51,7 +51,9 @@
   },
   "DrawerContent": {
     "add-group": "समूह जोड़ें",
+    "group-not-found-reset": "आपका मूल चयनित समूह नहीं मिल सका. \nपहले समूह का पुनः चयन किया गया",
     "groups": "समूह",
+    "no-group-found": "कोई समूह नहीं मिला",
     "version": "संस्करण {{version}}"
   },
   "GroupCreateSuccessBottomSheet": {

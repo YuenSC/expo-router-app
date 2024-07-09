@@ -1,5 +1,6 @@
+import { makeStyles } from "@rneui/themed";
 import { memo } from "react";
-import { View, ViewProps, StyleSheet } from "react-native";
+import { View, ViewProps } from "react-native";
 
 type CustomStyles = {
   gap?: number;
@@ -16,34 +17,18 @@ type CustomStyles = {
 
 type IStackProps = ViewProps & CustomStyles;
 
-const stackStyles = StyleSheet.create({
-  HStack: {
-    flexDirection: "row",
-  },
-  VStack: {
-    flexDirection: "column",
-  },
-});
-
 const HStack = memo<IStackProps>(
-  ({
-    gap,
-    alignItems,
-    justifyContent,
-    flexWrap,
-    children,
-    style,
-    ...props
-  }) => {
+  ({ gap, alignItems, justifyContent, flexWrap, children, ...props }) => {
+    const styles = useStyles({
+      gap,
+      alignItems,
+      justifyContent,
+      flexWrap,
+      stack: "HStack",
+    });
+
     return (
-      <View
-        {...props}
-        style={[
-          stackStyles.HStack,
-          { alignItems, justifyContent, flexWrap, gap },
-          style,
-        ]}
-      >
+      <View {...props} style={[styles.stackContainer, props.style]}>
         {children}
       </View>
     );
@@ -52,29 +37,39 @@ const HStack = memo<IStackProps>(
 HStack.displayName = "HStack";
 
 const VStack = memo<IStackProps>(
-  ({
-    gap,
-    alignItems,
-    justifyContent,
-    flexWrap,
-    children,
-    style,
-    ...props
-  }) => {
+  ({ gap, alignItems, justifyContent, flexWrap, children, ...props }) => {
+    const styles = useStyles({
+      gap,
+      alignItems,
+      justifyContent,
+      flexWrap,
+      stack: "VStack",
+    });
+
     return (
-      <View
-        {...props}
-        style={[
-          stackStyles.VStack,
-          { alignItems, justifyContent, flexWrap, gap },
-          style,
-        ]}
-      >
+      <View {...props} style={[styles.stackContainer, props.style]}>
         {children}
       </View>
     );
   },
 );
 VStack.displayName = "VStack";
+
+const useStyles = makeStyles(
+  (
+    theme,
+    style: CustomStyles & {
+      stack: "VStack" | "HStack";
+    },
+  ) => ({
+    stackContainer: {
+      gap: style.gap,
+      flexDirection: style.stack === "HStack" ? "row" : "column",
+      alignItems: style.alignItems || "center",
+      justifyContent: style.justifyContent || "space-between",
+      flexWrap: style.flexWrap || "nowrap",
+    },
+  }),
+);
 
 export { HStack, VStack };

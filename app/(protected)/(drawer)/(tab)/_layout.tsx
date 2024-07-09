@@ -1,16 +1,29 @@
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { DrawerActions } from "@react-navigation/native";
-import { useTheme } from "@rneui/themed";
+import { Button, useTheme } from "@rneui/themed";
+import { useQueryClient } from "@tanstack/react-query";
 import { Tabs } from "expo-router";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { TouchableOpacity } from "react-native";
 
+import { useGetMe } from "@/src/api/hooks/useGetMe";
+import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import BottomTabBar from "@/src/components/bottomTab/BottomTabBar";
+import { HStack } from "@/src/components/common/Stack";
+import { useAuth } from "@/src/context/AuthContext";
 
 export default function TabLayout() {
   const { theme } = useTheme();
   const { t } = useTranslation();
+  const { data: me } = useGetMe();
+  const queryClient = useQueryClient();
+  const { mutate } = usePatchUserUpdate({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["me"] });
+    },
+  });
+  const { onLogout } = useAuth();
 
   return (
     <Tabs
@@ -19,6 +32,7 @@ export default function TabLayout() {
         headerStyle: {
           backgroundColor: theme.colors.background,
         },
+        headerShadowVisible: false,
         headerTintColor: theme.colors.black,
         headerLeft: () => (
           <TouchableOpacity
@@ -28,6 +42,22 @@ export default function TabLayout() {
             <Ionicons name="menu" size={24} color={theme.colors.black} />
           </TouchableOpacity>
         ),
+
+        headerRight: () => {
+          return (
+            <HStack>
+              <Button onPress={onLogout}>
+                {t("BottomTabNavigator:logout")}
+              </Button>
+              <Button
+                icon={<AntDesign name="edit" size={24} color="black" />}
+                onPress={() =>
+                  mutate({ id: me?.id || "", isOnboardingCompleted: false })
+                }
+              />
+            </HStack>
+          );
+        },
       })}
       tabBar={(props) => <BottomTabBar {...props} />}
     >

@@ -51,7 +51,9 @@
   },
   "DrawerContent": {
     "add-group": "Adicionar grupo",
+    "group-not-found-reset": "Seu grupo selecionado original não pode ser encontrado. \nResselecionou o primeiro grupo",
     "groups": "Grupos",
+    "no-group-found": "Nenhum grupo encontrado",
     "version": "Versão {{versão}}"
   },
   "GroupCreateSuccessBottomSheet": {
