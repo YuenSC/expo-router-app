@@ -15,10 +15,10 @@ import Toast from "react-native-toast-message";
 
 import { getMe } from "@/src/api/auth";
 import { setAxiosToken } from "@/src/api/axios";
-import BackButton from "@/src/components/common/BackButton";
 import { useAuth } from "@/src/context/AuthContext";
 import ContextProvider from "@/src/context/ContextProvider";
 import "@/src/i18n";
+import { getDefaultStackOptions } from "@/src/styles/getDefaultStackOptions";
 import theme from "@/src/styles/rneui";
 import { toastConfig } from "@/src/styles/toastConfig";
 
@@ -91,14 +91,7 @@ const StackLayout = () => {
   return (
     <Stack
       initialRouteName="welcome"
-      screenOptions={{
-        headerShown: false,
-        headerBackTitle: "Back",
-        headerStyle: {
-          backgroundColor: theme.colors.background,
-        },
-        headerLeft: () => <BackButton />,
-      }}
+      screenOptions={getDefaultStackOptions(theme)}
     >
       <Stack.Screen name="index" options={{}} />
       <Stack.Screen

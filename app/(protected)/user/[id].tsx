@@ -2,7 +2,7 @@ import { makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
+import { Keyboard, ScrollView, TouchableWithoutFeedback } from "react-native";
 
 import { useDeleteUserInGroup } from "@/src/api/hooks/group/useDeleteUserInGroup";
 import { useGetUser } from "@/src/api/hooks/user/useGetUser";
@@ -40,7 +40,10 @@ const UserUpdateBottomSheet = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.container}
+      >
         <UserForm
           isEdit
           user={user}
@@ -56,7 +59,7 @@ const UserUpdateBottomSheet = () => {
           }
           isHideTitle
         />
-      </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };

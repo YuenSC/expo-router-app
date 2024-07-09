@@ -1,4 +1,4 @@
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { Button, Input, Text, useTheme, makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -9,6 +9,7 @@ import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { usePostCreateUserInGroup } from "../../../api/hooks/group/usePostCreateUserInGroup";
 import { User } from "../../../api/types/User";
 import { VStack } from "../../common/Stack";
+import UncontrolledTooltip from "../../common/UncontrolledTooltip";
 
 type IUserListFormFooterProps = {
   groupId?: string;
@@ -80,6 +81,32 @@ const UserListFormFooter = ({
           )}
         </View>
       )}
+
+      <UncontrolledTooltip
+        popover={
+          <Text>
+            Admin control will be released in the future for multi-user control
+          </Text>
+        }
+        height={40}
+        width={300}
+      >
+        <Button
+          style={{ padding: 0 }}
+          containerStyle={{ padding: 0 }}
+          type="outline"
+          disabled
+          icon={
+            <MaterialIcons
+              name="admin-panel-settings"
+              size={24}
+              color={theme.colors.grey1}
+            />
+          }
+        >
+          Admin Management
+        </Button>
+      </UncontrolledTooltip>
       <VStack alignItems="stretch" gap={8} style={styles.buttonContainer}>
         {selectableUsers?.length > 0 && (
           <Button

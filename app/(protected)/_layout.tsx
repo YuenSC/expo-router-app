@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 
 import NetworkDialog from "@/src/components/NetworkDialog";
-import BackButton from "@/src/components/common/BackButton";
+import { getDefaultStackOptions } from "@/src/styles/getDefaultStackOptions";
 
 export default function RootLayout() {
   const { theme } = useTheme();
@@ -12,17 +12,7 @@ export default function RootLayout() {
   return (
     <>
       <NetworkDialog />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          headerBackTitle: "Back",
-          headerStyle: {
-            backgroundColor: theme.colors.background,
-          },
-          headerShadowVisible: false,
-          headerLeft: () => <BackButton />,
-        }}
-      >
+      <Stack screenOptions={getDefaultStackOptions(theme)}>
         <Stack.Screen name="(drawer)" />
 
         {/* Onboarding */}
@@ -37,6 +27,7 @@ export default function RootLayout() {
           name="user/[id]"
           options={{
             headerShown: true,
+            headerLargeTitle: true,
             headerTitle: t("UserForm:edit-member"),
             presentation: "modal",
           }}
@@ -52,7 +43,11 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="group/[id]/user-list"
-          options={{ headerShown: true, headerTitle: "" }}
+          options={{
+            headerShown: true,
+            headerTitle: t("UserListForm:members"),
+            headerLargeTitle: true,
+          }}
         />
       </Stack>
     </>
