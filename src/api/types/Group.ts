@@ -20,6 +20,11 @@ export interface GetGroupPayload {
 }
 export type GetGroupResponse = ApiResponse<Group>;
 
+export interface DeleteGroupPayload {
+  id: string;
+}
+export type DeleteGroupResponse = ApiResponse<unknown>;
+
 export interface PostCreateUserInGroupPayload {
   groupId: string;
   name: string;

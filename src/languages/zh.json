@@ -35,9 +35,10 @@
     "NA": "不适用",
     "adminLabel": "管理員",
     "back": "后退",
+    "cancel": "取消",
     "coming-soon": "即将推出",
     "create": "创造",
-    "delete": "从组中删除",
+    "delete": "删除",
     "done": "完毕",
     "edit": "编辑",
     "groupLabel": "（团体）",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>您确定删除<Highlight>{{groupName}}</Highlight>吗？</Text>",
-    "warning": "请注意，此操作是不可逆转的。\n所有数据都将丢失。"
+    "group-deleted": "组已删除",
+    "group-deleted-warning": "请重新选择/创建一个组以继续。",
+    "warning": "请注意，此操作是不可逆转的。\n所有费用记录和用户将被删除。"
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "您确定要删除这条记录吗？"
@@ -190,6 +193,7 @@
     "name-is-required": "用户名是必需的",
     "profile-image": "个人资料图片",
     "related-groups": "相关团体",
+    "removeFromGroup": "从组中删除",
     "take-photo": "拍照",
     "username": "用户名",
     "who-are-you": "你是谁？",

@@ -35,9 +35,10 @@
     "NA": "N / A",
     "adminLabel": "Administrador",
     "back": "Atrás",
+    "cancel": "Cancelar",
     "coming-soon": "Muy pronto",
     "create": "Crear",
-    "delete": "Sacar del grupo",
+    "delete": "Borrar",
     "done": "Hecho",
     "edit": "Editar",
     "groupLabel": "(Grupo)",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>¿Estás seguro de eliminar <Highlight>{{groupName}}</Highlight>?</Text>",
-    "warning": "Tenga en cuenta que esta acción es irreversible. \nTodos los datos se perderán."
+    "group-deleted": "Grupo eliminado",
+    "group-deleted-warning": "Vuelva a seleccionar/cree un grupo para continuar.",
+    "warning": "Tenga en cuenta que esta acción es irreversible. \nSe eliminarán todos los registros de gastos y usuarios."
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "¿Está seguro de eliminar este registro?"
@@ -190,6 +193,7 @@
     "name-is-required": "Se requiere nombre de usuario",
     "profile-image": "Imagen de perfil",
     "related-groups": "Grupos relacionados",
+    "removeFromGroup": "Sacar del grupo",
     "take-photo": "Tomar foto",
     "username": "Nombre de usuario",
     "who-are-you": "¿Quién eres?",

@@ -1,9 +1,11 @@
-import { Button, makeStyles, Text } from "@rneui/themed";
+import { makeStyles, Text } from "@rneui/themed";
+import { Link } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { Linking, ScrollView } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
+import ButtonWithRef from "@/src/components/common/ButtonWithRef";
 import { VStack } from "@/src/components/common/Stack";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
@@ -89,11 +91,13 @@ const Page = () => {
       />
 
       {currentGroup && (
-        <Button
-          title={t("OptionsScreen:delete-group")}
-          type="outline"
-          color="error"
-        />
+        <Link asChild href={`group/${currentGroupId}/delete`}>
+          <ButtonWithRef
+            title={t("OptionsScreen:delete-group")}
+            type="outline"
+            color="error"
+          />
+        </Link>
       )}
     </ScrollView>
   );

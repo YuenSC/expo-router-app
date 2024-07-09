@@ -49,6 +49,10 @@ export default function RootLayout() {
             headerLargeTitle: true,
           }}
         />
+        <Stack.Screen
+          name="group/[id]/delete"
+          options={{ presentation: "transparentModal" }}
+        />
       </Stack>
     </>
   );

@@ -2,6 +2,8 @@ import axios from "axios";
 import queryString from "query-string";
 
 import {
+  DeleteGroupPayload,
+  DeleteGroupResponse,
   DeleteUserInGroupPayload,
   DeleteUserInGroupResponse,
   GetGroupPayload,
@@ -40,6 +42,12 @@ export const patchGroupUpdate = async ({
   ...payload
 }: PatchGroupUpdatePayload): Promise<PatchGroupUpdateResponse> => {
   return (await axios.patch(`/api/groups/${id}`, payload)).data;
+};
+
+export const deleteGroup = async ({
+  id,
+}: DeleteGroupPayload): Promise<DeleteGroupResponse> => {
+  return (await axios.delete(`/api/groups/${id}`)).data;
 };
 
 export const postCreateUserInGroup = async ({
