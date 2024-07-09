@@ -1,4 +1,4 @@
-import { Button, Input, Text, makeStyles } from "@rneui/themed";
+import { Button, Input, makeStyles } from "@rneui/themed";
 import { memo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -29,10 +29,6 @@ const GroupForm = memo<IGroupFormProps>(
 
     return (
       <View style={styles.container}>
-        <Text h1 style={styles.title}>
-          {group?.name || t("GroupForm:create-group")}
-        </Text>
-
         <Controller
           control={control}
           name="name"
@@ -76,10 +72,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     flex: 1,
     padding: 16,
-  },
-  title: {
-    fontWeight: "bold",
-    marginBottom: 24,
   },
   button: {
     marginTop: 16,

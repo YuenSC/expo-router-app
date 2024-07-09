@@ -4,7 +4,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { SectionList, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
+import { KeyboardAwareSectionList } from "react-native-keyboard-aware-scroll-view";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import UserDisplay from "./UserDisplay";
@@ -78,7 +79,7 @@ const UserListForm = memo<IUserListFormProps>(
 
     return (
       <View style={styles.container}>
-        <SectionList
+        <KeyboardAwareSectionList
           sections={sections}
           contentInsetAdjustmentBehavior="automatic"
           contentContainerStyle={styles.contentContainer}
@@ -107,13 +108,15 @@ const UserListForm = memo<IUserListFormProps>(
           renderSectionFooter={() => <View style={styles.sectionFooter} />}
           ItemSeparatorComponent={() => <View style={styles.divider} />}
           ListFooterComponent={
-            <UserListFormFooter
-              groupId={groupId}
-              onSubmit={onSubmit}
-              selectableUsers={selectableUsers}
-              buttonText={buttonText}
-              disabledAddUser={group?.users?.length === 5}
-            />
+            <View style={{ marginTop: -16 }}>
+              <UserListFormFooter
+                groupId={groupId}
+                onSubmit={onSubmit}
+                selectableUsers={selectableUsers}
+                buttonText={buttonText}
+                disabledAddUser={group?.users?.length === 5}
+              />
+            </View>
           }
           renderItem={({ item: { isAdmin, user } }) => {
             const isProfileUser = user.id === profile?.id;
@@ -150,6 +153,7 @@ const UserListForm = memo<IUserListFormProps>(
 const useStyles = makeStyles((theme, inset: EdgeInsets) => ({
   container: {
     flex: 1,
+    backgroundColor: theme.colors.background,
   },
   contentContainer: {
     paddingTop: 16,
@@ -174,7 +178,8 @@ const useStyles = makeStyles((theme, inset: EdgeInsets) => ({
     marginVertical: 8,
   },
   sectionHeader: {
-    marginBottom: 12,
+    paddingVertical: 8,
+    marginBottom: 8,
     backgroundColor: theme.colors.background,
   },
   sectionHeaderTitle: {
@@ -182,7 +187,7 @@ const useStyles = makeStyles((theme, inset: EdgeInsets) => ({
     fontSize: 18,
   },
   sectionFooter: {
-    marginVertical: 8,
+    paddingBottom: 16,
   },
 }));
 

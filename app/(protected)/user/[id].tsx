@@ -57,7 +57,6 @@ const UserUpdateBottomSheet = () => {
               ? () => deleteUserInGroup({ userId: id || "", groupId })
               : undefined
           }
-          isHideTitle
         />
       </ScrollView>
     </TouchableWithoutFeedback>

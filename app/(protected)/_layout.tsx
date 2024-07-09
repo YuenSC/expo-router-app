@@ -20,7 +20,13 @@ export default function RootLayout() {
           name="onboarding/success"
           options={{ presentation: "transparentModal" }}
         />
-        <Stack.Screen name="onboarding/[step]" />
+        <Stack.Screen
+          name="onboarding/[step]"
+          options={{
+            headerShown: true,
+            headerLargeTitle: true,
+          }}
+        />
 
         {/* User */}
         <Stack.Screen
