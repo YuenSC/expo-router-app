@@ -2,14 +2,15 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { getExpenseList } from "../../expense";
 import { getNextPageParam } from "../../helper/getNextPageParam";
-import { ApiPaginatedPayload } from "../../types/Pagination";
+import { GetExpenseListPayload } from "../../types/Expense";
 
-export const useGetExpenseList = (payload: ApiPaginatedPayload) => {
+export const useGetExpenseList = (payload: GetExpenseListPayload) => {
   const query = useInfiniteQuery({
     queryKey: ["useGetExpenseList", payload],
     queryFn: async ({ pageParam }) => {
       return (await getExpenseList({ ...payload, page: pageParam })).data;
     },
+    enabled: !!payload.groupId,
     initialPageParam: 1,
     getNextPageParam,
   });

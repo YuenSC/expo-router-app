@@ -7,18 +7,28 @@ enum ExpenseTransactionType {
   payee = "payee",
 }
 
-export interface Expense extends BaseObject {}
+type CreateExpenseTransaction = {
+  type: ExpenseTransactionType;
+  isAutoSplit: boolean;
+  amount?: number;
+  userId?: string;
+};
 
-export type PostExpenseCreatePayload = {
+export type ExpenseTransaction = BaseObject & CreateExpenseTransaction;
+
+export interface Expense extends BaseObject {
   name: string;
   amount: number;
   incurredOn: string;
-  createExpenseTransactions: {
-    type: ExpenseTransactionType;
-    isAutoSplit: boolean;
-    amount?: number;
-    userId?: string;
-  }[];
+  transactions: ExpenseTransaction[];
+}
+
+export type PostExpenseCreatePayload = {
+  groupId: string;
+  name: string;
+  amount: number;
+  incurredOn: string;
+  createExpenseTransactions: CreateExpenseTransaction[];
 };
 export type PostExpenseCreateResponse = ApiResponse<Expense>;
 

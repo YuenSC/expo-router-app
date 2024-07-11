@@ -116,6 +116,11 @@
     "debt-settlement": "Debt settlement 💰",
     "summary": "Summary"
   },
+  "InfiniteScroll": {
+    "all-items-are-fetched": "All Items are fetched",
+    "failed-to-fetch-more-items": "Failed to fetch more items",
+    "no-items-found": "No items found"
+  },
   "LanguageScreen": {
     "language": "Language",
     "warning": "Machine translation is utilized to convert languages distinct from English. The possibility of translation error may persist."

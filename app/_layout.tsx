@@ -27,6 +27,8 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 10000,
       retry: (failureCount, error) => {
+        if (failureCount > 2) return false;
+
         if (axios.isAxiosError(error)) {
           return error.response?.status !== 401;
         }
