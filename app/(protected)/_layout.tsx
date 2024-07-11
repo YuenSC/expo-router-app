@@ -48,16 +48,37 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
+          name="group/[id]/index"
+          options={{
+            headerShown: true,
+            headerLargeTitle: true,
+            headerTitle: t("OptionsScreen:group-detail"),
+            presentation: "modal",
+          }}
+        />
+        <Stack.Screen
           name="group/[id]/user-list"
           options={{
             headerShown: true,
             headerTitle: t("UserListForm:members"),
             headerLargeTitle: true,
+            presentation: "modal",
           }}
         />
         <Stack.Screen
           name="group/[id]/delete"
           options={{ presentation: "transparentModal" }}
+        />
+
+        {/* Others */}
+        <Stack.Screen
+          name="language"
+          options={{
+            headerShown: true,
+            headerTitle: t("LanguageScreen:language"),
+            headerLargeTitle: true,
+            presentation: "modal",
+          }}
         />
       </Stack>
     </>

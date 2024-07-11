@@ -1,8 +1,9 @@
 import { Text, makeStyles } from "@rneui/themed";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import FullScreenLoading from "@/src/components/common/FullScreenLoading";
+import StyledScrollView from "@/src/components/common/StyledScrollview";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
 import GroupDetailMemberSection from "@/src/components/group/GroupDetailMemberSection";
 import GroupDetailPaymentSection from "@/src/components/group/GroupDetailPaymentSection";
@@ -27,7 +28,7 @@ const GroupDetailScreen = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <StyledScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.sectionPadding}>
           <Text h1>{group.name}</Text>
           {group.description && <Text>{group.description}</Text>}
@@ -76,7 +77,7 @@ const GroupDetailScreen = () => {
         {/* <GroupDetailSummaryCarousel group={currentGroup} /> */}
         <GroupDetailMemberSection group={group} />
         <GroupDetailPaymentSection />
-      </ScrollView>
+      </StyledScrollView>
     </View>
   );
 };

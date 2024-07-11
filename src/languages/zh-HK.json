@@ -112,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "語言",
-    "warning": "機器翻譯用於翻譯英語以外的語言。"
+    "warning": "機器翻譯用於轉換不同於英語的語言。\n翻譯錯誤的可能性可能仍然存在。"
   },
   "OptionsScreen": {
     "Upgrade": "升級到專業版",

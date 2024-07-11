@@ -118,7 +118,7 @@
   },
   "LanguageScreen": {
     "language": "Language",
-    "warning": "Machine translation is employed to translate languages other than English."
+    "warning": "Machine translation is utilized to convert languages distinct from English. The possibility of translation error may persist."
   },
   "Login": {
     "email-is-required": "Email is requierd",

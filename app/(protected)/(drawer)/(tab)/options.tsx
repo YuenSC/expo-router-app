@@ -1,12 +1,13 @@
 import { makeStyles, Text } from "@rneui/themed";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Linking, ScrollView } from "react-native";
+import { Linking } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import ButtonWithRef from "@/src/components/common/ButtonWithRef";
 import { VStack } from "@/src/components/common/Stack";
+import StyledScrollView from "@/src/components/common/StyledScrollview";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
 import { useAppContext } from "@/src/context/AppContext";
@@ -14,13 +15,14 @@ import { useAppContext } from "@/src/context/AppContext";
 const Page = () => {
   const styles = useStyles();
   const { t } = useTranslation();
+  const router = useRouter();
   const { currentGroupId } = useAppContext();
 
   const { data: profileUser } = useGetMe();
   const { data: currentGroup } = useGetGroup({ id: currentGroupId || "" });
 
   return (
-    <ScrollView
+    <StyledScrollView
       contentContainerStyle={styles.contentContainer}
       style={styles.container}
     >
@@ -36,7 +38,12 @@ const Page = () => {
       {profileUser?.id && (
         <OptionSection
           title={t("OptionsScreen:personal")}
-          sections={[<OptionSectionItem title={t("OptionsScreen:profile")} />]}
+          sections={[
+            <OptionSectionItem
+              title={t("OptionsScreen:profile")}
+              onPress={() => router.push(`/user/${profileUser.id}`)}
+            />,
+          ]}
         />
       )}
       {currentGroup?.id && (
@@ -45,8 +52,14 @@ const Page = () => {
             name: currentGroup.name,
           })}
           sections={[
-            <OptionSectionItem title={t("OptionsScreen:group-detail")} />,
-            <OptionSectionItem title={t("OptionsScreen:group-members")} />,
+            <OptionSectionItem
+              title={t("OptionsScreen:group-detail")}
+              onPress={() => router.push(`/group/${currentGroupId}`)}
+            />,
+            <OptionSectionItem
+              title={t("OptionsScreen:group-members")}
+              onPress={() => router.push(`/group/${currentGroupId}/user-list`)}
+            />,
             <OptionSectionItem
               title={t("OptionsScreen:category")}
               onPress={() => {}}
@@ -64,8 +77,10 @@ const Page = () => {
       <OptionSection
         title={t("OptionsScreen:app-related")}
         sections={[
-          <OptionSectionItem title={t("OptionsScreen:all-members")} />,
-          <OptionSectionItem title={t("OptionsScreen:language")} />,
+          <OptionSectionItem
+            title={t("OptionsScreen:language")}
+            onPress={() => router.push("/language")}
+          />,
           <OptionSectionItem
             title={t("OptionsScreen:contact-us")}
             onPress={() =>
@@ -99,7 +114,7 @@ const Page = () => {
           />
         </Link>
       )}
-    </ScrollView>
+    </StyledScrollView>
   );
 };
 

@@ -2,12 +2,13 @@ import { makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Keyboard, ScrollView, TouchableWithoutFeedback } from "react-native";
+import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 import { useDeleteUserInGroup } from "@/src/api/hooks/group/useDeleteUserInGroup";
 import { useGetUser } from "@/src/api/hooks/user/useGetUser";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import UserForm from "@/src/components/User/UserForm/UserForm";
+import StyledScrollView from "@/src/components/common/StyledScrollview";
 
 const UserUpdateBottomSheet = () => {
   const router = useRouter();
@@ -40,10 +41,7 @@ const UserUpdateBottomSheet = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.container}
-      >
+      <StyledScrollView style={styles.container}>
         <UserForm
           user={user}
           submitButtonText={t("Common:edit")}
@@ -57,7 +55,7 @@ const UserUpdateBottomSheet = () => {
               : undefined
           }
         />
-      </ScrollView>
+      </StyledScrollView>
     </TouchableWithoutFeedback>
   );
 };

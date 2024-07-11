@@ -112,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "Langue",
-    "warning": "La traduction automatique est utilisée pour traduire des langues autres que l'anglais."
+    "warning": "La traduction automatique est utilisée pour convertir des langues distinctes de l'anglais. \nLa possibilité d’une erreur de traduction peut persister."
   },
   "OptionsScreen": {
     "Upgrade": "Passer à Pro",

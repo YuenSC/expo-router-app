@@ -112,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "语言",
-    "warning": "机器翻译用于翻译英语以外的语言。"
+    "warning": "机器翻译用于转换不同于英语的语言。\n翻译错误的可能性可能仍然存在。"
   },
   "OptionsScreen": {
     "Upgrade": "升级到专业版",
