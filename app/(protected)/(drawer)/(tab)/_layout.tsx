@@ -11,7 +11,6 @@ import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import BottomTabBar from "@/src/components/bottomTab/BottomTabBar";
 import { HStack } from "@/src/components/common/Stack";
-import { useAuth } from "@/src/context/AuthContext";
 
 export default function TabLayout() {
   const { theme } = useTheme();
@@ -23,7 +22,6 @@ export default function TabLayout() {
       queryClient.invalidateQueries({ queryKey: ["me"] });
     },
   });
-  const { onLogout } = useAuth();
 
   return (
     <Tabs
@@ -46,9 +44,6 @@ export default function TabLayout() {
         headerRight: () => {
           return (
             <HStack>
-              <Button onPress={onLogout}>
-                {t("BottomTabNavigator:logout")}
-              </Button>
               <Button
                 icon={<AntDesign name="edit" size={24} color="black" />}
                 onPress={() =>
