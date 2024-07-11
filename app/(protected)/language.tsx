@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
 
 import { HStack, VStack } from "@/src/components/common/Stack";
-import StyledScrollView from "@/src/components/common/StyledScrollview";
+import StyledScrollView from "@/src/components/common/StyledScrollView";
 import { LanguageEnum, LanguageLabels } from "@/src/i18n";
 
 const LanguageScreen = () => {

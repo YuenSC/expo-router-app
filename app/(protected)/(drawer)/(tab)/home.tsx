@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import FullScreenLoading from "@/src/components/common/FullScreenLoading";
-import StyledScrollView from "@/src/components/common/StyledScrollview";
+import StyledScrollView from "@/src/components/common/StyledScrollView";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
 import GroupDetailMemberSection from "@/src/components/group/GroupDetailMemberSection";
 import GroupDetailPaymentSection from "@/src/components/group/GroupDetailPaymentSection";

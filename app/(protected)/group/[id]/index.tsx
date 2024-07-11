@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
 
 import { usePatchGroupUpdate } from "@/src/api/hooks/group/usePatchGroupUpdate";
-import StyledScrollView from "@/src/components/common/StyledScrollview";
+import StyledScrollView from "@/src/components/common/StyledScrollView";
 import GroupForm from "@/src/components/group/GroupForm";
 
 const Page = () => {

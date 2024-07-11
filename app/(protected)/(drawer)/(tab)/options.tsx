@@ -7,7 +7,7 @@ import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import ButtonWithRef from "@/src/components/common/ButtonWithRef";
 import { VStack } from "@/src/components/common/Stack";
-import StyledScrollView from "@/src/components/common/StyledScrollview";
+import StyledScrollView from "@/src/components/common/StyledScrollView";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
 import { useAppContext } from "@/src/context/AppContext";

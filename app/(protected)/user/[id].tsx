@@ -8,7 +8,7 @@ import { useDeleteUserInGroup } from "@/src/api/hooks/group/useDeleteUserInGroup
 import { useGetUser } from "@/src/api/hooks/user/useGetUser";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import UserForm from "@/src/components/User/UserForm/UserForm";
-import StyledScrollView from "@/src/components/common/StyledScrollview";
+import StyledScrollView from "@/src/components/common/StyledScrollView";
 
 const UserUpdateBottomSheet = () => {
   const router = useRouter();
