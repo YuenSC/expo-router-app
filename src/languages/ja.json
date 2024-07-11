@@ -35,9 +35,10 @@
     "NA": "該当なし",
     "adminLabel": "管理者",
     "back": "戻る",
+    "cancel": "キャンセル",
     "coming-soon": "近日公開",
     "create": "作成する",
-    "delete": "グループから削除",
+    "delete": "消去",
     "done": "終わり",
     "edit": "編集",
     "groupLabel": "（グループ）",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text><Highlight>{{groupName}}</Highlight> を削除してもよろしいですか?</Text>",
-    "warning": "この操作は元に戻せないことに注意してください。\nすべてのデータが失われます。"
+    "group-deleted": "グループが削除されました",
+    "group-deleted-warning": "続行するにはグループを再選択/作成してください。",
+    "warning": "この操作は元に戻せないことに注意してください。\nすべての経費レコードとユーザーが削除されます。"
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "このレコードを削除してもよろしいですか?"
@@ -109,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "言語",
-    "warning": "英語以外の言語の翻訳には機械翻訳が使用されます。"
+    "warning": "機械翻訳は、英語とは異なる言語を変換するために利用されます。\n翻訳エラーの可能性が残る可能性があります。"
   },
   "OptionsScreen": {
     "Upgrade": "プロ仕様にアップグレードする",
@@ -125,7 +128,7 @@
     "language": "言語",
     "online-mode": "オンラインモード",
     "options": "オプション",
-    "personal": "個人的",
+    "personal": "個人情報",
     "profile": "ユーザープロフィール",
     "unknown-user": "ユーザー"
   },
@@ -181,6 +184,7 @@
     "name-is-required": "ユーザー名は必須です",
     "profile-image": "プロフィール画像",
     "related-groups": "関連グループ",
+    "removeFromGroup": "グループから削除",
     "take-photo": "写真を撮る",
     "username": "ユーザー名",
     "who-are-you": "あなたは誰ですか？",
@@ -205,5 +209,8 @@
     "get-started": "始めましょう",
     "login": "ログイン",
     "sign-up": "新しいアカウントを作成する"
+  },
+  "options": {
+    "logout": "ログアウト"
   }
 }

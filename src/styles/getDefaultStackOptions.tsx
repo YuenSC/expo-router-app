@@ -1,5 +1,5 @@
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { Colors, Theme } from "@rneui/themed";
-import { NativeStackNavigationOptions } from "react-native-screens/lib/typescript/native-stack/types";
 
 import BackButton from "@/src/components/common/BackButton";
 
@@ -18,4 +18,5 @@ export const getDefaultStackOptions = (
       color: theme.colors.black,
     },
     headerLeft: () => <BackButton />,
+    headerShadowVisible: false,
   }) satisfies NativeStackNavigationOptions;

@@ -35,9 +35,10 @@
     "NA": "不適用",
     "adminLabel": "管理員",
     "back": "後退",
+    "cancel": "取消",
     "coming-soon": "即將推出",
     "create": "創造",
-    "delete": "從群組中刪除",
+    "delete": "刪除",
     "done": "完畢",
     "edit": "編輯",
     "groupLabel": "（團體）",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>您確定刪除<Highlight>{{groupName}}</Highlight>嗎？",
-    "warning": "請注意，此操作是不可逆轉的。\n所有資料都將遺失。"
+    "group-deleted": "群組已刪除",
+    "group-deleted-warning": "請重新選擇/建立一個群組以繼續。",
+    "warning": "請注意，此操作是不可逆轉的。\n所有費用記錄和用戶將被刪除。"
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "您確定要刪除此記錄嗎？"
@@ -109,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "語言",
-    "warning": "機器翻譯用於翻譯英語以外的語言。"
+    "warning": "機器翻譯用於轉換不同於英語的語言。\n翻譯錯誤的可能性可能仍然存在。"
   },
   "OptionsScreen": {
     "Upgrade": "升級到專業版",
@@ -125,7 +128,7 @@
     "language": "語言",
     "online-mode": "線上模式",
     "options": "選項",
-    "personal": "個人的",
+    "personal": "個人資訊",
     "profile": "使用者資料",
     "unknown-user": "使用者"
   },
@@ -190,6 +193,7 @@
     "name-is-required": "使用者名稱是必需的",
     "profile-image": "個人資料圖片",
     "related-groups": "相關團體",
+    "removeFromGroup": "從群組中刪除",
     "take-photo": "拍照",
     "username": "使用者名稱",
     "who-are-you": "你是誰？",
@@ -214,5 +218,8 @@
     "get-started": "開始使用",
     "login": "登入",
     "sign-up": "建立新帳戶"
+  },
+  "options": {
+    "logout": "登出"
   }
 }

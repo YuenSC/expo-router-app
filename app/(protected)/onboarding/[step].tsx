@@ -2,7 +2,8 @@ import { makeStyles } from "@rneui/themed";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { ScrollView, ScrollViewProps } from "react-native";
+import { ScrollViewProps } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useGetGroupList } from "@/src/api/hooks/group/useGetGroupList";
@@ -12,13 +13,14 @@ import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { usePatchUserUpdate } from "@/src/api/hooks/user/usePatchUserUpdate";
 import UserForm from "@/src/components/User/UserForm/UserForm";
 import UserListForm from "@/src/components/User/UserList/UserListForm";
-import StyledKeyboardAvoidingView from "@/src/components/common/StyledKeyboardAvoidingView";
+import BackButton from "@/src/components/common/BackButton";
 import GroupForm from "@/src/components/group/GroupForm";
 
 const scrollViewProps = {
   keyboardDismissMode: "on-drag",
   keyboardShouldPersistTaps: "always",
   contentContainerStyle: { flex: 1 },
+  contentInsetAdjustmentBehavior: "automatic",
 } satisfies ScrollViewProps;
 
 const OnboardingPage = () => {
@@ -62,17 +64,25 @@ const OnboardingPage = () => {
     });
 
   useEffect(() => {
+    const titleByStep = {
+      0: t("UserForm:edit-member"),
+      1: groups[0] ? groups[0].name : t("GroupForm:create-group"),
+      2: t("UserListForm:members"),
+    } as Record<number, string>;
+
     navigation.setOptions({
-      headerShown: step !== 0,
-      headerTitle: "",
+      headerTitle: titleByStep[step] || "",
+      headerLeft: () => {
+        if (step === 0) return null;
+        return <BackButton />;
+      },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
+  }, [groups, navigation, step, t]);
 
   return (
-    <StyledKeyboardAvoidingView style={styles.keyboardAvoidingView}>
+    <>
       {step === 0 && (
-        <ScrollView style={styles.container} {...scrollViewProps}>
+        <KeyboardAwareScrollView style={styles.container} {...scrollViewProps}>
           <UserForm
             style={styles.contentContainer}
             submitButtonText={t("Common:next")}
@@ -82,11 +92,11 @@ const OnboardingPage = () => {
               patchUserUpdate({ ...values, id: user?.id || "" })
             }
           />
-        </ScrollView>
+        </KeyboardAwareScrollView>
       )}
 
       {step === 1 && (
-        <ScrollView style={styles.container} {...scrollViewProps}>
+        <KeyboardAwareScrollView style={styles.container} {...scrollViewProps}>
           <GroupForm
             groupId={groups[0]?.id}
             isSubmitting={isPendingPostGroupCreate || isPendingPatchGroupUpdate}
@@ -101,7 +111,7 @@ const OnboardingPage = () => {
               }
             }}
           />
-        </ScrollView>
+        </KeyboardAwareScrollView>
       )}
 
       {step === 2 && (
@@ -111,7 +121,7 @@ const OnboardingPage = () => {
           onSubmit={() => router.push("/onboarding/success")}
         />
       )}
-    </StyledKeyboardAvoidingView>
+    </>
   );
 };
 
@@ -124,9 +134,10 @@ const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
   },
   container: {
     flex: 1,
+    backgroundColor: theme.colors.background,
   },
   contentContainer: {
-    paddingTop: insets.top + 24,
+    paddingTop: 12,
   },
 }));
 

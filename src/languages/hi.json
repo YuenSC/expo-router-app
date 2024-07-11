@@ -35,9 +35,10 @@
     "NA": "एन/ए",
     "adminLabel": "प्रशासक",
     "back": "पीछे",
+    "cancel": "रद्द करना",
     "coming-soon": "जल्द आ रहा है",
     "create": "बनाएं",
-    "delete": "समूह से हटा दें",
+    "delete": "मिटाना",
     "done": "हो गया",
     "edit": "संपादन करना",
     "groupLabel": "(समूह)",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>क्या आप निश्चित रूप से <Highlight>{{groupName}}</Highlight> को हटाना चाहते हैं?</Text>",
-    "warning": "कृपया ध्यान दें कि यह क्रिया अपरिवर्तनीय है. \nसारा डेटा नष्ट हो जाएगा."
+    "group-deleted": "समूह हटाया गया",
+    "group-deleted-warning": "कृपया जारी रखने के लिए एक समूह पुनः चुनें/बनाएँ।",
+    "warning": "कृपया ध्यान दें कि यह क्रिया अपरिवर्तनीय है. \nसभी व्यय रिकॉर्ड और उपयोगकर्ता हटा दिए जाएंगे."
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "क्या आप निश्चित रूप से इस रिकॉर्ड को हटाना चाहते हैं?"
@@ -109,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "भाषा",
-    "warning": "अंग्रेजी के अलावा अन्य भाषाओं का अनुवाद करने के लिए मशीनी अनुवाद का उपयोग किया जाता है।"
+    "warning": "अंग्रेजी से भिन्न भाषाओं को परिवर्तित करने के लिए मशीनी अनुवाद का उपयोग किया जाता है। \nअनुवाद में त्रुटि की संभावना बनी रह सकती है."
   },
   "OptionsScreen": {
     "Upgrade": "प्रो में अपग्रेड",
@@ -125,7 +128,7 @@
     "language": "भाषा",
     "online-mode": "ऑनलाइन मोड",
     "options": "विकल्प",
-    "personal": "निजी",
+    "personal": "व्यक्तिगत जानकारी",
     "profile": "उपयोगकर्ता रूपरेखा",
     "unknown-user": "उपयोगकर्ता"
   },
@@ -190,6 +193,7 @@
     "name-is-required": "उपयोगकर्ता नाम आवश्यक है",
     "profile-image": "प्रोफ़ाइल छवि",
     "related-groups": "संबंधित समूह",
+    "removeFromGroup": "समूह से हटा दें",
     "take-photo": "फोटो लो",
     "username": "उपयोगकर्ता नाम",
     "who-are-you": "आप कौन हैं?",
@@ -214,5 +218,8 @@
     "get-started": "शुरू हो जाओ",
     "login": "लॉग इन करें",
     "sign-up": "नया खाता बनाएँ"
+  },
+  "options": {
+    "logout": "लॉग आउट"
   }
 }

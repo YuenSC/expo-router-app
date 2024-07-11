@@ -1,6 +1,6 @@
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { Button, Input, Text, makeStyles } from "@rneui/themed";
-import { memo, useEffect, useMemo, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Keyboard, StyleProp, View, ViewStyle } from "react-native";
@@ -14,8 +14,6 @@ import Config from "@/src/Config";
 import { PatchUserUpdatePayload, User } from "@/src/api/types/User";
 
 type IUserFormProps = {
-  isEdit?: boolean;
-  isHideTitle?: boolean;
   isSubmitting?: boolean;
   onDelete?: () => void;
   onEdit: (values: PatchUserUpdatePayload) => void;
@@ -25,16 +23,7 @@ type IUserFormProps = {
 };
 
 const UserForm = memo<IUserFormProps>(
-  ({
-    isEdit,
-    isHideTitle,
-    isSubmitting,
-    onDelete,
-    onEdit,
-    style,
-    submitButtonText,
-    user,
-  }) => {
+  ({ isSubmitting, onDelete, onEdit, style, submitButtonText, user }) => {
     const insets = useSafeAreaInsets();
     const styles = useStyles(insets);
     const { t } = useTranslation();
@@ -49,18 +38,6 @@ const UserForm = memo<IUserFormProps>(
     const profileImageWatch = useWatch({ control, name: "profileImage" });
     const imageUrl = profileImageWatch?.uri || user?.imageUrl;
 
-    const title = useMemo(() => {
-      if (isEdit) {
-        return t("UserForm:edit-member");
-      }
-
-      return user?.name
-        ? t("UserForm:hi-user", {
-            name: user.name,
-          })
-        : t("UserForm:create-profile");
-    }, [isEdit, t, user?.name]);
-
     useEffect(() => {
       if (user) {
         setValue("name", user.name);
@@ -69,12 +46,6 @@ const UserForm = memo<IUserFormProps>(
 
     return (
       <View style={[styles.container, style]}>
-        {!isHideTitle && (
-          <Text h1 style={styles.title}>
-            {title}
-          </Text>
-        )}
-
         <Controller
           control={control}
           name="name"
@@ -111,7 +82,7 @@ const UserForm = memo<IUserFormProps>(
           />
           {onDelete && (
             <Button
-              title={t("Common:delete")}
+              title={t("UserForm.removeFromGroup")}
               type="outline"
               color="error"
               onPress={onDelete}

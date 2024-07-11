@@ -35,9 +35,10 @@
     "NA": "N/A",
     "adminLabel": "Administrator",
     "back": "Back",
+    "cancel": "Cancel",
     "coming-soon": "Coming Soon",
     "create": "Create",
-    "delete": "Remove From Group",
+    "delete": "Delete",
     "done": "Done",
     "edit": "Edit",
     "groupLabel": "(Group)",
@@ -68,7 +69,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>Are you sure to delete <Highlight>{{groupName}}</Highlight>?</Text>",
-    "warning": "Please note that this action is irreversible. All the data will be lost."
+    "group-deleted": "Group Deleted",
+    "group-deleted-warning": "Please reselect/create a group to continue.",
+    "warning": "Please note that this action is irreversible. All the expense record and users will be deleted."
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "Are you sure to delete this record?"
@@ -115,7 +118,7 @@
   },
   "LanguageScreen": {
     "language": "Language",
-    "warning": "Machine translation is employed to translate languages other than English."
+    "warning": "Machine translation is utilized to convert languages distinct from English. The possibility of translation error may persist."
   },
   "Login": {
     "email-is-required": "Email is requierd",
@@ -144,7 +147,7 @@
     "language": "Language",
     "online-mode": "Online Mode",
     "options": "Options",
-    "personal": "Personal",
+    "personal": "Personal Information",
     "profile": "User Profile",
     "unknown-user": "User"
   },
@@ -214,6 +217,7 @@
     "name-is-required": "Username is required",
     "profile-image": "Profile Image",
     "related-groups": "Related Groups",
+    "removeFromGroup": "Remove From Group",
     "take-photo": "Take Photo",
     "username": "Username",
     "who-are-you": "Who are you?",
@@ -239,5 +243,8 @@
     "get-started": "Get Started",
     "login": "Login",
     "sign-up": "Create New Account"
+  },
+  "options": {
+    "logout": "Logout"
   }
 }

@@ -35,9 +35,10 @@
     "NA": "N / A",
     "adminLabel": "Administrateur",
     "back": "Dos",
+    "cancel": "Annuler",
     "coming-soon": "À venir",
     "create": "Créer",
-    "delete": "Supprimer du groupe",
+    "delete": "Supprimer",
     "done": "Fait",
     "edit": "Modifier",
     "groupLabel": "(Groupe)",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>Êtes-vous sûr de supprimer <Highlight>{{groupName}}</Highlight> ?</Text>",
-    "warning": "Veuillez noter que cette action est irréversible. \nToutes les données seront perdues."
+    "group-deleted": "Groupe supprimé",
+    "group-deleted-warning": "Veuillez resélectionner/créer un groupe pour continuer.",
+    "warning": "Veuillez noter que cette action est irréversible. \nTous les enregistrements de dépenses et les utilisateurs seront supprimés."
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "Êtes-vous sûr de supprimer cet enregistrement ?"
@@ -109,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "Langue",
-    "warning": "La traduction automatique est utilisée pour traduire des langues autres que l'anglais."
+    "warning": "La traduction automatique est utilisée pour convertir des langues distinctes de l'anglais. \nLa possibilité d’une erreur de traduction peut persister."
   },
   "OptionsScreen": {
     "Upgrade": "Passer à Pro",
@@ -125,7 +128,7 @@
     "language": "Langue",
     "online-mode": "Mode en ligne",
     "options": "Possibilités",
-    "personal": "Personnel",
+    "personal": "Informations personnelles",
     "profile": "Profil de l'utilisateur",
     "unknown-user": "Utilisateur"
   },
@@ -190,6 +193,7 @@
     "name-is-required": "Nom d'utilisateur est nécessaire",
     "profile-image": "Image de profil",
     "related-groups": "Groupes associés",
+    "removeFromGroup": "Supprimer du groupe",
     "take-photo": "Prendre une photo",
     "username": "Nom d'utilisateur",
     "who-are-you": "Qui es-tu?",
@@ -214,5 +218,8 @@
     "get-started": "Commencer",
     "login": "Se connecter",
     "sign-up": "Créer un nouveau compte"
+  },
+  "options": {
+    "logout": "Se déconnecter"
   }
 }

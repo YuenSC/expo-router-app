@@ -35,6 +35,7 @@
     "NA": "N / D",
     "adminLabel": "Administrador",
     "back": "Voltar",
+    "cancel": "Cancelar",
     "coming-soon": "Em breve",
     "create": "Criar",
     "delete": "Excluir",
@@ -62,7 +63,9 @@
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>Tem certeza de que deseja excluir <Highlight>{{groupName}}</Highlight>?</Text>",
-    "warning": "Observe que esta ação é irreversível. \nTodos os dados serão perdidos."
+    "group-deleted": "Grupo excluído",
+    "group-deleted-warning": "Selecione/crie novamente um grupo para continuar.",
+    "warning": "Observe que esta ação é irreversível. \nTodos os registros de despesas e usuários serão excluídos."
   },
   "GroupDeletePaymentRecordBottomSheet": {
     "are-you-sure-to-delete-this-record": "Tem certeza de que deseja excluir este registro?"
@@ -109,7 +112,7 @@
   },
   "LanguageScreen": {
     "language": "Linguagem",
-    "warning": "A tradução automática é empregada para traduzir outros idiomas além do inglês."
+    "warning": "A tradução automática é utilizada para converter idiomas distintos do inglês. \nA possibilidade de erro de tradução pode persistir."
   },
   "OptionsScreen": {
     "Upgrade": "Atualizar para Pro",
@@ -125,7 +128,7 @@
     "language": "Linguagem",
     "online-mode": "Modo online",
     "options": "Opções",
-    "personal": "Pessoal",
+    "personal": "Informações pessoais",
     "profile": "Perfil de usuário",
     "unknown-user": "Do utilizador"
   },
@@ -190,6 +193,7 @@
     "name-is-required": "Nome de usuário é requerido",
     "profile-image": "Imagem de perfil",
     "related-groups": "Grupos Relacionados",
+    "removeFromGroup": "Excluir",
     "take-photo": "Tirar fotos",
     "username": "Nome de usuário",
     "who-are-you": "Quem é você?",
@@ -214,5 +218,8 @@
     "get-started": "Iniciar",
     "login": "Conecte-se",
     "sign-up": "Criar nova conta"
+  },
+  "options": {
+    "logout": "Sair"
   }
 }

@@ -8,7 +8,7 @@ module.exports = {
         paths: [
           {
             name: "react-native",
-            importNames: ["Text", "Image"],
+            importNames: ["Text", "Image", "ScrollView"],
             message: "Please use Text from rneui instead.",
           },
           {
