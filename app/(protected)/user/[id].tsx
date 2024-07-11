@@ -45,7 +45,6 @@ const UserUpdateBottomSheet = () => {
         style={styles.container}
       >
         <UserForm
-          isEdit
           user={user}
           submitButtonText={t("Common:edit")}
           isSubmitting={isPending}
