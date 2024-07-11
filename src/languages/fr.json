@@ -218,5 +218,8 @@
     "get-started": "Commencer",
     "login": "Se connecter",
     "sign-up": "Créer un nouveau compte"
+  },
+  "options": {
+    "logout": "Se déconnecter"
   }
 }

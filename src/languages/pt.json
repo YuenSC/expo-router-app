@@ -218,5 +218,8 @@
     "get-started": "Iniciar",
     "login": "Conecte-se",
     "sign-up": "Criar nova conta"
+  },
+  "options": {
+    "logout": "Sair"
   }
 }

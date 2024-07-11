@@ -11,6 +11,7 @@ import StyledScrollView from "@/src/components/common/StyledScrollview";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
 import { useAppContext } from "@/src/context/AppContext";
+import { useAuth } from "@/src/context/AuthContext";
 
 const Page = () => {
   const styles = useStyles();
@@ -20,6 +21,7 @@ const Page = () => {
 
   const { data: profileUser } = useGetMe();
   const { data: currentGroup } = useGetGroup({ id: currentGroupId || "" });
+  const { onLogout } = useAuth();
 
   return (
     <StyledScrollView
@@ -105,15 +107,22 @@ const Page = () => {
         ]}
       />
 
-      {currentGroup && (
-        <Link asChild href={`group/${currentGroupId}/delete`}>
-          <ButtonWithRef
-            title={t("OptionsScreen:delete-group")}
-            type="outline"
-            color="error"
-          />
-        </Link>
-      )}
+      <VStack alignItems="stretch" gap={8}>
+        {currentGroup && (
+          <Link asChild href={`group/${currentGroupId}/delete`}>
+            <ButtonWithRef
+              title={t("OptionsScreen:delete-group")}
+              type="outline"
+              color="error"
+            />
+          </Link>
+        )}
+        <ButtonWithRef
+          title={t("options:logout")}
+          type="outline"
+          onPress={onLogout}
+        />
+      </VStack>
     </StyledScrollView>
   );
 };

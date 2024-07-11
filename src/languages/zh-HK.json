@@ -218,5 +218,8 @@
     "get-started": "開始使用",
     "login": "登入",
     "sign-up": "建立新帳戶"
+  },
+  "options": {
+    "logout": "登出"
   }
 }
