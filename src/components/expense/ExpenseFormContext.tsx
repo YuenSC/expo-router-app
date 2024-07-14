@@ -18,8 +18,10 @@ export const ExpenseFormProvider = ({
 }: PropsWithChildren<ExpenseFormContextType>) => {
   const form = useForm<PostExpenseCreatePayload>({
     defaultValues: {
-      amount: 0,
+      description: "Example",
+      amount: 1000,
       currencyCode: "HKD",
+      incurredOn: new Date().toISOString(),
     },
   });
 

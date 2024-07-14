@@ -67,7 +67,7 @@ const BottomTabBar = memo<BottomTabBarProps>(
                     size: 24,
                   })}
                 </View>
-                <Text style={{ color }}>
+                <Text style={{ color, textAlign: "center" }}>
                   {(options?.tabBarLabel as string) || ""}
                 </Text>
               </TouchableOpacity>

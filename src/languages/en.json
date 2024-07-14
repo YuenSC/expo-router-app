@@ -64,6 +64,9 @@
     "payee": "Payee",
     "payer": "Payer"
   },
+  "ExpenseDetailForm": {
+    "date-is-required": "Date is required"
+  },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "All Currency",
     "search-currency-code-or-name": "Search currency code or name",

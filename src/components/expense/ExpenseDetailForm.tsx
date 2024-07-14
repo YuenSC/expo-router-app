@@ -1,17 +1,23 @@
 import { AntDesign } from "@expo/vector-icons";
-import BottomSheet, { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 // eslint-disable-next-line no-restricted-imports
 import { Input as BaseInput } from "@rneui/base";
 import { Button, Input, Text, makeStyles } from "@rneui/themed";
-import { useImperativeHandle, useRef } from "react";
-import { Controller, useController, useFormContext } from "react-hook-form";
+import { useRef } from "react";
+import {
+  Controller,
+  useController,
+  useFormContext,
+  useWatch,
+} from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { TextInput, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import BillCalculatorBottomSheet from "./BillCalculatorBottomSheet";
+import BillCalculatorBottomSheetModal from "./BillCalculatorBottomSheetModal";
 import { useExpenseFormContext } from "./ExpenseFormContext";
 import CurrencyCodeSelectBottomSheetModal from "./ExpenseFormCurrencyCodeSelectBottomSheetModal";
+import ExpenseFormDatePickerBottomSheetModal from "./ExpenseFormDatePickerBottomSheet";
 import StyledScrollView from "../common/StyledScrollView";
 
 import { PostExpenseCreatePayload } from "@/src/api/types/Expense";
@@ -20,23 +26,18 @@ import { formatDate } from "@/src/utils/formatDate";
 const ExpenseDetailForm = () => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
-  const calculatorRef = useRef<BottomSheet>(null);
+  const calculatorModalRef = useRef<BottomSheetModal>(null);
   const amountInputRef = useRef<TextInput & BaseInput>(null);
   const currencyCodeBottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const dateBottomSheetModalRef = useRef<BottomSheetModal>(null);
   const dateInputRef = useRef<TextInput & BaseInput>(null);
   const { t, i18n } = useTranslation();
   const { groupId, goToNextStep } = useExpenseFormContext();
 
-  const { control } = useFormContext<PostExpenseCreatePayload>();
-
   console.log("groupId", groupId);
-  // const recordId = useWatch({ control, name: "id" });
-  // const record = useAppSelector((state) =>
-  //   state.groups.groups
-  //     .find((group) => group.id === groupId)
-  //     ?.paymentRecords.find((item) => item.id === recordId),
-  // );
 
+  const { control, trigger } = useFormContext<PostExpenseCreatePayload>();
+  const currencyCodeWatch = useWatch({ control, name: "currencyCode" });
   const {
     field: amount,
     fieldState: { error: amountError },
@@ -52,26 +53,19 @@ const ExpenseDetailForm = () => {
     },
   });
 
-  const { field: currencyCode } = useController({
-    name: "currencyCode",
-    control,
-  });
-  const { field: date } = useController({
-    name: "incurredOn",
-    control,
-  });
-  // const { field: category } = useController({
-  //   name: "category",
-  //   control,
-  // });
-  useImperativeHandle(amount.ref, () => amountInputRef.current, []);
+  // const recordId = useWatch({ control, name: "id" });
+  // const record = useAppSelector((state) =>
+  //   state.groups.groups
+  //     .find((group) => group.id === groupId)
+  //     ?.paymentRecords.find((item) => item.id === recordId),
+  // );
 
   return (
     <View style={styles.container}>
       <StyledScrollView
         style={styles.container}
         keyboardDismissMode="on-drag"
-        onScrollBeginDrag={() => calculatorRef.current?.close()}
+        onScrollBeginDrag={() => calculatorModalRef.current?.close()}
       >
         {/* Bill */}
         <Input
@@ -89,18 +83,16 @@ const ExpenseDetailForm = () => {
               style={styles.currencyButton}
               onPress={() => currencyCodeBottomSheetModalRef.current?.present()}
             >
-              <Text style={styles.currencyButtonText}>
-                {currencyCode.value}
-              </Text>
+              <Text style={styles.currencyButtonText}>{currencyCodeWatch}</Text>
               <AntDesign name="caretdown" />
             </TouchableOpacity>
           }
           containerStyle={styles.inputContainer}
           showSoftInputOnFocus={false}
           value={amount.value === 0 ? undefined : amount.value.toLocaleString()}
-          onFocus={() => calculatorRef.current?.snapToIndex(0)}
+          onFocus={calculatorModalRef.current?.present}
           onBlur={() => {
-            calculatorRef.current?.close();
+            calculatorModalRef.current?.close();
             amount.onBlur();
           }}
         />
@@ -156,20 +148,25 @@ const ExpenseDetailForm = () => {
           })}
         </View> */}
 
-        <Input
-          ref={dateInputRef}
-          label={t("BillForm:date")}
-          placeholder={t("BillForm:date-placeholder")}
-          onFocus={() => {
-            // navigation.navigate("PaymentFormDatePickerBottomSheet", {
-            //   date: date.value,
-            //   setDate: date.onChange,
-            // });
+        <Controller
+          control={control}
+          name="incurredOn"
+          rules={{
+            required: t("ExpenseDetailForm:date-is-required"),
           }}
-          showSoftInputOnFocus={false}
-          value={date.value ? formatDate(date.value, i18n.language) : undefined}
-          onBlur={() => {
-            date.onBlur();
+          render={({ field: { value, onBlur }, fieldState: { error } }) => {
+            return (
+              <Input
+                ref={dateInputRef}
+                label={t("BillForm:date")}
+                placeholder={t("BillForm:date-placeholder")}
+                onFocus={() => dateBottomSheetModalRef.current?.present()}
+                showSoftInputOnFocus={false}
+                value={value ? formatDate(value, i18n.language) : undefined}
+                onBlur={() => onBlur()}
+                errorMessage={error?.message}
+              />
+            );
           }}
         />
       </StyledScrollView>
@@ -177,26 +174,38 @@ const ExpenseDetailForm = () => {
       <View style={styles.footer}>
         <Button
           title={t("Common:next")}
-          // onPress={handleSubmit(() => {
-          //   navigation.navigate("PayerSelect");
-          // })}
-          onPress={goToNextStep}
+          onPress={async () => {
+            if (await trigger(["amount", "description", "incurredOn"]))
+              goToNextStep();
+          }}
         />
       </View>
 
       {/* Modal */}
-      <BillCalculatorBottomSheet
-        ref={calculatorRef}
+      <BillCalculatorBottomSheetModal
+        ref={calculatorModalRef}
         value={amount.value}
         onChange={amount.onChange}
         onBlurInput={() => amountInputRef.current?.blur()}
-        // defaultValue={record?.amount}
       />
 
-      <CurrencyCodeSelectBottomSheetModal
-        ref={currencyCodeBottomSheetModalRef}
-        currencyCode={currencyCode.value}
-        setCurrencyCode={currencyCode.onChange}
+      <Controller
+        name="currencyCode"
+        control={control}
+        render={({ field: { value, onChange } }) => {
+          return (
+            <CurrencyCodeSelectBottomSheetModal
+              ref={currencyCodeBottomSheetModalRef}
+              currencyCode={value}
+              setCurrencyCode={onChange}
+            />
+          );
+        }}
+      />
+
+      <ExpenseFormDatePickerBottomSheetModal
+        ref={dateBottomSheetModalRef}
+        onClose={() => dateInputRef.current?.blur()}
       />
     </View>
   );
@@ -220,36 +229,6 @@ const useStyles = makeStyles((theme) => ({
   },
   currencyButton: { flexDirection: "row", alignItems: "center", gap: 4 },
   currencyButtonText: { fontSize: 24, fontWeight: "bold" },
-  billInputContainer: {
-    flexDirection: "row",
-  },
-
-  categoryGrid: { flexDirection: "row", flexWrap: "wrap", marginBottom: 16 },
-  category: {
-    width: "25%",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 4,
-    gap: 2,
-  },
-  categoryButton: {
-    padding: 16,
-    backgroundColor: theme.colors.grey4,
-    borderRadius: 16,
-  },
-  categoryButtonActive: {
-    backgroundColor: theme.colors.primary,
-  },
-  categoryText: {
-    fontSize: 12,
-  },
-  label: {
-    marginLeft: 10,
-    fontSize: 16,
-    fontWeight: "bold",
-    color: theme.colors.grey3,
-    marginBottom: 6,
-  },
   footer: {
     position: "absolute",
     width: "100%",

@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { Text, makeStyles, useTheme } from "@rneui/themed";
 import * as Haptics from "expo-haptics";
 import {
@@ -15,7 +15,8 @@ import { useTranslation } from "react-i18next";
 import { Pressable, TouchableOpacity, Vibration, View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
-import StyledBottomSheet from "../common/StyledBottomSheet";
+import StyledBottomSheetModal from "../common/StyledBottomSheetModal";
+import StyledBottomSheetView from "../common/StyledBottomSheetView";
 
 import {
   CalculatorButtons,
@@ -24,23 +25,23 @@ import {
   calculateResult,
 } from "@/src/utils/calculator";
 
-type IBillCalculatorBottomSheetProps = {
+type IBillCalculatorBottomSheetModalProps = {
   value: number;
   onChange: React.Dispatch<React.SetStateAction<number>>;
   onBlurInput: () => void;
   defaultValue?: number;
 };
 
-const BillCalculatorBottomSheet = forwardRef<
-  BottomSheet,
-  IBillCalculatorBottomSheetProps
+const BillCalculatorBottomSheetModal = forwardRef<
+  BottomSheetModal,
+  IBillCalculatorBottomSheetModalProps
 >(({ value, onChange, onBlurInput, defaultValue }, outerRef) => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
   const { theme } = useTheme();
   const { t } = useTranslation();
 
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
   useImperativeHandle(outerRef, () => bottomSheetRef.current!, []);
 
   const [records, setRecords] = useState<CalculatorRecord[]>([
@@ -166,18 +167,16 @@ const BillCalculatorBottomSheet = forwardRef<
   }, [defaultValue]);
 
   return (
-    <StyledBottomSheet
+    <StyledBottomSheetModal
       enablePanDownToClose
       enableDynamicSizing
       ref={bottomSheetRef}
-      animateOnMount={false}
       handleComponent={() => null}
-      index={-1}
+      index={0}
       containerStyle={styles.container}
-      backdropComponent={null}
-      backdropProps={{ opacity: 0 }}
+      onChange={(index) => index === -1 && onBlurInput()}
     >
-      <BottomSheetView style={styles.bottomSheetContainer}>
+      <StyledBottomSheetView>
         <View style={styles.bottomSheetInnerContainer}>
           <View style={styles.calculatorResultRow}>
             <Text style={styles.calculatorResultText}>
@@ -248,18 +247,14 @@ const BillCalculatorBottomSheet = forwardRef<
             </View>
           ))}
         </View>
-      </BottomSheetView>
-    </StyledBottomSheet>
+      </StyledBottomSheetView>
+    </StyledBottomSheetModal>
   );
 });
 
 const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
   container: {
     backgroundColor: "transparent",
-  },
-  bottomSheetContainer: {
-    flex: 0,
-    minHeight: 100,
   },
   bottomSheetInnerContainer: {
     paddingBottom: Math.max(16, insets.bottom),
@@ -309,6 +304,6 @@ const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
   },
 }));
 
-BillCalculatorBottomSheet.displayName = "BillCalculator";
+BillCalculatorBottomSheetModal.displayName = "BillCalculatorBottomSheetModal";
 
-export default memo(BillCalculatorBottomSheet);
+export default memo(BillCalculatorBottomSheetModal);
