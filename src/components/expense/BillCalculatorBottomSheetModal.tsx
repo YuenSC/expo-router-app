@@ -72,8 +72,6 @@ const BillCalculatorBottomSheetModal = forwardRef<
     const recordCopy = [...records];
     const lastRecord = recordCopy[records.length - 1];
 
-    console.log("lastRecord", lastRecord);
-
     // Case 1: Start typing the first number -> !lastRecord
     // Case 2: Typed n-th number and n-th sign -> lastRecord.sign is some string
     if (!lastRecord || Boolean(lastRecord?.sign)) {

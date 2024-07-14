@@ -216,7 +216,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     backgroundColor: "transparent",
     padding: 8,
-    paddingTop: 16,
   },
   input: {
     paddingLeft: 8,

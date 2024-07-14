@@ -6,6 +6,8 @@ import { UseStepActions } from "@/src/hooks/useStep";
 
 type ExpenseFormContextType = UseStepActions & {
   groupId: string;
+  expenseId?: string;
+  currentStep: number;
 };
 
 const ExpenseFormContext = createContext<ExpenseFormContextType | undefined>(
@@ -22,6 +24,7 @@ export const ExpenseFormProvider = ({
       amount: 1000,
       currencyCode: "HKD",
       incurredOn: new Date().toISOString(),
+      createExpenseTransactions: [],
     },
   });
 

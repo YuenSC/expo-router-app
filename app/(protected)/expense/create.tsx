@@ -1,27 +1,21 @@
 import { makeStyles, Text } from "@rneui/themed";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useWindowDimensions, View } from "react-native";
+import { useWindowDimensions } from "react-native";
 import { SceneMap, TabView } from "react-native-tab-view";
 
 import ExpenseDetailForm from "@/src/components/expense/ExpenseDetailForm";
 import { ExpenseFormProvider } from "@/src/components/expense/ExpenseFormContext";
+import PayerPayeeSelectForm from "@/src/components/expense/ExpenseFormPayerPayeeSelect";
+import { ExpensePageEnum } from "@/src/components/expense/ExpensePageEnum";
 import ExpenseTabBar from "@/src/components/expense/ExpenseTabBar";
 import { useAppContext } from "@/src/context/AppContext";
 import { useStep } from "@/src/hooks/useStep";
 
-const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#ff4081" }} />
-);
-
-const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
-);
-
 const scene = {
-  detail: ExpenseDetailForm,
-  payerSelect: FirstRoute,
-  payeeSelect: SecondRoute,
+  [ExpensePageEnum.detail]: ExpenseDetailForm,
+  [ExpensePageEnum.payerSelect]: PayerPayeeSelectForm,
+  [ExpensePageEnum.payeeSelect]: PayerPayeeSelectForm,
 };
 
 const renderScene = SceneMap(scene);
@@ -34,9 +28,9 @@ const Page = () => {
 
   const [currentStep, helpers] = useStep({ maxStep: 3, defaultStep: 1 });
   const [routes] = useState([
-    { key: "detail", title: t("Expense:detail") },
-    { key: "payerSelect", title: t("Expense:payer") },
-    { key: "payeeSelect", title: t("Expense:payee") },
+    { key: ExpensePageEnum.detail, title: t("Expense:detail") },
+    { key: ExpensePageEnum.payerSelect, title: t("Expense:payer") },
+    { key: ExpensePageEnum.payeeSelect, title: t("Expense:payee") },
   ]);
 
   if (!currentGroupId) {
@@ -44,7 +38,11 @@ const Page = () => {
   }
 
   return (
-    <ExpenseFormProvider groupId={currentGroupId} {...helpers}>
+    <ExpenseFormProvider
+      groupId={currentGroupId}
+      {...helpers}
+      currentStep={currentStep}
+    >
       <TabView
         navigationState={{ index: currentStep - 1, routes }}
         renderScene={renderScene}
