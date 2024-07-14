@@ -52,14 +52,32 @@
   },
   "DrawerContent": {
     "add-group": "Adicionar grupo",
+    "group-not-found": "Seu grupo selecionado original não pode ser encontrado.",
     "group-not-found-reset": "Seu grupo selecionado original não pode ser encontrado. \nResselecionou o primeiro grupo",
     "groups": "Grupos",
     "no-group-found": "Nenhum grupo encontrado",
     "version": "Versão {{versão}}"
   },
+  "Expense": {
+    "create-expense": "Criar registro de despesas",
+    "detail": "Detalhe",
+    "payee": "Beneficiário",
+    "payer": "Pagador"
+  },
+  "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
+    "all-currency": "Todas as moedas",
+    "search-currency-code-or-name": "Pesquise o código ou nome da moeda",
+    "selected-currency": "Selecionado:",
+    "suggested-currency": "Moeda sugerida"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Vamos criar seu primeiro registro de pagamento com seus amigos!",
     "congratulations": "Parabéns!"
+  },
+  "GroupCreatedDialog": {
+    "create-user": "Criar usuário",
+    "group-created": "Grupo criado",
+    "group-created-description": "Parabéns por criar seu grupo! \nVamos começar criando seu primeiro usuário."
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>Tem certeza de que deseja excluir <Highlight>{{groupName}}</Highlight>?</Text>",
@@ -110,9 +128,27 @@
     "debt-settlement": "Liquidação de dívidas 💰",
     "summary": "Resumo"
   },
+  "InfiniteScroll": {
+    "all-items-are-fetched": "Todos os itens são buscados",
+    "failed-to-fetch-more-items": "Falha ao buscar mais itens",
+    "no-items-found": "Nenhum item encontrado"
+  },
   "LanguageScreen": {
     "language": "Linguagem",
     "warning": "A tradução automática é utilizada para converter idiomas distintos do inglês. \nA possibilidade de erro de tradução pode persistir."
+  },
+  "Login": {
+    "email-is-required": "E-mail é obrigatório",
+    "email-label": "E-mail",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "Senha requerida",
+    "password-label": "Senha",
+    "password-placeholder": "********",
+    "remember-me": "Lembre de mim"
+  },
+  "NetworkDialog": {
+    "network-connection-down": "Conexão de rede inativa",
+    "please-check-your-network-connection-and-try-again": "Verifique sua conexão de rede e tente novamente."
   },
   "OptionsScreen": {
     "Upgrade": "Atualizar para Pro",
@@ -137,12 +173,6 @@
     "paid-for": "Pago para?",
     "who-paid": "Quem pagou?"
   },
-  "PaymentFormCurrencySelectBottomSheet": {
-    "all-currency": "Todas as moedas",
-    "search-currency-code-or-name": "Pesquise o código ou nome da moeda",
-    "selected-currency": "Selecionado: {{currencyCode}}",
-    "suggested-currency": "Moeda sugerida"
-  },
   "PaymentFormScreen": {
     "bill": "Conta",
     "paid-for": "Pago para?",
@@ -159,7 +189,12 @@
     "email-placeholder": "xxx@xxx.com",
     "password-is-required": "Senha requerida",
     "password-label": "Senha",
+    "password-length": "Deve ter 8 caracteres",
+    "password-lowercase": "Incluir 1 letra minúscula",
+    "password-number": "Incluir 1 número",
     "password-placeholder": "********",
+    "password-special": "Inclui 1 caractere especial",
+    "password-uppercase": "Incluir 1 letra maiúscula",
     "passwordsMustMatch": "As senhas digitadas novamente não correspondem à senha",
     "remember-me": "Lembre de mim",
     "retypedPassword-is-required": "A senha digitada novamente é obrigatória",
@@ -215,6 +250,7 @@
     "title": "Bem-vindo ao Grupo Despesas"
   },
   "common": {
+    "error": "Erro",
     "get-started": "Iniciar",
     "login": "Conecte-se",
     "sign-up": "Criar nova conta"

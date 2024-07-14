@@ -21,6 +21,8 @@ export interface Expense extends BaseObject {
   amount: number;
   incurredOn: string;
   transactions: ExpenseTransaction[];
+  description?: string;
+  currencyCode: string;
 }
 
 export type PostExpenseCreatePayload = {
@@ -28,6 +30,8 @@ export type PostExpenseCreatePayload = {
   name: string;
   amount: number;
   incurredOn: string;
+  description?: string;
+  currencyCode: string;
   createExpenseTransactions: CreateExpenseTransaction[];
 };
 export type PostExpenseCreateResponse = ApiResponse<Expense>;

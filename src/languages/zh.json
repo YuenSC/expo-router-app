@@ -52,14 +52,32 @@
   },
   "DrawerContent": {
     "add-group": "添加组",
+    "group-not-found": "找不到您原来选择的组。",
     "group-not-found-reset": "找不到您原来选择的组。\n重新选择第一组",
     "groups": "团体",
     "no-group-found": "未找到组",
     "version": "版本 {{version}}"
   },
+  "Expense": {
+    "create-expense": "创建费用记录",
+    "detail": "细节",
+    "payee": "收款人",
+    "payer": "付款人"
+  },
+  "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
+    "all-currency": "所有货币",
+    "search-currency-code-or-name": "搜索货币代码或名称",
+    "selected-currency": "已选择：",
+    "suggested-currency": "建议货币"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "和你的朋友一起创造你的第一笔付款记录吧！",
     "congratulations": "恭喜！"
+  },
+  "GroupCreatedDialog": {
+    "create-user": "创建用户",
+    "group-created": "群组已创建",
+    "group-created-description": "恭喜您创建您的小组！\n让我们开始创建您的第一个用户。"
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>您确定删除<Highlight>{{groupName}}</Highlight>吗？</Text>",
@@ -110,9 +128,27 @@
     "debt-settlement": "债务清偿💰",
     "summary": "概括"
   },
+  "InfiniteScroll": {
+    "all-items-are-fetched": "所有项目均已获取",
+    "failed-to-fetch-more-items": "无法获取更多物品",
+    "no-items-found": "未找到任何项目"
+  },
   "LanguageScreen": {
     "language": "语言",
     "warning": "机器翻译用于转换不同于英语的语言。\n翻译错误的可能性可能仍然存在。"
+  },
+  "Login": {
+    "email-is-required": "电子邮件为必填项",
+    "email-label": "电子邮件",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "密码是必需的",
+    "password-label": "密码",
+    "password-placeholder": "******",
+    "remember-me": "记住账号"
+  },
+  "NetworkDialog": {
+    "network-connection-down": "网络连接断开",
+    "please-check-your-network-connection-and-try-again": "请检查您的网络连接并重试。"
   },
   "OptionsScreen": {
     "Upgrade": "升级到专业版",
@@ -137,12 +173,6 @@
     "paid-for": "付费了吗？",
     "who-paid": "谁付钱？"
   },
-  "PaymentFormCurrencySelectBottomSheet": {
-    "all-currency": "所有货币",
-    "search-currency-code-or-name": "搜索货币代码或名称",
-    "selected-currency": "已选择：{{currencyCode}}",
-    "suggested-currency": "建议货币"
-  },
   "PaymentFormScreen": {
     "bill": "账单",
     "paid-for": "付费了吗？",
@@ -159,7 +189,12 @@
     "email-placeholder": "xxx@xxx.com",
     "password-is-required": "密码是必需的",
     "password-label": "密码",
+    "password-length": "必须是 8 个字符",
+    "password-lowercase": "包括 1 个小写字母",
+    "password-number": "包括 1 个号码",
     "password-placeholder": "******",
+    "password-special": "包括 1 个特殊字符",
+    "password-uppercase": "包括 1 个大写字母",
     "passwordsMustMatch": "重新输入的密码与密码不匹配",
     "remember-me": "记住账号",
     "retypedPassword-is-required": "需要重新输入密码",
@@ -215,6 +250,7 @@
     "title": "欢迎来到团体消费"
   },
   "common": {
+    "error": "错误",
     "get-started": "开始使用",
     "login": "登录",
     "sign-up": "报名"

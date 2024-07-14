@@ -70,6 +70,16 @@ export default function RootLayout() {
           options={{ presentation: "transparentModal" }}
         />
 
+        {/* Expense */}
+        <Stack.Screen
+          name="expense/create"
+          options={{
+            headerShown: true,
+            headerTitle: t("Expense:create-expense"),
+            presentation: "modal",
+          }}
+        />
+
         {/* Others */}
         <Stack.Screen
           name="language"

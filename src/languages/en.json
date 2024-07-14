@@ -58,6 +58,18 @@
     "no-group-found": "No Group Found",
     "version": "Version {{version}}"
   },
+  "Expense": {
+    "create-expense": "Create Expense Record",
+    "detail": "Detail",
+    "payee": "Payee",
+    "payer": "Payer"
+  },
+  "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
+    "all-currency": "All Currency",
+    "search-currency-code-or-name": "Search currency code or name",
+    "selected-currency": "Selected:",
+    "suggested-currency": "Suggested Currency"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Let's create your first payment record with your friends!",
     "congratulations": "Congratulations!"
@@ -160,12 +172,6 @@
     "auto-tag": "(Auto)",
     "paid-for": "Paid For?",
     "who-paid": "Who Paid?"
-  },
-  "PaymentFormCurrencySelectBottomSheet": {
-    "all-currency": "All Currency",
-    "search-currency-code-or-name": "Search currency code or name",
-    "selected-currency": "Selected: {{currencyCode}}",
-    "suggested-currency": "Suggested Currency"
   },
   "PaymentFormScreen": {
     "bill": "Bill",

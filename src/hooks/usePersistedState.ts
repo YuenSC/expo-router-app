@@ -2,17 +2,21 @@ import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { useLayoutEffect, useState } from "react";
 
 export const usePersistedState = <T>(key: string, defaultValue: T) => {
-  const [value, setValue] = useState<T | null>(null);
-  const { getItem, setItem } = useAsyncStorage(key);
+  const [value, setValue] = useState<T>(defaultValue);
+  const { getItem, setItem, removeItem } = useAsyncStorage(key);
 
   const readItemFromStorage = async () => {
     const item = await getItem();
     setValue(item ? JSON.parse(item) : defaultValue);
   };
 
-  const writeItemToStorage = async (newValue: T) => {
-    await setItem(JSON.stringify(newValue));
+  const writeItemToStorage = (newValue: T) => {
     setValue(newValue);
+    if (newValue) {
+      setItem(JSON.stringify(newValue));
+    } else {
+      removeItem();
+    }
   };
 
   useLayoutEffect(() => {

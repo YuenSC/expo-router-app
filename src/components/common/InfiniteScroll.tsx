@@ -1,3 +1,4 @@
+import { useTheme } from "@rneui/themed";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -42,12 +43,17 @@ const InfiniteScroll = <T,>({
   ...props
 }: IInfiniteScrollProps<T>) => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
 
   return (
     <FlatList
       data={data}
       refreshControl={
-        <RefreshControl refreshing={!!isLoading} onRefresh={refetch} />
+        <RefreshControl
+          refreshing={!!isLoading}
+          onRefresh={refetch}
+          tintColor={theme.colors.primary}
+        />
       }
       onEndReached={() => {
         if (!hasNextPage) return;
