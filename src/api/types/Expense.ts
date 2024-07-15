@@ -2,16 +2,16 @@ import { ApiResponse } from "./ApiResponse";
 import { BaseObject } from "./BaseObject";
 import { ApiPaginatedPayload, ApiPaginatedResponse } from "./Pagination";
 
-enum ExpenseTransactionType {
+export enum ExpenseTransactionType {
   payer = "payer",
   payee = "payee",
 }
 
-type CreateExpenseTransaction = {
+export type CreateExpenseTransaction = {
   type: ExpenseTransactionType;
   isAutoSplit: boolean;
   amount?: number;
-  userId?: string;
+  userId: string;
 };
 
 export type ExpenseTransaction = BaseObject & CreateExpenseTransaction;

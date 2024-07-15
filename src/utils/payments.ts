@@ -1,3 +1,5 @@
+import { CreateExpenseTransaction } from "../api/types/Expense";
+
 export const roundAmountToDecimal = (amount: number, decimal: number = 2) => {
   return parseFloat(amount.toFixed(decimal));
 };
@@ -19,4 +21,35 @@ export const formatAmount = (
     (currencySymbol === "code" ? " " : "") +
     Math.abs(formattedAmount).toLocaleString()
   );
+};
+
+export const getActualAmountPerUser = (
+  amount: number,
+  transactions: CreateExpenseTransaction[],
+) => {
+  const autoSplitCount = transactions.filter((i) => i.isAutoSplit).length;
+
+  const amountPaid = transactions
+    .filter((i) => !i.isAutoSplit)
+    .reduce((prev, curr) => prev + (curr?.amount ?? 0), 0);
+
+  const autoSplitAmount =
+    autoSplitCount === 0
+      ? 0
+      : Math.max(0, (amount - amountPaid) / autoSplitCount);
+  const amountPerUser = transactions.map((i) => ({
+    userId: i.userId,
+    amount: i.isAutoSplit ? autoSplitAmount : i.amount ?? 0,
+  }));
+
+  const realAmountSum = amountPerUser.reduce(
+    (prev, curr) => prev + curr.amount,
+    0,
+  );
+
+  return {
+    amountPerUser,
+    isPaymentEqualExpense:
+      roundAmountToDecimal(realAmountSum) === roundAmountToDecimal(amount),
+  };
 };

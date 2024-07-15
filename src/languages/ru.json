@@ -169,7 +169,7 @@
     "unknown-user": "Пользователь"
   },
   "PayerPayeeSelectForm": {
-    "auto-tag": "(Авто)",
+    "auto-tag": "(Автоматически)",
     "paid-for": "Заплачено за?",
     "who-paid": "Кто заплатил?"
   },

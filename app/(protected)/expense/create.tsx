@@ -14,8 +14,8 @@ import { useStep } from "@/src/hooks/useStep";
 
 const scene = {
   [ExpensePageEnum.detail]: ExpenseDetailForm,
-  [ExpensePageEnum.payerSelect]: PayerPayeeSelectForm,
-  [ExpensePageEnum.payeeSelect]: PayerPayeeSelectForm,
+  [ExpensePageEnum.payer]: PayerPayeeSelectForm,
+  [ExpensePageEnum.payee]: PayerPayeeSelectForm,
 };
 
 const renderScene = SceneMap(scene);
@@ -29,8 +29,8 @@ const Page = () => {
   const [currentStep, helpers] = useStep({ maxStep: 3, defaultStep: 1 });
   const [routes] = useState([
     { key: ExpensePageEnum.detail, title: t("Expense:detail") },
-    { key: ExpensePageEnum.payerSelect, title: t("Expense:payer") },
-    { key: ExpensePageEnum.payeeSelect, title: t("Expense:payee") },
+    { key: ExpensePageEnum.payer, title: t("Expense:payer") },
+    { key: ExpensePageEnum.payee, title: t("Expense:payee") },
   ]);
 
   if (!currentGroupId) {

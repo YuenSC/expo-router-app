@@ -73,6 +73,9 @@
     "selected-currency": "Selected:",
     "suggested-currency": "Suggested Currency"
   },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "Default"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Let's create your first payment record with your friends!",
     "congratulations": "Congratulations!"
@@ -172,7 +175,7 @@
     "unknown-user": "User"
   },
   "PayerPayeeSelectForm": {
-    "auto-tag": "(Auto)",
+    "auto-tag": "(Automatic)",
     "paid-for": "Paid For?",
     "who-paid": "Who Paid?"
   },

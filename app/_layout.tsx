@@ -47,6 +47,7 @@ const queryClient = new QueryClient({
           text1: "Api Error",
           text2: message,
           topOffset: 64,
+          visibilityTime: 4000,
         });
       },
     },
