@@ -17,11 +17,10 @@ export type CreateExpenseTransaction = {
 export type ExpenseTransaction = BaseObject & CreateExpenseTransaction;
 
 export interface Expense extends BaseObject {
-  name: string;
   amount: number;
   incurredOn: string;
   transactions: ExpenseTransaction[];
-  description?: string;
+  description: string;
   currencyCode: string;
 }
 

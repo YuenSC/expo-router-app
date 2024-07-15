@@ -5,8 +5,10 @@ import {
   useContext,
   useMemo,
 } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
+import { usePatchExpenseUpdate } from "@/src/api/hooks/expense/usePatchExpenseUpdate";
+import { usePostExpenseCreate } from "@/src/api/hooks/expense/usePostExpenseCreate";
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import {
@@ -21,6 +23,8 @@ type ExpenseFormContextType = UseStepActions & {
   expenseId?: string;
   currentStep: number;
   resetTransactions: (type: ExpenseTransactionType) => void;
+  onSubmit: () => void;
+  isLoading?: boolean;
 };
 
 const ExpenseFormContext = createContext<ExpenseFormContextType | undefined>(
@@ -30,10 +34,26 @@ const ExpenseFormContext = createContext<ExpenseFormContextType | undefined>(
 export const ExpenseFormProvider = ({
   children,
   groupId,
+  expenseId,
   ...props
-}: PropsWithChildren<Omit<ExpenseFormContextType, "resetTransactions">>) => {
+}: PropsWithChildren<
+  UseStepActions & {
+    groupId: string;
+    expenseId?: string;
+    currentStep: number;
+    onSuccess: () => void;
+  }
+>) => {
   const { data: group } = useGetGroup({ id: groupId || "" });
   const { data: profileUser } = useGetMe();
+  const { mutate: postExpenseCreate, isPending: isPendingCreate } =
+    usePostExpenseCreate({
+      onSuccess: props.onSuccess,
+    });
+  const { mutate: postExpenseUpdate, isPending: isPendingUpdate } =
+    usePatchExpenseUpdate({
+      onSuccess: props.onSuccess,
+    });
 
   const {
     defaultTransactions,
@@ -73,9 +93,11 @@ export const ExpenseFormProvider = ({
       currencyCode: "HKD",
       incurredOn: new Date().toISOString(),
       createExpenseTransactions: defaultTransactions,
+      groupId,
     },
   });
-  const { setValue, getValues } = form;
+
+  const { setValue, getValues, handleSubmit } = form;
 
   const resetTransactions = useCallback(
     (type: ExpenseTransactionType) => {
@@ -96,10 +118,25 @@ export const ExpenseFormProvider = ({
     [defaultPayeeTransactions, defaultPayerTransactions, getValues, setValue],
   );
 
+  const onSubmit: SubmitHandler<PostExpenseCreatePayload> = useCallback(
+    async (values) => {
+      console.log("onSubmit values", JSON.stringify(values, null, 2));
+      if (expenseId) postExpenseUpdate({ id: expenseId, ...values });
+      else postExpenseCreate(values);
+    },
+    [expenseId, postExpenseCreate, postExpenseUpdate],
+  );
+
   return (
     <FormProvider {...form}>
       <ExpenseFormContext.Provider
-        value={{ ...props, groupId, resetTransactions }}
+        value={{
+          ...props,
+          groupId,
+          resetTransactions,
+          onSubmit: handleSubmit(onSubmit),
+          isLoading: isPendingCreate || isPendingUpdate,
+        }}
       >
         {children}
       </ExpenseFormContext.Provider>

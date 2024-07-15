@@ -1,4 +1,5 @@
 import { makeStyles, Text } from "@rneui/themed";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useWindowDimensions } from "react-native";
@@ -24,6 +25,7 @@ const Page = () => {
   const styles = useStyles();
   const { currentGroupId } = useAppContext();
   const { t } = useTranslation();
+  const router = useRouter();
   const layout = useWindowDimensions();
 
   const [currentStep, helpers] = useStep({ maxStep: 3, defaultStep: 1 });
@@ -42,6 +44,7 @@ const Page = () => {
       groupId={currentGroupId}
       {...helpers}
       currentStep={currentStep}
+      onSuccess={() => router.navigate("/payments")}
     >
       <TabView
         navigationState={{ index: currentStep - 1, routes }}
@@ -51,7 +54,6 @@ const Page = () => {
         initialLayout={{ width: layout.width }}
         keyboardDismissMode="on-drag"
         style={styles.container}
-        lazy
       />
     </ExpenseFormProvider>
   );

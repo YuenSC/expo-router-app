@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 import { useExpenseFormContext } from "./ExpenseFormContext";
 import ExpenseFormPayerPayeeSelectInput from "./ExpenseFormPayerPayeeSelectInput";
@@ -28,12 +29,20 @@ const PayerPayeeSelectForm = ({
   const styles = useStyles();
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const { groupId, resetTransactions } = useExpenseFormContext();
+  const {
+    groupId,
+    resetTransactions,
+    goToNextStep,
+    canGoToNextStep,
+    setStep,
+    onSubmit,
+    isLoading,
+  } = useExpenseFormContext();
 
   const { data: group } = useGetGroup({ id: groupId });
   const { data: profileUser } = useGetMe();
 
-  const { control } = useFormContext<PostExpenseCreatePayload>();
+  const { control, trigger } = useFormContext<PostExpenseCreatePayload>();
   const amountWatch = useWatch({ name: "amount", control });
   const {
     append,
@@ -44,11 +53,22 @@ const PayerPayeeSelectForm = ({
     name: "createExpenseTransactions",
   });
 
-  const { amountPerUser, isPaymentEqualExpense } = useMemo(() => {
-    return getActualAmountPerUser(
+  const { amountPerUser, isPaymentEqualExpense, payerSummary } = useMemo(() => {
+    const payerSummary = getActualAmountPerUser(
       amountWatch,
-      transactions.filter((i) => i.type === route.key),
+      transactions.filter((i) => i.type === ExpenseTransactionType.payer),
     );
+
+    const payeeSummary = getActualAmountPerUser(
+      amountWatch,
+      transactions.filter((i) => i.type === ExpenseTransactionType.payee),
+    );
+
+    return {
+      payeeSummary,
+      payerSummary,
+      ...(route.key === ExpensePageEnum.payer ? payerSummary : payeeSummary),
+    };
   }, [amountWatch, route.key, transactions]);
 
   const toggleUserAutoSplit = (checked: boolean, userId: string) => {
@@ -220,22 +240,29 @@ const PayerPayeeSelectForm = ({
               ? t("Common:next")
               : t("Common:done")
           }
-          // disabled={!isPaymentEqualExpense}
-          // onPress={handleSubmit((values) => {
-          //   switch (type) {
-          //     case "payers":
-          //       navigation.navigate("PayeeSelect");
-          //       break;
-          //     case "payees":
-          //       if (isEdit) {
-          //         dispatch(updatePaymentRecord(values as PaymentRecord));
-          //       } else {
-          //         dispatch(addPaymentRecord(values));
-          //       }
-          //       navigation.dispatch(StackActions.pop());
-          //       break;
-          //   }
-          // })}
+          loading={isLoading && !canGoToNextStep}
+          onPress={async () => {
+            if (canGoToNextStep) {
+              goToNextStep();
+            } else {
+              const isFirstPageValid = await trigger([
+                "amount",
+                "description",
+                "incurredOn",
+              ]);
+              const isSecondPageValid = payerSummary.isPaymentEqualExpense;
+              if (!isFirstPageValid || !isSecondPageValid)
+                Toast.show({
+                  type: "error",
+                  text1: t("common:error"),
+                  text2: "Please fill in all required fields",
+                });
+              if (!isFirstPageValid) setStep(1);
+              if (!isSecondPageValid) setStep(2);
+
+              onSubmit();
+            }
+          }}
         />
       </View>
     </View>
