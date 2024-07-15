@@ -13,6 +13,7 @@ import { HStack, VStack } from "../common/Stack";
 import StyledScrollView from "../common/StyledScrollView";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
+import { useGetMe } from "@/src/api/hooks/useGetMe";
 import {
   ExpenseTransactionType,
   PostExpenseCreatePayload,
@@ -30,6 +31,7 @@ const PayerPayeeSelectForm = ({
   const { groupId, resetTransactions } = useExpenseFormContext();
 
   const { data: group } = useGetGroup({ id: groupId });
+  const { data: profileUser } = useGetMe();
 
   const { control } = useFormContext<PostExpenseCreatePayload>();
   const amountWatch = useWatch({ name: "amount", control });
@@ -87,31 +89,40 @@ const PayerPayeeSelectForm = ({
         keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps="never"
       >
-        <HStack>
-          <Text style={styles.title}>
-            {route.key === ExpensePageEnum.payer
-              ? t("PayerPayeeSelectForm:who-paid")
-              : t("PayerPayeeSelectForm:paid-for")}
-          </Text>
+        <VStack alignItems="stretch">
+          <HStack>
+            <Text style={styles.title}>
+              {route.key === ExpensePageEnum.payer
+                ? t("PayerPayeeSelectForm:who-paid")
+                : t("PayerPayeeSelectForm:paid-for")}
+            </Text>
 
-          <TouchableOpacity
-            onPress={() =>
-              resetTransactions(route.key as ExpenseTransactionType)
-            }
-            style={{ marginRight: 12 }}
-          >
-            <HStack>
-              <MaterialIcons
-                name="refresh"
-                size={24}
-                color={theme.colors.secondary}
-              />
-              <Text style={{ color: theme.colors.secondary }}>
-                {t("ExpenseFormPayerPayeeSelect:default")}
-              </Text>
-            </HStack>
-          </TouchableOpacity>
-        </HStack>
+            <TouchableOpacity
+              onPress={() =>
+                resetTransactions(route.key as ExpenseTransactionType)
+              }
+              style={{ marginRight: 12 }}
+            >
+              <HStack>
+                <MaterialIcons
+                  name="refresh"
+                  size={24}
+                  color={theme.colors.secondary}
+                />
+                <Text style={{ color: theme.colors.secondary }}>
+                  {t("ExpenseFormPayerPayeeSelect:default")}
+                </Text>
+              </HStack>
+            </TouchableOpacity>
+          </HStack>
+          {!isPaymentEqualExpense && (
+            <Text style={styles.errorMessage}>
+              {t(
+                "ExpenseFormPayerPayeeSelect:the-sum-does-not-match-the-total-amount",
+              )}
+            </Text>
+          )}
+        </VStack>
 
         {(group?.users ?? []).map(({ user }) => {
           const index = transactions.findIndex(
@@ -149,7 +160,14 @@ const PayerPayeeSelectForm = ({
                     <ProfileImageDisplay imageUrl={user.imageUrl} size={42} />
                   )}
                   <VStack alignItems="flex-start">
-                    <ListItem.Title>{user.name}</ListItem.Title>
+                    <ListItem.Title>
+                      {user.name}
+                      {user.id === profileUser?.id && (
+                        <Text style={styles.profileLabel}>
+                          {t("Common:profileUserLabel")}
+                        </Text>
+                      )}
+                    </ListItem.Title>
                     {transactions[index]?.isAutoSplit && (
                       <Text style={styles.autoTag}>
                         {t("PayerPayeeSelectForm:auto-tag")}
@@ -252,6 +270,17 @@ const useStyles = makeStyles((theme) => ({
   autoTag: {
     fontSize: 12,
     color: theme.colors.grey3,
+  },
+  errorMessage: {
+    color: theme.colors.error,
+    fontSize: 12,
+    marginLeft: 10,
+    fontStyle: "italic",
+  },
+  profileLabel: {
+    fontStyle: "italic",
+    color: theme.colors.primary,
+    fontSize: 12,
   },
 }));
 

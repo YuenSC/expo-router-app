@@ -31,7 +31,7 @@ export const ExpenseFormProvider = ({
   children,
   groupId,
   ...props
-}: PropsWithChildren<ExpenseFormContextType>) => {
+}: PropsWithChildren<Omit<ExpenseFormContextType, "resetTransactions">>) => {
   const { data: group } = useGetGroup({ id: groupId || "" });
   const { data: profileUser } = useGetMe();
 

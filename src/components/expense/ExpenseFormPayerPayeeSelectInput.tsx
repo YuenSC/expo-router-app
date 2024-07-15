@@ -9,14 +9,14 @@ type IExpenseFormPayerPayeeSelectInputProps = {
   maxAmount?: number;
   setAmount: (amount: number) => void;
 };
+// Updated regex to allow commas as thousand separators:
 // ^: Asserts the start of the line or string.
-// \d*: Matches zero or more digits (\d is a shorthand character class that matches any Arabic numeral digit; * is a quantifier that matches the preceding element zero or more times).
-// \.?: Matches zero or one decimal point (. is a special character in regular expressions, so it is escaped with a backslash to match a literal period; ? is a quantifier that matches the preceding element zero or one time).
-// \d*: Again, matches zero or more digits.
+// \d{1,3}: Matches between one and three digits at the beginning to accommodate numbers less than 1000 without a comma.
+// (,\d{3})*: Matches zero or more groups of a comma followed by exactly three digits, allowing for comma as thousand separators.
+// \.?: Matches zero or one decimal point. The decimal point is optional.
+// \d*: Matches zero or more digits following the decimal point, if present.
 // $: Asserts the end of the line or string.
-const decimalRegex = /^\d*\.?\d*$/;
-const formatAmountAsString = (amountAsString: string) =>
-  roundAmountToDecimal(parseFloat(amountAsString));
+const decimalRegex = /^\d{1,3}(,\d{3})*(\.\d+)?$/;
 
 const ExpenseFormPayerPayeeSelectInput =
   memo<IExpenseFormPayerPayeeSelectInputProps>(
@@ -26,8 +26,12 @@ const ExpenseFormPayerPayeeSelectInput =
       const [amountAsString, setAmountAsString] = useState("");
 
       const handleChangeText = (text: string) => {
-        if (decimalRegex.test(text)) {
-          setAmountAsString(text);
+        const textWithProperComma = parseFloat(
+          text.replace(/,/g, ""),
+        ).toLocaleString();
+
+        if (text && decimalRegex.test(textWithProperComma)) {
+          setAmountAsString(textWithProperComma);
         } else {
           setAmountAsString("");
         }
@@ -38,8 +42,8 @@ const ExpenseFormPayerPayeeSelectInput =
           setAmountAsString("");
         }
 
-        if (amount && formatAmountAsString(amountAsString) !== amount) {
-          setAmountAsString(roundAmountToDecimal(amount).toString());
+        if (amount && parseFloat(amountAsString) !== amount) {
+          setAmountAsString(roundAmountToDecimal(amount).toLocaleString());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [amount]);
@@ -53,9 +57,11 @@ const ExpenseFormPayerPayeeSelectInput =
           style={styles.input}
           onChangeText={handleChangeText}
           onBlur={() => {
-            if (formatAmountAsString(amountAsString) === amount) return;
+            const newAmount = parseFloat(amountAsString.replace(/,/g, ""));
 
-            const newAmount = formatAmountAsString(amountAsString);
+            if (!amountAsString) return;
+            if (newAmount === amount) return;
+
             if (maxAmount && newAmount > maxAmount) {
               setAmount(maxAmount);
               setAmountAsString(maxAmount.toString());
@@ -80,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     fontSize: 16,
   },
+  hidden: { opacity: 0 },
   inputContainer: {
     borderBottomWidth: 0,
     paddingHorizontal: 0,

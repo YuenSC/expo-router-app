@@ -51,6 +51,7 @@ const Page = () => {
         initialLayout={{ width: layout.width }}
         keyboardDismissMode="on-drag"
         style={styles.container}
+        lazy
       />
     </ExpenseFormProvider>
   );

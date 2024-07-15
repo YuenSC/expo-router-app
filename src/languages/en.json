@@ -74,7 +74,8 @@
     "suggested-currency": "Suggested Currency"
   },
   "ExpenseFormPayerPayeeSelect": {
-    "default": "Default"
+    "default": "Default",
+    "the-sum-does-not-match-the-total-amount": "The sum does not match the total amount"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Let's create your first payment record with your friends!",

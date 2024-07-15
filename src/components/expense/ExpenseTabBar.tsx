@@ -1,4 +1,5 @@
 import { Text, makeStyles } from "@rneui/themed";
+import { memo } from "react";
 import {
   NavigationState,
   SceneRendererProps,
@@ -39,4 +40,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ExpenseTabBar;
+export default memo(ExpenseTabBar);
