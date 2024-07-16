@@ -8,27 +8,28 @@ import ProfileImageDisplay from "./ProfileImageDisplay";
 type IProfileImageUploadProps = {
   onPress: () => void;
   imageUrl?: string;
-  disabled?: boolean;
+  editable?: boolean;
   icon?: "file-upload" | "person-outline";
 };
 
 const ProfileImageUpload = memo<IProfileImageUploadProps>(
-  ({ onPress, imageUrl, disabled, icon = "file-upload" }) => {
+  ({ onPress, imageUrl, editable, icon = "file-upload" }) => {
     const styles = useStyles();
     const { theme } = useTheme();
 
     return (
       <TouchableOpacity
-        disabled={disabled}
         onPress={onPress}
         style={[styles.profileImageContainer, { marginLeft: 8 }]}
       >
         {imageUrl ? (
-          <ProfileImageDisplay imageUrl={imageUrl} />
+          <View>
+            <ProfileImageDisplay imageUrl={imageUrl} />
+          </View>
         ) : (
           <MaterialIcons name={icon} size={30} color={theme.colors.black} />
         )}
-        {!disabled && (
+        {editable && (
           <View style={styles.editIcon}>
             <MaterialIcons name="edit" size={15} color={theme.colors.primary} />
           </View>

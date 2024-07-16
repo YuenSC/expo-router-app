@@ -62,7 +62,8 @@
     "create-expense": "Crear registro de gastos",
     "detail": "Detalle",
     "payee": "Tenedor",
-    "payer": "Pagador"
+    "payer": "Pagador",
+    "please-fill-in-all-required-fields": "Por favor revise su formulario nuevamente y actualice los campos relacionados"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "Toda la moneda",

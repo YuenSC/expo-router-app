@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useWindowDimensions } from "react-native";
 import { SceneMap, TabView } from "react-native-tab-view";
+import Toast from "react-native-toast-message";
 
 import ExpenseDetailForm from "@/src/components/expense/ExpenseDetailForm";
 import { ExpenseFormProvider } from "@/src/components/expense/ExpenseFormContext";
@@ -42,9 +43,23 @@ const Page = () => {
   return (
     <ExpenseFormProvider
       groupId={currentGroupId}
-      {...helpers}
       currentStep={currentStep}
-      onSuccess={() => router.navigate("/payments")}
+      onSuccess={() => {
+        Toast.show({
+          type: "success",
+          text1: t("Expense:success"),
+          text2: t("Expense:expense-created-successfully"),
+        });
+        router.navigate("/payments");
+      }}
+      onInValid={() =>
+        Toast.show({
+          type: "error",
+          text1: t("common:error"),
+          text2: t("Expense:please-fill-in-all-required-fields"),
+        })
+      }
+      {...helpers}
     >
       <TabView
         navigationState={{ index: currentStep - 1, routes }}

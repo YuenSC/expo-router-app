@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
-import Toast from "react-native-toast-message";
 
 import { useExpenseFormContext } from "./ExpenseFormContext";
 import ExpenseFormPayerPayeeSelectInput from "./ExpenseFormPayerPayeeSelectInput";
@@ -19,7 +18,6 @@ import {
   ExpenseTransactionType,
   PostExpenseCreatePayload,
 } from "@/src/api/types/Expense";
-import { getActualAmountPerUser } from "@/src/utils/payments";
 
 const PayerPayeeSelectForm = ({
   route,
@@ -32,17 +30,16 @@ const PayerPayeeSelectForm = ({
   const {
     groupId,
     resetTransactions,
-    goToNextStep,
     canGoToNextStep,
-    setStep,
-    onSubmit,
+    onNextStepOrSubmit: onSubmit,
     isLoading,
+    transactionSummary,
   } = useExpenseFormContext();
 
   const { data: group } = useGetGroup({ id: groupId });
   const { data: profileUser } = useGetMe();
 
-  const { control, trigger } = useFormContext<PostExpenseCreatePayload>();
+  const { control } = useFormContext<PostExpenseCreatePayload>();
   const amountWatch = useWatch({ name: "amount", control });
   const {
     append,
@@ -53,23 +50,17 @@ const PayerPayeeSelectForm = ({
     name: "createExpenseTransactions",
   });
 
-  const { amountPerUser, isPaymentEqualExpense, payerSummary } = useMemo(() => {
-    const payerSummary = getActualAmountPerUser(
-      amountWatch,
-      transactions.filter((i) => i.type === ExpenseTransactionType.payer),
-    );
-
-    const payeeSummary = getActualAmountPerUser(
-      amountWatch,
-      transactions.filter((i) => i.type === ExpenseTransactionType.payee),
-    );
-
+  const { amountPerUser, isPaymentEqualExpense } = useMemo(() => {
     return {
-      payeeSummary,
-      payerSummary,
-      ...(route.key === ExpensePageEnum.payer ? payerSummary : payeeSummary),
+      ...(route.key === ExpensePageEnum.payer
+        ? transactionSummary.payerSummary
+        : transactionSummary.payeeSummary),
     };
-  }, [amountWatch, route.key, transactions]);
+  }, [
+    route.key,
+    transactionSummary.payeeSummary,
+    transactionSummary.payerSummary,
+  ]);
 
   const toggleUserAutoSplit = (checked: boolean, userId: string) => {
     const index = transactions.findIndex(
@@ -241,28 +232,7 @@ const PayerPayeeSelectForm = ({
               : t("Common:done")
           }
           loading={isLoading && !canGoToNextStep}
-          onPress={async () => {
-            if (canGoToNextStep) {
-              goToNextStep();
-            } else {
-              const isFirstPageValid = await trigger([
-                "amount",
-                "description",
-                "incurredOn",
-              ]);
-              const isSecondPageValid = payerSummary.isPaymentEqualExpense;
-              if (!isFirstPageValid || !isSecondPageValid)
-                Toast.show({
-                  type: "error",
-                  text1: t("common:error"),
-                  text2: "Please fill in all required fields",
-                });
-              if (!isFirstPageValid) setStep(1);
-              if (!isSecondPageValid) setStep(2);
-
-              onSubmit();
-            }
-          }}
+          onPress={onSubmit}
         />
       </View>
     </View>

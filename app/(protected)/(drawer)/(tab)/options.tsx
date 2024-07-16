@@ -1,12 +1,13 @@
 import { makeStyles, Text } from "@rneui/themed";
 import { Link, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Linking } from "react-native";
+import { Linking, TouchableOpacity } from "react-native";
+import Animated from "react-native-reanimated";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import ButtonWithRef from "@/src/components/common/ButtonWithRef";
-import { VStack } from "@/src/components/common/Stack";
+import { HStack, VStack } from "@/src/components/common/Stack";
 import StyledScrollView from "@/src/components/common/StyledScrollView";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
@@ -28,14 +29,26 @@ const Page = () => {
       contentContainerStyle={styles.contentContainer}
       style={styles.container}
     >
-      <VStack alignItems="stretch">
-        <Text h1>{t("OptionsScreen:options")}</Text>
-        <Text style={styles.sectionLabel}>
-          {t("OptionsScreen:greeting", {
-            name: profileUser?.name || t("OptionsScreen:unknown-user"),
-          })}
-        </Text>
-      </VStack>
+      <HStack>
+        <VStack alignItems="stretch">
+          <Text h1>{t("OptionsScreen:options")}</Text>
+          <Text style={styles.sectionLabel}>
+            {t("OptionsScreen:greeting", {
+              name: profileUser?.name || t("OptionsScreen:unknown-user"),
+            })}
+          </Text>
+        </VStack>
+        {profileUser && (
+          <TouchableOpacity
+            onPress={() => router.push(`/user/${profileUser.id}/profile`)}
+          >
+            <Animated.Image
+              source={{ uri: profileUser?.imageUrl }}
+              style={styles.image}
+            />
+          </TouchableOpacity>
+        )}
+      </HStack>
 
       {profileUser?.id && (
         <OptionSection
@@ -144,6 +157,11 @@ const useStyles = makeStyles((theme) => ({
   sectionLabel: {
     fontSize: 12,
     color: theme.colors.grey1,
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
 }));
 

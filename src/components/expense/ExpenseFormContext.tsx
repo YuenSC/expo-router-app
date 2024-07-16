@@ -1,11 +1,16 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from "@rneui/themed";
+import { useNavigation } from "expo-router";
 import {
   createContext,
   PropsWithChildren,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
 } from "react";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
+import { TouchableOpacity } from "react-native";
 
 import { usePatchExpenseUpdate } from "@/src/api/hooks/expense/usePatchExpenseUpdate";
 import { usePostExpenseCreate } from "@/src/api/hooks/expense/usePostExpenseCreate";
@@ -17,14 +22,19 @@ import {
   PostExpenseCreatePayload,
 } from "@/src/api/types/Expense";
 import { UseStepActions } from "@/src/hooks/useStep";
+import { getActualAmountPerUser } from "@/src/utils/payments";
 
 type ExpenseFormContextType = UseStepActions & {
   groupId: string;
   expenseId?: string;
   currentStep: number;
   resetTransactions: (type: ExpenseTransactionType) => void;
-  onSubmit: () => void;
+  onNextStepOrSubmit: () => void;
   isLoading?: boolean;
+  transactionSummary: {
+    payeeSummary: ReturnType<typeof getActualAmountPerUser>;
+    payerSummary: ReturnType<typeof getActualAmountPerUser>;
+  };
 };
 
 const ExpenseFormContext = createContext<ExpenseFormContextType | undefined>(
@@ -35,6 +45,10 @@ export const ExpenseFormProvider = ({
   children,
   groupId,
   expenseId,
+  setStep,
+  goToNextStep,
+  canGoToNextStep,
+  onInValid,
   ...props
 }: PropsWithChildren<
   UseStepActions & {
@@ -42,8 +56,12 @@ export const ExpenseFormProvider = ({
     expenseId?: string;
     currentStep: number;
     onSuccess: () => void;
+    onInValid: () => void;
   }
 >) => {
+  const { theme } = useTheme();
+  const navigation = useNavigation();
+
   const { data: group } = useGetGroup({ id: groupId || "" });
   const { data: profileUser } = useGetMe();
   const { mutate: postExpenseCreate, isPending: isPendingCreate } =
@@ -96,8 +114,29 @@ export const ExpenseFormProvider = ({
       groupId,
     },
   });
+  const { setValue, getValues, handleSubmit, trigger, control } = form;
+  const amountWatch = useWatch({ name: "amount", control });
+  const transactionsWatch = useWatch({
+    name: "createExpenseTransactions",
+    control,
+  });
 
-  const { setValue, getValues, handleSubmit } = form;
+  const transactionSummary = useMemo(() => {
+    const payerSummary = getActualAmountPerUser(
+      amountWatch,
+      transactionsWatch.filter((i) => i.type === ExpenseTransactionType.payer),
+    );
+
+    const payeeSummary = getActualAmountPerUser(
+      amountWatch,
+      transactionsWatch.filter((i) => i.type === ExpenseTransactionType.payee),
+    );
+
+    return {
+      payeeSummary,
+      payerSummary,
+    };
+  }, [amountWatch, transactionsWatch]);
 
   const resetTransactions = useCallback(
     (type: ExpenseTransactionType) => {
@@ -118,14 +157,52 @@ export const ExpenseFormProvider = ({
     [defaultPayeeTransactions, defaultPayerTransactions, getValues, setValue],
   );
 
-  const onSubmit: SubmitHandler<PostExpenseCreatePayload> = useCallback(
-    async (values) => {
-      console.log("onSubmit values", JSON.stringify(values, null, 2));
+  const onSubmit = useCallback(async () => {
+    const isFirstPageValid = await trigger([
+      "amount",
+      "description",
+      "incurredOn",
+    ]);
+    const isSecondPageValid =
+      transactionSummary.payerSummary.isPaymentEqualExpense;
+    const isThirdPageValid =
+      transactionSummary.payeeSummary.isPaymentEqualExpense;
+    if (!isFirstPageValid) setStep(1);
+    if (!isSecondPageValid) setStep(2);
+    if (!isThirdPageValid) setStep(3);
+    if (!isFirstPageValid || !isSecondPageValid || !isThirdPageValid) {
+      onInValid();
+      return;
+    }
+    handleSubmit((values) => {
       if (expenseId) postExpenseUpdate({ id: expenseId, ...values });
       else postExpenseCreate(values);
-    },
-    [expenseId, postExpenseCreate, postExpenseUpdate],
+    })();
+  }, [
+    expenseId,
+    handleSubmit,
+    onInValid,
+    postExpenseCreate,
+    postExpenseUpdate,
+    setStep,
+    transactionSummary,
+    trigger,
+  ]);
+
+  const onNextStepOrSubmit = useCallback(
+    async () => (canGoToNextStep ? goToNextStep() : onSubmit()),
+    [canGoToNextStep, goToNextStep, onSubmit],
   );
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={onSubmit}>
+          <Ionicons name="create" size={24} color={theme.colors.primary} />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, onNextStepOrSubmit, onSubmit, theme.colors.primary]);
 
   return (
     <FormProvider {...form}>
@@ -134,8 +211,12 @@ export const ExpenseFormProvider = ({
           ...props,
           groupId,
           resetTransactions,
-          onSubmit: handleSubmit(onSubmit),
+          onNextStepOrSubmit,
           isLoading: isPendingCreate || isPendingUpdate,
+          setStep,
+          goToNextStep,
+          canGoToNextStep,
+          transactionSummary,
         }}
       >
         {children}

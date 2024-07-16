@@ -32,9 +32,7 @@ const ExpenseDetailForm = () => {
   const dateBottomSheetModalRef = useRef<BottomSheetModal>(null);
   const dateInputRef = useRef<TextInput & BaseInput>(null);
   const { t, i18n } = useTranslation();
-  const { groupId, goToNextStep } = useExpenseFormContext();
-
-  console.log("groupId", groupId);
+  const { goToNextStep } = useExpenseFormContext();
 
   const { control, trigger } = useFormContext<PostExpenseCreatePayload>();
   const currencyCodeWatch = useWatch({ control, name: "currencyCode" });

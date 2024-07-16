@@ -62,7 +62,8 @@
     "create-expense": "Создать запись расходов",
     "detail": "Деталь",
     "payee": "Получатель платежа",
-    "payer": "Плательщик"
+    "payer": "Плательщик",
+    "please-fill-in-all-required-fields": "Пожалуйста, проверьте свою форму еще раз и обновите соответствующие поля."
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "Вся валюта",

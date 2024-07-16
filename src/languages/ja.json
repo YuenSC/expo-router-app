@@ -62,7 +62,8 @@
     "create-expense": "経費記録の作成",
     "detail": "詳細",
     "payee": "受取人",
-    "payer": "支払者"
+    "payer": "支払者",
+    "please-fill-in-all-required-fields": "フォームをもう一度確認し、関連フィールドを更新してください"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "すべての通貨",

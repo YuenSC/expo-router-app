@@ -62,7 +62,8 @@
     "create-expense": "Criar registro de despesas",
     "detail": "Detalhe",
     "payee": "Beneficiário",
-    "payer": "Pagador"
+    "payer": "Pagador",
+    "please-fill-in-all-required-fields": "Verifique seu formulário novamente e atualize os campos relacionados"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "Todas as moedas",

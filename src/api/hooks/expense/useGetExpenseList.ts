@@ -16,5 +16,7 @@ export const useGetExpenseList = (payload: GetExpenseListPayload) => {
   });
 
   const data = query.data?.pages.flatMap((page) => page.items) ?? [];
-  return { data, query };
+  const meta = query.data?.pages[0].meta;
+
+  return { data, query, meta };
 };

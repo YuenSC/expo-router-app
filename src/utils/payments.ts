@@ -1,4 +1,5 @@
 import { CreateExpenseTransaction } from "../api/types/Expense";
+import { AllCurrencyCodes, CurrencyCode } from "../constants/Currency";
 
 export const roundAmountToDecimal = (amount: number, decimal: number = 2) => {
   return parseFloat(amount.toFixed(decimal));
@@ -15,9 +16,13 @@ export const formatAmount = (
 
   const sign = formattedAmount < 0 ? "-" : "";
   const currencySymbol = options?.currencySymbol ?? "code";
+  const currency = currencyCode
+    ? AllCurrencyCodes?.[currencyCode as CurrencyCode]?.[currencySymbol] ?? ""
+    : "";
 
   return (
     sign +
+    currency +
     (currencySymbol === "code" ? " " : "") +
     Math.abs(formattedAmount).toLocaleString()
   );

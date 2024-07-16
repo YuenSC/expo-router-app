@@ -9,18 +9,18 @@ type IProfileImageDisplayProps = {
 };
 
 const ProfileImageDisplay = memo<IProfileImageDisplayProps>(
-  ({ imageUrl, size }) => {
+  ({ imageUrl, size = 60 }) => {
     const styles = useStyles(size);
 
     return <StyledImage source={{ uri: imageUrl }} style={styles.image} />;
   },
 );
 
-const useStyles = makeStyles((theme, size?: number) => ({
+const useStyles = makeStyles((theme, size: number) => ({
   image: {
-    height: size ?? 60,
-    width: size ?? 60,
-    borderRadius: (size ?? 30) / 2,
+    height: size,
+    width: size,
+    borderRadius: size / 2,
     borderWidth: 1,
     borderColor: "white",
     justifyContent: "center",

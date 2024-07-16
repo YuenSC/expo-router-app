@@ -62,7 +62,8 @@
     "create-expense": "व्यय रिकॉर्ड बनाएं",
     "detail": "विवरण",
     "payee": "आदाता",
-    "payer": "भुगतानकर्ता"
+    "payer": "भुगतानकर्ता",
+    "please-fill-in-all-required-fields": "कृपया अपना फॉर्म दोबारा जांचें और संबंधित फ़ील्ड अपडेट करें"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "सभी मुद्रा",

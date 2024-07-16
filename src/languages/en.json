@@ -61,8 +61,11 @@
   "Expense": {
     "create-expense": "Create Expense Record",
     "detail": "Detail",
+    "expense-created-successfully": "Expense created successfully",
     "payee": "Payee",
-    "payer": "Payer"
+    "payer": "Payer",
+    "please-fill-in-all-required-fields": "Please check your form again and update related fields",
+    "success": "Success"
   },
   "ExpenseDetailForm": {
     "date-is-required": "Date is required"

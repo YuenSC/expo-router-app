@@ -15,13 +15,17 @@ const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
   ({ expense }) => {
     const styles = useStyles();
 
+    console.log("expense", JSON.stringify(expense, null, 2));
+
     return (
       <HStack style={styles.container}>
-        <VStack alignItems="flex-start">
+        <VStack alignItems="flex-start" gap={4}>
           <Text style={styles.name}>{expense.description}</Text>
           <Text>{formatDate(expense.incurredOn)}</Text>
         </VStack>
-        <Text style={styles.amount}>{formatAmount(expense.amount)}</Text>
+        <Text style={styles.amount}>
+          {formatAmount(expense.amount, expense.currencyCode)}
+        </Text>
       </HStack>
     );
   },

@@ -62,7 +62,8 @@
     "create-expense": "创建费用记录",
     "detail": "细节",
     "payee": "收款人",
-    "payer": "付款人"
+    "payer": "付款人",
+    "please-fill-in-all-required-fields": "请再次检查您的表单并更新相关字段"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "所有货币",
