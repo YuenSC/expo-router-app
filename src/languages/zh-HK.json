@@ -52,14 +52,33 @@
   },
   "DrawerContent": {
     "add-group": "新增群組",
+    "group-not-found": "找不到您原來選擇的組。",
     "group-not-found-reset": "找不到您原來選擇的組。\n重新選擇第一組",
     "groups": "團體",
     "no-group-found": "未找到組",
     "version": "版本 {{version}}"
   },
+  "Expense": {
+    "create-expense": "建立費用記錄",
+    "detail": "細節",
+    "payee": "收款人",
+    "payer": "付款人",
+    "please-fill-in-all-required-fields": "請再次檢查您的表單並更新相關字段"
+  },
+  "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
+    "all-currency": "所有貨幣",
+    "search-currency-code-or-name": "搜尋貨幣代碼或名稱",
+    "selected-currency": "已選擇：",
+    "suggested-currency": "建議貨幣"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "和你的朋友一起創造你的第一筆付款記錄吧！",
     "congratulations": "恭喜！"
+  },
+  "GroupCreatedDialog": {
+    "create-user": "創建用戶",
+    "group-created": "群組已建立",
+    "group-created-description": "恭喜您建立您的小組！\n讓我們開始創建您的第一個使用者。"
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text>您確定刪除<Highlight>{{groupName}}</Highlight>嗎？",
@@ -110,9 +129,27 @@
     "debt-settlement": "債務清償💰",
     "summary": "概括"
   },
+  "InfiniteScroll": {
+    "all-items-are-fetched": "所有項目均已獲取",
+    "failed-to-fetch-more-items": "無法取得更多物品",
+    "no-items-found": "未找到任何項目"
+  },
   "LanguageScreen": {
     "language": "語言",
     "warning": "機器翻譯用於轉換不同於英語的語言。\n翻譯錯誤的可能性可能仍然存在。"
+  },
+  "Login": {
+    "email-is-required": "電子郵件為必填項",
+    "email-label": "電子郵件",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "密碼是必需的",
+    "password-label": "密碼",
+    "password-placeholder": "******",
+    "remember-me": "記住帳號"
+  },
+  "NetworkDialog": {
+    "network-connection-down": "網路連線斷開",
+    "please-check-your-network-connection-and-try-again": "請檢查您的網路連線並重試。"
   },
   "OptionsScreen": {
     "Upgrade": "升級到專業版",
@@ -133,15 +170,9 @@
     "unknown-user": "使用者"
   },
   "PayerPayeeSelectForm": {
-    "auto-tag": "（汽車）",
+    "auto-tag": "（自動的）",
     "paid-for": "付費了嗎？",
     "who-paid": "誰付錢？"
-  },
-  "PaymentFormCurrencySelectBottomSheet": {
-    "all-currency": "所有貨幣",
-    "search-currency-code-or-name": "搜尋貨幣代碼或名稱",
-    "selected-currency": "已選擇：{{currencyCode}}",
-    "suggested-currency": "建議貨幣"
   },
   "PaymentFormScreen": {
     "bill": "帳單",
@@ -159,7 +190,12 @@
     "email-placeholder": "xxx@xxx.com",
     "password-is-required": "密碼是必需的",
     "password-label": "密碼",
+    "password-length": "必須是 8 個字符",
+    "password-lowercase": "包括 1 個小寫字母",
+    "password-number": "包括 1 個號碼",
     "password-placeholder": "******",
+    "password-special": "包括 1 個特殊字符",
+    "password-uppercase": "包括 1 個大寫字母",
     "passwordsMustMatch": "重新輸入的密碼與密碼不匹配",
     "remember-me": "記住帳號",
     "retypedPassword-is-required": "需要重新輸入密碼",
@@ -215,6 +251,7 @@
     "title": "歡迎來到團體消費"
   },
   "common": {
+    "error": "錯誤",
     "get-started": "開始使用",
     "login": "登入",
     "sign-up": "建立新帳戶"

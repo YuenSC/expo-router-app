@@ -1,6 +1,7 @@
 import { Entypo } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Text, makeStyles, useTheme } from "@rneui/themed";
+import { useRouter } from "expo-router";
 import { Fragment, memo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { EdgeInsets } from "react-native-safe-area-context";
@@ -11,6 +12,7 @@ const BottomTabBar = memo<BottomTabBarProps>(
   ({ state, descriptors, insets, navigation }) => {
     const styles = useStyles(insets);
     const { theme } = useTheme();
+    const router = useRouter();
 
     const { currentGroupId } = useAppContext();
 
@@ -41,8 +43,11 @@ const BottomTabBar = memo<BottomTabBarProps>(
                   disabled={!currentGroupId}
                   style={[
                     styles.addPaymentButton,
-                    !currentGroupId && { backgroundColor: theme.colors.grey3 },
+                    !currentGroupId && {
+                      backgroundColor: theme.colors.grey3,
+                    },
                   ]}
+                  onPress={() => router.navigate("/expense/create")}
                 >
                   <Entypo name="plus" size={40} color={theme.colors.white} />
                 </TouchableOpacity>
@@ -62,7 +67,7 @@ const BottomTabBar = memo<BottomTabBarProps>(
                     size: 24,
                   })}
                 </View>
-                <Text style={{ color }}>
+                <Text style={{ color, textAlign: "center" }}>
                   {(options?.tabBarLabel as string) || ""}
                 </Text>
               </TouchableOpacity>

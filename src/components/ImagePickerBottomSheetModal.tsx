@@ -1,7 +1,7 @@
 import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { Text, makeStyles, useTheme } from "@rneui/themed";
 import * as ImagePicker from "expo-image-picker";
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { TouchableHighlight } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
@@ -9,6 +9,7 @@ import Toast from "react-native-toast-message";
 
 import StyledBottomSheetModal from "./common/StyledBottomSheetModal";
 import { ImagePayload } from "../api/types/ImagePayload";
+import { useBottomSheetModalImperativeHandle } from "../hooks/useBottomSheetModalImperativeHandle";
 
 type IUserFormBottomSheetProps = {
   onImageUpload: (image: ImagePayload) => void;
@@ -64,32 +65,7 @@ const ImagePickerBottomSheetModal = forwardRef<
     await handleImageAsset(result);
   };
 
-  useImperativeHandle(ref, () => ({
-    close: () => {
-      bottomSheetRef.current?.close();
-    },
-    collapse: () => {
-      bottomSheetRef.current?.collapse();
-    },
-    dismiss: () => {
-      bottomSheetRef.current?.dismiss();
-    },
-    expand: () => {
-      bottomSheetRef.current?.expand();
-    },
-    forceClose: () => {
-      bottomSheetRef.current?.forceClose();
-    },
-    present: () => {
-      bottomSheetRef.current?.present();
-    },
-    snapToIndex: (index: number) => {
-      bottomSheetRef.current?.snapToIndex(index);
-    },
-    snapToPosition: (position: number | string) => {
-      bottomSheetRef.current?.snapToPosition(position);
-    },
-  }));
+  useBottomSheetModalImperativeHandle(ref, bottomSheetRef);
 
   return (
     <StyledBottomSheetModal

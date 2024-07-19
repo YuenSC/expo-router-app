@@ -35,7 +35,7 @@ const UserDisplay = memo<IUserDisplayProps>(
         <HStack gap={16}>
           <ProfileImageUpload
             icon="person-outline"
-            disabled={isProfileImageDisabled}
+            editable={!isProfileImageDisabled}
             onPress={onPressProfileImage}
             imageUrl={user?.imageUrl}
           />

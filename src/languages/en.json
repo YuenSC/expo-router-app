@@ -58,6 +58,30 @@
     "no-group-found": "No Group Found",
     "version": "Version {{version}}"
   },
+  "Expense": {
+    "create-expense": "Create Expense Record",
+    "detail": "Detail",
+    "edit-expense": "Edit Expense",
+    "expense-created-successfully": "Expense created successfully",
+    "expense-edited-successfully": "Expense edited successfully",
+    "payee": "Payee",
+    "payer": "Payer",
+    "please-fill-in-all-required-fields": "Please check your form again and update related fields",
+    "success": "Success"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "Date is required"
+  },
+  "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
+    "all-currency": "All Currency",
+    "search-currency-code-or-name": "Search currency code or name",
+    "selected-currency": "Selected:",
+    "suggested-currency": "Suggested Currency"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "Default",
+    "the-sum-does-not-match-the-total-amount": "The sum does not match the total amount"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Let's create your first payment record with your friends!",
     "congratulations": "Congratulations!"
@@ -116,6 +140,11 @@
     "debt-settlement": "Debt settlement 💰",
     "summary": "Summary"
   },
+  "InfiniteScroll": {
+    "all-items-are-fetched": "All Items are fetched",
+    "failed-to-fetch-more-items": "Failed to fetch more items",
+    "no-items-found": "No items found"
+  },
   "LanguageScreen": {
     "language": "Language",
     "warning": "Machine translation is utilized to convert languages distinct from English. The possibility of translation error may persist."
@@ -152,15 +181,9 @@
     "unknown-user": "User"
   },
   "PayerPayeeSelectForm": {
-    "auto-tag": "(Auto)",
+    "auto-tag": "(Automatic)",
     "paid-for": "Paid For?",
     "who-paid": "Who Paid?"
-  },
-  "PaymentFormCurrencySelectBottomSheet": {
-    "all-currency": "All Currency",
-    "search-currency-code-or-name": "Search currency code or name",
-    "selected-currency": "Selected: {{currencyCode}}",
-    "suggested-currency": "Suggested Currency"
   },
   "PaymentFormScreen": {
     "bill": "Bill",

@@ -52,14 +52,33 @@
   },
   "DrawerContent": {
     "add-group": "グループの追加",
+    "group-not-found": "元に選択したグループが見つかりません。",
     "group-not-found-reset": "元に選択したグループが見つかりません。\n最初のグループを再選択しました",
     "groups": "グループ",
     "no-group-found": "グループが見つかりませんでした",
     "version": "バージョン {{version}}"
   },
+  "Expense": {
+    "create-expense": "経費記録の作成",
+    "detail": "詳細",
+    "payee": "受取人",
+    "payer": "支払者",
+    "please-fill-in-all-required-fields": "フォームをもう一度確認し、関連フィールドを更新してください"
+  },
+  "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
+    "all-currency": "すべての通貨",
+    "search-currency-code-or-name": "通貨コードまたは通貨名を検索する",
+    "selected-currency": "選択済み:",
+    "suggested-currency": "推奨通貨"
+  },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "友達と一緒に最初の支払い記録を作成しましょう!",
     "congratulations": "おめでとう！"
+  },
+  "GroupCreatedDialog": {
+    "create-user": "ユーザーを作成",
+    "group-created": "グループが作成されました",
+    "group-created-description": "グループの作成おめでとうございます!\n最初のユーザーを作成することから始めましょう。"
   },
   "GroupDeleteBottomSheet": {
     "are-you-sure-to-delete-this-group": "<Text><Highlight>{{groupName}}</Highlight> を削除してもよろしいですか?</Text>",
@@ -110,9 +129,27 @@
     "debt-settlement": "債務整理💰",
     "summary": "まとめ"
   },
+  "InfiniteScroll": {
+    "all-items-are-fetched": "すべてのアイテムが取得されます",
+    "failed-to-fetch-more-items": "さらにアイテムを取得できませんでした",
+    "no-items-found": "項目は見つかりませんでした"
+  },
   "LanguageScreen": {
     "language": "言語",
     "warning": "機械翻訳は、英語とは異なる言語を変換するために利用されます。\n翻訳エラーの可能性が残る可能性があります。"
+  },
+  "Login": {
+    "email-is-required": "電子メールは必須です",
+    "email-label": "Eメール",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "パスワードが必要",
+    "password-label": "パスワード",
+    "password-placeholder": "********",
+    "remember-me": "私を覚えてますか"
+  },
+  "NetworkDialog": {
+    "network-connection-down": "ネットワーク接続がダウンしています",
+    "please-check-your-network-connection-and-try-again": "ネットワーク接続を確認して、もう一度試してください。"
   },
   "OptionsScreen": {
     "Upgrade": "プロ仕様にアップグレードする",
@@ -137,12 +174,6 @@
     "paid-for": "のために支払われた？",
     "who-paid": "誰が払ったの？"
   },
-  "PaymentFormCurrencySelectBottomSheet": {
-    "all-currency": "すべての通貨",
-    "search-currency-code-or-name": "通貨コードまたは通貨名を検索する",
-    "selected-currency": "選択済み: {{通貨コード}}",
-    "suggested-currency": "推奨通貨"
-  },
   "PaymentFormScreen": {
     "bill": "請求書",
     "paid-for": "誰のために支払われたのか？",
@@ -154,7 +185,21 @@
     "payments": "支払い"
   },
   "SignUp": {
-    "remember-me": "私を覚えてますか"
+    "email-is-required": "メールアドレスは必須です",
+    "email-label": "Eメール",
+    "email-placeholder": "xxx@xxx.com",
+    "password-is-required": "パスワードが必要",
+    "password-label": "パスワード",
+    "password-length": "8文字である必要があります",
+    "password-lowercase": "小文字を 1 つ含める",
+    "password-number": "数字を 1 つ含める",
+    "password-placeholder": "********",
+    "password-special": "特殊文字を 1 つ含める",
+    "password-uppercase": "大文字を 1 つ含める",
+    "passwordsMustMatch": "再入力したパスワードがパスワードと一致しない",
+    "remember-me": "私を覚えてますか",
+    "retypedPassword-is-required": "パスワードの再入力が必要です",
+    "retypedPassword-label": "パスワードを再入力しました"
   },
   "StackNavigator": {
     "group-summary": "グループ概要",
@@ -206,6 +251,7 @@
     "title": "グループ経費へようこそ"
   },
   "common": {
+    "error": "エラー",
     "get-started": "始めましょう",
     "login": "ログイン",
     "sign-up": "新しいアカウントを作成する"
