@@ -61,7 +61,9 @@
   "Expense": {
     "create-expense": "Create Expense Record",
     "detail": "Detail",
+    "edit-expense": "Edit Expense",
     "expense-created-successfully": "Expense created successfully",
+    "expense-edited-successfully": "Expense edited successfully",
     "payee": "Payee",
     "payer": "Payer",
     "please-fill-in-all-required-fields": "Please check your form again and update related fields",

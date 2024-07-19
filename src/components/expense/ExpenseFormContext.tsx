@@ -18,11 +18,12 @@ import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import {
   CreateExpenseTransaction,
+  Expense,
   ExpenseTransactionType,
   PostExpenseCreatePayload,
 } from "@/src/api/types/Expense";
 import { UseStepActions } from "@/src/hooks/useStep";
-import { getActualAmountPerUser } from "@/src/utils/payments";
+import { calculateAutoSplitAmounts } from "@/src/utils/payments";
 
 type ExpenseFormContextType = UseStepActions & {
   groupId: string;
@@ -32,8 +33,8 @@ type ExpenseFormContextType = UseStepActions & {
   onNextStepOrSubmit: () => void;
   isLoading?: boolean;
   transactionSummary: {
-    payeeSummary: ReturnType<typeof getActualAmountPerUser>;
-    payerSummary: ReturnType<typeof getActualAmountPerUser>;
+    payeeSummary: ReturnType<typeof calculateAutoSplitAmounts>;
+    payerSummary: ReturnType<typeof calculateAutoSplitAmounts>;
   };
 };
 
@@ -45,6 +46,7 @@ export const ExpenseFormProvider = ({
   children,
   groupId,
   expenseId,
+  expense,
   setStep,
   goToNextStep,
   canGoToNextStep,
@@ -54,6 +56,7 @@ export const ExpenseFormProvider = ({
   UseStepActions & {
     groupId: string;
     expenseId?: string;
+    expense?: Expense;
     currentStep: number;
     onSuccess: () => void;
     onInValid: () => void;
@@ -114,7 +117,7 @@ export const ExpenseFormProvider = ({
       groupId,
     },
   });
-  const { setValue, getValues, handleSubmit, trigger, control } = form;
+  const { setValue, getValues, handleSubmit, trigger, control, reset } = form;
   const amountWatch = useWatch({ name: "amount", control });
   const transactionsWatch = useWatch({
     name: "createExpenseTransactions",
@@ -122,12 +125,12 @@ export const ExpenseFormProvider = ({
   });
 
   const transactionSummary = useMemo(() => {
-    const payerSummary = getActualAmountPerUser(
+    const payerSummary = calculateAutoSplitAmounts(
       amountWatch,
       transactionsWatch.filter((i) => i.type === ExpenseTransactionType.payer),
     );
 
-    const payeeSummary = getActualAmountPerUser(
+    const payeeSummary = calculateAutoSplitAmounts(
       amountWatch,
       transactionsWatch.filter((i) => i.type === ExpenseTransactionType.payee),
     );
@@ -175,11 +178,11 @@ export const ExpenseFormProvider = ({
       return;
     }
     handleSubmit((values) => {
-      if (expenseId) postExpenseUpdate({ id: expenseId, ...values });
+      if (expense) postExpenseUpdate({ id: expense.id, ...values });
       else postExpenseCreate(values);
     })();
   }, [
-    expenseId,
+    expense,
     handleSubmit,
     onInValid,
     postExpenseCreate,
@@ -195,6 +198,8 @@ export const ExpenseFormProvider = ({
   );
 
   useEffect(() => {
+    if (expenseId && !expense) return;
+
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity onPress={onSubmit}>
@@ -202,7 +207,27 @@ export const ExpenseFormProvider = ({
         </TouchableOpacity>
       ),
     });
-  }, [navigation, onNextStepOrSubmit, onSubmit, theme.colors.primary]);
+  }, [
+    expense,
+    expenseId,
+    navigation,
+    onNextStepOrSubmit,
+    onSubmit,
+    theme.colors.primary,
+  ]);
+
+  useEffect(() => {
+    if (expense) {
+      reset({
+        description: expense.description,
+        amount: expense.amount,
+        currencyCode: expense.currencyCode,
+        incurredOn: expense.incurredOn,
+        createExpenseTransactions: expense.transactions,
+        groupId,
+      });
+    }
+  }, [expense, groupId, reset]);
 
   return (
     <FormProvider {...form}>

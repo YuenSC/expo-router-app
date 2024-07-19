@@ -26,7 +26,6 @@ export interface Expense extends BaseObject {
 
 export type PostExpenseCreatePayload = {
   groupId: string;
-  name: string;
   amount: number;
   incurredOn: string;
   description?: string;

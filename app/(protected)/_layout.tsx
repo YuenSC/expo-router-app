@@ -79,6 +79,14 @@ export default function RootLayout() {
             presentation: "modal",
           }}
         />
+        <Stack.Screen
+          name="expense/[id]"
+          options={{
+            headerShown: true,
+            headerTitle: t("Expense:edit-expense"),
+            presentation: "modal",
+          }}
+        />
 
         {/* Others */}
         <Stack.Screen

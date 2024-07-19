@@ -1,4 +1,5 @@
 import { makeStyles, Text } from "@rneui/themed";
+import { Link } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
 
@@ -27,6 +28,8 @@ const Page = () => {
     groupId: currentGroupId || "",
     page: 1,
     pageSize: 10,
+    orderBy: "incurredOn",
+    sortOrder: "DESC",
   });
 
   return (
@@ -50,9 +53,11 @@ const Page = () => {
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={({ item }) => {
         return (
-          <TouchableOpacity>
-            <ExpenseListItemDisplay expense={item} />
-          </TouchableOpacity>
+          <Link asChild href={`/expense/${item.id}`}>
+            <TouchableOpacity>
+              <ExpenseListItemDisplay expense={item} />
+            </TouchableOpacity>
+          </Link>
         );
       }}
     />

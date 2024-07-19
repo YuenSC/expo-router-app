@@ -21,7 +21,7 @@ const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
       <HStack style={styles.container}>
         <VStack alignItems="flex-start" gap={4}>
           <Text style={styles.name}>{expense.description}</Text>
-          <Text>{formatDate(expense.incurredOn)}</Text>
+          <Text>Incurred On: {formatDate(expense.incurredOn)}</Text>
         </VStack>
         <Text style={styles.amount}>
           {formatAmount(expense.amount, expense.currencyCode)}

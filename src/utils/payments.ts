@@ -28,7 +28,7 @@ export const formatAmount = (
   );
 };
 
-export const getActualAmountPerUser = (
+export const calculateAutoSplitAmounts = (
   amount: number,
   transactions: CreateExpenseTransaction[],
 ) => {
