@@ -98,6 +98,13 @@ export default function RootLayout() {
             presentation: "modal",
           }}
         />
+        <Stack.Screen
+          name="image"
+          options={{
+            presentation: "transparentModal",
+            animation: "fade",
+          }}
+        />
       </Stack>
     </>
   );

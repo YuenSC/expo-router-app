@@ -2,12 +2,12 @@ import { makeStyles, Text } from "@rneui/themed";
 import { Link, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { Linking, TouchableOpacity } from "react-native";
-import Animated from "react-native-reanimated";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import ButtonWithRef from "@/src/components/common/ButtonWithRef";
 import { HStack, VStack } from "@/src/components/common/Stack";
+import StyledImage from "@/src/components/common/StyledImage";
 import StyledScrollView from "@/src/components/common/StyledScrollView";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
@@ -39,14 +39,17 @@ const Page = () => {
           </Text>
         </VStack>
         {profileUser && (
-          <TouchableOpacity
-            onPress={() => router.push(`/user/${profileUser.id}/profile`)}
+          <Link
+            asChild
+            href={`/image?encodedImageUrl=${encodeURIComponent(profileUser.imageUrl || "")}`}
           >
-            <Animated.Image
-              source={{ uri: profileUser?.imageUrl }}
-              style={styles.image}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity>
+              <StyledImage
+                source={{ uri: profileUser.imageUrl }}
+                style={styles.image}
+              />
+            </TouchableOpacity>
+          </Link>
         )}
       </HStack>
 
