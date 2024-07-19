@@ -8,6 +8,8 @@ import {
   GetExpenseListResponse,
   GetExpensePayload,
   GetExpenseResponse,
+  GetExpenseUnresolvedAmountPerCurrencyPayload,
+  GetExpenseUnresolvedAmountPerCurrencyResponse,
   PatchExpenseUpdatePayload,
   PatchExpenseUpdateResponse,
   PostExpenseCreatePayload,
@@ -26,6 +28,16 @@ export const getExpense = async ({
   groupId,
 }: GetExpensePayload): Promise<GetExpenseResponse> => {
   return (await axios.get(`/api/groups/${groupId}/expenses/${id}`)).data;
+};
+
+export const getExpenseUnresolvedAmountPerCurrency = async ({
+  groupId,
+}: GetExpenseUnresolvedAmountPerCurrencyPayload): Promise<GetExpenseUnresolvedAmountPerCurrencyResponse> => {
+  return (
+    await axios.get(
+      `/api/groups/${groupId}/expenses/unresolved-amount-per-currency`,
+    )
+  ).data;
 };
 
 export const getExpenseList = async ({

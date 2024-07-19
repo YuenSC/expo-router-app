@@ -1,6 +1,6 @@
 import { useTheme } from "@rneui/themed";
 import * as Haptics from "expo-haptics";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FlatList,
@@ -45,6 +45,7 @@ const InfiniteScroll = <T,>({
 }: IInfiniteScrollProps<T>) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   return (
     <FlatList
@@ -52,10 +53,12 @@ const InfiniteScroll = <T,>({
       refreshControl={
         refetch && (
           <RefreshControl
-            refreshing={!!isLoading}
-            onRefresh={() => {
+            refreshing={!!isRefreshing}
+            onRefresh={async () => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-              refetch();
+              setIsRefreshing(true);
+              await refetch();
+              setIsRefreshing(false);
             }}
             tintColor={theme.colors.primary}
           />

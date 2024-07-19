@@ -1,4 +1,5 @@
 import { Text, makeStyles } from "@rneui/themed";
+import { useQueryClient } from "@tanstack/react-query";
 import { View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
@@ -13,10 +14,26 @@ import { useAppContext } from "@/src/context/AppContext";
 const GroupDetailScreen = () => {
   const styles = useStyles();
   const { currentGroupId } = useAppContext();
+  const queryClient = useQueryClient();
+
   const {
     data: group,
     query: { isLoading },
   } = useGetGroup({ id: currentGroupId || "" });
+
+  const refetch = async () => {
+    await Promise.all([
+      queryClient.invalidateQueries({
+        queryKey: ["group", currentGroupId],
+      }),
+      queryClient.invalidateQueries({
+        queryKey: ["useGetExpenseUnresolvedAmountPerCurrency"],
+      }),
+      queryClient.invalidateQueries({
+        queryKey: ["useGetExpenseList", { page: 1 }],
+      }),
+    ]);
+  };
 
   if (isLoading) {
     return <FullScreenLoading />;
@@ -28,7 +45,10 @@ const GroupDetailScreen = () => {
 
   return (
     <View style={styles.container}>
-      <StyledScrollView contentContainerStyle={styles.contentContainer}>
+      <StyledScrollView
+        contentContainerStyle={styles.contentContainer}
+        refetch={refetch}
+      >
         <View style={styles.sectionPadding}>
           <Text h1>{group.name}</Text>
           {group.description && <Text>{group.description}</Text>}
@@ -73,7 +93,7 @@ const GroupDetailScreen = () => {
           </HStack> */}
         </View>
 
-        <GroupDetailSummarySection />
+        <GroupDetailSummarySection groupId={group.id} />
         {/* <GroupDetailSummaryCarousel group={currentGroup} /> */}
         <GroupDetailMemberSection group={group} />
         <GroupDetailPaymentSection />

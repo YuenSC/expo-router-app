@@ -2,17 +2,23 @@ import { makeStyles, Text } from "@rneui/themed";
 import { memo } from "react";
 import { View, ViewProps } from "react-native";
 
+import { HStack } from "../common/Stack";
+
 type IGroupDetailSectionProps = ViewProps & {
   title: string;
+  titleRight?: React.ReactNode;
 };
 
 const GroupDetailSection = memo<IGroupDetailSectionProps>(
-  ({ children, title, ...rest }) => {
+  ({ children, title, titleRight, ...rest }) => {
     const styles = useStyles();
 
     return (
       <View {...rest} style={[styles.container, rest.style]}>
-        <Text style={styles.label}>{title}</Text>
+        <HStack>
+          <Text style={styles.label}>{title}</Text>
+          {titleRight}
+        </HStack>
         {children}
       </View>
     );

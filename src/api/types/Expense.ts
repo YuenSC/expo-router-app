@@ -2,6 +2,8 @@ import { ApiResponse } from "./ApiResponse";
 import { BaseObject } from "./BaseObject";
 import { ApiPaginatedPayload, ApiPaginatedResponse } from "./Pagination";
 
+import { CurrencyCode } from "@/src/constants/Currency";
+
 export enum ExpenseTransactionType {
   payer = "payer",
   payee = "payee",
@@ -39,6 +41,13 @@ export interface GetExpensePayload {
   id: string;
 }
 export type GetExpenseResponse = ApiResponse<Expense>;
+
+export interface GetExpenseUnresolvedAmountPerCurrencyPayload {
+  groupId: string;
+}
+export type GetExpenseUnresolvedAmountPerCurrencyResponse = ApiResponse<
+  Record<CurrencyCode, number>
+>;
 
 export interface GetExpenseListPayload extends ApiPaginatedPayload {
   groupId: string;
