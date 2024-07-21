@@ -23,7 +23,6 @@ export default function TabLayout() {
             <Ionicons name="home" size={24} color={color} />
           ),
           tabBarLabel: t("BottomTabNavigator:home"),
-          headerTitle: t("BottomTabNavigator:home"),
         }}
       />
       <Tabs.Screen
