@@ -29,7 +29,7 @@ const GroupDetailSummaryItem = memo<IGroupDetailSummaryItemProps>(
         >
           <HStack>
             <VStack alignItems="flex-start">
-              <Text h3>{currencyCode}</Text>
+              <Text h4>{currencyCode}</Text>
             </VStack>
           </HStack>
 

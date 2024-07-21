@@ -1,77 +1,91 @@
-import { Entypo } from "@expo/vector-icons";
-import { makeStyles, Text, useTheme } from "@rneui/themed";
+import { Text, makeStyles } from "@rneui/themed";
+import { useRouter } from "expo-router";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, useWindowDimensions } from "react-native";
 
 import GroupDetailSection from "./GroupDetailSection";
-import { HStack } from "../common/Stack";
+import GroupDetailSummaryItem from "./GroupDetailSummaryItem";
+import StyledScrollView from "../common/StyledScrollView";
 
-import { useGetExpenseUnresolvedAmountPerCurrency } from "@/src/api/hooks/expense/useGetExpenseUnresolvedAmountPerCurrency";
+import { useGetExpensePaymentRelationship } from "@/src/api/hooks/expense/useGetExpensePaymentRelationship";
+import { PaymentRelationship } from "@/src/api/types/Expense";
+import { Group } from "@/src/api/types/Group";
 import { CurrencyCode } from "@/src/constants/Currency";
-import { formatAmount } from "@/src/utils/payments";
 
-type IGroupDetailSummarySectionProps = { groupId: string };
+type IGroupDetailSummarySectionProps = {
+  group: Group;
+};
 
 const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
-  ({ groupId }) => {
+  ({ group }) => {
     const styles = useStyles();
-    const { theme } = useTheme();
+    const windowDimensions = useWindowDimensions();
     const { t } = useTranslation();
-    const { data } = useGetExpenseUnresolvedAmountPerCurrency({ groupId });
+    const router = useRouter();
+
+    const {
+      data: paymentRelationshipByCurrency = {} as Record<
+        CurrencyCode,
+        PaymentRelationship[]
+      >,
+    } = useGetExpensePaymentRelationship({ groupId: group.id });
+
+    const isSingleCurrency =
+      Object.keys(paymentRelationshipByCurrency).length === 1;
+
+    const itemWidth = isSingleCurrency
+      ? windowDimensions.width - 32
+      : windowDimensions.width * 0.8;
+
+    if (Object.keys(paymentRelationshipByCurrency).length === 0) {
+      return (
+        <View style={styles.container}>
+          <Text>
+            {t("GroupDetailSummaryCarousel:all-your-expenses-are-balanced")}
+          </Text>
+        </View>
+      );
+    }
 
     return (
       <GroupDetailSection
-        title={t("GroupDetailScreen:summary")}
-        titleRight={
-          <TouchableOpacity>
-            <Entypo
-              name="chevron-small-right"
-              size={24}
-              color={theme.colors.primary}
-            />
-          </TouchableOpacity>
-        }
+        title={t("GroupDetailScreen:unresolved-amount")}
         style={styles.container}
       >
-        {data && (
-          <HStack gap={6} justifyContent="flex-start" flexWrap="wrap">
-            {Object.entries(data).map(([currencyCode, totalNetAmount]) => {
-              if (totalNetAmount === 0) return null;
-
-              const amount = formatAmount(
-                totalNetAmount,
-                currencyCode as CurrencyCode,
-                { currencySymbol: "code" },
-              );
-              const sign = Math.sign(totalNetAmount);
-
-              return (
-                <TouchableOpacity
+        {Object.keys(paymentRelationshipByCurrency).length === 0 ? (
+          <View style={styles.container}>
+            <Text>
+              {t("GroupDetailSummaryCarousel:all-your-expenses-are-balanced")}
+            </Text>
+          </View>
+        ) : (
+          <StyledScrollView
+            horizontal
+            contentContainerStyle={styles.container}
+            showsHorizontalScrollIndicator={false}
+            snapToAlignment="start"
+            snapToInterval={itemWidth + 16}
+            decelerationRate="fast"
+            scrollEnabled={!isSingleCurrency}
+          >
+            {Object.entries(paymentRelationshipByCurrency).map(
+              ([currencyCode, items]) => (
+                <GroupDetailSummaryItem
                   key={currencyCode}
-                  style={styles.amountButton}
-                  // onPress={() =>
-                  //   navigation.navigate("GroupSummary", {
-                  //     groupId: currentGroup.id,
-                  //   })
-                  // }
-                >
-                  <HStack gap={4}>
-                    <Text
-                      key={currencyCode}
-                      style={[
-                        styles.amountText,
-                        sign > 0 && { color: theme.colors.success },
-                        sign < 0 && { color: theme.colors.error },
-                      ]}
-                    >
-                      {amount}
-                    </Text>
-                  </HStack>
-                </TouchableOpacity>
-              );
-            })}
-          </HStack>
+                  onSummaryItemPress={() => {
+                    // TODO: Fix this
+                    router.back();
+                  }}
+                  currencyCode={currencyCode as CurrencyCode}
+                  itemWidth={itemWidth}
+                  paymentRelationship={
+                    paymentRelationshipByCurrency[currencyCode as CurrencyCode]
+                  }
+                />
+              ),
+            )}
+          </StyledScrollView>
         )}
       </GroupDetailSection>
     );
@@ -79,19 +93,8 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
 );
 
 const useStyles = makeStyles((theme) => ({
-  container: { gap: 6 },
-  amountButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: theme.colors.divider,
-    width: "auto",
-    flexGrow: 0,
-  },
-  amountText: {
-    fontSize: 16,
-    fontWeight: "bold",
+  container: {
+    gap: 4,
   },
 }));
 

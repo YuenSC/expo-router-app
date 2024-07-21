@@ -97,12 +97,14 @@
     "expense-reminder": "आपके अनसुलझे खर्च इस प्रकार हैं",
     "expense-reminder-empty": "आपका कोई अनसुलझा खर्च नहीं है. \nबहुत अच्छा!",
     "member": "सदस्य",
+    "my-balance": "मेरा संतुलन",
     "no-group-warning": "आपने अभी तक कोई समूह नहीं बनाया है. \nआरंभ करने के लिए कृपया एक समूह बनाएं",
     "not-in-group": "समूह में नहीं",
     "payment": "भुगतान",
     "payment-count": "इस समूह में आपका रिकॉर्ड {{count}} है",
     "payment-count_plural": "इस समूह में आपके पास {{count}} रिकॉर्ड हैं",
-    "summary": "सारांश"
+    "summary": "सारांश",
+    "unresolved-amount": "समूह अनसुलझा राशि"
   },
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "आपके सभी खर्चे संतुलित हैं।",

@@ -97,12 +97,14 @@
     "expense-reminder": "Suas despesas não resolvidas são as seguintes",
     "expense-reminder-empty": "Você não tem despesas não resolvidas. \nBom trabalho!",
     "member": "Membro",
+    "my-balance": "Meu saldo",
     "no-group-warning": "Você ainda não criou nenhum grupo. \nPor favor, crie um grupo para começar",
     "not-in-group": "Não no grupo",
     "payment": "Pagamento",
     "payment-count": "Você tem {{count}} registro neste grupo",
     "payment-count_plural": "Você tem {{count}} registros neste grupo",
-    "summary": "Resumo"
+    "summary": "Resumo",
+    "unresolved-amount": "Valor não resolvido do grupo"
   },
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "Todas as suas despesas estão equilibradas.",

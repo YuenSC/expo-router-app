@@ -97,12 +97,14 @@
     "expense-reminder": "Ваши неурегулированные расходы указаны ниже.",
     "expense-reminder-empty": "У вас нет нерешенных расходов. \nОтличная работа!",
     "member": "Член",
+    "my-balance": "Мой баланс",
     "no-group-warning": "Вы еще не создали ни одной группы. \nДля начала создайте группу",
     "not-in-group": "Не в группе",
     "payment": "Оплата",
     "payment-count": "У вас есть {{count}} запись в этой группе",
     "payment-count_plural": "У вас есть {{count}} записей в этой группе.",
-    "summary": "Краткое содержание"
+    "summary": "Краткое содержание",
+    "unresolved-amount": "Групповая неразрешенная сумма"
   },
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "Все ваши расходы сбалансированы.",

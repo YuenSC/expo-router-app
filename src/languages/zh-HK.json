@@ -97,12 +97,14 @@
     "expense-reminder": "您的未解決費用如​​下",
     "expense-reminder-empty": "您沒有未解決的費用。\n做得好！",
     "member": "成員",
+    "my-balance": "我的餘額",
     "no-group-warning": "您還沒有建立任何群組。\n請建立一個群組以開始使用",
     "not-in-group": "不在組內",
     "payment": "支付",
     "payment-count": "您在此群組中有 {{count}} 筆記錄",
     "payment-count_plural": "該群組中有 {{count}} 筆記錄",
-    "summary": "概括"
+    "summary": "概括",
+    "unresolved-amount": "集團未解決金額"
   },
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "你所有的開支都是平衡的。",

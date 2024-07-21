@@ -8,8 +8,8 @@ import FullScreenLoading from "@/src/components/common/FullScreenLoading";
 import StyledScrollView from "@/src/components/common/StyledScrollView";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
 import GroupDetailMemberSection from "@/src/components/group/GroupDetailMemberSection";
+import GroupDetailMyBalanceSection from "@/src/components/group/GroupDetailMyBalanceSection";
 import GroupDetailPaymentSection from "@/src/components/group/GroupDetailPaymentSection";
-import GroupDetailSummaryCarousel from "@/src/components/group/GroupDetailSummaryCarousel";
 import GroupDetailSummarySection from "@/src/components/group/GroupDetailSummarySection";
 import { useAppContext } from "@/src/context/AppContext";
 
@@ -62,8 +62,8 @@ const GroupDetailScreen = () => {
           {group.description && <Text>{group.description}</Text>}
         </View>
 
-        <GroupDetailSummarySection groupId={group.id} />
-        <GroupDetailSummaryCarousel group={group} />
+        <GroupDetailMyBalanceSection groupId={group.id} />
+        <GroupDetailSummarySection group={group} />
         <GroupDetailMemberSection group={group} />
         <GroupDetailPaymentSection />
       </StyledScrollView>
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentContainer: {
     gap: 16,
-    paddingBottom: 32,
+    paddingBottom: 100,
     paddingTop: 16,
   },
   sectionPadding: {

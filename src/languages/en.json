@@ -108,12 +108,14 @@
     "expense-reminder": "Your unresolved expenses are as below",
     "expense-reminder-empty": "You have no unresolved expenses. Well Done!",
     "member": "Member",
+    "my-balance": "My Balance",
     "no-group-warning": "You haven't created any group yet. Please create a group to get started",
     "not-in-group": "Not In Group",
     "payment": "Payment",
     "payment-count": "You have {{count}} record in this group",
     "payment-count_plural": "You have {{count}} records in this group",
-    "summary": "Summary"
+    "summary": "Summary",
+    "unresolved-amount": "Group Unresolved Amount"
   },
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "All your expenses are balanced.",

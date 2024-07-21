@@ -97,12 +97,14 @@
     "expense-reminder": "未解決の出費は以下の通りです",
     "expense-reminder-empty": "未解決の出費はありません。\nよくやった！",
     "member": "メンバー",
+    "my-balance": "マイバランス",
     "no-group-warning": "まだグループを作成していません。\n始めるにはグループを作成してください",
     "not-in-group": "グループに属していません",
     "payment": "支払い",
     "payment-count": "このグループには {{count}} 件のレコードがあります",
     "payment-count_plural": "このグループには {{count}} 件のレコードがあります",
-    "summary": "まとめ"
+    "summary": "まとめ",
+    "unresolved-amount": "グループ未解決金額"
   },
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "すべての出費のバランスが取れています。",
