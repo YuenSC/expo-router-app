@@ -19,6 +19,7 @@ const StyledScrollView = memo<IStyledScrollViewProps>(
         contentInsetAdjustmentBehavior="automatic"
         keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps="handled"
+        scrollEventThrottle={16}
         {...props}
         refreshControl={
           refetch && (

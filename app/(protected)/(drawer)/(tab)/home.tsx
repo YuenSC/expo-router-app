@@ -1,5 +1,6 @@
 import { Text, makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
+import { useNavigation } from "expo-router";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 
@@ -18,6 +19,7 @@ const GroupDetailScreen = () => {
   const { currentGroupId } = useAppContext();
   const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation();
 
   const { data: group } = useGetGroup({ id: currentGroupId || "" });
 
@@ -56,6 +58,12 @@ const GroupDetailScreen = () => {
       <StyledScrollView
         contentContainerStyle={styles.contentContainer}
         refetch={refetch}
+        onScroll={(event) => {
+          const scrollPositionY = event.nativeEvent.contentOffset.y;
+          navigation.setOptions({
+            headerTitle: scrollPositionY > 50 ? group.name : "",
+          });
+        }}
       >
         <View style={styles.sectionPadding}>
           <Text h1>{group.name}</Text>
@@ -79,7 +87,6 @@ const useStyles = makeStyles((theme) => ({
   contentContainer: {
     gap: 16,
     paddingBottom: 100,
-    paddingTop: 16,
   },
   sectionPadding: {
     paddingHorizontal: 16,

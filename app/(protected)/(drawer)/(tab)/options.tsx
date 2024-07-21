@@ -1,5 +1,5 @@
 import { makeStyles, Text } from "@rneui/themed";
-import { Link, useRouter } from "expo-router";
+import { Link, useNavigation, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { Linking, TouchableOpacity } from "react-native";
 
@@ -19,6 +19,7 @@ const Page = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const { currentGroupId } = useAppContext();
+  const navigation = useNavigation();
 
   const { data: profileUser } = useGetMe();
   const { data: currentGroup } = useGetGroup({ id: currentGroupId || "" });
@@ -28,6 +29,14 @@ const Page = () => {
     <StyledScrollView
       contentContainerStyle={styles.contentContainer}
       style={styles.container}
+      onScroll={(event) => {
+        const scrollPositionY = event.nativeEvent.contentOffset.y;
+
+        navigation.setOptions({
+          headerTitle:
+            scrollPositionY > 50 ? t("BottomTabNavigator:options") : "",
+        });
+      }}
     >
       <HStack>
         <VStack alignItems="stretch">

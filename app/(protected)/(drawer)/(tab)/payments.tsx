@@ -87,7 +87,6 @@ const useStyles = makeStyles((theme) => ({
   },
   contentContainer: { paddingBottom: 140 },
   header: {
-    paddingTop: 16,
     backgroundColor: theme.colors.background,
     paddingHorizontal: 16,
   },

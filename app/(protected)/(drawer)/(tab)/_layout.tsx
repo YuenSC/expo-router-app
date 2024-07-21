@@ -1,34 +1,18 @@
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { DrawerActions } from "@react-navigation/native";
-import { useTheme } from "@rneui/themed";
 import { Tabs } from "expo-router";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { TouchableOpacity } from "react-native";
 
 import BottomTabBar from "@/src/components/bottomTab/BottomTabBar";
+import BottomTabHeader from "@/src/components/bottomTab/BottomTabHeader";
 
 export default function TabLayout() {
-  const { theme } = useTheme();
   const { t } = useTranslation();
 
   return (
     <Tabs
-      screenOptions={({ navigation }) => ({
-        headerTitle: "",
-        headerStyle: {
-          backgroundColor: theme.colors.background,
-        },
-        headerShadowVisible: false,
-        headerTintColor: theme.colors.black,
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{ marginLeft: 16 }}
-            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}
-          >
-            <Ionicons name="menu" size={24} color={theme.colors.black} />
-          </TouchableOpacity>
-        ),
+      screenOptions={() => ({
+        header: (props) => <BottomTabHeader {...props} />,
       })}
       tabBar={(props) => <BottomTabBar {...props} />}
     >
@@ -39,6 +23,7 @@ export default function TabLayout() {
             <Ionicons name="home" size={24} color={color} />
           ),
           tabBarLabel: t("BottomTabNavigator:home"),
+          headerTitle: t("BottomTabNavigator:home"),
         }}
       />
       <Tabs.Screen
