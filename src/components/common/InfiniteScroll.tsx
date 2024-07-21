@@ -1,6 +1,6 @@
 import { useTheme } from "@rneui/themed";
 import * as Haptics from "expo-haptics";
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   FlatList,
@@ -26,6 +26,7 @@ type IInfiniteScrollProps<T> = FlatListProps<T> & {
   };
   data: T[]; // Step 3: Use Generic Type for Data Prop
   renderItem: ListRenderItem<T>;
+  flatListRef?: React.RefObject<FlatList<T>>;
 };
 
 // Step 1: Modify InfiniteScroll to accept a generic type T
@@ -40,27 +41,28 @@ const InfiniteScroll = <T,>({
     allItemsFetchedText,
     emptyText,
   },
+  flatListRef,
   data,
   ...props
 }: IInfiniteScrollProps<T>) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
-  const [isRefreshing, setIsRefreshing] = useState(false);
 
   return (
     <FlatList
+      ref={flatListRef}
       data={data}
+      scrollEventThrottle={16}
       refreshControl={
         refetch && (
           <RefreshControl
-            refreshing={!!isRefreshing}
+            refreshing={Boolean(isLoading)}
             onRefresh={async () => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-              setIsRefreshing(true);
               await refetch();
-              setIsRefreshing(false);
             }}
             tintColor={theme.colors.primary}
+            style={{ marginBottom: 10 }}
           />
         )
       }
