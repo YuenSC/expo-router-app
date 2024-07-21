@@ -1,5 +1,4 @@
-import { AntDesign } from "@expo/vector-icons";
-import { Button, Text, makeStyles } from "@rneui/themed";
+import { Text, makeStyles } from "@rneui/themed";
 import { memo } from "react";
 import { TouchableOpacity, View } from "react-native";
 
@@ -23,26 +22,18 @@ const GroupDetailSummaryItem = memo<IGroupDetailSummaryItemProps>(
     return (
       <View style={styles.scrollViewItem}>
         <VStack
-          gap={8}
+          gap={16}
           alignItems="stretch"
           justifyContent="flex-start"
           style={styles.container}
         >
-          <HStack alignItems="flex-start">
+          <HStack>
             <VStack alignItems="flex-start">
               <Text h3>{currencyCode}</Text>
             </VStack>
-
-            <Button
-              size="sm"
-              buttonStyle={styles.rounded}
-              onPress={onSummaryItemPress}
-            >
-              <AntDesign name="checkcircleo" size={24} color="black" />
-            </Button>
           </HStack>
 
-          <VStack alignItems="stretch" gap={16}>
+          <VStack alignItems="stretch" gap={8}>
             {paymentRelationship?.map((item) => (
               <TouchableOpacity
                 key={currencyCode + item.debtor.id + item.creditor.id}
