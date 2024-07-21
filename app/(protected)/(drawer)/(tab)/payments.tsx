@@ -1,18 +1,25 @@
-import { makeStyles, Text } from "@rneui/themed";
+import { makeStyles, Text, useTheme } from "@rneui/themed";
 import { Link } from "expo-router";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, TouchableOpacity, View } from "react-native";
+import { useDebounce } from "use-debounce";
 
 import { useGetExpenseList } from "@/src/api/hooks/expense/useGetExpenseList";
 import { Expense } from "@/src/api/types/Expense";
 import InfiniteScroll from "@/src/components/common/InfiniteScroll";
+import { HStack, VStack } from "@/src/components/common/Stack";
+import StyledSearchBar from "@/src/components/common/StyledSearchBar";
 import ExpenseListItemDisplay from "@/src/components/expense/ExpenseListItemDisplay";
 import { useAppContext } from "@/src/context/AppContext";
 
 const Page = () => {
   const styles = useStyles();
+  const { theme } = useTheme();
   const { t } = useTranslation();
   const { currentGroupId } = useAppContext();
+  const [searchText, setSearchText] = useState("");
+  const [debouncedSearchText] = useDebounce(searchText, 300);
 
   const {
     data: expenses,
@@ -30,6 +37,7 @@ const Page = () => {
     pageSize: 10,
     orderBy: "incurredOn",
     sortOrder: "DESC",
+    searchText: debouncedSearchText,
   });
 
   return (
@@ -45,11 +53,27 @@ const Page = () => {
       data={expenses}
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
-      ListHeaderComponent={() => (
-        <Text h1 style={styles.title}>
-          {t("PaymentRecordListScreen:payments")}
-        </Text>
-      )}
+      ListHeaderComponent={
+        <VStack alignItems="flex-start" style={styles.header}>
+          <Text h1 style={styles.title}>
+            {t("PaymentRecordListScreen:payments")}
+          </Text>
+          <StyledSearchBar
+            onChangeText={setSearchText}
+            value={searchText}
+            placeholder={t("PaymentRecordListScreen:search")}
+            containerStyle={styles.searchBarContainer}
+          />
+          {isLoading && (
+            <HStack
+              justifyContent="center"
+              style={{ width: "100%", paddingVertical: 16 }}
+            >
+              <ActivityIndicator size="large" color={theme.colors.primary} />
+            </HStack>
+          )}
+        </VStack>
+      }
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={({ item }) => {
         return (
@@ -66,13 +90,17 @@ const Page = () => {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    flex: 1,
     backgroundColor: theme.colors.background,
     paddingHorizontal: 16,
   },
   contentContainer: { paddingBottom: 32 },
-  title: { paddingVertical: 16, backgroundColor: theme.colors.background },
+  header: { paddingTop: 16 },
+  title: { backgroundColor: theme.colors.background },
   separator: { height: 12 },
+  searchBarContainer: {
+    backgroundColor: theme.colors.background,
+    marginHorizontal: -8,
+  },
 }));
 
 export default Page;

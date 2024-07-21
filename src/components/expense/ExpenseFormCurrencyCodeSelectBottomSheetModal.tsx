@@ -1,14 +1,14 @@
-import { Ionicons } from "@expo/vector-icons";
 import { BottomSheetModal, BottomSheetSectionList } from "@gorhom/bottom-sheet";
-import { SearchBar, Text, makeStyles, useTheme } from "@rneui/themed";
+import { Text, makeStyles } from "@rneui/themed";
 import Constants from "expo-constants";
 import { forwardRef, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Dimensions, Keyboard, TouchableOpacity, View } from "react-native";
+import { Dimensions, Keyboard, View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import CurrencySelectTouchableOpacity from "./CurrencySelectTouchableOpacity";
 import StyledBottomSheetModal from "../common/StyledBottomSheetModal";
+import StyledSearchBar from "../common/StyledSearchBar";
 
 import { AllCurrencyCodes, CurrencyCode } from "@/src/constants/Currency";
 import { useAppContext } from "@/src/context/AppContext";
@@ -29,7 +29,6 @@ const ExpenseFormCurrencyCodeSelectBottomSheetModal = forwardRef<
 >(({ currencyCode, setCurrencyCode }, ref) => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
-  const { theme } = useTheme();
   const { t } = useTranslation();
 
   const [searchText, setSearchText] = useState("");
@@ -91,25 +90,13 @@ const ExpenseFormCurrencyCodeSelectBottomSheetModal = forwardRef<
       snapPoints={snapPoints}
     >
       <View style={styles.searchBarContainer}>
-        <SearchBar
+        <StyledSearchBar
           autoFocus
-          platform="ios"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
           placeholder={t(
             "ExpenseFormCurrencyCodeSelectBottomSheetModal:search-currency-code-or-name",
           )}
-          containerStyle={styles.searchBar}
-          searchIcon={
-            <Ionicons name="search" size={20} color={theme.colors.grey3} />
-          }
-          clearIcon={
-            <TouchableOpacity onPress={() => setSearchText("")}>
-              <Ionicons name="close" size={20} color={theme.colors.grey3} />
-            </TouchableOpacity>
-          }
-          inputStyle={styles.whiteColor}
-          cancelButtonProps={styles.whiteColor}
         />
 
         <View style={{ marginHorizontal: 4 }}>
@@ -165,10 +152,6 @@ const ExpenseFormCurrencyCodeSelectBottomSheetModal = forwardRef<
 });
 
 const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
-  searchBar: {
-    backgroundColor: theme.colors.modal,
-    marginHorizontal: -4,
-  },
   searchBarContainer: {
     marginHorizontal: 12,
     marginBottom: 16,
@@ -194,9 +177,6 @@ const useStyles = makeStyles((theme, insets: EdgeInsets) => ({
     height: 1,
     backgroundColor: theme.colors.divider,
     marginVertical: 12,
-  },
-  whiteColor: {
-    color: theme.colors.black,
   },
 }));
 

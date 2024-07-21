@@ -1,4 +1,5 @@
 import { makeStyles, Text } from "@rneui/themed";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -25,6 +26,7 @@ const renderScene = SceneMap(scene);
 const Page = () => {
   const styles = useStyles();
   const { currentGroupId } = useAppContext();
+  const queryClient = useQueryClient();
   const { t } = useTranslation();
   const router = useRouter();
   const layout = useWindowDimensions();
@@ -49,6 +51,9 @@ const Page = () => {
           type: "success",
           text1: t("Expense:success"),
           text2: t("Expense:expense-created-successfully"),
+        });
+        queryClient.invalidateQueries({
+          queryKey: ["useGetExpenseList"],
         });
         router.navigate("/payments");
       }}

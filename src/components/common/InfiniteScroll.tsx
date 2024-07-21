@@ -16,7 +16,7 @@ import InfiniteScrollFooter from "./InfiniteScrollFooter";
 type IInfiniteScrollProps<T> = FlatListProps<T> & {
   infiniteScrollProps: {
     isLoading?: boolean;
-    refetch?: () => void;
+    refetch?: () => Promise<any>;
     fetchNextPage?: () => void;
     hasNextPage?: boolean;
     isFetchingNextPage?: boolean;
@@ -69,11 +69,13 @@ const InfiniteScroll = <T,>({
         if (isFetchNextPageError) return;
         fetchNextPage?.();
       }}
-      ListEmptyComponent={() => (
-        <EmptyComponent
-          emptyText={emptyText ?? t("InfiniteScroll:no-items-found")}
-        />
-      )}
+      ListEmptyComponent={
+        isLoading ? undefined : (
+          <EmptyComponent
+            emptyText={emptyText ?? t("InfiniteScroll:no-items-found")}
+          />
+        )
+      }
       ListFooterComponent={() => (
         <InfiniteScrollFooter
           dataLength={data.length}

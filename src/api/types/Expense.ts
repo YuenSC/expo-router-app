@@ -51,6 +51,7 @@ export type GetExpenseUnresolvedAmountPerCurrencyResponse = ApiResponse<
 
 export interface GetExpenseListPayload extends ApiPaginatedPayload {
   groupId: string;
+  searchText?: string;
 }
 export type GetExpenseListResponse = ApiPaginatedResponse<Expense>;
 

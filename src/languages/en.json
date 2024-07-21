@@ -193,7 +193,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "No payment records found",
     "no-payment-records-found-for-currency": "No payment records found for {{currency}}",
-    "payments": "Payments"
+    "payments": "Payments",
+    "search": "Search Description"
   },
   "SignUp": {
     "email-is-required": "Email is required",

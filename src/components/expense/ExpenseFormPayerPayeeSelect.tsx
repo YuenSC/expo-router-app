@@ -44,6 +44,7 @@ const PayerPayeeSelectForm = ({
   const {
     append,
     update,
+    remove,
     fields: transactions,
   } = useFieldArray({
     control,
@@ -75,11 +76,13 @@ const PayerPayeeSelectForm = ({
     }
 
     const isAutoSplit = !checked;
-    update(index, {
-      ...transactions[index],
-      isAutoSplit,
-      amount: undefined,
-    });
+    if (isAutoSplit)
+      update(index, {
+        ...transactions[index],
+        isAutoSplit,
+        amount: undefined,
+      });
+    else remove(index);
   };
 
   const onRemoveUserAmount = (userId: string) => {
@@ -87,11 +90,7 @@ const PayerPayeeSelectForm = ({
       (i) => i.userId === userId && i.type === route.key,
     );
     if (index === -1) return;
-    update(index, {
-      ...transactions[index],
-      isAutoSplit: false,
-      amount: 0,
-    });
+    remove(index);
   };
 
   return (

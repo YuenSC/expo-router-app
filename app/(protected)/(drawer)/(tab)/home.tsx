@@ -52,45 +52,6 @@ const GroupDetailScreen = () => {
         <View style={styles.sectionPadding}>
           <Text h1>{group.name}</Text>
           {group.description && <Text>{group.description}</Text>}
-          {/* <HStack gap={6} justifyContent="flex-start" flexWrap="wrap">
-            {Object.entries(totalNetAmountByCurrency).map(
-              ([currencyCode, totalNetAmount]) => {
-                if (totalNetAmount === 0) return null;
-
-                const amount = formatAmount(
-                  totalNetAmount,
-                  currencyCode as CurrencyCode,
-                  { currencySymbol: "code" },
-                );
-                const sign = Math.sign(totalNetAmount);
-
-                return (
-                  <TouchableOpacity
-                    key={currencyCode}
-                    style={styles.amountButton}
-                    onPress={() =>
-                      navigation.navigate("GroupSummary", {
-                        groupId: currentGroup.id,
-                      })
-                    }
-                  >
-                    <HStack gap={4}>
-                      <Text
-                        key={currencyCode}
-                        style={[
-                          styles.amountText,
-                          sign > 0 && { color: theme.colors.success },
-                          sign < 0 && { color: theme.colors.error },
-                        ]}
-                      >
-                        {amount}
-                      </Text>
-                    </HStack>
-                  </TouchableOpacity>
-                );
-              },
-            )}
-          </HStack> */}
         </View>
 
         <GroupDetailSummarySection groupId={group.id} />
