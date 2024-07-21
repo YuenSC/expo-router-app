@@ -1,6 +1,7 @@
 import { ApiResponse } from "./ApiResponse";
 import { BaseObject } from "./BaseObject";
 import { ApiPaginatedPayload, ApiPaginatedResponse } from "./Pagination";
+import { User } from "./User";
 
 import { CurrencyCode } from "@/src/constants/Currency";
 
@@ -47,6 +48,19 @@ export interface GetExpenseUnresolvedAmountPerCurrencyPayload {
 }
 export type GetExpenseUnresolvedAmountPerCurrencyResponse = ApiResponse<
   Record<CurrencyCode, number>
+>;
+
+export type PaymentRelationship = {
+  debtor: User;
+  creditor: User;
+  debtAmount: number;
+};
+
+export interface GetExpensePaymentRelationshipPayload {
+  groupId: string;
+}
+export type GetExpensePaymentRelationshipResponse = ApiResponse<
+  Record<CurrencyCode, PaymentRelationship[]>
 >;
 
 export interface GetExpenseListPayload extends ApiPaginatedPayload {

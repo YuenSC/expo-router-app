@@ -1,5 +1,6 @@
 import { Text, makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
@@ -8,6 +9,7 @@ import StyledScrollView from "@/src/components/common/StyledScrollView";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
 import GroupDetailMemberSection from "@/src/components/group/GroupDetailMemberSection";
 import GroupDetailPaymentSection from "@/src/components/group/GroupDetailPaymentSection";
+import GroupDetailSummaryCarousel from "@/src/components/group/GroupDetailSummaryCarousel";
 import GroupDetailSummarySection from "@/src/components/group/GroupDetailSummarySection";
 import { useAppContext } from "@/src/context/AppContext";
 
@@ -15,11 +17,9 @@ const GroupDetailScreen = () => {
   const styles = useStyles();
   const { currentGroupId } = useAppContext();
   const queryClient = useQueryClient();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const {
-    data: group,
-    query: { isLoading },
-  } = useGetGroup({ id: currentGroupId || "" });
+  const { data: group } = useGetGroup({ id: currentGroupId || "" });
 
   const refetch = async () => {
     await Promise.all([
@@ -30,10 +30,18 @@ const GroupDetailScreen = () => {
         queryKey: ["useGetExpenseUnresolvedAmountPerCurrency"],
       }),
       queryClient.invalidateQueries({
+        queryKey: ["useGetExpensePaymentRelationship"],
+      }),
+      queryClient.invalidateQueries({
         queryKey: ["useGetExpenseList", { page: 1 }],
       }),
     ]);
   };
+
+  useEffect(() => {
+    refetch().finally(() => setIsLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isLoading) {
     return <FullScreenLoading />;
@@ -55,7 +63,7 @@ const GroupDetailScreen = () => {
         </View>
 
         <GroupDetailSummarySection groupId={group.id} />
-        {/* <GroupDetailSummaryCarousel group={currentGroup} /> */}
+        <GroupDetailSummaryCarousel group={group} />
         <GroupDetailMemberSection group={group} />
         <GroupDetailPaymentSection />
       </StyledScrollView>

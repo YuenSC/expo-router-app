@@ -4,7 +4,7 @@ import { memo } from "react";
 import StyledImage from "../common/StyledImage";
 
 type IProfileImageDisplayProps = {
-  imageUrl: string;
+  imageUrl?: string;
   size?: number;
 };
 
