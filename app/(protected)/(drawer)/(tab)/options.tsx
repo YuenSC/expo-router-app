@@ -5,9 +5,9 @@ import { Linking, TouchableOpacity } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
+import ProfileImageDisplay from "@/src/components/User/ProfileImageDisplay";
 import ButtonWithRef from "@/src/components/common/ButtonWithRef";
 import { HStack, VStack } from "@/src/components/common/Stack";
-import StyledImage from "@/src/components/common/StyledImage";
 import StyledScrollView from "@/src/components/common/StyledScrollView";
 import OptionSection from "@/src/components/option/OptionSection";
 import OptionSectionItem from "@/src/components/option/OptionSectionItem";
@@ -47,16 +47,13 @@ const Page = () => {
             })}
           </Text>
         </VStack>
-        {profileUser && (
+        {profileUser?.imageUrl && (
           <Link
             asChild
             href={`/image?encodedImageUrl=${encodeURIComponent(profileUser.imageUrl || "")}`}
           >
             <TouchableOpacity>
-              <StyledImage
-                source={{ uri: profileUser.imageUrl }}
-                style={styles.image}
-              />
+              <ProfileImageDisplay imageUrl={profileUser.imageUrl} />
             </TouchableOpacity>
           </Link>
         )}

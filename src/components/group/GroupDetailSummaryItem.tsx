@@ -12,7 +12,7 @@ type IGroupDetailSummaryItemProps = {
   currencyCode: CurrencyCode;
   paymentRelationship: PaymentRelationship[];
   itemWidth: number;
-  onSummaryItemPress: () => void;
+  onSummaryItemPress: (paymentRelationship: PaymentRelationship) => void;
 };
 
 const GroupDetailSummaryItem = memo<IGroupDetailSummaryItemProps>(
@@ -37,7 +37,7 @@ const GroupDetailSummaryItem = memo<IGroupDetailSummaryItemProps>(
             {paymentRelationship?.map((item) => (
               <TouchableOpacity
                 key={currencyCode + item.debtor.id + item.creditor.id}
-                onPress={onSummaryItemPress}
+                onPress={() => onSummaryItemPress(item)}
               >
                 <PaymentRelationshipDisplay
                   currencyCode={currencyCode}

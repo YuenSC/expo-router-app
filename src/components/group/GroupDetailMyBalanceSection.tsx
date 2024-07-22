@@ -19,6 +19,7 @@ const GroupDetailMyBalanceSection = memo<IGroupDetailMyBalanceSectionProps>(
     const { theme } = useTheme();
     const { t } = useTranslation();
     const { data } = useGetExpenseUnresolvedAmountPerCurrency({ groupId });
+    const hasUnresolvedAmount = data && Object.keys(data).length > 0;
 
     return (
       <GroupDetailSection
@@ -34,7 +35,7 @@ const GroupDetailMyBalanceSection = memo<IGroupDetailMyBalanceSectionProps>(
         }
         style={styles.container}
       >
-        {data && (
+        {hasUnresolvedAmount && (
           <HStack gap={6} justifyContent="flex-start" flexWrap="wrap">
             {Object.entries(data).map(([currencyCode, totalNetAmount]) => {
               if (totalNetAmount === 0) return null;

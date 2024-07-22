@@ -61,15 +61,26 @@
   "Expense": {
     "create-expense": "建立費用記錄",
     "detail": "細節",
+    "edit-expense": "編輯費用",
+    "expense-created-successfully": "費用創建成功",
+    "expense-edited-successfully": "費用編輯成功",
     "payee": "收款人",
     "payer": "付款人",
-    "please-fill-in-all-required-fields": "請再次檢查您的表單並更新相關字段"
+    "please-fill-in-all-required-fields": "請再次檢查您的表單並更新相關字段",
+    "success": "成功"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "日期為必填項"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "所有貨幣",
     "search-currency-code-or-name": "搜尋貨幣代碼或名稱",
     "selected-currency": "已選擇：",
     "suggested-currency": "建議貨幣"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "預設",
+    "the-sum-does-not-match-the-total-amount": "金額與總金額不符"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "和你的朋友一起創造你的第一筆付款記錄吧！",
@@ -107,7 +118,7 @@
     "unresolved-amount": "集團未解決金額"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "你所有的開支都是平衡的。",
+    "all-your-expenses-are-balanced": "你所有的開支都已經解決了。",
     "no-payment-records-found": "沒有找到付款記錄"
   },
   "GroupDetailSummaryItem": {
@@ -184,7 +195,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "沒有找到付款記錄",
     "no-payment-records-found-for-currency": "未找到 {{currency}} 的付款記錄",
-    "payments": "付款方式"
+    "payments": "付款方式",
+    "search": "搜尋說明"
   },
   "SignUp": {
     "email-is-required": "電子郵件為必填項",

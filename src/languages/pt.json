@@ -61,15 +61,26 @@
   "Expense": {
     "create-expense": "Criar registro de despesas",
     "detail": "Detalhe",
+    "edit-expense": "Editar despesa",
+    "expense-created-successfully": "Despesa criada com sucesso",
+    "expense-edited-successfully": "Despesa editada com sucesso",
     "payee": "Beneficiário",
     "payer": "Pagador",
-    "please-fill-in-all-required-fields": "Verifique seu formulário novamente e atualize os campos relacionados"
+    "please-fill-in-all-required-fields": "Verifique seu formulário novamente e atualize os campos relacionados",
+    "success": "Sucesso"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "A data é obrigatória"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "Todas as moedas",
     "search-currency-code-or-name": "Pesquise o código ou nome da moeda",
     "selected-currency": "Selecionado:",
     "suggested-currency": "Moeda sugerida"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "Padrão",
+    "the-sum-does-not-match-the-total-amount": "A soma não corresponde ao valor total"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Vamos criar seu primeiro registro de pagamento com seus amigos!",
@@ -107,7 +118,7 @@
     "unresolved-amount": "Valor não resolvido do grupo"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "Todas as suas despesas estão equilibradas.",
+    "all-your-expenses-are-balanced": "Todas as suas despesas estão acertadas.",
     "no-payment-records-found": "Nenhum registro de pagamento encontrado"
   },
   "GroupDetailSummaryItem": {
@@ -184,7 +195,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "Nenhum registro de pagamento encontrado",
     "no-payment-records-found-for-currency": "Nenhum registro de pagamento encontrado para {{currency}}",
-    "payments": "Pagamentos"
+    "payments": "Pagamentos",
+    "search": "Descrição da pesquisa"
   },
   "SignUp": {
     "email-is-required": "O e-mail é obrigatório",

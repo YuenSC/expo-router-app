@@ -61,15 +61,26 @@
   "Expense": {
     "create-expense": "経費記録の作成",
     "detail": "詳細",
+    "edit-expense": "経費の編集",
+    "expense-created-successfully": "経費が正常に作成されました",
+    "expense-edited-successfully": "経費が正常に編集されました",
     "payee": "受取人",
     "payer": "支払者",
-    "please-fill-in-all-required-fields": "フォームをもう一度確認し、関連フィールドを更新してください"
+    "please-fill-in-all-required-fields": "フォームをもう一度確認し、関連フィールドを更新してください",
+    "success": "成功"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "日付は必須です"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "すべての通貨",
     "search-currency-code-or-name": "通貨コードまたは通貨名を検索する",
     "selected-currency": "選択済み:",
     "suggested-currency": "推奨通貨"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "デフォルト",
+    "the-sum-does-not-match-the-total-amount": "合計が合計金額と一致しません"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "友達と一緒に最初の支払い記録を作成しましょう!",
@@ -107,7 +118,7 @@
     "unresolved-amount": "グループ未解決金額"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "すべての出費のバランスが取れています。",
+    "all-your-expenses-are-balanced": "すべての出費が精算されます。",
     "no-payment-records-found": "支払い記録が見つかりません"
   },
   "GroupDetailSummaryItem": {
@@ -184,7 +195,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "支払い記録が見つかりません",
     "no-payment-records-found-for-currency": "{{currency}} の支払い記録が見つかりませんでした",
-    "payments": "支払い"
+    "payments": "支払い",
+    "search": "検索の説明"
   },
   "SignUp": {
     "email-is-required": "メールアドレスは必須です",

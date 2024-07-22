@@ -61,15 +61,26 @@
   "Expense": {
     "create-expense": "Создать запись расходов",
     "detail": "Деталь",
+    "edit-expense": "Редактировать расходы",
+    "expense-created-successfully": "Расход успешно создан",
+    "expense-edited-successfully": "Расход успешно изменен",
     "payee": "Получатель платежа",
     "payer": "Плательщик",
-    "please-fill-in-all-required-fields": "Пожалуйста, проверьте свою форму еще раз и обновите соответствующие поля."
+    "please-fill-in-all-required-fields": "Пожалуйста, проверьте свою форму еще раз и обновите соответствующие поля.",
+    "success": "Успех"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "Укажите дату"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "Вся валюта",
     "search-currency-code-or-name": "Поиск кода или названия валюты",
     "selected-currency": "Выбрано:",
     "suggested-currency": "Предлагаемая валюта"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "По умолчанию",
+    "the-sum-does-not-match-the-total-amount": "Сумма не соответствует общей сумме"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Давайте вместе с друзьями создадим вашу первую платежную запись!",
@@ -107,7 +118,7 @@
     "unresolved-amount": "Групповая неразрешенная сумма"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "Все ваши расходы сбалансированы.",
+    "all-your-expenses-are-balanced": "Все ваши расходы оплачены.",
     "no-payment-records-found": "Записи о платежах не найдены"
   },
   "GroupDetailSummaryItem": {
@@ -184,7 +195,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "Записи о платежах не найдены",
     "no-payment-records-found-for-currency": "Платежные записи для {{currency}} не найдены.",
-    "payments": "Платежи"
+    "payments": "Платежи",
+    "search": "Описание поиска"
   },
   "SignUp": {
     "email-is-required": "Требуется электронная почта",

@@ -61,15 +61,26 @@
   "Expense": {
     "create-expense": "व्यय रिकॉर्ड बनाएं",
     "detail": "विवरण",
+    "edit-expense": "व्यय संपादित करें",
+    "expense-created-successfully": "व्यय सफलतापूर्वक बनाया गया",
+    "expense-edited-successfully": "व्यय सफलतापूर्वक संपादित किया गया",
     "payee": "आदाता",
     "payer": "भुगतानकर्ता",
-    "please-fill-in-all-required-fields": "कृपया अपना फॉर्म दोबारा जांचें और संबंधित फ़ील्ड अपडेट करें"
+    "please-fill-in-all-required-fields": "कृपया अपना फॉर्म दोबारा जांचें और संबंधित फ़ील्ड अपडेट करें",
+    "success": "सफलता"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "दिनांक आवश्यक है"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "सभी मुद्रा",
     "search-currency-code-or-name": "मुद्रा कोड या नाम खोजें",
     "selected-currency": "चयनित:",
     "suggested-currency": "सुझाई गई मुद्रा"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "गलती करना",
+    "the-sum-does-not-match-the-total-amount": "राशि कुल राशि से मेल नहीं खाती"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "आइए अपने दोस्तों के साथ अपना पहला भुगतान रिकॉर्ड बनाएं!",
@@ -107,7 +118,7 @@
     "unresolved-amount": "समूह अनसुलझा राशि"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "आपके सभी खर्चे संतुलित हैं।",
+    "all-your-expenses-are-balanced": "आपके सभी खर्चे व्यवस्थित हो गए हैं।",
     "no-payment-records-found": "कोई भुगतान रिकॉर्ड नहीं मिला"
   },
   "GroupDetailSummaryItem": {
@@ -184,7 +195,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "कोई भुगतान रिकॉर्ड नहीं मिला",
     "no-payment-records-found-for-currency": "{{currency}} के लिए कोई भुगतान रिकॉर्ड नहीं मिला",
-    "payments": "भुगतान"
+    "payments": "भुगतान",
+    "search": "विवरण खोजें"
   },
   "SignUp": {
     "email-is-required": "ईमेल की जरूरत है",

@@ -1,12 +1,13 @@
 import { makeStyles, Text } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useWindowDimensions } from "react-native";
 import { SceneMap, TabView } from "react-native-tab-view";
 import Toast from "react-native-toast-message";
 
+import { PostExpenseCreatePayload } from "@/src/api/types/Expense";
 import ExpenseDetailForm from "@/src/components/expense/ExpenseDetailForm";
 import { ExpenseFormProvider } from "@/src/components/expense/ExpenseFormContext";
 import PayerPayeeSelectForm from "@/src/components/expense/ExpenseFormPayerPayeeSelect";
@@ -30,6 +31,12 @@ const Page = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const layout = useWindowDimensions();
+  const { payload: payloadAsString } = useLocalSearchParams<{
+    payload: string;
+  }>();
+  const defaultValues = payloadAsString
+    ? (JSON.parse(payloadAsString) as PostExpenseCreatePayload)
+    : undefined;
 
   const [currentStep, helpers] = useStep({ maxStep: 3, defaultStep: 1 });
   const [routes] = useState([
@@ -64,6 +71,7 @@ const Page = () => {
           text2: t("Expense:please-fill-in-all-required-fields"),
         })
       }
+      defaultValues={defaultValues}
       {...helpers}
     >
       <TabView

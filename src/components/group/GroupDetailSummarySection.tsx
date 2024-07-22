@@ -9,9 +9,14 @@ import GroupDetailSummaryItem from "./GroupDetailSummaryItem";
 import StyledScrollView from "../common/StyledScrollView";
 
 import { useGetExpensePaymentRelationship } from "@/src/api/hooks/expense/useGetExpensePaymentRelationship";
-import { PaymentRelationship } from "@/src/api/types/Expense";
+import {
+  ExpenseTransactionType,
+  PaymentRelationship,
+  PostExpenseCreatePayload,
+} from "@/src/api/types/Expense";
 import { Group } from "@/src/api/types/Group";
 import { CurrencyCode } from "@/src/constants/Currency";
+import { roundAmountToDecimal } from "@/src/utils/payments";
 
 type IGroupDetailSummarySectionProps = {
   group: Group;
@@ -38,16 +43,6 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
       ? windowDimensions.width - 32
       : windowDimensions.width * 0.8;
 
-    if (Object.keys(paymentRelationshipByCurrency).length === 0) {
-      return (
-        <View style={styles.container}>
-          <Text>
-            {t("GroupDetailSummaryCarousel:all-your-expenses-are-balanced")}
-          </Text>
-        </View>
-      );
-    }
-
     return (
       <GroupDetailSection
         title={t("GroupDetailScreen:unresolved-amount")}
@@ -55,7 +50,7 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
         titleContainerStyle={styles.titleContainer}
       >
         {Object.keys(paymentRelationshipByCurrency).length === 0 ? (
-          <View style={styles.container}>
+          <View style={styles.contentContainer}>
             <Text>
               {t("GroupDetailSummaryCarousel:all-your-expenses-are-balanced")}
             </Text>
@@ -74,9 +69,33 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
               ([currencyCode, items]) => (
                 <GroupDetailSummaryItem
                   key={currencyCode}
-                  onSummaryItemPress={() => {
-                    // TODO: Fix this
-                    router.back();
+                  onSummaryItemPress={({ creditor, debtAmount, debtor }) => {
+                    const payload = {
+                      amount: roundAmountToDecimal(debtAmount),
+                      description: "Settle up debt with " + creditor.name,
+                      currencyCode: currencyCode as CurrencyCode,
+                      groupId: group.id,
+                      incurredOn: new Date().toISOString(),
+                      createExpenseTransactions: [
+                        {
+                          userId: debtor.id,
+                          amount: roundAmountToDecimal(debtAmount),
+                          type: ExpenseTransactionType.payer,
+                          isAutoSplit: false,
+                        },
+                        {
+                          userId: creditor.id,
+                          amount: roundAmountToDecimal(debtAmount),
+                          type: ExpenseTransactionType.payee,
+                          isAutoSplit: false,
+                        },
+                      ],
+                    } satisfies Partial<PostExpenseCreatePayload>;
+
+                    const payloadInString = JSON.stringify(payload);
+                    router.navigate(
+                      "/expense/create?payload=" + payloadInString,
+                    );
                   }}
                   currencyCode={currencyCode as CurrencyCode}
                   itemWidth={itemWidth}

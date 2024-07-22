@@ -61,15 +61,26 @@
   "Expense": {
     "create-expense": "Créer un enregistrement de dépenses",
     "detail": "Détail",
+    "edit-expense": "Modifier les dépenses",
+    "expense-created-successfully": "Dépense créée avec succès",
+    "expense-edited-successfully": "Dépense modifiée avec succès",
     "payee": "Bénéficiaire",
     "payer": "Payeur",
-    "please-fill-in-all-required-fields": "Veuillez vérifier à nouveau votre formulaire et mettre à jour les champs associés"
+    "please-fill-in-all-required-fields": "Veuillez vérifier à nouveau votre formulaire et mettre à jour les champs associés",
+    "success": "Succès"
+  },
+  "ExpenseDetailForm": {
+    "date-is-required": "La date est requise"
   },
   "ExpenseFormCurrencyCodeSelectBottomSheetModal": {
     "all-currency": "Toutes les devises",
     "search-currency-code-or-name": "Rechercher le code ou le nom de la devise",
     "selected-currency": "Choisi:",
     "suggested-currency": "Devise suggérée"
+  },
+  "ExpenseFormPayerPayeeSelect": {
+    "default": "Défaut",
+    "the-sum-does-not-match-the-total-amount": "La somme ne correspond pas au montant total"
   },
   "GroupCreateSuccessBottomSheet": {
     "congrat-message": "Créons votre premier enregistrement de paiement avec vos amis !",
@@ -107,7 +118,7 @@
     "unresolved-amount": "Montant non résolu du groupe"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "Toutes vos dépenses sont équilibrées.",
+    "all-your-expenses-are-balanced": "Toutes vos dépenses sont réglées.",
     "no-payment-records-found": "Aucun enregistrement de paiement trouvé"
   },
   "GroupDetailSummaryItem": {
@@ -184,7 +195,8 @@
   "PaymentRecordListScreen": {
     "no-payment-records-found": "Aucun enregistrement de paiement trouvé",
     "no-payment-records-found-for-currency": "Aucun enregistrement de paiement trouvé pour {{currency}}",
-    "payments": "Paiements"
+    "payments": "Paiements",
+    "search": "Description de la recherche"
   },
   "SignUp": {
     "email-is-required": "L'e-mail est requis",

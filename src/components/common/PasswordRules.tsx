@@ -22,7 +22,12 @@ const PasswordRules = ({ password, rules }: IPasswordRulesProps) => {
   return (
     <View>
       {rules.map((rule) => (
-        <HStack gap={4} key={rule.id} style={styles.ruleContainer}>
+        <HStack
+          gap={4}
+          key={rule.id}
+          style={styles.ruleContainer}
+          justifyContent="flex-start"
+        >
           <Ionicons
             name={rule.test(password) ? "checkmark-circle" : "close-circle"}
             size={20}

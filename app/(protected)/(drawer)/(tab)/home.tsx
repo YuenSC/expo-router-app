@@ -10,7 +10,6 @@ import StyledScrollView from "@/src/components/common/StyledScrollView";
 import GroupDetailEmpty from "@/src/components/group/GroupDetailEmpty";
 import GroupDetailMemberSection from "@/src/components/group/GroupDetailMemberSection";
 import GroupDetailMyBalanceSection from "@/src/components/group/GroupDetailMyBalanceSection";
-import GroupDetailPaymentSection from "@/src/components/group/GroupDetailPaymentSection";
 import GroupDetailSummarySection from "@/src/components/group/GroupDetailSummarySection";
 import { useAppContext } from "@/src/context/AppContext";
 
@@ -71,9 +70,8 @@ const GroupDetailScreen = () => {
         </View>
 
         <GroupDetailMyBalanceSection groupId={group.id} />
-        <GroupDetailSummarySection group={group} />
         <GroupDetailMemberSection group={group} />
-        <GroupDetailPaymentSection />
+        <GroupDetailSummarySection group={group} />
       </StyledScrollView>
     </View>
   );

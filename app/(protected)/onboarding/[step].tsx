@@ -2,7 +2,7 @@ import { makeStyles } from "@rneui/themed";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { ScrollViewProps } from "react-native";
+import { Keyboard, ScrollViewProps } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -88,9 +88,10 @@ const OnboardingPage = () => {
             submitButtonText={t("Common:next")}
             user={user}
             isSubmitting={isPendingPatchUserUpdate}
-            onEdit={(values) =>
-              patchUserUpdate({ ...values, id: user?.id || "" })
-            }
+            onEdit={(values) => {
+              Keyboard.dismiss();
+              patchUserUpdate({ ...values, id: user?.id || "" });
+            }}
           />
         </KeyboardAwareScrollView>
       )}

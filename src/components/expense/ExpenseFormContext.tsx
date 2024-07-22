@@ -51,6 +51,7 @@ export const ExpenseFormProvider = ({
   goToNextStep,
   canGoToNextStep,
   onInValid,
+  defaultValues,
   ...props
 }: PropsWithChildren<
   UseStepActions & {
@@ -60,6 +61,7 @@ export const ExpenseFormProvider = ({
     currentStep: number;
     onSuccess: () => void;
     onInValid: () => void;
+    defaultValues?: Partial<PostExpenseCreatePayload>;
   }
 >) => {
   const { theme } = useTheme();
@@ -115,6 +117,7 @@ export const ExpenseFormProvider = ({
       incurredOn: new Date().toISOString(),
       createExpenseTransactions: defaultTransactions,
       groupId,
+      ...defaultValues,
     },
   });
   const { setValue, getValues, handleSubmit, trigger, control, reset } = form;
@@ -178,6 +181,7 @@ export const ExpenseFormProvider = ({
       return;
     }
     handleSubmit((values) => {
+      console.log("values", values);
       if (expense) postExpenseUpdate({ id: expense.id, ...values });
       else postExpenseCreate(values);
     })();

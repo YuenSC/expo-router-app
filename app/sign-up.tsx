@@ -13,7 +13,10 @@ const Page = () => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
   const { t } = useTranslation();
-  const { onSignUp } = useAuth();
+  const {
+    onSignUp,
+    authState: { isPending },
+  } = useAuth();
   const { handleSubmit, control, getValues } = useForm<PostSignUpPayload>({
     defaultValues:
       Config.env === "local"
@@ -96,7 +99,6 @@ const Page = () => {
                 label={t("SignUp:password-label")}
                 onChangeText={onChange}
                 placeholder={t("SignUp:password-placeholder")}
-                secureTextEntry
                 value={value}
                 textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
               />
@@ -122,7 +124,6 @@ const Page = () => {
                 label={t("SignUp:retypedPassword-label")}
                 onChangeText={onChange}
                 placeholder={t("SignUp:password-placeholder")}
-                secureTextEntry
                 value={value}
                 textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
               />
@@ -134,6 +135,7 @@ const Page = () => {
           title={t("common:login")}
           containerStyle={styles.buttonContainer}
           onPress={handleSubmit(onSubmit)}
+          loading={isPending}
         />
       </View>
     </TouchableWithoutFeedback>

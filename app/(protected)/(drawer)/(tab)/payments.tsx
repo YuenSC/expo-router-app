@@ -40,7 +40,7 @@ const Page = () => {
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <VStack alignItems="flex-start" style={styles.header}>
         <Text h1 style={styles.title}>
           {t("PaymentRecordListScreen:payments")}
@@ -63,7 +63,6 @@ const Page = () => {
           isFetchNextPageError,
         }}
         data={expenses}
-        style={styles.container}
         contentContainerStyle={styles.contentContainer}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item }) => {
@@ -83,9 +82,12 @@ const Page = () => {
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: theme.colors.background,
+    flex: 1,
+  },
+  contentContainer: {
+    paddingBottom: 140,
     paddingHorizontal: 16,
   },
-  contentContainer: { paddingBottom: 140 },
   header: {
     backgroundColor: theme.colors.background,
     paddingHorizontal: 16,
