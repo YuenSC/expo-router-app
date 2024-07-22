@@ -8,9 +8,18 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ENV": "preview",
+        "EXPO_PUBLIC_API_URL": "https://group-expense-628faa35624f.herokuapp.com/"
+      }
     },
-    "production": {}
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_ENV": "prod",
+        "EXPO_PUBLIC_API_URL": "https://group-expense-628faa35624f.herokuapp.com/"
+      }
+    }
   },
   "submit": {
     "production": {}
