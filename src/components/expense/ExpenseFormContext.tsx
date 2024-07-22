@@ -181,7 +181,6 @@ export const ExpenseFormProvider = ({
       return;
     }
     handleSubmit((values) => {
-      console.log("values", values);
       if (expense) postExpenseUpdate({ id: expense.id, ...values });
       else postExpenseCreate(values);
     })();
