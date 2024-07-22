@@ -19,7 +19,9 @@ const GroupDetailMyBalanceSection = memo<IGroupDetailMyBalanceSectionProps>(
     const { theme } = useTheme();
     const { t } = useTranslation();
     const { data } = useGetExpenseUnresolvedAmountPerCurrency({ groupId });
-    const hasUnresolvedAmount = data && Object.keys(data).length > 0;
+    const hasUnresolvedAmount =
+      data &&
+      Object.entries(data).some(([, totalNetAmount]) => totalNetAmount !== 0);
 
     return (
       <GroupDetailSection
