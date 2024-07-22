@@ -84,30 +84,12 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     backgroundColor: theme.colors.background,
   },
-  contentContainer: {
-    gap: 16,
-    paddingBottom: 100,
-  },
   sectionPadding: {
     paddingHorizontal: 16,
   },
-  subtitle: {
-    fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  amountButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: theme.colors.divider,
-    width: "auto",
-    flexGrow: 0,
-  },
-  amountText: {
-    fontSize: 16,
-    fontWeight: "bold",
+  contentContainer: {
+    gap: 16,
+    paddingBottom: 100,
   },
 }));
 

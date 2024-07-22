@@ -52,6 +52,7 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
       <GroupDetailSection
         title={t("GroupDetailScreen:unresolved-amount")}
         style={styles.container}
+        titleContainerStyle={styles.titleContainer}
       >
         {Object.keys(paymentRelationshipByCurrency).length === 0 ? (
           <View style={styles.container}>
@@ -62,7 +63,7 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
         ) : (
           <StyledScrollView
             horizontal
-            contentContainerStyle={styles.container}
+            contentContainerStyle={styles.contentContainer}
             showsHorizontalScrollIndicator={false}
             snapToAlignment="start"
             snapToInterval={itemWidth + 16}
@@ -95,6 +96,13 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
 const useStyles = makeStyles((theme) => ({
   container: {
     gap: 4,
+    paddingHorizontal: 0,
+  },
+  titleContainer: {
+    paddingHorizontal: 16,
+  },
+  contentContainer: {
+    paddingHorizontal: 16,
   },
 }));
 
