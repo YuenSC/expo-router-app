@@ -267,7 +267,7 @@
   "common": {
     "error": "エラー",
     "get-started": "始めましょう",
-    "login": "ログイン",
+    "login": "ログイン/メール認証",
     "sign-up": "新しいアカウントを作成する"
   },
   "options": {

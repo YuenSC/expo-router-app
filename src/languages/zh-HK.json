@@ -267,7 +267,7 @@
   "common": {
     "error": "錯誤",
     "get-started": "開始使用",
-    "login": "登入",
+    "login": "登入/驗證電子郵件",
     "sign-up": "建立新帳戶"
   },
   "options": {

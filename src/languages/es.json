@@ -267,7 +267,7 @@
   "common": {
     "error": "Error",
     "get-started": "Empezar",
-    "login": "Acceso",
+    "login": "Iniciar sesión/verificar correo electrónico",
     "sign-up": "Crear una nueva cuenta"
   },
   "options": {

@@ -182,6 +182,9 @@
     "profile": "User Profile",
     "unknown-user": "User"
   },
+  "Otp": {
+    "verify-email": "Verify Email"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "(Automatic)",
     "paid-for": "Paid For?",
@@ -213,7 +216,8 @@
     "passwordsMustMatch": "Retyped passwords does not match with password",
     "remember-me": "Remember Me",
     "retypedPassword-is-required": "Retyped Password is required",
-    "retypedPassword-label": "Retyped Password"
+    "retypedPassword-label": "Retyped Password",
+    "success-message": "Please check your email for the OTP and enter it to verify your account."
   },
   "StackNavigator": {
     "group-summary": "Group Summary",
@@ -267,8 +271,9 @@
   "common": {
     "error": "Error",
     "get-started": "Get Started",
-    "login": "Login",
-    "sign-up": "Create New Account"
+    "login": "Login/Verify Email",
+    "sign-up": "Create New Account",
+    "success": "Success"
   },
   "options": {
     "logout": "Logout"

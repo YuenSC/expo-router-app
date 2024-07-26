@@ -7,7 +7,6 @@ import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import { FullWindowOverlay } from "react-native-screens";
@@ -45,7 +44,7 @@ const queryClient = new QueryClient({
         Toast.show({
           type: "error",
           text1: "Api Error",
-          text2: message,
+          text2: message || "Timeout",
           topOffset: 64,
           visibilityTime: 4000,
         });
@@ -62,7 +61,6 @@ const StackLayout = () => {
   const segments = useSegments();
   const router = useRouter();
   const { theme } = useTheme();
-  const { t } = useTranslation();
 
   useEffect(() => {
     const inAuthGroup = segments[0] === "(protected)";
@@ -96,20 +94,10 @@ const StackLayout = () => {
       initialRouteName="welcome"
       screenOptions={getDefaultStackOptions(theme)}
     >
-      <Stack.Screen name="index" options={{}} />
+      <Stack.Screen name="index" />
       <Stack.Screen
-        name="login"
+        name="modal"
         options={{
-          headerShown: true,
-          title: t("common:login"),
-          presentation: "modal",
-        }}
-      />
-      <Stack.Screen
-        name="sign-up"
-        options={{
-          headerShown: true,
-          title: t("common:sign-up"),
           presentation: "modal",
         }}
       />

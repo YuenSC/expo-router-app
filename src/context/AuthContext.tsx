@@ -2,8 +2,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
 
 import { removeAxiosToken, setAxiosToken } from "../api/axios";
-import { usePostSignUp } from "../api/hooks/usePostSignUp";
-import { PostSignUpPayload } from "../api/types/SignUp";
 
 import { usePostLogin } from "@/src/api/hooks/usePostLogin";
 import { PostLoginPayload } from "@/src/api/types/Login";
@@ -12,7 +10,6 @@ import useSecureStore from "@/src/hooks/useSecureStore";
 interface AuthProps {
   onLogin: (payload: PostLoginPayload) => void;
   onLogout: () => void;
-  onSignUp: (payload: PostSignUpPayload) => void;
   authState: {
     token: string | null;
     isPending: boolean;
@@ -26,7 +23,6 @@ interface AuthProps {
 const authContext = createContext<AuthProps>({
   onLogin: () => {},
   onLogout: () => {},
-  onSignUp: () => {},
   authState: {
     token: null,
     isPending: false,
@@ -69,15 +65,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     },
   });
 
-  const { mutate: postSignUp, isPending: isPendingSignUp } = usePostSignUp({
-    onSuccess: ({ data }) => {
-      queryClient.invalidateQueries({
-        queryKey: ["me"],
-      });
-      setToken(data.access_token);
-    },
-  });
-
   const onLogin = ({ rememberMe, ...payload }: PostLoginPayload) => {
     postLogin(payload);
     if (rememberMe) {
@@ -87,10 +74,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setLocalEmail(null);
       setLocalPassword(null);
     }
-  };
-
-  const onSignUp = (payload: PostSignUpPayload) => {
-    postSignUp(payload);
   };
 
   const onLogout = () => {
@@ -103,10 +86,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         onLogin,
         onLogout,
-        onSignUp,
         authState: {
           token,
-          isPending: isPendingLogin || isPendingSignUp,
+          isPending: isPendingLogin,
         },
         localCredential: { email: localEmail, password: localPassword },
       }}
