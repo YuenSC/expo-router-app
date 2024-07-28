@@ -3,8 +3,7 @@
     "done": "हो गया",
     "enter-something": "कुछ दर्ज करें~"
   },
-  "BillCategoryEnum": {
-  },
+  "BillCategoryEnum": {},
   "BillForm": {
     "amount-is-required": "राशि आवश्यक है",
     "amount-label": "बिल राशि",
@@ -22,7 +21,7 @@
     "payment": "भुगतान",
     "stats": "आँकड़े"
   },
-  "CFBundleDisplayName": "समूह व्यय (पूर्वावलोकन)",
+  "CFBundleDisplayName": "समूह&#x2007;व्यय",
   "Common": {
     "adminLabel": "प्रशासक",
     "back": "पीछे",
@@ -35,8 +34,7 @@
     "next": "अगला",
     "profileUserLabel": "(आप)"
   },
-  "CurrencyCodeSelectScreen": {
-  },
+  "CurrencyCodeSelectScreen": {},
   "DrawerContent": {
     "add-group": "समूह जोड़ें",
     "group-not-found": "आपका मूल चयनित समूह नहीं मिल सका.",
@@ -84,8 +82,7 @@
     "group-deleted-warning": "कृपया जारी रखने के लिए एक समूह पुनः चुनें/बनाएँ।",
     "warning": "कृपया ध्यान दें कि यह क्रिया अपरिवर्तनीय है. \nसभी व्यय रिकॉर्ड और उपयोगकर्ता हटा दिए जाएंगे."
   },
-  "GroupDeletePaymentRecordBottomSheet": {
-  },
+  "GroupDeletePaymentRecordBottomSheet": {},
   "GroupDetailScreen": {
     "add-group": "समूह जोड़ें",
     "and": "और",
@@ -103,10 +100,8 @@
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "आपके सभी खर्चे व्यवस्थित हो गए हैं।"
   },
-  "GroupDetailSummaryItem": {
-  },
-  "GroupExistingUserSelectBottomSheet": {
-  },
+  "GroupDetailSummaryItem": {},
+  "GroupExistingUserSelectBottomSheet": {},
   "GroupForm": {
     "create-group": "समूह बनाना",
     "group-description": "समूह विवरण",
@@ -116,8 +111,7 @@
     "group-name-is-required": "समूह का नाम आवश्यक है",
     "your-first-group-expense": "आपका पहला समूह व्यय"
   },
-  "GroupSummaryScreen": {
-  },
+  "GroupSummaryScreen": {},
   "InfiniteScroll": {
     "all-items-are-fetched": "सभी आइटम लाए गए हैं",
     "failed-to-fetch-more-items": "अधिक आइटम लाने में विफल",
@@ -127,8 +121,7 @@
     "language": "भाषा",
     "warning": "अंग्रेजी से भिन्न भाषाओं को परिवर्तित करने के लिए मशीनी अनुवाद का उपयोग किया जाता है। \nअनुवाद में त्रुटि की संभावना बनी रह सकती है."
   },
-  "Login": {
-  },
+  "Login": {},
   "NetworkDialog": {
     "network-connection-down": "नेटवर्क कनेक्शन डाउन",
     "please-check-your-network-connection-and-try-again": "कृपया अपना नेटवर्क कनेक्शन जांचें और पुनः प्रयास करें।"
@@ -167,8 +160,7 @@
     "paid-for": "के लिए भुगतान किया?",
     "who-paid": "किसने भुगतान किया?"
   },
-  "PaymentFormScreen": {
-  },
+  "PaymentFormScreen": {},
   "PaymentRecordListScreen": {
     "payments": "भुगतान",
     "search": "विवरण खोजें"
@@ -191,12 +183,9 @@
     "retypedPassword-label": "पासवर्ड दोबारा टाइप किया गया",
     "success-message": "कृपया ओटीपी के लिए अपना ईमेल जांचें और अपना खाता सत्यापित करने के लिए इसे दर्ज करें।"
   },
-  "StackNavigator": {
-  },
-  "StatisticScreen": {
-  },
-  "UserDeleteBottomSheet": {
-  },
+  "StackNavigator": {},
+  "StatisticScreen": {},
+  "UserDeleteBottomSheet": {},
   "UserForm": {
     "camera-permission-required": "कैमरे की अनुमति आवश्यक है",
     "choose-photo-from-library": "लाइब्रेरी से फ़ोटो चुनें",
