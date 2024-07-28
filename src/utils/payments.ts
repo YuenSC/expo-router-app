@@ -2,8 +2,6 @@ import { CreateExpenseTransaction } from "../api/types/Expense";
 import { AllCurrencyCodes, CurrencyCode } from "../constants/Currency";
 
 export const roundAmountToDecimal = (amount: number, decimal: number = 2) => {
-  if (Number.isNaN(amount)) return 0;
-  console.log("amount", typeof amount);
   return parseFloat(amount.toFixed(decimal));
 };
 
