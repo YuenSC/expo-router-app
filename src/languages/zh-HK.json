@@ -22,6 +22,7 @@
     "payment": "支付",
     "stats": "統計數據"
   },
+  "CFBundleDisplayName": "團體費用",
   "Common": {
     "adminLabel": "管理員",
     "back": "後退",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "重新輸入的密碼與密碼不匹配",
     "remember-me": "記住帳號",
     "retypedPassword-is-required": "需要重新輸入密碼",
-    "retypedPassword-label": "重新輸入密碼"
+    "retypedPassword-label": "重新輸入密碼",
+    "success-message": "請檢查您的電子郵件中的 OTP 並輸入它以驗證您的帳戶。"
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "錯誤",
     "get-started": "開始使用",
     "login": "登入/驗證電子郵件",
-    "sign-up": "建立新帳戶"
+    "sign-up": "建立新帳戶",
+    "success": "成功"
   },
   "options": {
     "logout": "登出"
