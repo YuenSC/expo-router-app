@@ -22,7 +22,7 @@
     "payment": "Pago",
     "stats": "Estadísticas"
   },
-  "CFBundleDisplayName": "Gastos de grupo (vista previa)",
+  "CFBundleDisplayName": "Factura de grupo",
   "Common": {
     "adminLabel": "Administrador",
     "back": "Atrás",

@@ -22,7 +22,7 @@
     "payment": "Paiement",
     "stats": "Statistiques"
   },
-  "CFBundleDisplayName": "Dépenses de groupe (aperçu)",
+  "CFBundleDisplayName": "Facture de groupe",
   "Common": {
     "adminLabel": "Administrateur",
     "back": "Dos",
