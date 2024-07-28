@@ -4,14 +4,6 @@
     "enter-something": "Entrez quelque chose~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "Vie",
-    "Entertainment": "Divertissement",
-    "FoodAndDining": "Nourriture",
-    "Insurance": "Assurance",
-    "Miscellaneous": "Divers",
-    "Shopping": "Achats",
-    "SightseeingAndActivities": "Touristique",
-    "Transportation": "Transport"
   },
   "BillForm": {
     "amount-is-required": "Le montant est requis",
@@ -30,9 +22,7 @@
     "payment": "Paiement",
     "stats": "Statistiques"
   },
-  "CFBundleDisplayName": "Dépense de groupe",
   "Common": {
-    "NA": "N / A",
     "adminLabel": "Administrateur",
     "back": "Dos",
     "cancel": "Annuler",
@@ -41,14 +31,10 @@
     "delete": "Supprimer",
     "done": "Fait",
     "edit": "Modifier",
-    "groupLabel": "(Groupe)",
     "next": "Suivant",
-    "profileUserLabel": "(Toi)",
-    "save": "Sauvegarder"
+    "profileUserLabel": "(Toi)"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "Tous",
-    "currency": "Devise"
   },
   "DrawerContent": {
     "add-group": "Ajouter un groupe",
@@ -98,15 +84,12 @@
     "warning": "Veuillez noter que cette action est irréversible. \nTous les enregistrements de dépenses et les utilisateurs seront supprimés."
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "Êtes-vous sûr de supprimer cet enregistrement ?"
   },
   "GroupDetailScreen": {
     "add-group": "Ajouter un groupe",
     "and": "et",
     "and-more": "et plus ...",
     "current-username": "Nom {{name}}",
-    "expense-reminder": "Vos dépenses non résolues sont les suivantes",
-    "expense-reminder-empty": "Vous n'avez aucune dépense non résolue. \nBien joué!",
     "member": "Membre",
     "my-balance": "Mon solde",
     "no-group-warning": "Vous n'avez encore créé aucun groupe. \nVeuillez créer un groupe pour commencer",
@@ -114,20 +97,14 @@
     "payment": "Paiement",
     "payment-count": "Vous avez {{count}} enregistrement dans ce groupe",
     "payment-count_plural": "Vous avez {{count}} enregistrements dans ce groupe",
-    "summary": "Résumé",
     "unresolved-amount": "Montant non résolu du groupe"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "Toutes vos dépenses sont réglées.",
-    "no-payment-records-found": "Aucun enregistrement de paiement trouvé"
+    "all-your-expenses-are-balanced": "Toutes vos dépenses sont réglées."
   },
   "GroupDetailSummaryItem": {
-    "individual": "Individuel",
-    "simplified": "Simplifié"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "Utilisateurs existants",
-    "no-existing-user-found": "Aucun utilisateur existant trouvé"
   },
   "GroupForm": {
     "create-group": "Créer un groupe",
@@ -139,8 +116,6 @@
     "your-first-group-expense": "Votre première dépense de groupe"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "Règlement de dette 💰",
-    "summary": "Résumé"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "Tous les éléments sont récupérés",
@@ -152,21 +127,22 @@
     "warning": "La traduction automatique est utilisée pour convertir des langues distinctes de l'anglais. \nLa possibilité d’une erreur de traduction peut persister."
   },
   "Login": {
-    "email-is-required": "L'e-mail est requis",
-    "email-label": "E-mail",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "Mot de passe requis",
-    "password-label": "Mot de passe",
-    "password-placeholder": "********",
-    "remember-me": "Souviens-toi de moi"
   },
   "NetworkDialog": {
     "network-connection-down": "Connexion réseau interrompue",
     "please-check-your-network-connection-and-try-again": "Veuillez vérifier votre connexion réseau et réessayer."
   },
+  "Onboarding": {
+    "create-group": "Créer un groupe (2/3)",
+    "edit-member": "Modifier les détails personnels (1/3)",
+    "members": "Créer un membre (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "Commençons le parcours d'intégration pour gérer vos dépenses de groupe",
+    "welcome-to-groupexpense": "Bienvenue sur GroupExpense"
+  },
   "OptionsScreen": {
     "Upgrade": "Passer à Pro",
-    "all-members": "Tous les membres",
     "app-related": "Lié à l'application",
     "category": "Configuration des catégories",
     "contact-us": "Contactez-nous",
@@ -182,19 +158,17 @@
     "profile": "Profil de l'utilisateur",
     "unknown-user": "Utilisateur"
   },
+  "Otp": {
+    "verify-email": "Vérifier les courriels"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "(Automatique)",
     "paid-for": "Payé pour?",
     "who-paid": "Qui a payé ?"
   },
   "PaymentFormScreen": {
-    "bill": "Facture",
-    "paid-for": "Payé pour?",
-    "who-paid": "Qui a payé ?"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "Aucun enregistrement de paiement trouvé",
-    "no-payment-records-found-for-currency": "Aucun enregistrement de paiement trouvé pour {{currency}}",
     "payments": "Paiements",
     "search": "Description de la recherche"
   },
@@ -216,44 +190,25 @@
     "retypedPassword-label": "Mot de passe retapé"
   },
   "StackNavigator": {
-    "group-summary": "Résumé du groupe",
-    "loading-interstitial-ad": "Chargement de l'annonce",
-    "users": "Utilisateurs"
   },
   "StatisticScreen": {
-    "add-payment-record": "Ajouter un enregistrement de paiement",
-    "emptyRecordWarning": "Vous n'avez pas encore de relevé de paiement. \nCommencez par créer un nouvel enregistrement de paiement !",
-    "statistics": "Statistiques",
-    "subtitle": "<Text>{{name}} ont dépensé <Highlight>{{amount}}</Highlight> au total. \nVoici la répartition de vos dépenses</Text>",
-    "you": "Toi"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "Attention, cette action est irréversible",
-    "related-payment": "Vous devrez supprimer {{count}} paiement associé avant de supprimer cet utilisateur.",
-    "related-payment_plural": "Vous devrez supprimer {{count}} paiements associés avant de supprimer cet utilisateur.",
-    "title": "<Text>Êtes-vous sûr de supprimer <Highlight>{{username}}</Highlight> de <Highlight>{{groupname}}</Highlight> ?</Text>"
   },
   "UserForm": {
     "camera-permission-required": "Autorisation de la caméra requise",
     "choose-photo-from-library": "Choisir une photo dans la bibliothèque",
-    "create-profile": "Créer un profil",
-    "edit-member": "Modifier un membre",
-    "hi-user": "Salut {{name}}",
-    "name": "Nom",
+    "edit-member": "Modifier un membre (1/3)",
     "name-is-required": "Nom d'utilisateur est nécessaire",
     "profile-image": "Image de profil",
-    "related-groups": "Groupes associés",
     "removeFromGroup": "Supprimer du groupe",
     "take-photo": "Prendre une photo",
     "username": "Nom d'utilisateur",
     "who-are-you": "Qui es-tu?",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "Vous devez activer les autorisations de la caméra pour utiliser cette fonctionnalité.",
-    "your-avatar-color": "La couleur de votre avatar",
-    "your-name-is-required": "Votre nom est obligatoire"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "Vous devez activer les autorisations de la caméra pour utiliser cette fonctionnalité."
   },
   "UserListForm": {
     "add-participant": "Ajouter un participant",
-    "all-members": "Tous les membres",
     "members": "Membres",
     "select-existing-user": "Sélectionnez un utilisateur existant",
     "type-participant-name": "Saisissez le nom du participant",
@@ -267,10 +222,15 @@
   "common": {
     "error": "Erreur",
     "get-started": "Commencer",
-    "login": "Se connecter",
+    "login": "Connexion/Vérification de l'e-mail",
     "sign-up": "Créer un nouveau compte"
   },
   "options": {
     "logout": "Se déconnecter"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "Entrez un mot de passe à usage unique",
+    "invalid-email-please-go-back-and-sign-up-again": "Email invalide. \nVeuillez revenir en arrière et vous inscrire à nouveau !",
+    "resend-otp": "Renvoyer OTP"
   }
 }

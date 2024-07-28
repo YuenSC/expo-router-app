@@ -1,29 +1,40 @@
 import { Button, Input, makeStyles } from "@rneui/themed";
+import { useRouter } from "expo-router";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 import Config from "@/src/Config";
+import { usePostSignUp } from "@/src/api/hooks/usePostSignUp";
 import { PostSignUpPayload } from "@/src/api/types/SignUp";
 import PasswordRules from "@/src/components/common/PasswordRules";
-import { useAuth } from "@/src/context/AuthContext";
 
 const Page = () => {
   const insets = useSafeAreaInsets();
   const styles = useStyles(insets);
+  const router = useRouter();
   const { t } = useTranslation();
-  const {
-    onSignUp,
-    authState: { isPending },
-  } = useAuth();
+
+  const { mutate: postSignUp, isPending: isPendingSignUp } = usePostSignUp({
+    onSuccess: ({ data: { user } }) => {
+      router.push("/modal/otp-email-verification?email=" + user.email);
+      Toast.show({
+        type: "success",
+        text1: t("common:success"),
+        text2: t("SignUp:success-message"),
+      });
+    },
+  });
+
   const { handleSubmit, control, getValues } = useForm<PostSignUpPayload>({
     defaultValues:
       Config.env === "local"
         ? {
-            email: "c@c.com",
-            password: "Pw@123456",
-            retypedPassword: "Pw@123456",
+            email: "yuensc07@gmail.com",
+            password: "Example@001",
+            retypedPassword: "Example@001",
           }
         : {
             email: "",
@@ -33,7 +44,7 @@ const Page = () => {
   });
 
   const onSubmit: SubmitHandler<PostSignUpPayload> = (values) => {
-    onSignUp(values);
+    postSignUp(values);
   };
 
   const rules = [
@@ -118,24 +129,22 @@ const Page = () => {
               value === getValues("password") || t("SignUp:passwordsMustMatch"),
           }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <>
-              <Input
-                errorMessage={error?.message}
-                label={t("SignUp:retypedPassword-label")}
-                onChangeText={onChange}
-                placeholder={t("SignUp:password-placeholder")}
-                value={value}
-                textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
-              />
-            </>
+            <Input
+              errorMessage={error?.message}
+              label={t("SignUp:retypedPassword-label")}
+              onChangeText={onChange}
+              placeholder={t("SignUp:password-placeholder")}
+              value={value}
+              textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
+            />
           )}
         />
 
         <Button
-          title={t("common:login")}
+          title={t("common:sign-up")}
           containerStyle={styles.buttonContainer}
           onPress={handleSubmit(onSubmit)}
-          loading={isPending}
+          loading={isPendingSignUp}
         />
       </View>
     </TouchableWithoutFeedback>

@@ -1,4 +1,4 @@
-import { Entypo } from "@expo/vector-icons";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { makeStyles, Text, useTheme } from "@rneui/themed";
 import { useRouter } from "expo-router";
 import { memo } from "react";
@@ -7,9 +7,11 @@ import { TouchableOpacity } from "react-native";
 
 import { HStack } from "./Stack";
 
-type IBackButtonProps = object;
+type IBackButtonProps = {
+  type?: "back" | "close";
+};
 
-const BackButton = memo<IBackButtonProps>(() => {
+const BackButton = memo<IBackButtonProps>(({ type = "back" }) => {
   const styles = useStyles();
   const { theme } = useTheme();
   const router = useRouter();
@@ -24,14 +26,21 @@ const BackButton = memo<IBackButtonProps>(() => {
         }
       }}
     >
-      <HStack gap={0}>
-        <Entypo
-          name="chevron-small-left"
-          size={32}
-          color={theme.colors.primary}
-        />
-        <Text style={styles.title}>{t("Common:back", { lng: "en" })}</Text>
-      </HStack>
+      {type === "back" && (
+        <HStack gap={0}>
+          <Entypo
+            name="chevron-small-left"
+            size={32}
+            color={theme.colors.primary}
+          />
+          <Text style={styles.title}>{t("Common:back", { lng: "en" })}</Text>
+        </HStack>
+      )}
+      {type === "close" && (
+        <HStack gap={0}>
+          <AntDesign name="close" size={32} color={theme.colors.primary} />
+        </HStack>
+      )}
     </TouchableOpacity>
   );
 });
