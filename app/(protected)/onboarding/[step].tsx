@@ -15,6 +15,7 @@ import UserForm from "@/src/components/User/UserForm/UserForm";
 import UserListForm from "@/src/components/User/UserList/UserListForm";
 import BackButton from "@/src/components/common/BackButton";
 import GroupForm from "@/src/components/group/GroupForm";
+import OnboardingWelcomeDialog from "@/src/components/onboarding/OnboardingWelcomeDialog";
 
 const scrollViewProps = {
   keyboardDismissMode: "on-drag",
@@ -65,9 +66,9 @@ const OnboardingPage = () => {
 
   useEffect(() => {
     const titleByStep = {
-      0: t("UserForm:edit-member"),
-      1: groups[0] ? groups[0].name : t("GroupForm:create-group"),
-      2: t("UserListForm:members"),
+      0: t("Onboarding:edit-member"),
+      1: groups[0] ? groups[0].name + " (2/3)" : t("Onboarding:create-group"),
+      2: t("Onboarding:members"),
     } as Record<number, string>;
 
     navigation.setOptions({
@@ -83,6 +84,7 @@ const OnboardingPage = () => {
     <>
       {step === 0 && (
         <KeyboardAwareScrollView style={styles.container} {...scrollViewProps}>
+          <OnboardingWelcomeDialog />
           <UserForm
             style={styles.contentContainer}
             submitButtonText={t("Common:next")}
@@ -102,6 +104,7 @@ const OnboardingPage = () => {
             groupId={groups[0]?.id}
             isSubmitting={isPendingPostGroupCreate || isPendingPatchGroupUpdate}
             onSubmit={(values) => {
+              Keyboard.dismiss();
               if (!firstGroupCreatedByUser) {
                 postGroupCreate(values);
               } else {

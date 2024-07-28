@@ -7,6 +7,8 @@ import { View } from "react-native";
 import { useGetGroup } from "../../api/hooks/group/useGetGroup";
 import { PostGroupCreatePayload } from "../../api/types/Group";
 
+import Config from "@/src/Config";
+
 type IGroupFormProps = {
   groupId?: string;
   isSubmitting?: boolean;
@@ -21,10 +23,16 @@ const GroupForm = memo<IGroupFormProps>(
 
     const { data: group } = useGetGroup({ id: groupId || "" });
     const { control, handleSubmit } = useForm<PostGroupCreatePayload>({
-      defaultValues: {
-        name: group?.name || "Calvin Group", // TODO: remove default value after testing,
-        description: group?.description || "Calvin Group Description", // TODO: remove default value after testing,
-      },
+      defaultValues:
+        Config.env === "local"
+          ? {
+              name: "Calvin Group",
+              description: "Calvin Group Description",
+            }
+          : {
+              name: group?.name,
+              description: group?.description,
+            },
     });
 
     return (

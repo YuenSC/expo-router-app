@@ -9,5 +9,4 @@ export interface PostSignUpPayload {
 
 export type PostSignUpResponse = ApiResponse<{
   user: User;
-  access_token: string;
 }>;

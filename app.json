@@ -10,25 +10,36 @@
     "splash": {
       "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#050624"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.scyuenab.group-expense"
+      "bundleIdentifier": "com.scyuenab.group-expense",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ]
+      "permissions": ["android.permission.RECORD_AUDIO"]
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./src/assets/images/favicon.png"
+    },
+    "locales": {
+      "en": "./src/languages/en.json",
+      "es": "./src/languages/es.json",
+      "fr": "./src/languages/fr.json",
+      "hi": "./src/languages/hi.json",
+      "ja": "./src/languages/ja.json",
+      "pt": "./src/languages/pt.json",
+      "ru": "./src/languages/ru.json",
+      "zh": "./src/languages/zh-HK.json"
     },
     "plugins": [
       "expo-router",

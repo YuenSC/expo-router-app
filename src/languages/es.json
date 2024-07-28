@@ -4,14 +4,6 @@
     "enter-something": "Introduce algo ~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "Viviendo",
-    "Entertainment": "Entretenimiento",
-    "FoodAndDining": "Alimento",
-    "Insurance": "Seguro",
-    "Miscellaneous": "Misceláneas",
-    "Shopping": "Compras",
-    "SightseeingAndActivities": "Pasear",
-    "Transportation": "Transporte"
   },
   "BillForm": {
     "amount-is-required": "Se requiere cantidad",
@@ -30,9 +22,8 @@
     "payment": "Pago",
     "stats": "Estadísticas"
   },
-  "CFBundleDisplayName": "Gastos de grupo",
+  "CFBundleDisplayName": "Gastos de grupo (vista previa)",
   "Common": {
-    "NA": "N / A",
     "adminLabel": "Administrador",
     "back": "Atrás",
     "cancel": "Cancelar",
@@ -41,14 +32,10 @@
     "delete": "Borrar",
     "done": "Hecho",
     "edit": "Editar",
-    "groupLabel": "(Grupo)",
     "next": "Próximo",
-    "profileUserLabel": "(Tú)",
-    "save": "Ahorrar"
+    "profileUserLabel": "(Tú)"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "Todo",
-    "currency": "Divisa"
   },
   "DrawerContent": {
     "add-group": "Añadir grupo",
@@ -98,15 +85,12 @@
     "warning": "Tenga en cuenta que esta acción es irreversible. \nSe eliminarán todos los registros de gastos y usuarios."
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "¿Está seguro de eliminar este registro?"
   },
   "GroupDetailScreen": {
     "add-group": "Añadir grupo",
     "and": "y",
     "and-more": "y más ...",
     "current-username": "Nombre {{name}}",
-    "expense-reminder": "Sus gastos no resueltos son los siguientes",
-    "expense-reminder-empty": "No tienes gastos pendientes de resolver. \n¡Bien hecho!",
     "member": "Miembro",
     "my-balance": "Mi balance",
     "no-group-warning": "Aún no has creado ningún grupo. \nPor favor crea un grupo para comenzar",
@@ -114,20 +98,14 @@
     "payment": "Pago",
     "payment-count": "Tienes {{count}} registro en este grupo",
     "payment-count_plural": "Tienes {{count}} registros en este grupo",
-    "summary": "Resumen",
     "unresolved-amount": "Monto no resuelto del grupo"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "Todos tus gastos están liquidados.",
-    "no-payment-records-found": "No se encontraron registros de pago"
+    "all-your-expenses-are-balanced": "Todos tus gastos están liquidados."
   },
   "GroupDetailSummaryItem": {
-    "individual": "Individual",
-    "simplified": "Simplificado"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "Usuarios existentes",
-    "no-existing-user-found": "No se encontró ningún usuario existente"
   },
   "GroupForm": {
     "create-group": "Crea un grupo",
@@ -139,8 +117,6 @@
     "your-first-group-expense": "Tu primer gasto grupal"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "Liquidación de deudas 💰",
-    "summary": "Resumen"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "Todos los artículos son recuperados",
@@ -152,21 +128,22 @@
     "warning": "La traducción automática se utiliza para convertir idiomas distintos del inglés. \nLa posibilidad de error de traducción puede persistir."
   },
   "Login": {
-    "email-is-required": "Se requiere correo electrónico",
-    "email-label": "Correo electrónico",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "se requiere contraseña",
-    "password-label": "Contraseña",
-    "password-placeholder": "********",
-    "remember-me": "Acuérdate de mí"
   },
   "NetworkDialog": {
     "network-connection-down": "Conexión de red inactiva",
     "please-check-your-network-connection-and-try-again": "Verifique su conexión de red e inténtelo nuevamente."
   },
+  "Onboarding": {
+    "create-group": "Crear grupo (2/3)",
+    "edit-member": "Editar detalles personales (1/3)",
+    "members": "Crear miembro (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "Comencemos el viaje de incorporación para administrar los gastos de su grupo",
+    "welcome-to-groupexpense": "Bienvenido a GroupExpense"
+  },
   "OptionsScreen": {
     "Upgrade": "Actualízate a Pro",
-    "all-members": "Todos los miembros",
     "app-related": "Relacionado con la aplicación",
     "category": "Configuración de categoría",
     "contact-us": "Contáctenos",
@@ -182,19 +159,17 @@
     "profile": "Perfil del usuario",
     "unknown-user": "Usuario"
   },
+  "Otp": {
+    "verify-email": "Verificar correo electrónico"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "(Automático)",
     "paid-for": "¿Pagado?",
     "who-paid": "¿Quién pagó?"
   },
   "PaymentFormScreen": {
-    "bill": "Factura",
-    "paid-for": "¿Pagado?",
-    "who-paid": "¿Quién pagó?"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "No se encontraron registros de pago",
-    "no-payment-records-found-for-currency": "No se encontraron registros de pago para {{currency}}",
     "payments": "Pagos",
     "search": "Descripción de la búsqueda"
   },
@@ -213,47 +188,29 @@
     "passwordsMustMatch": "Las contraseñas reescritas no coinciden con la contraseña",
     "remember-me": "Acuérdate de mí",
     "retypedPassword-is-required": "Se requiere volver a escribir la contraseña",
-    "retypedPassword-label": "Contraseña reescrita"
+    "retypedPassword-label": "Contraseña reescrita",
+    "success-message": "Verifique su correo electrónico para ver la OTP e ingréselo para verificar su cuenta."
   },
   "StackNavigator": {
-    "group-summary": "Resumen del grupo",
-    "loading-interstitial-ad": "Cargando anuncios",
-    "users": "Usuarios"
   },
   "StatisticScreen": {
-    "add-payment-record": "Agregar registro de pago",
-    "emptyRecordWarning": "Aún no tienes registros de pago. \n¡Empiece por crear un nuevo registro de pago!",
-    "statistics": "Estadísticas",
-    "subtitle": "<Text>{{name}} ha gastado <Highlight>{{amount}}</Highlight> en total. \nAquí está la distribución de tus gastos</Text>",
-    "you": "Tú"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "Tenga en cuenta que esta acción es irreversible.",
-    "related-payment": "Tendrás que eliminar {{count}} pago relacionado antes de eliminar a este usuario.",
-    "related-payment_plural": "Tendrás que eliminar {{count}} pagos relacionados antes de eliminar a este usuario.",
-    "title": "<Text>¿Estás seguro de eliminar <Highlight>{{username}}</Highlight> de <Highlight>{{groupname}}</Highlight>?</Text>"
   },
   "UserForm": {
     "camera-permission-required": "Se requiere permiso de cámara",
     "choose-photo-from-library": "Elija una foto de la biblioteca",
-    "create-profile": "Crear perfil",
-    "edit-member": "Editar miembro",
-    "hi-user": "{{name}} Hola",
-    "name": "Nombre",
+    "edit-member": "Editar miembro (1/3)",
     "name-is-required": "Se requiere nombre de usuario",
     "profile-image": "Imagen de perfil",
-    "related-groups": "Grupos relacionados",
     "removeFromGroup": "Sacar del grupo",
     "take-photo": "Tomar foto",
     "username": "Nombre de usuario",
     "who-are-you": "¿Quién eres?",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "Debe habilitar los permisos de la cámara para utilizar esta función.",
-    "your-avatar-color": "color de tu avatar",
-    "your-name-is-required": "Tu nombre es requerido"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "Debe habilitar los permisos de la cámara para utilizar esta función."
   },
   "UserListForm": {
     "add-participant": "Añada participante",
-    "all-members": "Todos los miembros",
     "members": "Miembros",
     "select-existing-user": "Seleccionar usuario existente",
     "type-participant-name": "Escriba el nombre del participante",
@@ -267,10 +224,16 @@
   "common": {
     "error": "Error",
     "get-started": "Empezar",
-    "login": "Acceso",
-    "sign-up": "Crear una nueva cuenta"
+    "login": "Iniciar sesión/verificar correo electrónico",
+    "sign-up": "Crear una nueva cuenta",
+    "success": "Éxito"
   },
   "options": {
     "logout": "Cerrar sesión"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "Ingrese una contraseña de un solo uso",
+    "invalid-email-please-go-back-and-sign-up-again": "Email inválido. \n¡Por favor regresa y regístrate nuevamente!",
+    "resend-otp": "Reenviar OTP"
   }
 }

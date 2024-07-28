@@ -1,7 +1,7 @@
 import { Text, makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
-import { useNavigation } from "expo-router";
-import { useEffect, useState } from "react";
+import { useFocusEffect, useNavigation } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import { View } from "react-native";
 
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
@@ -22,7 +22,7 @@ const GroupDetailScreen = () => {
 
   const { data: group } = useGetGroup({ id: currentGroupId || "" });
 
-  const refetch = async () => {
+  const refetch = useCallback(async () => {
     await Promise.all([
       queryClient.invalidateQueries({
         queryKey: ["group", currentGroupId],
@@ -37,13 +37,18 @@ const GroupDetailScreen = () => {
         queryKey: ["useGetExpenseList", { page: 1 }],
       }),
     ]);
-  };
+  }, [currentGroupId, queryClient]);
 
   useEffect(() => {
     refetch().finally(() => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useFocusEffect(
+    useCallback(() => {
+      refetch();
+    }, [refetch]),
+  );
   if (isLoading) {
     return <FullScreenLoading />;
   }

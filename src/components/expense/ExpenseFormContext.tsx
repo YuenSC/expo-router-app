@@ -10,7 +10,7 @@ import {
   useMemo,
 } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
-import { TouchableOpacity } from "react-native";
+import { ActivityIndicator, TouchableOpacity } from "react-native";
 
 import { usePatchExpenseUpdate } from "@/src/api/hooks/expense/usePatchExpenseUpdate";
 import { usePostExpenseCreate } from "@/src/api/hooks/expense/usePostExpenseCreate";
@@ -77,6 +77,8 @@ export const ExpenseFormProvider = ({
     usePatchExpenseUpdate({
       onSuccess: props.onSuccess,
     });
+
+  const isLoading = isPendingCreate || isPendingUpdate;
 
   const {
     defaultTransactions,
@@ -204,15 +206,19 @@ export const ExpenseFormProvider = ({
     if (expenseId && !expense) return;
 
     navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity onPress={onSubmit}>
-          <Ionicons name="create" size={24} color={theme.colors.primary} />
-        </TouchableOpacity>
-      ),
+      headerRight: () =>
+        isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <TouchableOpacity onPress={onSubmit}>
+            <Ionicons name="create" size={24} color={theme.colors.primary} />
+          </TouchableOpacity>
+        ),
     });
   }, [
     expense,
     expenseId,
+    isLoading,
     navigation,
     onNextStepOrSubmit,
     onSubmit,
@@ -240,7 +246,7 @@ export const ExpenseFormProvider = ({
           groupId,
           resetTransactions,
           onNextStepOrSubmit,
-          isLoading: isPendingCreate || isPendingUpdate,
+          isLoading,
           setStep,
           goToNextStep,
           canGoToNextStep,
