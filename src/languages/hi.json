@@ -22,7 +22,7 @@
     "payment": "भुगतान",
     "stats": "आँकड़े"
   },
-  "CFBundleDisplayName": "समूह व्यय",
+  "CFBundleDisplayName": "समूह व्यय (पूर्वावलोकन)",
   "Common": {
     "adminLabel": "प्रशासक",
     "back": "पीछे",

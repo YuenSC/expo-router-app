@@ -22,7 +22,7 @@
     "payment": "Оплата",
     "stats": "Статистика"
   },
-  "CFBundleDisplayName": "Групповые расходы",
+  "CFBundleDisplayName": "Групповые расходы (предварительная версия)",
   "Common": {
     "adminLabel": "Администратор",
     "back": "Назад",

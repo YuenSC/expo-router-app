@@ -22,7 +22,7 @@
     "payment": "支付",
     "stats": "統計數據"
   },
-  "CFBundleDisplayName": "團體費用",
+  "CFBundleDisplayName": "團體費用（預覽）",
   "Common": {
     "adminLabel": "管理員",
     "back": "後退",

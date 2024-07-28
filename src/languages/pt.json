@@ -22,7 +22,7 @@
     "payment": "Pagamento",
     "stats": "Estatísticas"
   },
-  "CFBundleDisplayName": "Despesas de grupo",
+  "CFBundleDisplayName": "Despesas de grupo (visualização)",
   "Common": {
     "adminLabel": "Administrador",
     "back": "Voltar",
