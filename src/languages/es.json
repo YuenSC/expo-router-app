@@ -22,6 +22,7 @@
     "payment": "Pago",
     "stats": "Estadísticas"
   },
+  "CFBundleDisplayName": "Gasto de grupo",
   "Common": {
     "adminLabel": "Administrador",
     "back": "Atrás",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "Las contraseñas reescritas no coinciden con la contraseña",
     "remember-me": "Acuérdate de mí",
     "retypedPassword-is-required": "Se requiere volver a escribir la contraseña",
-    "retypedPassword-label": "Contraseña reescrita"
+    "retypedPassword-label": "Contraseña reescrita",
+    "success-message": "Verifique su correo electrónico para ver la OTP e ingréselo para verificar su cuenta."
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "Error",
     "get-started": "Empezar",
     "login": "Iniciar sesión/verificar correo electrónico",
-    "sign-up": "Crear una nueva cuenta"
+    "sign-up": "Crear una nueva cuenta",
+    "success": "Éxito"
   },
   "options": {
     "logout": "Cerrar sesión"

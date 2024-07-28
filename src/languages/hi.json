@@ -22,6 +22,7 @@
     "payment": "भुगतान",
     "stats": "आँकड़े"
   },
+  "CFBundleDisplayName": "समूह व्यय",
   "Common": {
     "adminLabel": "प्रशासक",
     "back": "पीछे",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "दोबारा टाइप किया गया पासवर्ड पासवर्ड से मेल नहीं खाता",
     "remember-me": "मुझे याद करो",
     "retypedPassword-is-required": "पुनः टाइप किया गया पासवर्ड आवश्यक है",
-    "retypedPassword-label": "पासवर्ड दोबारा टाइप किया गया"
+    "retypedPassword-label": "पासवर्ड दोबारा टाइप किया गया",
+    "success-message": "कृपया ओटीपी के लिए अपना ईमेल जांचें और अपना खाता सत्यापित करने के लिए इसे दर्ज करें।"
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "गलती",
     "get-started": "शुरू हो जाओ",
     "login": "लॉगिन/ईमेल सत्यापित करें",
-    "sign-up": "नया खाता बनाएँ"
+    "sign-up": "नया खाता बनाएँ",
+    "success": "सफलता"
   },
   "options": {
     "logout": "लॉग आउट"

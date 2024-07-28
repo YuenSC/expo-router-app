@@ -22,6 +22,7 @@
     "payment": "支払い",
     "stats": "統計"
   },
+  "CFBundleDisplayName": "団体経費",
   "Common": {
     "adminLabel": "管理者",
     "back": "戻る",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "再入力したパスワードがパスワードと一致しない",
     "remember-me": "私を覚えてますか",
     "retypedPassword-is-required": "パスワードの再入力が必要です",
-    "retypedPassword-label": "パスワードを再入力しました"
+    "retypedPassword-label": "パスワードを再入力しました",
+    "success-message": "OTP の電子メールを確認し、それを入力してアカウントを確認してください。"
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "エラー",
     "get-started": "始めましょう",
     "login": "ログイン/メール認証",
-    "sign-up": "新しいアカウントを作成する"
+    "sign-up": "新しいアカウントを作成する",
+    "success": "成功"
   },
   "options": {
     "logout": "ログアウト"

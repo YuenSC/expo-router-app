@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.scyuenab.group-expense"
+      "bundleIdentifier": "com.scyuenab.group-expense",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -27,6 +30,16 @@
       "bundler": "metro",
       "output": "static",
       "favicon": "./src/assets/images/favicon.png"
+    },
+    "locales": {
+      "en": "./languages/en.json",
+      "es": "./languages/es.json",
+      "fr": "./languages/fr.json",
+      "hi": "./languages/hi.json",
+      "ja": "./languages/ja.json",
+      "pt": "./languages/pt.json",
+      "ru": "./languages/ru.json",
+      "zh": "./languages/zh-HK.json"
     },
     "plugins": [
       "expo-router",
