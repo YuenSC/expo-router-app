@@ -30,13 +30,13 @@ const WelcomePage = () => {
       <Text style={styles.subtitleText}>{t("WelcomeScreen:subtitle")}</Text>
 
       <VStack gap={8} style={styles.buttonGroup} alignItems="stretch">
-        <Link href="/login" asChild>
+        <Link href="/modal/login" asChild>
           <ButtonWithRef
             title={t("common:login")}
             containerStyle={styles.buttonContainer}
           />
         </Link>
-        <Link href="/sign-up" asChild>
+        <Link href="/modal/sign-up" asChild>
           <ButtonWithRef
             type="clear"
             title={t("common:sign-up")}

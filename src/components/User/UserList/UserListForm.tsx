@@ -72,7 +72,7 @@ const UserListForm = memo<IUserListFormProps>(
           title: t("UserListForm:virtual-users"),
           data: virtualUsers,
           infoText:
-            "Admin User can freely edit virtual users, but not verified users.",
+            "Admin User can freely edit virtual users, but not verified users. Also, user verification will be released in phase 2",
         },
       ];
     }, [group?.users, t]);
@@ -93,7 +93,7 @@ const UserListForm = memo<IUserListFormProps>(
               {infoText && (
                 <UncontrolledTooltip
                   popover={<Text>{infoText}</Text>}
-                  height={60}
+                  height={100}
                   width={260}
                 >
                   <MaterialIcons

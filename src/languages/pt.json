@@ -4,14 +4,6 @@
     "enter-something": "Digite algo ~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "Vivendo",
-    "Entertainment": "Entretenimento",
-    "FoodAndDining": "Comida",
-    "Insurance": "Seguro",
-    "Miscellaneous": "Diversos",
-    "Shopping": "Compras",
-    "SightseeingAndActivities": "Passeio turístico",
-    "Transportation": "Transporte"
   },
   "BillForm": {
     "amount-is-required": "O valor é obrigatório",
@@ -30,9 +22,7 @@
     "payment": "Pagamento",
     "stats": "Estatísticas"
   },
-  "CFBundleDisplayName": "Despesas de grupo",
   "Common": {
-    "NA": "N / D",
     "adminLabel": "Administrador",
     "back": "Voltar",
     "cancel": "Cancelar",
@@ -41,14 +31,10 @@
     "delete": "Excluir",
     "done": "Feito",
     "edit": "Editar",
-    "groupLabel": "(Grupo)",
     "next": "Próximo",
-    "profileUserLabel": "(Você)",
-    "save": "Salvar"
+    "profileUserLabel": "(Você)"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "Todos",
-    "currency": "Moeda"
   },
   "DrawerContent": {
     "add-group": "Adicionar grupo",
@@ -98,15 +84,12 @@
     "warning": "Observe que esta ação é irreversível. \nTodos os registros de despesas e usuários serão excluídos."
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "Tem certeza de que deseja excluir este registro?"
   },
   "GroupDetailScreen": {
     "add-group": "Adicionar grupo",
     "and": "e",
     "and-more": "e mais ...",
     "current-username": "Nome {{name}}",
-    "expense-reminder": "Suas despesas não resolvidas são as seguintes",
-    "expense-reminder-empty": "Você não tem despesas não resolvidas. \nBom trabalho!",
     "member": "Membro",
     "my-balance": "Meu saldo",
     "no-group-warning": "Você ainda não criou nenhum grupo. \nPor favor, crie um grupo para começar",
@@ -114,20 +97,14 @@
     "payment": "Pagamento",
     "payment-count": "Você tem {{count}} registro neste grupo",
     "payment-count_plural": "Você tem {{count}} registros neste grupo",
-    "summary": "Resumo",
     "unresolved-amount": "Valor não resolvido do grupo"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "Todas as suas despesas estão acertadas.",
-    "no-payment-records-found": "Nenhum registro de pagamento encontrado"
+    "all-your-expenses-are-balanced": "Todas as suas despesas estão acertadas."
   },
   "GroupDetailSummaryItem": {
-    "individual": "Individual",
-    "simplified": "Simplificado"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "Usuários existentes",
-    "no-existing-user-found": "Nenhum usuário existente encontrado"
   },
   "GroupForm": {
     "create-group": "Criar grupo",
@@ -139,8 +116,6 @@
     "your-first-group-expense": "Sua primeira despesa em grupo"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "Liquidação de dívidas 💰",
-    "summary": "Resumo"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "Todos os itens são buscados",
@@ -152,21 +127,22 @@
     "warning": "A tradução automática é utilizada para converter idiomas distintos do inglês. \nA possibilidade de erro de tradução pode persistir."
   },
   "Login": {
-    "email-is-required": "E-mail é obrigatório",
-    "email-label": "E-mail",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "Senha requerida",
-    "password-label": "Senha",
-    "password-placeholder": "********",
-    "remember-me": "Lembre de mim"
   },
   "NetworkDialog": {
     "network-connection-down": "Conexão de rede inativa",
     "please-check-your-network-connection-and-try-again": "Verifique sua conexão de rede e tente novamente."
   },
+  "Onboarding": {
+    "create-group": "Criar grupo (2/3)",
+    "edit-member": "Editar detalhes próprios (1/3)",
+    "members": "Criar Membro (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "Vamos começar a jornada de integração para gerenciar as despesas do seu grupo",
+    "welcome-to-groupexpense": "Bem-vindo ao GroupExpense"
+  },
   "OptionsScreen": {
     "Upgrade": "Atualizar para Pro",
-    "all-members": "Todos os membros",
     "app-related": "Relacionado ao aplicativo",
     "category": "Configuração de categoria",
     "contact-us": "Contate-nos",
@@ -182,19 +158,17 @@
     "profile": "Perfil de usuário",
     "unknown-user": "Do utilizador"
   },
+  "Otp": {
+    "verify-email": "Verificar e-mail"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "(Automático)",
     "paid-for": "Pago para?",
     "who-paid": "Quem pagou?"
   },
   "PaymentFormScreen": {
-    "bill": "Conta",
-    "paid-for": "Pago para?",
-    "who-paid": "Quem pagou?"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "Nenhum registro de pagamento encontrado",
-    "no-payment-records-found-for-currency": "Nenhum registro de pagamento encontrado para {{currency}}",
     "payments": "Pagamentos",
     "search": "Descrição da pesquisa"
   },
@@ -216,44 +190,25 @@
     "retypedPassword-label": "Senha redigitada"
   },
   "StackNavigator": {
-    "group-summary": "Resumo do grupo",
-    "loading-interstitial-ad": "Carregamento de anúncio",
-    "users": "Usuários"
   },
   "StatisticScreen": {
-    "add-payment-record": "Adicionar registro de pagamento",
-    "emptyRecordWarning": "Você ainda não tem registros de pagamento. \nComece criando um novo registro de pagamento!",
-    "statistics": "Estatisticas",
-    "subtitle": "<Text>{{name}} gastou <Highlight>{{amount}}</Highlight> no total. \nAqui está a distribuição de suas despesas</Text>",
-    "you": "Você"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "Observe que esta ação é irreversível",
-    "related-payment": "Você terá que remover {{count}} pagamento relacionado antes de excluir este usuário.",
-    "related-payment_plural": "Você terá que remover {{count}} pagamentos relacionados antes de excluir este usuário.",
-    "title": "<Text>Tem certeza de que deseja excluir <Highlight>{{username}}</Highlight> de <Highlight>{{groupname}}</Highlight>?</Text>"
   },
   "UserForm": {
     "camera-permission-required": "Permissão de câmera necessária",
     "choose-photo-from-library": "Escolha uma foto da Biblioteca",
-    "create-profile": "Criar perfil",
-    "edit-member": "Editar membro",
-    "hi-user": "Olá {{name}}",
-    "name": "Nome",
+    "edit-member": "Editar membro (1/3)",
     "name-is-required": "Nome de usuário é requerido",
     "profile-image": "Imagem de perfil",
-    "related-groups": "Grupos Relacionados",
     "removeFromGroup": "Excluir",
     "take-photo": "Tirar fotos",
     "username": "Nome de usuário",
     "who-are-you": "Quem é você?",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "Você precisa habilitar as permissões da câmera para usar este recurso.",
-    "your-avatar-color": "Cor do seu avatar",
-    "your-name-is-required": "Seu nome é obrigatório"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "Você precisa habilitar as permissões da câmera para usar este recurso."
   },
   "UserListForm": {
     "add-participant": "Adicionar participante",
-    "all-members": "Todos os membros",
     "members": "Membros",
     "select-existing-user": "Selecione usuário existente",
     "type-participant-name": "Digite o nome do participante",
@@ -267,10 +222,15 @@
   "common": {
     "error": "Erro",
     "get-started": "Iniciar",
-    "login": "Conecte-se",
+    "login": "Login/Verificar e-mail",
     "sign-up": "Criar nova conta"
   },
   "options": {
     "logout": "Sair"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "Digite a senha de uso único",
+    "invalid-email-please-go-back-and-sign-up-again": "E-mail inválido. \nPor favor, volte e inscreva-se novamente!",
+    "resend-otp": "Reenviar OTP"
   }
 }

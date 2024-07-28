@@ -1,4 +1,6 @@
 import { Button, CheckBox, Input, makeStyles } from "@rneui/themed";
+import axios from "axios";
+import { useRouter } from "expo-router";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
@@ -20,9 +22,17 @@ const Page = () => {
       rememberMe: true,
     },
   });
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<PostLoginPayload> = (values) => {
-    onLogin(values);
+    onLogin?.(values).catch((error) => {
+      if (axios.isAxiosError(error)) {
+        const status = error.response?.status;
+        if (status === 401) {
+          router.push("/modal/otp-email-verification?email=" + values.email);
+        }
+      }
+    });
   };
 
   return (

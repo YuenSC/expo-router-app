@@ -82,7 +82,7 @@ const UserForm = memo<IUserFormProps>(
           />
           {onDelete && (
             <Button
-              title={t("UserForm.removeFromGroup")}
+              title={t("UserForm:removeFromGroup")}
               type="outline"
               color="error"
               onPress={onDelete}
