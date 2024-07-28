@@ -22,7 +22,7 @@
     "payment": "支付",
     "stats": "统计数据"
   },
-  "CFBundleDisplayName": "团体费用",
+  "CFBundleDisplayName": "团体账单",
   "Common": {
     "adminLabel": "管理員",
     "back": "后退",

@@ -21,7 +21,7 @@
     "payment": "Payment",
     "stats": "Stats"
   },
-  "CFBundleDisplayName": "Group&#x2007;Expense",
+  "CFBundleDisplayName": "Group Bill",
   "Common": {
     "adminLabel": "Administrator",
     "back": "Back",

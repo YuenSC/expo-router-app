@@ -3,7 +3,8 @@
     "done": "Сделанный",
     "enter-something": "Введите что-нибудь~"
   },
-  "BillCategoryEnum": {},
+  "BillCategoryEnum": {
+  },
   "BillForm": {
     "amount-is-required": "Требуется сумма",
     "amount-label": "Сумма счета",
@@ -21,7 +22,7 @@
     "payment": "Оплата",
     "stats": "Статистика"
   },
-  "CFBundleDisplayName": "Групповые&#x2007;расходы",
+  "CFBundleDisplayName": "Групповой счет",
   "Common": {
     "adminLabel": "Администратор",
     "back": "Назад",
@@ -34,7 +35,8 @@
     "next": "Следующий",
     "profileUserLabel": "(Ты)"
   },
-  "CurrencyCodeSelectScreen": {},
+  "CurrencyCodeSelectScreen": {
+  },
   "DrawerContent": {
     "add-group": "Добавить группу",
     "group-not-found": "Исходно выбранную группу невозможно найти.",
@@ -82,7 +84,8 @@
     "group-deleted-warning": "Пожалуйста, повторно выберите/создайте группу, чтобы продолжить.",
     "warning": "Обратите внимание, что это действие необратимо. \nВсе записи расходов и пользователи будут удалены."
   },
-  "GroupDeletePaymentRecordBottomSheet": {},
+  "GroupDeletePaymentRecordBottomSheet": {
+  },
   "GroupDetailScreen": {
     "add-group": "Добавить группу",
     "and": "и",
@@ -100,8 +103,10 @@
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "Все ваши расходы оплачены."
   },
-  "GroupDetailSummaryItem": {},
-  "GroupExistingUserSelectBottomSheet": {},
+  "GroupDetailSummaryItem": {
+  },
+  "GroupExistingUserSelectBottomSheet": {
+  },
   "GroupForm": {
     "create-group": "Создать группу",
     "group-description": "Описание группы",
@@ -111,7 +116,8 @@
     "group-name-is-required": "Укажите название группы.",
     "your-first-group-expense": "Ваш первый групповой расход"
   },
-  "GroupSummaryScreen": {},
+  "GroupSummaryScreen": {
+  },
   "InfiniteScroll": {
     "all-items-are-fetched": "Все элементы выбраны",
     "failed-to-fetch-more-items": "Не удалось получить дополнительные элементы.",
@@ -121,7 +127,8 @@
     "language": "Язык",
     "warning": "Машинный перевод используется для преобразования языков, отличных от английского. \nВозможность ошибки перевода может сохраняться."
   },
-  "Login": {},
+  "Login": {
+  },
   "NetworkDialog": {
     "network-connection-down": "Сетевое соединение отключено",
     "please-check-your-network-connection-and-try-again": "Пожалуйста, проверьте сетевое соединение и повторите попытку."
@@ -160,7 +167,8 @@
     "paid-for": "Заплачено за?",
     "who-paid": "Кто заплатил?"
   },
-  "PaymentFormScreen": {},
+  "PaymentFormScreen": {
+  },
   "PaymentRecordListScreen": {
     "payments": "Платежи",
     "search": "Описание поиска"
@@ -183,9 +191,12 @@
     "retypedPassword-label": "Повторный ввод пароля",
     "success-message": "Пожалуйста, проверьте свою электронную почту на наличие OTP и введите его, чтобы подтвердить свою учетную запись."
   },
-  "StackNavigator": {},
-  "StatisticScreen": {},
-  "UserDeleteBottomSheet": {},
+  "StackNavigator": {
+  },
+  "StatisticScreen": {
+  },
+  "UserDeleteBottomSheet": {
+  },
   "UserForm": {
     "camera-permission-required": "Требуется разрешение камеры",
     "choose-photo-from-library": "Выбрать фотографию из библиотеки",

@@ -22,7 +22,7 @@
     "payment": "支払い",
     "stats": "統計"
   },
-  "CFBundleDisplayName": "団体経費",
+  "CFBundleDisplayName": "グループ請求書",
   "Common": {
     "adminLabel": "管理者",
     "back": "戻る",

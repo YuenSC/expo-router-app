@@ -3,7 +3,8 @@
     "done": "Hecho",
     "enter-something": "Introduce algo ~"
   },
-  "BillCategoryEnum": {},
+  "BillCategoryEnum": {
+  },
   "BillForm": {
     "amount-is-required": "Se requiere cantidad",
     "amount-label": "Total de la factura",
@@ -21,7 +22,7 @@
     "payment": "Pago",
     "stats": "Estadísticas"
   },
-  "CFBundleDisplayName": "Gasto&#x2007;de&#x2007;grupo",
+  "CFBundleDisplayName": "Factura de grupo",
   "Common": {
     "adminLabel": "Administrador",
     "back": "Atrás",
@@ -34,7 +35,8 @@
     "next": "Próximo",
     "profileUserLabel": "(Tú)"
   },
-  "CurrencyCodeSelectScreen": {},
+  "CurrencyCodeSelectScreen": {
+  },
   "DrawerContent": {
     "add-group": "Añadir grupo",
     "group-not-found": "No se puede encontrar el grupo seleccionado original.",
@@ -82,7 +84,8 @@
     "group-deleted-warning": "Vuelva a seleccionar/cree un grupo para continuar.",
     "warning": "Tenga en cuenta que esta acción es irreversible. \nSe eliminarán todos los registros de gastos y usuarios."
   },
-  "GroupDeletePaymentRecordBottomSheet": {},
+  "GroupDeletePaymentRecordBottomSheet": {
+  },
   "GroupDetailScreen": {
     "add-group": "Añadir grupo",
     "and": "y",
@@ -100,8 +103,10 @@
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "Todos tus gastos están liquidados."
   },
-  "GroupDetailSummaryItem": {},
-  "GroupExistingUserSelectBottomSheet": {},
+  "GroupDetailSummaryItem": {
+  },
+  "GroupExistingUserSelectBottomSheet": {
+  },
   "GroupForm": {
     "create-group": "Crea un grupo",
     "group-description": "Descripción del Grupo",
@@ -111,7 +116,8 @@
     "group-name-is-required": "El nombre del grupo es obligatorio",
     "your-first-group-expense": "Tu primer gasto grupal"
   },
-  "GroupSummaryScreen": {},
+  "GroupSummaryScreen": {
+  },
   "InfiniteScroll": {
     "all-items-are-fetched": "Todos los artículos son recuperados",
     "failed-to-fetch-more-items": "No se pudieron recuperar más elementos",
@@ -121,7 +127,8 @@
     "language": "Idioma",
     "warning": "La traducción automática se utiliza para convertir idiomas distintos del inglés. \nLa posibilidad de error de traducción puede persistir."
   },
-  "Login": {},
+  "Login": {
+  },
   "NetworkDialog": {
     "network-connection-down": "Conexión de red inactiva",
     "please-check-your-network-connection-and-try-again": "Verifique su conexión de red e inténtelo nuevamente."
@@ -160,7 +167,8 @@
     "paid-for": "¿Pagado?",
     "who-paid": "¿Quién pagó?"
   },
-  "PaymentFormScreen": {},
+  "PaymentFormScreen": {
+  },
   "PaymentRecordListScreen": {
     "payments": "Pagos",
     "search": "Descripción de la búsqueda"
@@ -183,9 +191,12 @@
     "retypedPassword-label": "Contraseña reescrita",
     "success-message": "Verifique su correo electrónico para ver la OTP e ingréselo para verificar su cuenta."
   },
-  "StackNavigator": {},
-  "StatisticScreen": {},
-  "UserDeleteBottomSheet": {},
+  "StackNavigator": {
+  },
+  "StatisticScreen": {
+  },
+  "UserDeleteBottomSheet": {
+  },
   "UserForm": {
     "camera-permission-required": "Se requiere permiso de cámara",
     "choose-photo-from-library": "Elija una foto de la biblioteca",
