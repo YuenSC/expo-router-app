@@ -104,6 +104,7 @@ const OnboardingPage = () => {
             groupId={groups[0]?.id}
             isSubmitting={isPendingPostGroupCreate || isPendingPatchGroupUpdate}
             onSubmit={(values) => {
+              Keyboard.dismiss();
               if (!firstGroupCreatedByUser) {
                 postGroupCreate(values);
               } else {
