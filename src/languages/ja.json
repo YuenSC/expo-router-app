@@ -4,14 +4,6 @@
     "enter-something": "何か入力してください~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "宿泊施設",
-    "Entertainment": "エンターテインメント",
-    "FoodAndDining": "食べ物",
-    "Insurance": "保険",
-    "Miscellaneous": "その他",
-    "Shopping": "買い物",
-    "SightseeingAndActivities": "観光",
-    "Transportation": "交通機関"
   },
   "BillForm": {
     "amount-is-required": "金額は必須です",
@@ -30,9 +22,7 @@
     "payment": "支払い",
     "stats": "統計"
   },
-  "CFBundleDisplayName": "グループ経費",
   "Common": {
-    "NA": "該当なし",
     "adminLabel": "管理者",
     "back": "戻る",
     "cancel": "キャンセル",
@@ -41,14 +31,10 @@
     "delete": "消去",
     "done": "終わり",
     "edit": "編集",
-    "groupLabel": "（グループ）",
     "next": "次",
-    "profileUserLabel": "（あなた）",
-    "save": "保存"
+    "profileUserLabel": "（あなた）"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "全て",
-    "currency": "通貨"
   },
   "DrawerContent": {
     "add-group": "グループの追加",
@@ -98,15 +84,12 @@
     "warning": "この操作は元に戻せないことに注意してください。\nすべての経費レコードとユーザーが削除されます。"
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "このレコードを削除してもよろしいですか?"
   },
   "GroupDetailScreen": {
     "add-group": "グループの追加",
     "and": "そして",
     "and-more": "もっと ...",
     "current-username": "現在: {{name}}",
-    "expense-reminder": "未解決の出費は以下の通りです",
-    "expense-reminder-empty": "未解決の出費はありません。\nよくやった！",
     "member": "メンバー",
     "my-balance": "マイバランス",
     "no-group-warning": "まだグループを作成していません。\n始めるにはグループを作成してください",
@@ -114,20 +97,14 @@
     "payment": "支払い",
     "payment-count": "このグループには {{count}} 件のレコードがあります",
     "payment-count_plural": "このグループには {{count}} 件のレコードがあります",
-    "summary": "まとめ",
     "unresolved-amount": "グループ未解決金額"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "すべての出費が精算されます。",
-    "no-payment-records-found": "支払い記録が見つかりません"
+    "all-your-expenses-are-balanced": "すべての出費が精算されます。"
   },
   "GroupDetailSummaryItem": {
-    "individual": "個人",
-    "simplified": "簡略化"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "既存ユーザー",
-    "no-existing-user-found": "既存のユーザーが見つかりません"
   },
   "GroupForm": {
     "create-group": "グループを作る",
@@ -139,8 +116,6 @@
     "your-first-group-expense": "初めてのグループ費用"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "債務整理💰",
-    "summary": "まとめ"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "すべてのアイテムが取得されます",
@@ -152,21 +127,22 @@
     "warning": "機械翻訳は、英語とは異なる言語を変換するために利用されます。\n翻訳エラーの可能性が残る可能性があります。"
   },
   "Login": {
-    "email-is-required": "電子メールは必須です",
-    "email-label": "Eメール",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "パスワードが必要",
-    "password-label": "パスワード",
-    "password-placeholder": "********",
-    "remember-me": "私を覚えてますか"
   },
   "NetworkDialog": {
     "network-connection-down": "ネットワーク接続がダウンしています",
     "please-check-your-network-connection-and-try-again": "ネットワーク接続を確認して、もう一度試してください。"
   },
+  "Onboarding": {
+    "create-group": "グループの作成 (2/3)",
+    "edit-member": "自己詳細の編集 (1/3)",
+    "members": "メンバーの作成 (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "グループの経費を管理するための新人研修を始めましょう",
+    "welcome-to-groupexpense": "GroupExpenseへようこそ"
+  },
   "OptionsScreen": {
     "Upgrade": "プロ仕様にアップグレードする",
-    "all-members": "全員",
     "app-related": "アプリ関連",
     "category": "カテゴリ構成",
     "contact-us": "お問い合わせ",
@@ -182,19 +158,17 @@
     "profile": "ユーザープロフィール",
     "unknown-user": "ユーザー"
   },
+  "Otp": {
+    "verify-email": "Eメールを確認します"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "(自動)",
     "paid-for": "のために支払われた？",
     "who-paid": "誰が払ったの？"
   },
   "PaymentFormScreen": {
-    "bill": "請求書",
-    "paid-for": "誰のために支払われたのか？",
-    "who-paid": "誰が払ったの？"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "支払い記録が見つかりません",
-    "no-payment-records-found-for-currency": "{{currency}} の支払い記録が見つかりませんでした",
     "payments": "支払い",
     "search": "検索の説明"
   },
@@ -216,44 +190,25 @@
     "retypedPassword-label": "パスワードを再入力しました"
   },
   "StackNavigator": {
-    "group-summary": "グループ概要",
-    "loading-interstitial-ad": "広告の読み込み",
-    "users": "ユーザー"
   },
   "StatisticScreen": {
-    "add-payment-record": "支払い記録を追加する",
-    "emptyRecordWarning": "まだ支払い記録がありません。\nまずは新しい支払い記録を作成してください。",
-    "statistics": "統計",
-    "subtitle": "<Text>{{name}} は合計 <Highlight>{{amount}}</Highlight> を使いました。\n経費の配分は次のとおりです</Text>",
-    "you": "あなた"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "この操作は元に戻せないことに注意してください",
-    "related-payment": "このユーザーを削除する前に、{{count}} 件の関連支払いを削除する必要があります。",
-    "related-payment_plural": "このユーザーを削除する前に、{{count}} 件の関連支払いを削除する必要があります。",
-    "title": "<Text><Highlight>{{username}}</Highlight> を <Highlight>{{groupname}}</Highlight> から削除してもよろしいですか?</Text>"
   },
   "UserForm": {
     "camera-permission-required": "カメラの許可が必要です",
     "choose-photo-from-library": "ライブラリから写真を選択",
-    "create-profile": "プロフィール作成",
-    "edit-member": "メンバーの編集",
-    "hi-user": "こんにちは、{{name}}",
-    "name": "名前",
+    "edit-member": "メンバー編集(1/3)",
     "name-is-required": "ユーザー名は必須です",
     "profile-image": "プロフィール画像",
-    "related-groups": "関連グループ",
     "removeFromGroup": "グループから削除",
     "take-photo": "写真を撮る",
     "username": "ユーザー名",
     "who-are-you": "あなたは誰ですか？",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "この機能を使用するには、カメラの許可を有効にする必要があります。",
-    "your-avatar-color": "あなたのアバターの色",
-    "your-name-is-required": "お名前は必須です"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "この機能を使用するには、カメラの許可を有効にする必要があります。"
   },
   "UserListForm": {
     "add-participant": "参加者を追加",
-    "all-members": "全員",
     "members": "メンバー",
     "select-existing-user": "既存のユーザーを選択",
     "type-participant-name": "参加者名を入力してください",
@@ -272,5 +227,10 @@
   },
   "options": {
     "logout": "ログアウト"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "ワンタイムパスワードを入力してください",
+    "invalid-email-please-go-back-and-sign-up-again": "無効な電子メールです。\n戻って再度登録してください。",
+    "resend-otp": "OTPを再送信する"
   }
 }

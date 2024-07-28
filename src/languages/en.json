@@ -4,14 +4,6 @@
     "enter-something": "Enter something~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "Living",
-    "Entertainment": "Entertainment",
-    "FoodAndDining": "Food & Dining",
-    "Insurance": "Insurance",
-    "Miscellaneous": "Miscellaneous",
-    "Shopping": "Shopping",
-    "SightseeingAndActivities": "Sightseeing",
-    "Transportation": "Transport"
   },
   "BillForm": {
     "amount-is-required": "Amount is required",
@@ -30,9 +22,7 @@
     "payment": "Payment",
     "stats": "Stats"
   },
-  "CFBundleDisplayName": "Group Expense",
   "Common": {
-    "NA": "N/A",
     "adminLabel": "Administrator",
     "back": "Back",
     "cancel": "Cancel",
@@ -41,14 +31,10 @@
     "delete": "Delete",
     "done": "Done",
     "edit": "Edit",
-    "groupLabel": "(Group)",
     "next": "Next",
-    "profileUserLabel": "(You)",
-    "save": "Save"
+    "profileUserLabel": "(You)"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "All",
-    "currency": "Currency"
   },
   "DrawerContent": {
     "add-group": "Add Group",
@@ -98,15 +84,12 @@
     "warning": "Please note that this action is irreversible. All the expense record and users will be deleted."
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "Are you sure to delete this record?"
   },
   "GroupDetailScreen": {
     "add-group": "Add Group",
     "and": "and",
     "and-more": "and more ...",
     "current-username": "Current: {{name}}",
-    "expense-reminder": "Your unresolved expenses are as below",
-    "expense-reminder-empty": "You have no unresolved expenses. Well Done!",
     "member": "Member",
     "my-balance": "My Balance",
     "no-group-warning": "You haven't created any group yet. Please create a group to get started",
@@ -114,20 +97,14 @@
     "payment": "Payment",
     "payment-count": "You have {{count}} record in this group",
     "payment-count_plural": "You have {{count}} records in this group",
-    "summary": "Summary",
     "unresolved-amount": "Group Unresolved Amount"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "All your expenses are settled down.",
-    "no-payment-records-found": "No payment records found"
+    "all-your-expenses-are-balanced": "All your expenses are settled down."
   },
   "GroupDetailSummaryItem": {
-    "individual": "Individual",
-    "simplified": "Simplified"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "Existing Users",
-    "no-existing-user-found": "No existing user found"
   },
   "GroupForm": {
     "create-group": "Create Group",
@@ -139,8 +116,6 @@
     "your-first-group-expense": "Your first group expense"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "Debt settlement 💰",
-    "summary": "Summary"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "All Items are fetched",
@@ -152,21 +127,22 @@
     "warning": "Machine translation is utilized to convert languages distinct from English. The possibility of translation error may persist."
   },
   "Login": {
-    "email-is-required": "Email is requierd",
-    "email-label": "Email",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "Password is required",
-    "password-label": "Password",
-    "password-placeholder": "********",
-    "remember-me": "Remember Me"
   },
   "NetworkDialog": {
     "network-connection-down": "Network Connection Down",
     "please-check-your-network-connection-and-try-again": "Please check your network connection and try again."
   },
+  "Onboarding": {
+    "create-group": "Create Group (2/3)",
+    "edit-member": "Edit Self Details (1/3)",
+    "members": "Create Member (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "Let's started the onboarding journey to manage your group expenses",
+    "welcome-to-groupexpense": "Welcome to GroupExpense"
+  },
   "OptionsScreen": {
     "Upgrade": "Upgrade to Pro",
-    "all-members": "All Members",
     "app-related": "App Related",
     "category": "Category Configuration",
     "contact-us": "Contact Us",
@@ -191,13 +167,8 @@
     "who-paid": "Who Paid?"
   },
   "PaymentFormScreen": {
-    "bill": "Bill",
-    "paid-for": "Paid For?",
-    "who-paid": "Who Paid?"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "No payment records found",
-    "no-payment-records-found-for-currency": "No payment records found for {{currency}}",
     "payments": "Payments",
     "search": "Search Description"
   },
@@ -220,44 +191,25 @@
     "success-message": "Please check your email for the OTP and enter it to verify your account."
   },
   "StackNavigator": {
-    "group-summary": "Group Summary",
-    "loading-interstitial-ad": "Ad Loading",
-    "users": "Users"
   },
   "StatisticScreen": {
-    "add-payment-record": "Add payment record",
-    "emptyRecordWarning": "You have no payment records yet. Start by creating a new payment record!",
-    "statistics": "Statistics",
-    "subtitle": "<Text>{{name}} have spent <Highlight>{{amount}}</Highlight> in total. Here is the distribution of your expenses</Text>",
-    "you": "You"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "Please note that this action is irreversible",
-    "related-payment": "You will have to remove {{count}} related payment before deleting this user.",
-    "related-payment_plural": "You will have to remove {{count}} related payments before deleting this user.",
-    "title": "<Text>Are you sure to delete <Highlight>{{username}}</Highlight> from <Highlight>{{groupname}}</Highlight>?</Text>"
   },
   "UserForm": {
     "camera-permission-required": "Camera Permission Required",
     "choose-photo-from-library": "Choose photo from Library",
-    "create-profile": "Create Profile",
-    "edit-member": "Edit Member",
-    "hi-user": "Hi {{name}}",
-    "name": "Name",
+    "edit-member": "Edit Member (1/3)",
     "name-is-required": "Username is required",
     "profile-image": "Profile Image",
-    "related-groups": "Related Groups",
     "removeFromGroup": "Remove From Group",
     "take-photo": "Take Photo",
     "username": "Username",
     "who-are-you": "Who are you?",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "You need to enable camera permissions to use this feature.",
-    "your-avatar-color": "Your avatar color",
-    "your-name-is-required": "Your name is required"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "You need to enable camera permissions to use this feature."
   },
   "UserListForm": {
     "add-participant": "Add participant",
-    "all-members": "All Members",
     "members": "Members",
     "select-existing-user": "Select Existing User",
     "type-participant-name": "Type participant name",
@@ -277,5 +229,10 @@
   },
   "options": {
     "logout": "Logout"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "Enter One Time Password",
+    "invalid-email-please-go-back-and-sign-up-again": "Invalid Email. Please go back and sign up again!",
+    "resend-otp": "Resend OTP"
   }
 }

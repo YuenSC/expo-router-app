@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Toast from "react-native-toast-message";
 
 import ButtonWithRef from "../common/ButtonWithRef";
 import EmptyComponent from "../common/EmptyComponent";
@@ -37,15 +36,15 @@ const DrawerContent = forwardRef<View, IDrawerContentProps>(
     const handleGroupNotFound = useCallback(
       (hasResetTheFirstGroup?: boolean) => {
         setCurrentGroupId(null);
-        Toast.show({
-          type: "error",
-          text1: t("common:error"),
-          text2: hasResetTheFirstGroup
-            ? t("DrawerContent:group-not-found-reset")
-            : t("DrawerContent:group-not-found"),
-        });
+        // Toast.show({
+        //   type: "error",
+        //   text1: t("common:error"),
+        //   text2: hasResetTheFirstGroup
+        //     ? t("DrawerContent:group-not-found-reset")
+        //     : t("DrawerContent:group-not-found"),
+        // });
       },
-      [setCurrentGroupId, t],
+      [setCurrentGroupId],
     );
 
     useEffect(() => {

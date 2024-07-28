@@ -4,14 +4,6 @@
     "enter-something": "输入一些东西~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "活的",
-    "Entertainment": "娱乐",
-    "FoodAndDining": "食物",
-    "Insurance": "保险",
-    "Miscellaneous": "各种各样的",
-    "Shopping": "购物",
-    "SightseeingAndActivities": "观光",
-    "Transportation": "运输"
   },
   "BillForm": {
     "amount-is-required": "金额为必填项",
@@ -30,9 +22,7 @@
     "payment": "支付",
     "stats": "统计数据"
   },
-  "CFBundleDisplayName": "团体费用",
   "Common": {
-    "NA": "不适用",
     "adminLabel": "管理員",
     "back": "后退",
     "cancel": "取消",
@@ -41,14 +31,10 @@
     "delete": "删除",
     "done": "完毕",
     "edit": "编辑",
-    "groupLabel": "（团体）",
     "next": "下一个",
-    "profileUserLabel": "（你）",
-    "save": "节省"
+    "profileUserLabel": "（你）"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "全部",
-    "currency": "货币"
   },
   "DrawerContent": {
     "add-group": "添加组",
@@ -98,15 +84,12 @@
     "warning": "请注意，此操作是不可逆转的。\n所有费用记录和用户将被删除。"
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "您确定要删除这条记录吗？"
   },
   "GroupDetailScreen": {
     "add-group": "添加组",
     "and": "和",
     "and-more": "和更多 ...",
     "current-username": "当前：{{name}}",
-    "expense-reminder": "您的未解决费用如下",
-    "expense-reminder-empty": "您没有未解决的费用。\n做得好！",
     "member": "成员",
     "my-balance": "我的余额",
     "no-group-warning": "您还没有创建任何群组。\n请创建一个群组以开始使用",
@@ -114,20 +97,14 @@
     "payment": "支付",
     "payment-count": "您在此群组中有 {{count}} 条记录",
     "payment-count_plural": "该组中有 {{count}} 条记录",
-    "summary": "概括",
     "unresolved-amount": "集团未解决金额"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "你所有的开支都已经解决了。",
-    "no-payment-records-found": "没有找到付款记录"
+    "all-your-expenses-are-balanced": "你所有的开支都已经解决了。"
   },
   "GroupDetailSummaryItem": {
-    "individual": "个人",
-    "simplified": "简化版"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "现有用户",
-    "no-existing-user-found": "未找到现有用户"
   },
   "GroupForm": {
     "create-group": "创建组",
@@ -139,8 +116,6 @@
     "your-first-group-expense": "您的第一笔团体费用"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "债务清偿💰",
-    "summary": "概括"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "所有项目均已获取",
@@ -152,21 +127,22 @@
     "warning": "机器翻译用于转换不同于英语的语言。\n翻译错误的可能性可能仍然存在。"
   },
   "Login": {
-    "email-is-required": "电子邮件为必填项",
-    "email-label": "电子邮件",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "密码是必需的",
-    "password-label": "密码",
-    "password-placeholder": "******",
-    "remember-me": "记住账号"
   },
   "NetworkDialog": {
     "network-connection-down": "网络连接断开",
     "please-check-your-network-connection-and-try-again": "请检查您的网络连接并重试。"
   },
+  "Onboarding": {
+    "create-group": "创建群组 (2/3)",
+    "edit-member": "编辑自我详细信息 (1/3)",
+    "members": "创建会员 (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "让我们开始管理您的团体费用的入职之旅",
+    "welcome-to-groupexpense": "欢迎来到集团消费"
+  },
   "OptionsScreen": {
     "Upgrade": "升级到专业版",
-    "all-members": "所有会员",
     "app-related": "应用程序相关",
     "category": "类别配置",
     "contact-us": "联系我们",
@@ -182,19 +158,17 @@
     "profile": "用户资料",
     "unknown-user": "用户"
   },
+  "Otp": {
+    "verify-email": "验证邮件"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "（自动的）",
     "paid-for": "付费了吗？",
     "who-paid": "谁付钱？"
   },
   "PaymentFormScreen": {
-    "bill": "账单",
-    "paid-for": "付费了吗？",
-    "who-paid": "谁付钱？"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "没有找到付款记录",
-    "no-payment-records-found-for-currency": "未找到 {{currency}} 的付款记录",
     "payments": "付款方式",
     "search": "搜索说明"
   },
@@ -216,44 +190,25 @@
     "retypedPassword-label": "重新输入密码"
   },
   "StackNavigator": {
-    "group-summary": "小组总结",
-    "loading-interstitial-ad": "广告加载",
-    "users": "用户"
   },
   "StatisticScreen": {
-    "add-payment-record": "添加付款记录",
-    "emptyRecordWarning": "您还没有付款记录。\n从创建新的付款记录开始！",
-    "statistics": "统计数据",
-    "subtitle": "<Text>{{name}} 总共花费了 <Highlight>{{amount}}</Highlight>。\n这是你的费用分布</Text>",
-    "you": "你"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "请注意，此操作不可逆转",
-    "related-payment": "在删除该用户之前，您必须先删除 {{count}} 项相关付款。",
-    "related-payment_plural": "在删除该用户之前，您必须先删除 {{count}} 项相关付款。",
-    "title": "<Text>您确定从<Highlight>{{groupname}}</Highlight>中删除<Highlight>{{username}}</Highlight>吗？</Text>"
   },
   "UserForm": {
     "camera-permission-required": "需要相机许可",
     "choose-photo-from-library": "从图库中选择照片",
-    "create-profile": "创建个人资料",
-    "edit-member": "编辑会员",
-    "hi-user": "嗨{{name}}",
-    "name": "姓名",
+    "edit-member": "编辑会员 (1/3)",
     "name-is-required": "用户名是必需的",
     "profile-image": "个人资料图片",
-    "related-groups": "相关团体",
     "removeFromGroup": "从组中删除",
     "take-photo": "拍照",
     "username": "用户名",
     "who-are-you": "你是谁？",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "您需要启用相机权限才能使用此功能。",
-    "your-avatar-color": "你的头像颜色",
-    "your-name-is-required": "您的姓名为必填项"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "您需要启用相机权限才能使用此功能。"
   },
   "UserListForm": {
     "add-participant": "添加参与者",
-    "all-members": "所有会员",
     "members": "会员",
     "select-existing-user": "选择现有用户",
     "type-participant-name": "输入参与者姓名",
@@ -272,5 +227,10 @@
   },
   "options": {
     "logout": "登出"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "输入一次性密码",
+    "invalid-email-please-go-back-and-sign-up-again": "不合规电邮。\n请返回并重新注册！",
+    "resend-otp": "重新发送一次性密码"
   }
 }

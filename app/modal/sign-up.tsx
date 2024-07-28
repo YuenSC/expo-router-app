@@ -18,8 +18,8 @@ const Page = () => {
   const { t } = useTranslation();
 
   const { mutate: postSignUp, isPending: isPendingSignUp } = usePostSignUp({
-    onSuccess: () => {
-      router.push("/modal/otp-email-verification");
+    onSuccess: ({ data: { user } }) => {
+      router.push("/modal/otp-email-verification?email=" + user.email);
       Toast.show({
         type: "success",
         text1: t("common:success"),
@@ -129,16 +129,14 @@ const Page = () => {
               value === getValues("password") || t("SignUp:passwordsMustMatch"),
           }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <>
-              <Input
-                errorMessage={error?.message}
-                label={t("SignUp:retypedPassword-label")}
-                onChangeText={onChange}
-                placeholder={t("SignUp:password-placeholder")}
-                value={value}
-                textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
-              />
-            </>
+            <Input
+              errorMessage={error?.message}
+              label={t("SignUp:retypedPassword-label")}
+              onChangeText={onChange}
+              placeholder={t("SignUp:password-placeholder")}
+              value={value}
+              textContentType="oneTimeCode" // This is a workaround for iOS https://github.com/facebook/react-native/issues/21911
+            />
           )}
         />
 

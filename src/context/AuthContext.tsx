@@ -2,14 +2,22 @@ import { useQueryClient } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
 
 import { removeAxiosToken, setAxiosToken } from "../api/axios";
+import { usePostOtpVerifyEmail } from "../api/hooks/usePostOtpVerifyEmail";
+import {
+  PostOtpVerifyEmailPayload,
+  PostOtpVerifyEmailResponse,
+} from "../api/types/Otp";
 
 import { usePostLogin } from "@/src/api/hooks/usePostLogin";
-import { PostLoginPayload } from "@/src/api/types/Login";
+import { PostLoginPayload, PostLoginResponse } from "@/src/api/types/Login";
 import useSecureStore from "@/src/hooks/useSecureStore";
 
 interface AuthProps {
-  onLogin: (payload: PostLoginPayload) => void;
+  onLogin?: (payload: PostLoginPayload) => Promise<PostLoginResponse>;
   onLogout: () => void;
+  onVerifyEmail?: (
+    payload: PostOtpVerifyEmailPayload,
+  ) => Promise<PostOtpVerifyEmailResponse>;
   authState: {
     token: string | null;
     isPending: boolean;
@@ -21,8 +29,9 @@ interface AuthProps {
 }
 
 const authContext = createContext<AuthProps>({
-  onLogin: () => {},
+  onLogin: undefined,
   onLogout: () => {},
+  onVerifyEmail: undefined,
   authState: {
     token: null,
     isPending: false,
@@ -56,7 +65,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   });
   const [localEmail, setLocalEmail] = useSecureStore("email", { sync: true });
 
-  const { mutate: postLogin, isPending: isPendingLogin } = usePostLogin({
+  const { mutateAsync: postLogin, isPending: isPendingLogin } = usePostLogin({
+    onSuccess: ({ data }) => {
+      queryClient.invalidateQueries({
+        queryKey: ["me"],
+      });
+      setToken(data.access_token);
+    },
+  });
+
+  const {
+    mutateAsync: postOtpVerifyEmail,
+    isPending: isPendingOtpVerifyEmail,
+  } = usePostOtpVerifyEmail({
     onSuccess: ({ data }) => {
       queryClient.invalidateQueries({
         queryKey: ["me"],
@@ -66,7 +87,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   const onLogin = ({ rememberMe, ...payload }: PostLoginPayload) => {
-    postLogin(payload);
     if (rememberMe) {
       setLocalEmail(payload.email);
       setLocalPassword(payload.password);
@@ -74,6 +94,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setLocalEmail(null);
       setLocalPassword(null);
     }
+    return postLogin(payload);
   };
 
   const onLogout = () => {
@@ -86,9 +107,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         onLogin,
         onLogout,
+        onVerifyEmail: postOtpVerifyEmail,
         authState: {
           token,
-          isPending: isPendingLogin,
+          isPending: isPendingLogin || isPendingOtpVerifyEmail,
         },
         localCredential: { email: localEmail, password: localPassword },
       }}

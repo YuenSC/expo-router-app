@@ -21,37 +21,7 @@ import { getDefaultStackOptions } from "@/src/styles/getDefaultStackOptions";
 import theme from "@/src/styles/rneui";
 import { toastConfig } from "@/src/styles/toastConfig";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 10000,
-      retry: (failureCount, error) => {
-        if (failureCount > 2) return false;
-
-        if (axios.isAxiosError(error)) {
-          return error.response?.status !== 401;
-        }
-        return false;
-      },
-    },
-    mutations: {
-      onError: (error) => {
-        // console.log("onError", JSON.stringify(error, null, 2));
-        const message = axios.isAxiosError(error)
-          ? error.response?.data.message
-          : error.message;
-
-        Toast.show({
-          type: "error",
-          text1: "Api Error",
-          text2: message || "Timeout",
-          topOffset: 64,
-          visibilityTime: 4000,
-        });
-      },
-    },
-  },
-});
+const queryClient = new QueryClient({});
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -61,10 +31,9 @@ const StackLayout = () => {
   const segments = useSegments();
   const router = useRouter();
   const { theme } = useTheme();
+  const inAuthGroup = segments[0] === "(protected)";
 
   useEffect(() => {
-    const inAuthGroup = segments[0] === "(protected)";
-
     // 1. if in protected page, check if token exists, if no, redirect to login
     if (inAuthGroup) {
       if (authState.token === null) router.replace("/");
@@ -87,7 +56,48 @@ const StackLayout = () => {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authState.token]);
+  }, [authState.token, inAuthGroup]);
+
+  useEffect(() => {
+    console.log("setDefaultOptions");
+    queryClient.setDefaultOptions({
+      queries: {
+        staleTime: 10000,
+        retry: (failureCount, error) => {
+          if (failureCount > 2) return false;
+
+          if (axios.isAxiosError(error)) {
+            return error.response?.status !== 401;
+          }
+          return false;
+        },
+      },
+      mutations: {
+        onError: (error) => {
+          const message = axios.isAxiosError(error)
+            ? error.response?.data.message
+            : error.message;
+
+          const status = axios.isAxiosError(error)
+            ? error.response?.status
+            : null;
+
+          Toast.show({
+            type: "error",
+            text1: "Api Error",
+            text2: message || "Timeout",
+            topOffset: 64,
+            visibilityTime: 4000,
+          });
+
+          if (inAuthGroup && status === 401) {
+            onLogout();
+          }
+        },
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inAuthGroup]);
 
   return (
     <Stack

@@ -4,14 +4,6 @@
     "enter-something": "輸入一些東西~"
   },
   "BillCategoryEnum": {
-    "Accommodation": "住宿",
-    "Entertainment": "娛樂",
-    "FoodAndDining": "食物",
-    "Insurance": "保險",
-    "Miscellaneous": "各種各樣的",
-    "Shopping": "購物",
-    "SightseeingAndActivities": "觀光",
-    "Transportation": "運輸"
   },
   "BillForm": {
     "amount-is-required": "金額為必填項",
@@ -30,9 +22,7 @@
     "payment": "支付",
     "stats": "統計數據"
   },
-  "CFBundleDisplayName": "團體費用",
   "Common": {
-    "NA": "不適用",
     "adminLabel": "管理員",
     "back": "後退",
     "cancel": "取消",
@@ -41,14 +31,10 @@
     "delete": "刪除",
     "done": "完畢",
     "edit": "編輯",
-    "groupLabel": "（團體）",
     "next": "下一個",
-    "profileUserLabel": "（你）",
-    "save": "保存"
+    "profileUserLabel": "（你）"
   },
   "CurrencyCodeSelectScreen": {
-    "all": "全部",
-    "currency": "貨幣"
   },
   "DrawerContent": {
     "add-group": "新增群組",
@@ -98,15 +84,12 @@
     "warning": "請注意，此操作是不可逆轉的。\n所有費用記錄和用戶將被刪除。"
   },
   "GroupDeletePaymentRecordBottomSheet": {
-    "are-you-sure-to-delete-this-record": "您確定要刪除此記錄嗎？"
   },
   "GroupDetailScreen": {
     "add-group": "新增群組",
     "and": "和",
     "and-more": "和更多 ...",
     "current-username": "目前：{{name}}",
-    "expense-reminder": "您的未解決費用如​​下",
-    "expense-reminder-empty": "您沒有未解決的費用。\n做得好！",
     "member": "成員",
     "my-balance": "我的餘額",
     "no-group-warning": "您還沒有建立任何群組。\n請建立一個群組以開始使用",
@@ -114,20 +97,14 @@
     "payment": "支付",
     "payment-count": "您在此群組中有 {{count}} 筆記錄",
     "payment-count_plural": "該群組中有 {{count}} 筆記錄",
-    "summary": "概括",
     "unresolved-amount": "集團未解決金額"
   },
   "GroupDetailSummaryCarousel": {
-    "all-your-expenses-are-balanced": "你所有的開支都已經解決了。",
-    "no-payment-records-found": "沒有找到付款記錄"
+    "all-your-expenses-are-balanced": "你所有的開支都已經解決了。"
   },
   "GroupDetailSummaryItem": {
-    "individual": "個人",
-    "simplified": "簡化版"
   },
   "GroupExistingUserSelectBottomSheet": {
-    "existing-users": "現有用戶",
-    "no-existing-user-found": "未找到現有用戶"
   },
   "GroupForm": {
     "create-group": "建立群組",
@@ -139,8 +116,6 @@
     "your-first-group-expense": "您的第一筆團體費用"
   },
   "GroupSummaryScreen": {
-    "debt-settlement": "債務清償💰",
-    "summary": "概括"
   },
   "InfiniteScroll": {
     "all-items-are-fetched": "所有項目均已獲取",
@@ -152,21 +127,22 @@
     "warning": "機器翻譯用於轉換不同於英語的語言。\n翻譯錯誤的可能性可能仍然存在。"
   },
   "Login": {
-    "email-is-required": "電子郵件為必填項",
-    "email-label": "電子郵件",
-    "email-placeholder": "xxx@xxx.com",
-    "password-is-required": "密碼是必需的",
-    "password-label": "密碼",
-    "password-placeholder": "******",
-    "remember-me": "記住帳號"
   },
   "NetworkDialog": {
     "network-connection-down": "網路連線斷開",
     "please-check-your-network-connection-and-try-again": "請檢查您的網路連線並重試。"
   },
+  "Onboarding": {
+    "create-group": "建立群組 (2/3)",
+    "edit-member": "編輯自我詳細資料 (1/3)",
+    "members": "建立會員 (3/3)"
+  },
+  "OnboardingWelcomeDialog": {
+    "lets-started-the-onboarding-journey-to-manage-your-group-expenses": "讓我們開始管理您的團體費用的入職之旅",
+    "welcome-to-groupexpense": "歡迎來到集團消費"
+  },
   "OptionsScreen": {
     "Upgrade": "升級到專業版",
-    "all-members": "所有會員",
     "app-related": "應用程式相關",
     "category": "類別配置",
     "contact-us": "聯絡我們",
@@ -182,19 +158,17 @@
     "profile": "使用者資料",
     "unknown-user": "使用者"
   },
+  "Otp": {
+    "verify-email": "驗證郵件"
+  },
   "PayerPayeeSelectForm": {
     "auto-tag": "（自動的）",
     "paid-for": "付費了嗎？",
     "who-paid": "誰付錢？"
   },
   "PaymentFormScreen": {
-    "bill": "帳單",
-    "paid-for": "為誰付費？",
-    "who-paid": "誰付錢？"
   },
   "PaymentRecordListScreen": {
-    "no-payment-records-found": "沒有找到付款記錄",
-    "no-payment-records-found-for-currency": "未找到 {{currency}} 的付款記錄",
     "payments": "付款方式",
     "search": "搜尋說明"
   },
@@ -216,44 +190,25 @@
     "retypedPassword-label": "重新輸入密碼"
   },
   "StackNavigator": {
-    "group-summary": "小組總結",
-    "loading-interstitial-ad": "廣告載入",
-    "users": "使用者"
   },
   "StatisticScreen": {
-    "add-payment-record": "新增付款記錄",
-    "emptyRecordWarning": "您還沒有付款記錄。\n從建立新的付款記錄開始！",
-    "statistics": "統計數據",
-    "subtitle": "<Text>{{name}} 總共花了 <Highlight>{{amount}}</Highlight>。\n這是你的費用分佈</Text>",
-    "you": "你"
   },
   "UserDeleteBottomSheet": {
-    "please-note-that-this-action-is-irreversible": "請注意，此操作不可逆轉",
-    "related-payment": "在刪除該使用者之前，您必須先刪除 {{count}} 項相關付款。",
-    "related-payment_plural": "在刪除該使用者之前，您必須先刪除 {{count}} 項相關付款。",
-    "title": "<Text>您確定從<Highlight>{{groupname}}</Highlight>中刪除<Highlight>{{username}}</Highlight>嗎？"
   },
   "UserForm": {
     "camera-permission-required": "需要相機許可",
     "choose-photo-from-library": "從圖庫中選擇照片",
-    "create-profile": "建立個人資料",
-    "edit-member": "編輯會員",
-    "hi-user": "嗨{{name}}",
-    "name": "姓名",
+    "edit-member": "編輯會員 (1/3)",
     "name-is-required": "使用者名稱是必需的",
     "profile-image": "個人資料圖片",
-    "related-groups": "相關團體",
     "removeFromGroup": "從群組中刪除",
     "take-photo": "拍照",
     "username": "使用者名稱",
     "who-are-you": "你是誰？",
-    "you-need-to-enable-camera-permissions-to-use-this-feature": "您需要啟用相機權限才能使用此功能。",
-    "your-avatar-color": "你的頭像顏色",
-    "your-name-is-required": "您的姓名為必填項"
+    "you-need-to-enable-camera-permissions-to-use-this-feature": "您需要啟用相機權限才能使用此功能。"
   },
   "UserListForm": {
     "add-participant": "新增參與者",
-    "all-members": "所有會員",
     "members": "會員",
     "select-existing-user": "選擇現有用戶",
     "type-participant-name": "輸入參與者姓名",
@@ -272,5 +227,10 @@
   },
   "options": {
     "logout": "登出"
+  },
+  "otp-email-verification": {
+    "enter-one-time-password": "輸入一次性密碼",
+    "invalid-email-please-go-back-and-sign-up-again": "不合規電郵。\n請返回並重新註冊！",
+    "resend-otp": "重新發送一次性密碼"
   }
 }
