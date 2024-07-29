@@ -22,6 +22,7 @@
     "payment": "Paiement",
     "stats": "Statistiques"
   },
+  "CFBundleDisplayName": "Dépense de groupe",
   "Common": {
     "adminLabel": "Administrateur",
     "back": "Dos",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "Les mots de passe retapés ne correspondent pas au mot de passe",
     "remember-me": "Souviens-toi de moi",
     "retypedPassword-is-required": "Le mot de passe retapé est requis",
-    "retypedPassword-label": "Mot de passe retapé"
+    "retypedPassword-label": "Mot de passe retapé",
+    "success-message": "Veuillez vérifier votre courrier électronique pour l'OTP et le saisir pour vérifier votre compte."
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "Erreur",
     "get-started": "Commencer",
     "login": "Connexion/Vérification de l'e-mail",
-    "sign-up": "Créer un nouveau compte"
+    "sign-up": "Créer un nouveau compte",
+    "success": "Succès"
   },
   "options": {
     "logout": "Se déconnecter"

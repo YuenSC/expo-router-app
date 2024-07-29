@@ -22,6 +22,7 @@
     "payment": "Pagamento",
     "stats": "Estatísticas"
   },
+  "CFBundleDisplayName": "Despesas de grupo",
   "Common": {
     "adminLabel": "Administrador",
     "back": "Voltar",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "As senhas digitadas novamente não correspondem à senha",
     "remember-me": "Lembre de mim",
     "retypedPassword-is-required": "A senha digitada novamente é obrigatória",
-    "retypedPassword-label": "Senha redigitada"
+    "retypedPassword-label": "Senha redigitada",
+    "success-message": "Verifique seu e-mail para obter o OTP e insira-o para verificar sua conta."
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "Erro",
     "get-started": "Iniciar",
     "login": "Login/Verificar e-mail",
-    "sign-up": "Criar nova conta"
+    "sign-up": "Criar nova conta",
+    "success": "Sucesso"
   },
   "options": {
     "logout": "Sair"

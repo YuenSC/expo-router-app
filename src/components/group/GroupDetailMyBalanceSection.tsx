@@ -1,4 +1,3 @@
-import { Entypo } from "@expo/vector-icons";
 import { makeStyles, Text, useTheme } from "@rneui/themed";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
@@ -23,18 +22,20 @@ const GroupDetailMyBalanceSection = memo<IGroupDetailMyBalanceSectionProps>(
       data &&
       Object.entries(data).some(([, totalNetAmount]) => totalNetAmount !== 0);
 
+    if (!hasUnresolvedAmount) return null;
+
     return (
       <GroupDetailSection
         title={t("GroupDetailScreen:my-balance")}
-        titleRight={
-          <TouchableOpacity>
-            <Entypo
-              name="chevron-small-right"
-              size={24}
-              color={theme.colors.primary}
-            />
-          </TouchableOpacity>
-        }
+        // titleRight={
+        //   <TouchableOpacity>
+        //     <Entypo
+        //       name="chevron-small-right"
+        //       size={24}
+        //       color={theme.colors.primary}
+        //     />
+        //   </TouchableOpacity>
+        // }
         style={styles.container}
       >
         {hasUnresolvedAmount && (

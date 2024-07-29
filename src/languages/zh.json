@@ -22,6 +22,7 @@
     "payment": "支付",
     "stats": "统计数据"
   },
+  "CFBundleDisplayName": "团体费用",
   "Common": {
     "adminLabel": "管理員",
     "back": "后退",
@@ -187,7 +188,8 @@
     "passwordsMustMatch": "重新输入的密码与密码不匹配",
     "remember-me": "记住账号",
     "retypedPassword-is-required": "需要重新输入密码",
-    "retypedPassword-label": "重新输入密码"
+    "retypedPassword-label": "重新输入密码",
+    "success-message": "请检查您的电子邮件中的 OTP 并输入它以验证您的帐户。"
   },
   "StackNavigator": {
   },
@@ -223,7 +225,8 @@
     "error": "错误",
     "get-started": "开始使用",
     "login": "登录/验证电子邮件",
-    "sign-up": "报名"
+    "sign-up": "报名",
+    "success": "成功"
   },
   "options": {
     "logout": "登出"

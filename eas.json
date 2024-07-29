@@ -3,6 +3,18 @@
     "version": ">= 9.1.0"
   },
   "build": {
+    "development-simulator": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ENV": "dev",
+        "EXPO_PUBLIC_API_URL": "https://group-expense-628faa35624f.herokuapp.com/"
+      },
+      "ios": {
+        "simulator": true,
+        "image": "latest"
+      }
+    },
     "development": {
       "developmentClient": true,
       "distribution": "internal",
