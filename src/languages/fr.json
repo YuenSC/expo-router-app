@@ -4,6 +4,14 @@
     "enter-something": "Entrez quelque chose~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "Hébergement",
+    "Entertainment": "Divertissement",
+    "FoodAndDining": "Nourriture",
+    "Insurance": "Assurance",
+    "Miscellaneous": "Divers",
+    "Shopping": "Achats",
+    "SightseeingAndActivities": "Touristique",
+    "Transportation": "Transport"
   },
   "BillForm": {
     "amount-is-required": "Le montant est requis",

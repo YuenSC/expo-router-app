@@ -32,6 +32,7 @@ export type PostExpenseCreatePayload = {
   amount: number;
   incurredOn: string;
   description?: string;
+  category: string;
   currencyCode: string;
   createExpenseTransactions: CreateExpenseTransaction[];
 };

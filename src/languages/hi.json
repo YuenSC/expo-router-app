@@ -4,6 +4,14 @@
     "enter-something": "कुछ दर्ज करें~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "आवास",
+    "Entertainment": "मनोरंजन",
+    "FoodAndDining": "खाना",
+    "Insurance": "बीमा",
+    "Miscellaneous": "मिश्रित",
+    "Shopping": "खरीदारी",
+    "SightseeingAndActivities": "दर्शनीय स्थलों की यात्रा",
+    "Transportation": "परिवहन"
   },
   "BillForm": {
     "amount-is-required": "राशि आवश्यक है",

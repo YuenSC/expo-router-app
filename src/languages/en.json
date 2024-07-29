@@ -3,7 +3,16 @@
     "done": "Done",
     "enter-something": "Enter something~"
   },
-  "BillCategoryEnum": {},
+  "BillCategoryEnum": {
+    "Accommodation": "Accomodation",
+    "Entertainment": "Entertainment",
+    "FoodAndDining": "Food & Dining",
+    "Insurance": "Insurance",
+    "Miscellaneous": "Miscellaneous",
+    "Shopping": "Shopping",
+    "SightseeingAndActivities": "Sightseeing",
+    "Transportation": "Transport"
+  },
   "BillForm": {
     "amount-is-required": "Amount is required",
     "amount-label": "Bill Amount",
@@ -34,7 +43,8 @@
     "next": "Next",
     "profileUserLabel": "(You)"
   },
-  "CurrencyCodeSelectScreen": {},
+  "CurrencyCodeSelectScreen": {
+  },
   "DrawerContent": {
     "add-group": "Add Group",
     "group-not-found": "Your original selected group cannot be found.",
@@ -82,7 +92,8 @@
     "group-deleted-warning": "Please reselect/create a group to continue.",
     "warning": "Please note that this action is irreversible. All the expense record and users will be deleted."
   },
-  "GroupDeletePaymentRecordBottomSheet": {},
+  "GroupDeletePaymentRecordBottomSheet": {
+  },
   "GroupDetailScreen": {
     "add-group": "Add Group",
     "and": "and",
@@ -100,8 +111,10 @@
   "GroupDetailSummaryCarousel": {
     "all-your-expenses-are-balanced": "All your expenses are settled down."
   },
-  "GroupDetailSummaryItem": {},
-  "GroupExistingUserSelectBottomSheet": {},
+  "GroupDetailSummaryItem": {
+  },
+  "GroupExistingUserSelectBottomSheet": {
+  },
   "GroupForm": {
     "create-group": "Create Group",
     "group-description": "Group Description",
@@ -111,7 +124,8 @@
     "group-name-is-required": "Group Name is required",
     "your-first-group-expense": "Your first group expense"
   },
-  "GroupSummaryScreen": {},
+  "GroupSummaryScreen": {
+  },
   "InfiniteScroll": {
     "all-items-are-fetched": "All Items are fetched",
     "failed-to-fetch-more-items": "Failed to fetch more items",
@@ -121,7 +135,8 @@
     "language": "Language",
     "warning": "Machine translation is utilized to convert languages distinct from English. The possibility of translation error may persist."
   },
-  "Login": {},
+  "Login": {
+  },
   "NetworkDialog": {
     "network-connection-down": "Network Connection Down",
     "please-check-your-network-connection-and-try-again": "Please check your network connection and try again."
@@ -160,7 +175,8 @@
     "paid-for": "Paid For?",
     "who-paid": "Who Paid?"
   },
-  "PaymentFormScreen": {},
+  "PaymentFormScreen": {
+  },
   "PaymentRecordListScreen": {
     "payments": "Payments",
     "search": "Search Description"
@@ -183,9 +199,12 @@
     "retypedPassword-label": "Retyped Password",
     "success-message": "Please check your email for the OTP and enter it to verify your account."
   },
-  "StackNavigator": {},
-  "StatisticScreen": {},
-  "UserDeleteBottomSheet": {},
+  "StackNavigator": {
+  },
+  "StatisticScreen": {
+  },
+  "UserDeleteBottomSheet": {
+  },
   "UserForm": {
     "camera-permission-required": "Camera Permission Required",
     "choose-photo-from-library": "Choose photo from Library",

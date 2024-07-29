@@ -4,6 +4,14 @@
     "enter-something": "Digite algo ~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "Alojamento",
+    "Entertainment": "Entretenimento",
+    "FoodAndDining": "Comida",
+    "Insurance": "Seguro",
+    "Miscellaneous": "Diversos",
+    "Shopping": "Compras",
+    "SightseeingAndActivities": "Passeio turístico",
+    "Transportation": "Transporte"
   },
   "BillForm": {
     "amount-is-required": "O valor é obrigatório",

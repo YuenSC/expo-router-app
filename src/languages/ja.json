@@ -4,6 +4,14 @@
     "enter-something": "何か入力してください~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "宿泊施設",
+    "Entertainment": "エンターテインメント",
+    "FoodAndDining": "食べ物",
+    "Insurance": "保険",
+    "Miscellaneous": "その他",
+    "Shopping": "買い物",
+    "SightseeingAndActivities": "観光",
+    "Transportation": "輸送"
   },
   "BillForm": {
     "amount-is-required": "金額は必須です",

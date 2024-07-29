@@ -4,6 +4,14 @@
     "enter-something": "Введите что-нибудь~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "Проживание",
+    "Entertainment": "Развлечение",
+    "FoodAndDining": "Еда",
+    "Insurance": "Страхование",
+    "Miscellaneous": "Разнообразный",
+    "Shopping": "Покупка",
+    "SightseeingAndActivities": "Осмотр достопримечательностей",
+    "Transportation": "Транспорт"
   },
   "BillForm": {
     "amount-is-required": "Требуется сумма",

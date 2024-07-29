@@ -4,6 +4,14 @@
     "enter-something": "输入一些东西~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "住宿",
+    "Entertainment": "娱乐",
+    "FoodAndDining": "食物",
+    "Insurance": "保险",
+    "Miscellaneous": "各种各样的",
+    "Shopping": "购物",
+    "SightseeingAndActivities": "观光",
+    "Transportation": "运输"
   },
   "BillForm": {
     "amount-is-required": "金额为必填项",
