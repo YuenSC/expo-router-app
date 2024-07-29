@@ -28,7 +28,9 @@ const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
     return (
       <HStack style={styles.container}>
         <HStack>
-          {expense.category && (
+          {Object.values(BillCategoryEnum).includes(
+            expense.category as BillCategoryEnum,
+          ) && (
             <HStack style={styles.categoryIcon} justifyContent="center">
               <BillCategoryIcon
                 category={expense.category as BillCategoryEnum}
