@@ -40,6 +40,7 @@
     "delete": "मिटाना",
     "done": "हो गया",
     "edit": "संपादन करना",
+    "groupLabel": "(समूह)",
     "next": "अगला",
     "profileUserLabel": "(आप)"
   },
@@ -202,6 +203,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "आंकड़े",
+    "subtitle": "<Text>{{name}} ने कुल मिलाकर <Highlight>{{amount}}</Highlight> खर्च किया है। \nयहां आपके खर्चों का वितरण है</Text>"
   },
   "UserDeleteBottomSheet": {
   },

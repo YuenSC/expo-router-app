@@ -40,6 +40,7 @@
     "delete": "Excluir",
     "done": "Feito",
     "edit": "Editar",
+    "groupLabel": "(Grupo)",
     "next": "Próximo",
     "profileUserLabel": "(Você)"
   },
@@ -202,6 +203,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "Estatisticas",
+    "subtitle": "<Text>{{name}} gastou <Highlight>{{amount}}</Highlight> no total. \nAqui está a distribuição de suas despesas</Text>"
   },
   "UserDeleteBottomSheet": {
   },

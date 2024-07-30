@@ -40,6 +40,7 @@
     "delete": "Удалить",
     "done": "Сделанный",
     "edit": "Редактировать",
+    "groupLabel": "(Группа)",
     "next": "Следующий",
     "profileUserLabel": "(Ты)"
   },
@@ -202,6 +203,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "Статистика",
+    "subtitle": "<Text>Пользователь {{name}} потратил в общей сложности <Highlight>{{amount}}</Highlight>. \nВот распределение ваших расходов</Text>"
   },
   "UserDeleteBottomSheet": {
   },

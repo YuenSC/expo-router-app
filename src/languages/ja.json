@@ -40,6 +40,7 @@
     "delete": "消去",
     "done": "終わり",
     "edit": "編集",
+    "groupLabel": "（グループ）",
     "next": "次",
     "profileUserLabel": "（あなた）"
   },
@@ -202,6 +203,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "統計",
+    "subtitle": "<Text>{{name}} は合計 <Highlight>{{amount}}</Highlight> を使いました。\n経費の配分は次のとおりです</Text>"
   },
   "UserDeleteBottomSheet": {
   },
