@@ -15,6 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.scyuenab.group-expense",
+      "buildNumber": "2",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true
       }

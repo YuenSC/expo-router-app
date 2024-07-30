@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 9.1.0"
+    "version": ">= 9.1.0",
+    "appVersionSource": "local"
   },
   "build": {
     "development-simulator": {
@@ -33,6 +34,7 @@
       }
     },
     "production": {
+      "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_ENV": "prod",
         "EXPO_PUBLIC_API_URL": "https://group-expense-628faa35624f.herokuapp.com/"
