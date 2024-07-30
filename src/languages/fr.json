@@ -4,6 +4,14 @@
     "enter-something": "Entrez quelque chose~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "Hébergement",
+    "Entertainment": "Divertissement",
+    "FoodAndDining": "Nourriture",
+    "Insurance": "Assurance",
+    "Miscellaneous": "Divers",
+    "Shopping": "Achats",
+    "SightseeingAndActivities": "Touristique",
+    "Transportation": "Transport"
   },
   "BillForm": {
     "amount-is-required": "Le montant est requis",
@@ -32,6 +40,7 @@
     "delete": "Supprimer",
     "done": "Fait",
     "edit": "Modifier",
+    "groupLabel": "(Groupe)",
     "next": "Suivant",
     "profileUserLabel": "(Toi)"
   },
@@ -55,6 +64,9 @@
     "payer": "Payeur",
     "please-fill-in-all-required-fields": "Veuillez vérifier à nouveau votre formulaire et mettre à jour les champs associés",
     "success": "Succès"
+  },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "Etes-vous sûr de vouloir supprimer cette dépense ?"
   },
   "ExpenseDetailForm": {
     "date-is-required": "La date est requise"
@@ -194,6 +206,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "Statistiques",
+    "subtitle": "<Text>{{name}} ont dépensé <Highlight>{{amount}}</Highlight> au total. \nVoici la répartition de vos dépenses</Text>"
   },
   "UserDeleteBottomSheet": {
   },

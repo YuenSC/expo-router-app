@@ -1,9 +1,9 @@
 import { makeStyles } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
-import { View } from "react-native";
 
 import { usePostGroupCreate } from "@/src/api/hooks/group/usePostGroupCreate";
+import StyledScrollView from "@/src/components/common/StyledScrollView";
 import GroupCreatedDialog from "@/src/components/group/GroupCreatedDialog";
 import GroupForm from "@/src/components/group/GroupForm";
 import { useAppContext } from "@/src/context/AppContext";
@@ -26,7 +26,7 @@ const Page = () => {
     });
 
   return (
-    <View style={styles.container}>
+    <StyledScrollView style={styles.container}>
       <GroupForm
         onSubmit={postGroupCreate}
         isSubmitting={isPendingPostGroupCreate}
@@ -45,7 +45,7 @@ const Page = () => {
           }, 0);
         }}
       />
-    </View>
+    </StyledScrollView>
   );
 };
 

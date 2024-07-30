@@ -1,7 +1,8 @@
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { makeStyles, Text } from "@rneui/themed";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useWindowDimensions } from "react-native";
 import { SceneMap, TabView } from "react-native-tab-view";
@@ -9,6 +10,7 @@ import Toast from "react-native-toast-message";
 
 import { useGetExpense } from "@/src/api/hooks/expense/useGetExpense";
 import FullScreenLoading from "@/src/components/common/FullScreenLoading";
+import ExpenseDeleteBottomSheetModal from "@/src/components/expense/ExpenseDeleteBottomSheetModal";
 import ExpenseDetailForm from "@/src/components/expense/ExpenseDetailForm";
 import { ExpenseFormProvider } from "@/src/components/expense/ExpenseFormContext";
 import PayerPayeeSelectForm from "@/src/components/expense/ExpenseFormPayerPayeeSelect";
@@ -40,6 +42,7 @@ const Page = () => {
     id: expenseId || "",
     groupId: currentGroupId || "",
   });
+  const deleteBottomSheetRef = useRef<BottomSheetModal>(null);
 
   const [currentStep, helpers] = useStep({ maxStep: 3, defaultStep: 1 });
   const [routes] = useState([
@@ -58,6 +61,7 @@ const Page = () => {
       expense={expense}
       expenseId={expenseId}
       currentStep={currentStep}
+      onDelete={() => deleteBottomSheetRef.current?.present()}
       onSuccess={() => {
         Toast.show({
           type: "success",
@@ -88,6 +92,13 @@ const Page = () => {
         keyboardDismissMode="on-drag"
         style={[styles.container, isPending && { display: "none" }]}
       />
+      {expenseId && (
+        <ExpenseDeleteBottomSheetModal
+          ref={deleteBottomSheetRef}
+          expenseId={expenseId}
+          groupId={currentGroupId}
+        />
+      )}
     </ExpenseFormProvider>
   );
 };

@@ -18,5 +18,15 @@
   "i18n-ally.pathMatcher": "{locale}.json",
   "i18n-ally.annotationDelimiter": "",
   "i18n-ally.extract.autoDetect": true,
-  "i18n-ally.keysInUse": ["CFBundleDisplayName"]
+  "i18n-ally.keysInUse": [
+    "CFBundleDisplayName",
+    "BillCategoryEnum.Accommodation",
+    "BillCategoryEnum.Entertainment",
+    "BillCategoryEnum.FoodAndDining",
+    "BillCategoryEnum.Insurance",
+    "BillCategoryEnum.Miscellaneous",
+    "BillCategoryEnum.Shopping",
+    "BillCategoryEnum.SightseeingAndActivities",
+    "BillCategoryEnum.Transportation"
+  ]
 }

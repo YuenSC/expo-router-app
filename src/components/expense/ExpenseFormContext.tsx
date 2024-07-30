@@ -12,6 +12,8 @@ import {
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import { ActivityIndicator, TouchableOpacity } from "react-native";
 
+import { HStack } from "../common/Stack";
+
 import { usePatchExpenseUpdate } from "@/src/api/hooks/expense/usePatchExpenseUpdate";
 import { usePostExpenseCreate } from "@/src/api/hooks/expense/usePostExpenseCreate";
 import { useGetGroup } from "@/src/api/hooks/group/useGetGroup";
@@ -51,6 +53,7 @@ export const ExpenseFormProvider = ({
   goToNextStep,
   canGoToNextStep,
   onInValid,
+  onDelete,
   defaultValues,
   ...props
 }: PropsWithChildren<
@@ -61,6 +64,7 @@ export const ExpenseFormProvider = ({
     currentStep: number;
     onSuccess: () => void;
     onInValid: () => void;
+    onDelete?: () => void;
     defaultValues?: Partial<PostExpenseCreatePayload>;
   }
 >) => {
@@ -206,22 +210,32 @@ export const ExpenseFormProvider = ({
     if (expenseId && !expense) return;
 
     navigation.setOptions({
-      headerRight: () =>
-        isLoading ? (
-          <ActivityIndicator />
-        ) : (
-          <TouchableOpacity onPress={onSubmit}>
-            <Ionicons name="create" size={24} color={theme.colors.primary} />
-          </TouchableOpacity>
-        ),
+      headerRight: () => (
+        <HStack gap={16}>
+          {onDelete && (
+            <TouchableOpacity onPress={onDelete}>
+              <Ionicons name="trash" size={24} color={theme.colors.error} />
+            </TouchableOpacity>
+          )}
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : (
+            <TouchableOpacity onPress={onSubmit}>
+              <Ionicons name="create" size={24} color={theme.colors.primary} />
+            </TouchableOpacity>
+          )}
+        </HStack>
+      ),
     });
   }, [
     expense,
     expenseId,
     isLoading,
     navigation,
+    onDelete,
     onNextStepOrSubmit,
     onSubmit,
+    theme.colors.error,
     theme.colors.primary,
   ]);
 
