@@ -65,6 +65,9 @@
     "please-fill-in-all-required-fields": "Пожалуйста, проверьте свою форму еще раз и обновите соответствующие поля.",
     "success": "Успех"
   },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "Вы уверены, что хотите удалить этот расход?"
+  },
   "ExpenseDetailForm": {
     "date-is-required": "Укажите дату"
   },

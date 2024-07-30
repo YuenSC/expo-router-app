@@ -65,6 +65,9 @@
     "please-fill-in-all-required-fields": "कृपया अपना फॉर्म दोबारा जांचें और संबंधित फ़ील्ड अपडेट करें",
     "success": "सफलता"
   },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "क्या आप वाकई यह व्यय हटाना चाहते हैं?"
+  },
   "ExpenseDetailForm": {
     "date-is-required": "दिनांक आवश्यक है"
   },

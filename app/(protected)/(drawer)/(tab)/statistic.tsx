@@ -13,6 +13,7 @@ import {
   BillCategoryColor,
   BillCategoryEnum,
 } from "@/src/api/types/BillCategories";
+import FullScreenLoading from "@/src/components/common/FullScreenLoading";
 import { HStack, VStack } from "@/src/components/common/Stack";
 import StyledScrollView from "@/src/components/common/StyledScrollView";
 import { CurrencyCode } from "@/src/constants/Currency";
@@ -39,7 +40,7 @@ const Page = () => {
 
   const {
     data: statistics,
-    // query: { isPending },
+    query: { isPending, refetch },
   } = useGetGroupStatistics({
     groupId: currentGroupId || "",
   });
@@ -118,6 +119,7 @@ const Page = () => {
     <StyledScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
+      refetch={refetch}
       onScroll={(event) => {
         const scrollPositionY = event.nativeEvent.contentOffset.y;
         navigation.setOptions({
@@ -185,77 +187,82 @@ const Page = () => {
         }}
       />
 
-      <VStack>
-        <View style={styles.pieChartContainer}>
-          <PieChart
-            data={pieData}
-            showText
-            donut
-            showGradient
-            radius={120}
-            innerRadius={80}
-            innerCircleColor={theme.colors.background}
-            centerLabelComponent={() => {
-              if (!selectedCurrency) return null;
-              return (
-                <Text h4 style={{ textAlign: "center" }}>
-                  {formatAmount(
-                    totalExpenseByCurrency[selectedCurrency],
-                    selectedCurrency,
-                  )}
-                </Text>
-              );
-            }}
-          />
-        </View>
+      {isPending ? (
+        <FullScreenLoading />
+      ) : (
+        <VStack>
+          <View style={styles.pieChartContainer}>
+            <PieChart
+              data={pieData}
+              showText
+              donut
+              showGradient
+              radius={120}
+              innerRadius={80}
+              innerCircleColor={theme.colors.background}
+              centerLabelComponent={() => {
+                if (!selectedCurrency) return null;
+                return (
+                  <Text h4 style={{ textAlign: "center" }}>
+                    {formatAmount(
+                      totalExpenseByCurrency[selectedCurrency],
+                      selectedCurrency,
+                    )}
+                  </Text>
+                );
+              }}
+            />
+          </View>
 
-        <View style={styles.categoryContainer}>
-          {Object.keys(categoryExpense)
-            .sort(
-              (cat1, cat2) =>
-                (categoryExpense[cat1 as BillCategoryEnum] ?? 0) -
-                (categoryExpense[cat2 as BillCategoryEnum] ?? 0),
-            )
-            .map((_key, index) => {
-              const isLast = index === Object.keys(BillCategoryEnum).length - 1;
-              const key = _key as BillCategoryEnum;
+          <View style={styles.categoryContainer}>
+            {Object.keys(categoryExpense)
+              .sort(
+                (cat1, cat2) =>
+                  (categoryExpense[cat1 as BillCategoryEnum] ?? 0) -
+                  (categoryExpense[cat2 as BillCategoryEnum] ?? 0),
+              )
+              .map((_key, index) => {
+                const isLast =
+                  index === Object.keys(BillCategoryEnum).length - 1;
+                const key = _key as BillCategoryEnum;
 
-              return (
-                <Fragment key={key}>
-                  <Pressable>
-                    <HStack style={styles.categoryItem}>
-                      <HStack gap={8}>
-                        <View
-                          style={[
-                            styles.categoryDot,
-                            {
-                              backgroundColor:
-                                BillCategoryColor[key] ?? UncategorisedColor,
-                            },
-                          ]}
-                        />
-                        <Text>{t(`BillCategoryEnum:${key}`)}</Text>
+                return (
+                  <Fragment key={key}>
+                    <Pressable>
+                      <HStack style={styles.categoryItem}>
+                        <HStack gap={8}>
+                          <View
+                            style={[
+                              styles.categoryDot,
+                              {
+                                backgroundColor:
+                                  BillCategoryColor[key] ?? UncategorisedColor,
+                              },
+                            ]}
+                          />
+                          <Text>{t(`BillCategoryEnum:${key}`)}</Text>
+                        </HStack>
+                        <HStack gap={8}>
+                          <Text style={styles.amount}>
+                            {formatAmount(
+                              categoryExpense[key] ?? 0,
+                              selectedCurrency,
+                            )}
+                          </Text>
+                          <Text style={styles.percentage}>
+                            {`${roundAmountToDecimal(((categoryExpense[key] ?? 0) * 100) / totalAmount, 1)}%`}
+                          </Text>
+                        </HStack>
                       </HStack>
-                      <HStack gap={8}>
-                        <Text style={styles.amount}>
-                          {formatAmount(
-                            categoryExpense[key] ?? 0,
-                            selectedCurrency,
-                          )}
-                        </Text>
-                        <Text style={styles.percentage}>
-                          {`${roundAmountToDecimal(((categoryExpense[key] ?? 0) * 100) / totalAmount, 1)}%`}
-                        </Text>
-                      </HStack>
-                    </HStack>
-                  </Pressable>
+                    </Pressable>
 
-                  {isLast ? null : <View style={styles.divider} />}
-                </Fragment>
-              );
-            })}
-        </View>
-      </VStack>
+                    {isLast ? null : <View style={styles.divider} />}
+                  </Fragment>
+                );
+              })}
+          </View>
+        </VStack>
+      )}
     </StyledScrollView>
   );
 };
@@ -268,6 +275,7 @@ const useStyles = makeStyles((theme) => ({
   contentContainer: {
     paddingHorizontal: 16,
     paddingBottom: 32,
+    flex: 1,
   },
   title: {
     fontSize: 36,

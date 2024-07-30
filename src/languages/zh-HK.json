@@ -65,6 +65,9 @@
     "please-fill-in-all-required-fields": "請再次檢查您的表單並更新相關字段",
     "success": "成功"
   },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "您確定要刪除此費用嗎？"
+  },
   "ExpenseDetailForm": {
     "date-is-required": "日期為必填項"
   },
