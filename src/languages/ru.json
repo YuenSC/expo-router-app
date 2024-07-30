@@ -4,6 +4,14 @@
     "enter-something": "Введите что-нибудь~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "Проживание",
+    "Entertainment": "Развлечение",
+    "FoodAndDining": "Еда",
+    "Insurance": "Страхование",
+    "Miscellaneous": "Разнообразный",
+    "Shopping": "Покупка",
+    "SightseeingAndActivities": "Осмотр достопримечательностей",
+    "Transportation": "Транспорт"
   },
   "BillForm": {
     "amount-is-required": "Требуется сумма",
@@ -32,6 +40,7 @@
     "delete": "Удалить",
     "done": "Сделанный",
     "edit": "Редактировать",
+    "groupLabel": "(Группа)",
     "next": "Следующий",
     "profileUserLabel": "(Ты)"
   },
@@ -55,6 +64,9 @@
     "payer": "Плательщик",
     "please-fill-in-all-required-fields": "Пожалуйста, проверьте свою форму еще раз и обновите соответствующие поля.",
     "success": "Успех"
+  },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "Вы уверены, что хотите удалить этот расход?"
   },
   "ExpenseDetailForm": {
     "date-is-required": "Укажите дату"
@@ -194,6 +206,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "Статистика",
+    "subtitle": "<Text>Пользователь {{name}} потратил в общей сложности <Highlight>{{amount}}</Highlight>. \nВот распределение ваших расходов</Text>"
   },
   "UserDeleteBottomSheet": {
   },

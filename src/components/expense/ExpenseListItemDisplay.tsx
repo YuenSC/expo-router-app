@@ -1,9 +1,11 @@
 import { Text, makeStyles } from "@rneui/themed";
 import { memo } from "react";
 
+import BillCategoryIcon from "./BillCategoryIcon";
 import { HStack, VStack } from "../common/Stack";
 
 import { useGetMe } from "@/src/api/hooks/useGetMe";
+import { BillCategoryEnum } from "@/src/api/types/BillCategories";
 import { Expense } from "@/src/api/types/Expense";
 import { calculateUserNetTransactionAmount } from "@/src/utils/calculateUserNetTransactionAmount";
 import { formatDate } from "@/src/utils/formatDate";
@@ -25,10 +27,22 @@ const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
 
     return (
       <HStack style={styles.container}>
-        <VStack alignItems="flex-start" gap={4}>
-          <Text style={styles.name}>{expense.description}</Text>
-          <Text>Incurred On: {formatDate(expense.incurredOn)}</Text>
-        </VStack>
+        <HStack>
+          {Object.values(BillCategoryEnum).includes(
+            expense.category as BillCategoryEnum,
+          ) && (
+            <HStack style={styles.categoryIcon} justifyContent="center">
+              <BillCategoryIcon
+                category={expense.category as BillCategoryEnum}
+              />
+            </HStack>
+          )}
+          <VStack alignItems="flex-start" gap={4}>
+            <Text style={styles.name}>{expense.description}</Text>
+            <Text>Incurred On: {formatDate(expense.incurredOn)}</Text>
+          </VStack>
+        </HStack>
+
         <Text
           style={[
             styles.amount,
@@ -64,6 +78,11 @@ const useStyles = makeStyles((theme) => ({
   },
   amountPositive: {
     color: theme.colors.success,
+  },
+  categoryIcon: {
+    width: 40,
+    height: 40,
+    marginLeft: -8,
   },
 }));
 

@@ -7,7 +7,7 @@ export const roundAmountToDecimal = (amount: number, decimal: number = 2) => {
 
 export const formatAmount = (
   amount: number,
-  currencyCode?: string,
+  currencyCode?: string | null,
   options?: {
     currencySymbol?: "symbol" | "code";
   },

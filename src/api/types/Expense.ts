@@ -25,6 +25,7 @@ export interface Expense extends BaseObject {
   transactions: ExpenseTransaction[];
   description: string;
   currencyCode: string;
+  category?: string;
 }
 
 export type PostExpenseCreatePayload = {
@@ -32,6 +33,7 @@ export type PostExpenseCreatePayload = {
   amount: number;
   incurredOn: string;
   description?: string;
+  category: string;
   currencyCode: string;
   createExpenseTransactions: CreateExpenseTransaction[];
 };
