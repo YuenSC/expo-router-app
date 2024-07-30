@@ -59,7 +59,6 @@ const StackLayout = () => {
   }, [authState.token, inAuthGroup]);
 
   useEffect(() => {
-    console.log("setDefaultOptions");
     queryClient.setDefaultOptions({
       queries: {
         staleTime: 10000,

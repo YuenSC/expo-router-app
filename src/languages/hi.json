@@ -4,6 +4,14 @@
     "enter-something": "कुछ दर्ज करें~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "आवास",
+    "Entertainment": "मनोरंजन",
+    "FoodAndDining": "खाना",
+    "Insurance": "बीमा",
+    "Miscellaneous": "मिश्रित",
+    "Shopping": "खरीदारी",
+    "SightseeingAndActivities": "दर्शनीय स्थलों की यात्रा",
+    "Transportation": "परिवहन"
   },
   "BillForm": {
     "amount-is-required": "राशि आवश्यक है",
@@ -32,6 +40,7 @@
     "delete": "मिटाना",
     "done": "हो गया",
     "edit": "संपादन करना",
+    "groupLabel": "(समूह)",
     "next": "अगला",
     "profileUserLabel": "(आप)"
   },
@@ -55,6 +64,9 @@
     "payer": "भुगतानकर्ता",
     "please-fill-in-all-required-fields": "कृपया अपना फॉर्म दोबारा जांचें और संबंधित फ़ील्ड अपडेट करें",
     "success": "सफलता"
+  },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "क्या आप वाकई यह व्यय हटाना चाहते हैं?"
   },
   "ExpenseDetailForm": {
     "date-is-required": "दिनांक आवश्यक है"
@@ -194,6 +206,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "आंकड़े",
+    "subtitle": "<Text>{{name}} ने कुल मिलाकर <Highlight>{{amount}}</Highlight> खर्च किया है। \nयहां आपके खर्चों का वितरण है</Text>"
   },
   "UserDeleteBottomSheet": {
   },

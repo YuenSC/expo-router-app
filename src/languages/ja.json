@@ -4,6 +4,14 @@
     "enter-something": "何か入力してください~"
   },
   "BillCategoryEnum": {
+    "Accommodation": "宿泊施設",
+    "Entertainment": "エンターテインメント",
+    "FoodAndDining": "食べ物",
+    "Insurance": "保険",
+    "Miscellaneous": "その他",
+    "Shopping": "買い物",
+    "SightseeingAndActivities": "観光",
+    "Transportation": "輸送"
   },
   "BillForm": {
     "amount-is-required": "金額は必須です",
@@ -32,6 +40,7 @@
     "delete": "消去",
     "done": "終わり",
     "edit": "編集",
+    "groupLabel": "（グループ）",
     "next": "次",
     "profileUserLabel": "（あなた）"
   },
@@ -55,6 +64,9 @@
     "payer": "支払者",
     "please-fill-in-all-required-fields": "フォームをもう一度確認し、関連フィールドを更新してください",
     "success": "成功"
+  },
+  "ExpenseDeleteBottomSheetModal": {
+    "are-you-sure-you-want-to-delete-this-expense": "この経費を削除してもよろしいですか?"
   },
   "ExpenseDetailForm": {
     "date-is-required": "日付は必須です"
@@ -194,6 +206,8 @@
   "StackNavigator": {
   },
   "StatisticScreen": {
+    "statistics": "統計",
+    "subtitle": "<Text>{{name}} は合計 <Highlight>{{amount}}</Highlight> を使いました。\n経費の配分は次のとおりです</Text>"
   },
   "UserDeleteBottomSheet": {
   },

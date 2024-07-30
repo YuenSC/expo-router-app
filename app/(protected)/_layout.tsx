@@ -44,7 +44,9 @@ export default function RootLayout() {
           name="group/create"
           options={{
             headerShown: true,
-            headerTitle: "",
+            headerTitle: t("GroupForm:create-group"),
+            headerLargeTitle: true,
+            presentation: "modal",
           }}
         />
         <Stack.Screen

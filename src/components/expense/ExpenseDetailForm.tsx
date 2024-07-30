@@ -15,11 +15,14 @@ import { TextInput, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import BillCalculatorBottomSheetModal from "./BillCalculatorBottomSheetModal";
+import BillCategoryIcon from "./BillCategoryIcon";
 import { useExpenseFormContext } from "./ExpenseFormContext";
 import CurrencyCodeSelectBottomSheetModal from "./ExpenseFormCurrencyCodeSelectBottomSheetModal";
 import ExpenseFormDatePickerBottomSheetModal from "./ExpenseFormDatePickerBottomSheet";
+import { VStack } from "../common/Stack";
 import StyledScrollView from "../common/StyledScrollView";
 
+import { BillCategoryEnum } from "@/src/api/types/BillCategories";
 import { PostExpenseCreatePayload } from "@/src/api/types/Expense";
 import { formatDate } from "@/src/utils/formatDate";
 
@@ -118,33 +121,42 @@ const ExpenseDetailForm = () => {
         />
 
         {/* Category */}
-        {/* <Text style={styles.label}>{t("BillForm:category")}</Text> */}
-        {/* <View style={styles.categoryGrid}>
-          {Object.values(BillCategoryEnum).map((key) => {
-            const isActive = category.value === key;
-
+        <Text style={styles.label}>{t("BillForm:category")}</Text>
+        <Controller
+          name="category"
+          control={control}
+          defaultValue={BillCategoryEnum.Transportation}
+          render={({ field: { value: category, onChange } }) => {
             return (
-              <View key={key} style={styles.category}>
-                <TouchableOpacity
-                  onPress={() => category.onChange(key)}
-                  activeOpacity={0.8}
-                  style={[
-                    styles.categoryButton,
-                    isActive && styles.categoryButtonActive,
-                  ]}
-                >
-                  <BillCategoryIcon
-                    category={key as BillCategoryEnum}
-                    color="white"
-                  />
-                </TouchableOpacity>
-                <Text style={styles.categoryText}>
-                  {t(`BillCategoryEnum:${key}`)}
-                </Text>
+              <View style={styles.categoryGrid}>
+                {Object.values(BillCategoryEnum).map((key) => {
+                  const isActive = category === key;
+
+                  return (
+                    <VStack gap={2} key={key} style={styles.category}>
+                      <TouchableOpacity
+                        onPress={() => onChange(key)}
+                        activeOpacity={0.8}
+                        style={[
+                          styles.categoryButton,
+                          isActive && styles.categoryButtonActive,
+                        ]}
+                      >
+                        <BillCategoryIcon
+                          category={key as BillCategoryEnum}
+                          color="white"
+                        />
+                      </TouchableOpacity>
+                      <Text style={styles.categoryText}>
+                        {t(`BillCategoryEnum:${key}`)}
+                      </Text>
+                    </VStack>
+                  );
+                })}
               </View>
             );
-          })}
-        </View> */}
+          }}
+        />
 
         <Controller
           control={control}
@@ -232,6 +244,30 @@ const useStyles = makeStyles((theme) => ({
     left: 8,
     padding: 16,
     bottom: 16,
+  },
+
+  categoryGrid: { flexDirection: "row", flexWrap: "wrap", marginBottom: 20 },
+  category: {
+    width: "25%",
+    padding: 4,
+  },
+  categoryButton: {
+    padding: 16,
+    backgroundColor: theme.colors.grey4,
+    borderRadius: 16,
+  },
+  categoryButtonActive: {
+    backgroundColor: theme.colors.primary,
+  },
+  categoryText: {
+    fontSize: 12,
+  },
+  label: {
+    marginLeft: 10,
+    fontSize: 16,
+    fontWeight: "bold",
+    color: theme.colors.grey3,
+    marginBottom: 6,
   },
 }));
 
