@@ -30,6 +30,7 @@ import { calculateAutoSplitAmounts } from "@/src/utils/payments";
 type ExpenseFormContextType = UseStepActions & {
   groupId: string;
   expenseId?: string;
+  expense?: Expense;
   currentStep: number;
   resetTransactions: (type: ExpenseTransactionType) => void;
   onNextStepOrSubmit: () => void;
@@ -126,6 +127,7 @@ export const ExpenseFormProvider = ({
       ...defaultValues,
     },
   });
+
   const { setValue, getValues, handleSubmit, trigger, control, reset } = form;
   const amountWatch = useWatch({ name: "amount", control });
   const transactionsWatch = useWatch({
@@ -187,6 +189,7 @@ export const ExpenseFormProvider = ({
       return;
     }
     handleSubmit((values) => {
+      console.log("values", JSON.stringify(values, null, 2));
       if (expense) postExpenseUpdate({ id: expense.id, ...values });
       else postExpenseCreate(values);
     })();
@@ -258,6 +261,7 @@ export const ExpenseFormProvider = ({
         value={{
           ...props,
           groupId,
+          expense,
           resetTransactions,
           onNextStepOrSubmit,
           isLoading,

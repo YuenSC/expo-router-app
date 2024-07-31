@@ -35,7 +35,7 @@ const ExpenseDetailForm = () => {
   const dateBottomSheetModalRef = useRef<BottomSheetModal>(null);
   const dateInputRef = useRef<TextInput & BaseInput>(null);
   const { t, i18n } = useTranslation();
-  const { goToNextStep } = useExpenseFormContext();
+  const { goToNextStep, expense } = useExpenseFormContext();
 
   const { control, trigger } = useFormContext<PostExpenseCreatePayload>();
   const currencyCodeWatch = useWatch({ control, name: "currencyCode" });
@@ -53,13 +53,6 @@ const ExpenseDetailForm = () => {
       },
     },
   });
-
-  // const recordId = useWatch({ control, name: "id" });
-  // const record = useAppSelector((state) =>
-  //   state.groups.groups
-  //     .find((group) => group.id === groupId)
-  //     ?.paymentRecords.find((item) => item.id === recordId),
-  // );
 
   return (
     <View style={styles.container}>
@@ -197,6 +190,7 @@ const ExpenseDetailForm = () => {
         value={amount.value}
         onChange={amount.onChange}
         onBlurInput={() => amountInputRef.current?.blur()}
+        defaultValue={expense?.amount}
       />
 
       <Controller
