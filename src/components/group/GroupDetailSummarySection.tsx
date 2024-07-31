@@ -9,6 +9,7 @@ import GroupDetailSummaryItem from "./GroupDetailSummaryItem";
 import StyledScrollView from "../common/StyledScrollView";
 
 import { useGetExpensePaymentRelationship } from "@/src/api/hooks/expense/useGetExpensePaymentRelationship";
+import { BillCategoryEnum } from "@/src/api/types/BillCategories";
 import {
   ExpenseTransactionType,
   PaymentRelationship,
@@ -72,10 +73,11 @@ const GroupDetailSummarySection = memo<IGroupDetailSummarySectionProps>(
                   onSummaryItemPress={({ creditor, debtAmount, debtor }) => {
                     const payload = {
                       amount: roundAmountToDecimal(debtAmount),
-                      description: "Settle up debt with " + creditor.name,
+                      description: "Debt settlement",
                       currencyCode: currencyCode as CurrencyCode,
                       groupId: group.id,
                       incurredOn: new Date().toISOString(),
+                      category: BillCategoryEnum.Miscellaneous,
                       createExpenseTransactions: [
                         {
                           userId: debtor.id,
