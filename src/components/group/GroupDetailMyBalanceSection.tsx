@@ -27,15 +27,6 @@ const GroupDetailMyBalanceSection = memo<IGroupDetailMyBalanceSectionProps>(
     return (
       <GroupDetailSection
         title={t("GroupDetailScreen:my-balance")}
-        // titleRight={
-        //   <TouchableOpacity>
-        //     <Entypo
-        //       name="chevron-small-right"
-        //       size={24}
-        //       color={theme.colors.primary}
-        //     />
-        //   </TouchableOpacity>
-        // }
         style={styles.container}
       >
         {hasUnresolvedAmount && (
