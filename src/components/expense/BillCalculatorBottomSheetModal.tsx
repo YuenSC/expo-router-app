@@ -41,8 +41,8 @@ const BillCalculatorBottomSheetModal = forwardRef<
   const { theme } = useTheme();
   const { t } = useTranslation();
 
-  const bottomSheetRef = useRef<BottomSheetModal>(null);
-  useImperativeHandle(outerRef, () => bottomSheetRef.current!, []);
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  useImperativeHandle(outerRef, () => bottomSheetModalRef.current!, []);
 
   const [records, setRecords] = useState<CalculatorRecord[]>([
     {
@@ -168,7 +168,7 @@ const BillCalculatorBottomSheetModal = forwardRef<
     <StyledBottomSheetModal
       enablePanDownToClose
       enableDynamicSizing
-      ref={bottomSheetRef}
+      ref={bottomSheetModalRef}
       handleComponent={() => null}
       index={0}
       containerStyle={styles.container}
@@ -185,7 +185,7 @@ const BillCalculatorBottomSheetModal = forwardRef<
                 setRecords([
                   { num: calculateResult(records).toString(), sign: undefined },
                 ]);
-                bottomSheetRef.current?.close();
+                bottomSheetModalRef.current?.close();
                 onBlurInput();
               }}
             >

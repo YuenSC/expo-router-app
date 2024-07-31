@@ -7,11 +7,13 @@ import { useDebounce } from "use-debounce";
 
 import { useGetExpenseList } from "@/src/api/hooks/expense/useGetExpenseList";
 import { Expense } from "@/src/api/types/Expense";
+import DataDisplayTargetToggle from "@/src/components/common/DataDisplayTargetToggle";
 import InfiniteScroll from "@/src/components/common/InfiniteScroll";
-import { VStack } from "@/src/components/common/Stack";
+import { HStack, VStack } from "@/src/components/common/Stack";
 import StyledSearchBar from "@/src/components/common/StyledSearchBar";
 import ExpenseListItemDisplay from "@/src/components/expense/ExpenseListItemDisplay";
 import { useAppContext } from "@/src/context/AppContext";
+import { DataDisplayTarget } from "@/src/types/DataDisplayTarget";
 
 const Page = () => {
   const styles = useStyles();
@@ -19,6 +21,10 @@ const Page = () => {
   const { currentGroupId } = useAppContext();
   const [searchText, setSearchText] = useState("");
   const [debouncedSearchText] = useDebounce(searchText, 300);
+
+  const [target, setTarget] = useState<DataDisplayTarget>(
+    DataDisplayTarget.You,
+  );
 
   const {
     data: expenses,
@@ -42,9 +48,12 @@ const Page = () => {
   return (
     <View style={styles.container}>
       <VStack alignItems="flex-start" style={styles.header}>
-        <Text h1 style={styles.title}>
-          {t("PaymentRecordListScreen:payments")}
-        </Text>
+        <HStack>
+          <Text h1 style={styles.title}>
+            {t("PaymentRecordListScreen:payments")}
+          </Text>
+          <DataDisplayTargetToggle target={target} setTarget={setTarget} />
+        </HStack>
         <StyledSearchBar
           onChangeText={setSearchText}
           value={searchText}
@@ -69,7 +78,7 @@ const Page = () => {
           return (
             <Link asChild href={`/expense/${item.id}`}>
               <TouchableOpacity>
-                <ExpenseListItemDisplay expense={item} />
+                <ExpenseListItemDisplay expense={item} target={target} />
               </TouchableOpacity>
             </Link>
           );

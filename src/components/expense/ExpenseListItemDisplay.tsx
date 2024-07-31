@@ -7,16 +7,18 @@ import { HStack, VStack } from "../common/Stack";
 import { useGetMe } from "@/src/api/hooks/useGetMe";
 import { BillCategoryEnum } from "@/src/api/types/BillCategories";
 import { Expense } from "@/src/api/types/Expense";
+import { DataDisplayTarget } from "@/src/types/DataDisplayTarget";
 import { calculateUserNetTransactionAmount } from "@/src/utils/calculateUserNetTransactionAmount";
 import { formatDate } from "@/src/utils/formatDate";
 import { formatAmount } from "@/src/utils/payments";
 
 type IExpenseListItemDisplayProps = {
   expense: Expense;
+  target: DataDisplayTarget;
 };
 
 const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
-  ({ expense }) => {
+  ({ expense, target }) => {
     const styles = useStyles();
     const { data: user } = useGetMe();
 
@@ -24,6 +26,9 @@ const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
       expense,
       user?.id || "",
     );
+
+    const amount =
+      target === DataDisplayTarget.Group ? expense.amount : netAmount;
 
     return (
       <HStack style={styles.container}>
@@ -46,11 +51,12 @@ const ExpenseListItemDisplay = memo<IExpenseListItemDisplayProps>(
         <Text
           style={[
             styles.amount,
-            Math.sign(netAmount) === -1 && styles.amountNegative,
-            Math.sign(netAmount) === 1 && styles.amountPositive,
+            Math.sign(amount) === -1 && styles.amountNegative,
+            Math.sign(amount) === 1 && styles.amountPositive,
+            target === DataDisplayTarget.Group && styles.whiteText,
           ]}
         >
-          {formatAmount(netAmount, expense.currencyCode)}
+          {formatAmount(amount, expense.currencyCode)}
         </Text>
       </HStack>
     );
@@ -83,6 +89,9 @@ const useStyles = makeStyles((theme) => ({
     width: 40,
     height: 40,
     marginLeft: -8,
+  },
+  whiteText: {
+    color: theme.colors.black,
   },
 }));
 

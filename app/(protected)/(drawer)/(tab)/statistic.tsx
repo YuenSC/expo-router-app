@@ -13,17 +13,14 @@ import {
   BillCategoryColor,
   BillCategoryEnum,
 } from "@/src/api/types/BillCategories";
+import DataDisplayTargetToggle from "@/src/components/common/DataDisplayTargetToggle";
 import FullScreenLoading from "@/src/components/common/FullScreenLoading";
 import { HStack, VStack } from "@/src/components/common/Stack";
 import StyledScrollView from "@/src/components/common/StyledScrollView";
 import { CurrencyCode } from "@/src/constants/Currency";
 import { useAppContext } from "@/src/context/AppContext";
+import { DataDisplayTarget } from "@/src/types/DataDisplayTarget";
 import { formatAmount, roundAmountToDecimal } from "@/src/utils/payments";
-
-export enum DataDisplayTarget {
-  You = "You",
-  Group = "Group",
-}
 
 const getAmountSum = (categoryExpense: Record<BillCategoryEnum, number>) => {
   return Object.values(categoryExpense).reduce((acc, curr) => acc + curr, 0);
@@ -131,22 +128,7 @@ const Page = () => {
       <HStack>
         <HStack justifyContent="flex-start">
           <Text h1>{t("StatisticScreen:statistics")}</Text>
-          <TouchableOpacity
-            style={styles.toggleTarget}
-            onPress={() =>
-              setTarget(
-                target === DataDisplayTarget.Group
-                  ? DataDisplayTarget.You
-                  : DataDisplayTarget.Group,
-              )
-            }
-          >
-            <Text style={styles.toggleTargetText}>
-              {target === DataDisplayTarget.Group
-                ? t("Common:groupLabel")
-                : t("Common:profileUserLabel")}
-            </Text>
-          </TouchableOpacity>
+          <DataDisplayTargetToggle target={target} setTarget={setTarget} />
         </HStack>
 
         {hasMoreThanOneCurrency && (
@@ -319,22 +301,11 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 48,
     textAlign: "right",
   },
-  toggleTarget: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    backgroundColor: theme.colors.primary,
-    borderRadius: 16,
-    marginLeft: 4,
-    marginTop: 8,
-  },
-  toggleTargetText: {
-    color: theme.colors.white,
-  },
+
   selectedCurrency: {
     color: theme.colors.primary,
     fontWeight: "bold",
   },
-
   lottie: {
     height: 300,
     aspectRatio: 1,
