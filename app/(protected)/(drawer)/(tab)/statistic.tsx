@@ -205,7 +205,7 @@ const Page = () => {
               )
               .map((_key, index) => {
                 const isLast =
-                  index === Object.keys(BillCategoryEnum).length - 1;
+                  index === Object.keys(categoryExpense).length - 1;
                 const key = _key as BillCategoryEnum;
 
                 return (
