@@ -8,7 +8,7 @@ export const useGetExpense = (
   options?: Omit<UseQueryOptions<GetExpenseResponse>, "queryKey" | "queryFn">,
 ) => {
   const query = useQuery({
-    queryKey: ["useGetExpense", payload.id],
+    queryKey: ["useGetExpense", payload],
     queryFn: () => getExpense(payload),
     enabled: !!payload.id,
     ...options,

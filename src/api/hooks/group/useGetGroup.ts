@@ -8,7 +8,7 @@ export const useGetGroup = (
   options?: Omit<UseQueryOptions<GetGroupResponse>, "queryKey" | "queryFn">,
 ) => {
   const query = useQuery({
-    queryKey: ["group", payload.id],
+    queryKey: ["group", payload],
     queryFn: () => getGroup(payload),
     enabled: !!payload.id,
     ...options,

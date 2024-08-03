@@ -1,6 +1,11 @@
 module.exports = {
   root: true,
-  extends: ["universe/native", "plugin:react-hooks/recommended"],
+  extends: [
+    "universe/native",
+    "plugin:react-hooks/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+  ],
+  plugins: ["@tanstack/query"],
   rules: {
     "no-restricted-imports": [
       "error",

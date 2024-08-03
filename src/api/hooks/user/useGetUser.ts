@@ -8,7 +8,7 @@ export const useGetUser = (
   options?: Omit<UseQueryOptions<GetUserResponse>, "queryKey" | "queryFn">,
 ) => {
   const query = useQuery({
-    queryKey: ["user", payload.id],
+    queryKey: ["user", payload],
     queryFn: () => getUser(payload),
     enabled: !!payload.id,
     ...options,
